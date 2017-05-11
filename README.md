@@ -1,20 +1,26 @@
 # Hybrid Integration Reference Architecture
 
-# Architecture
-This project provides a reference implementation for building hybrid application on the cloud using microservices architecture connected to enterprise data source running on-premise.
+## Architecture
+This project provides a reference implementation for building hybrid integration from a cloud based application or micro service connected to enterprise data source running on-premise.
 ![High level view of the architecture](docs/hybrid-ra.png)
 
 For information of the Hybrid architecture, visit the [Architecture Center - Hybrid Architecture](https://www.ibm.com/devops/method/content/architecture/hybridArchitecture#0_1)
 
-# Project Repositories
+## Application Overview
+The application is an extension of the CASE.inc retail store found introduced in [cloud native](https://github.com/ibm-cloud-architecture/refarch-cloudnative) where internal users can manage the inventory items for the retail shop backend inventory database. The user interface aims to be simple but accessing remote REST api hosted within on premise servers via IBM Secure Gateway. The component and physical deployment looks like the image below:
+![Components and Physical view](docs/cp-phy-view.png)
+
+
+## Project Repositories
 This project leverages other projects by applying clear separation of concerns design, n-tiers architecture, and service oriented architecture.
 
-* [Data Access Layer](https://github.com/jbcodeforce/refarch-premsource-inventory-dal) to deliver SOAP interface for Inventory management. JAXWS / JPA app.
-* [DB2](https://github.com/jbcodeforce/refarch-premsource-inventory-db2) to support scripting and ddl for Inventory DB.
-* [APIC Connect]() Content for the Inventory API definition and management
+* [Data Access Layer](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal) to deliver SOAP interface for Inventory management. JAXWS / JPA app.
+* [DB2](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-db2) to support scripting and ddl for Inventory DB.
+* [APIC Connect](https://github.com/ibm-cloud-architecture/refarch-integration-api) Content for the Inventory API definition and management
+* [Inventory Portal](https://github.com/ibm-cloud-architecture/refarch-integration-app) Cloud native application to manage the inventory and serve as internal portal.
 
 
-# Run the reference application locally and on IBM Bluemix
+## Run the reference application locally and on IBM Bluemix
 To run the sample application you will need to configure your Bluemix environment for the WebApp front end, and skytap environment...
 
 ## Step 1: Environment Setup
