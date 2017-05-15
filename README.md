@@ -18,6 +18,7 @@ This project leverages other projects by applying clear separation of concerns d
 * [DB2](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-db2) to support scripting and ddl for Inventory DB.
 * [APIC Connect](https://github.com/ibm-cloud-architecture/refarch-integration-api) Content for the Inventory API definition and management
 * [Inventory Portal](https://github.com/ibm-cloud-architecture/refarch-integration-app) Cloud native application to manage the inventory and serve as internal portal.
+* [Functional testing](https://github.com/ibm-cloud-architecture/refarch-integration-tests) Component and functional testing, and later performance test scripts and tools.
 
 
 ## Run the reference application locally and on IBM Bluemix
