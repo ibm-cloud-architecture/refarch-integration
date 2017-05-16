@@ -12,9 +12,11 @@ else
     MYBRANCH=$1
 fi
 
-BASEREPO="https://github.com/jbcodeforce/refarch-premsource"
-REPO_DB2="https://github.com/jbcodeforce/refarch-premsource-inventory-db2"
-REPO_DAL="https://github.com/jbcodeforce/refarch-premsource-inventory-dal"
+BASEREPO="https://github.com/ibm-cloud-architecture/refarch-integration"
+REPO_DB2="https://github.com/ibm-cloud-architecture/refarch-integration-inventory-db2"
+REPO_DAL="https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal"
+REPO_TESTS="https://github.com/ibm-cloud-architecture/refarch-integration-tests"
+REPO_API="https://github.com/ibm-cloud-architecture/refarch-integration-api"
 
 echo 'Cloning peer projects...'
 
@@ -36,5 +38,15 @@ REPO=${REPO_DB2}
 PROJECT=$(echo ${REPO} | cut -d/ -f5)
 git clone -b ${DEFAULT_BRANCH} ${REPO} ../${PROJECT}
 
+echo -e '\nClone Brown Compute tests project'
+REPO=${REPO_TESTS}
+PROJECT=$(echo ${REPO} | cut -d/ -f5)
+git clone -b ${DEFAULT_BRANCH} ${REPO} ../${PROJECT}
+
+echo -e '\nClone Brown Compute API Connect project'
+REPO=${REPO_API}
+PROJECT=$(echo ${REPO} | cut -d/ -f5)
+git clone -b ${DEFAULT_BRANCH} ${REPO} ../${PROJECT}
+
 echo -e '\nCloned all peer projects successfully!\n'
-ls ../ | grep refarch-premsource
+ls ../ | grep refarch-integration
