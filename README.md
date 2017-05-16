@@ -21,7 +21,8 @@ This project leverages other projects by applying clear separation of concerns d
 * [APIC Connect](https://github.com/ibm-cloud-architecture/refarch-integration-api) Content for the Inventory API definition and management
 * [Inventory Portal](https://github.com/ibm-cloud-architecture/refarch-integration-app) Cloud native application to manage the inventory and serve as internal portal.
 * [Testing](https://github.com/ibm-cloud-architecture/refarch-integration-tests) This repository includes a set of test cases to do component testing, functional testing and integration tests.
-* [Case Inc Internal Portal](https://github.com/ibm-cloud-architecture/refarch-caseinc-app)
+* [Case Inc Internal Portal](https://github.com/ibm-cloud-architecture/refarch-caseinc-app) Portal web app to expose access and user interface for inventory DB.
+
 
 
 ## Run the reference application locally and on IBM Bluemix
