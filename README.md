@@ -48,3 +48,6 @@ The following steps use the cf tool.
 Clone the base repository: ``` git clone https://github.com/ibm-cloud-architecture/refarch-integration.git```
 
 Then using the command ``` ./clonePeers.sh ``` Clone the peer repositories.
+
+### Add a IBM Secure Gateway
+To authorize the web application to access the API Connect gateway we used the IBM Secure Gateway, and details can be found in this [article](docs/ConfigureSecureGateway.md)
