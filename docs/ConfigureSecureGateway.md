@@ -1,4 +1,4 @@
-IBM Secure Gateway provides secure connectivity and establishes a tunnel between your Bluemix organization and the remote location that you want to connect to.
+IBM Secure Gateway provides secure connectivity and establishes a tunnel between your Bluemix organization and the remote location that you want to connect to. In the case of Brown compute, the API gateway is the on-premise end point we want to reach from Bluemix apps.
 
 ## Steps to perform
 * In your Bluemix account / organization create a secure Gateway service using the path Catalog> Integrate > Secure Gateway
