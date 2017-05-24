@@ -2,7 +2,7 @@
 
 ##############################################################################
 ##
-##  Wrapper sript to pull all peer git repositories
+##  Wrapper script to pull all peer git repositories
 ##
 ##############################################################################
 
@@ -17,6 +17,7 @@ REPO_DB2="https://github.com/ibm-cloud-architecture/refarch-integration-inventor
 REPO_DAL="https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal"
 REPO_TESTS="https://github.com/ibm-cloud-architecture/refarch-integration-tests"
 REPO_API="https://github.com/ibm-cloud-architecture/refarch-integration-api"
+REPO_PORTAL="https://github.com/ibm-cloud-architecture/refarch-caseinc-app"
 
 echo 'Cloning peer projects...'
 
@@ -47,6 +48,12 @@ echo -e '\nClone Brown Compute API Connect project'
 REPO=${REPO_API}
 PROJECT=$(echo ${REPO} | cut -d/ -f5)
 git clone -b ${DEFAULT_BRANCH} ${REPO} ../${PROJECT}
+
+echo -e '\nClone Case Inc Portal project'
+REPO=${REPO_PORTAL}
+PROJECT=$(echo ${REPO} | cut -d/ -f5)
+git clone -b ${DEFAULT_BRANCH} ${REPO} ../${PROJECT}
+
 
 echo -e '\nCloned all peer projects successfully!\n'
 ls ../ | grep refarch-integration
