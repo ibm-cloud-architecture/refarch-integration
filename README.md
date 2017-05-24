@@ -56,4 +56,4 @@ Then using the command ``` ./clonePeers.sh ``` Clone the peer repositories.
 Add the ./configureAll.sh script to perform the different installations, the first time.
 
 ### Add a IBM Secure Gateway
-To authorize the web application to access the API Connect gateway we use the IBM Secure Gateway product and bluemix service: the configuration details and best practices can be found in this [article](docs/ConfigureSecureGateway.md)
+To authorize the web application to access the API Connect gateway we use the IBM Secure Gateway product and bluemix service: the configuration details and best practices can be found in this [article](https://github.com/ibm-cloud-architecture/refarch-integration-utilities/blob/master/docs/ConfigureSecureGateway.md)
