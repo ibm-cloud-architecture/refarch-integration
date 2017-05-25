@@ -28,12 +28,15 @@ This project leverages other projects by applying clear separation of concerns d
 * [Case Inc Internal Portal](https://github.com/ibm-cloud-architecture/refarch-caseinc-app) Portal web app to expose access and user interface for inventory DB.
 * [Utility Server](https://github.com/ibm-cloud-architecture/refarch-integration-utilities) Server to manage a set of other components used for DevOps or connection like the secure gateway client.
 
-
+The 'top of the iceberg' for this solution implementation is the Bluemix app 'Case Inc Portal' that offers access to the Inventory management. The details on how to build and run this application is [here](https://github.com/ibm-cloud-architecture/refarch-caseinc-app)
 
 ## Run the reference application locally and on IBM Bluemix
 To run the sample application you will need to configure your Bluemix environment for the WebApp front end, and use a the vm images for the on-premise servers... (TBD)
 
-## Step 1: Environment Setup
+## Prerequisites
+* You need your own [github.com](http://github.com) account
+* You need a git client code. For example for [Windows](https://git-scm.com/download/win) and for [Mac](https://git-scm.com/download/mac)
+* You need to have a [Bluemix](http://bluemix.net) account, and know how to use cloud foundry command line interface to push the application to Bluemix.
 
 ### Install the Bluemix CLI
 As IBM Bluemix application, many commands will require the Bluemix CLI toolkit to be installed on your local environment. To install it, follow [these instructions](https://console.ng.bluemix.net/docs/cli/index.html#cli)
@@ -45,15 +48,17 @@ The following steps use the cf tool.
 1. Click on the Bluemix account in the top right corner of the web interface.
 2. Click Create a new space.
 3. Enter a name like "ra-integration" for the space name and complete the wizard steps.
-4. Add a SDK for node.js cloud foundry application for the Case Inc Portal App [SDK node.js] (https://console.ng.bluemix.net/catalog/starters/sdk-for-nodejs?env_id=ibm:yp:us-south&taxonomyNavigation=watson)
 
 ### Get application source code
 
-Clone the base repository: ``` git clone https://github.com/ibm-cloud-architecture/refarch-integration.git```
+Clone the base repository using git client:
+```
+git clone https://github.com/ibm-cloud-architecture/refarch-integration.git
+```
 
-Then using the command ``` ./clonePeers.sh ``` Clone the peer repositories.
+Then under the refarch-integration folder use the command ``` ./clonePeers.sh ``` to clone the peer repositories of the 'Brown compute' solution.
 
-Add the ./configureAll.sh script to perform the different installations, the first time.
+And only for the first time use the ./configureAll.sh script to perform the different dependencies installations for the bluemix apps and other utilities.
 
 ### Add a IBM Secure Gateway
 To authorize the web application to access the API Connect gateway we use the IBM Secure Gateway product and bluemix service: the configuration details and best practices can be found in this [article](https://github.com/ibm-cloud-architecture/refarch-integration-utilities/blob/master/docs/ConfigureSecureGateway.md)

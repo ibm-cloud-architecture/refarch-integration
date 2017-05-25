@@ -56,4 +56,4 @@ git clone -b ${DEFAULT_BRANCH} ${REPO} ../${PROJECT}
 
 
 echo -e '\nCloned all peer projects successfully!\n'
-ls ../ | grep refarch-integration
+ls ../ | grep refarch
