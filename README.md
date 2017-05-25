@@ -36,12 +36,11 @@ To run the sample application you will need to configure your Bluemix environmen
 ## Prerequisites
 * You need your own [github.com](http://github.com) account
 * You need a git client code. For example for [Windows](https://git-scm.com/download/win) and for [Mac](https://git-scm.com/download/mac)
-* You need to have a [Bluemix](http://bluemix.net) account, and know how to use cloud foundry command line interface to push the application to Bluemix.
+* Install [npm](https://www.npmjs.com/get-npm) and [nodejs](). Normally getting nodejs last stable version will bring npm too.
+* You need to have a [Bluemix](http://bluemix.net) account, and know how to use cloud foundry command line interface to push to bluemix, the web application used to demonstrate the solution.
+* Install the Bluemix CLI: As IBM Bluemix application, many commands will require the Bluemix CLI toolkit to be installed on your local environment. To install it, follow [these instructions](https://console.ng.bluemix.net/docs/cli/index.html#cli)
+*
 
-### Install the Bluemix CLI
-As IBM Bluemix application, many commands will require the Bluemix CLI toolkit to be installed on your local environment. To install it, follow [these instructions](https://console.ng.bluemix.net/docs/cli/index.html#cli)
-
-The following steps use the cf tool.
 
 ### Create a New Space in Bluemix
 
@@ -61,4 +60,4 @@ Then under the refarch-integration folder use the command ``` ./clonePeers.sh ``
 And only for the first time use the ./configureAll.sh script to perform the different dependencies installations for the bluemix apps and other utilities.
 
 ### Add a IBM Secure Gateway
-To authorize the web application to access the API Connect gateway we use the IBM Secure Gateway product and bluemix service: the configuration details and best practices can be found in this [article](https://github.com/ibm-cloud-architecture/refarch-integration-utilities/blob/master/docs/ConfigureSecureGateway.md)
+To authorize the web application running on Bluemix to access the API Connect gateway running on on-premise servers, we use the IBM Secure Gateway product and the bluemix Secure Gateway service: the configuration details and best practices can be found in this [article](https://github.com/ibm-cloud-architecture/refarch-integration-utilities/blob/master/docs/ConfigureSecureGateway.md)
