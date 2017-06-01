@@ -34,14 +34,12 @@ The 'top of the iceberg' for this solution implementation is the Bluemix app 'Ca
 
 To run the backend solution, we will deliver images for you to install on your servers... stay tuned, from now we are describing how each servers / code are configured in each of the specific github repository.
 
-## Prerequisites
+### Prerequisites
 * You need your own [github.com](http://github.com) account
 * You need a git client code. For example for [Windows](https://git-scm.com/download/win) and for [Mac](https://git-scm.com/download/mac)
 * Install [npm](https://www.npmjs.com/get-npm) and [nodejs](). Normally getting nodejs last stable version will bring npm too.
 * You need to have a [Bluemix](http://bluemix.net) account, and know how to use cloud foundry command line interface to push to bluemix, the web application used to demonstrate the solution.
 * Install the Bluemix CLI: As IBM Bluemix application, many commands will require the Bluemix CLI toolkit to be installed on your local environment. To install it, follow [these instructions](https://console.ng.bluemix.net/docs/cli/index.html#cli)
-
-
 
 ### Create a New Space in Bluemix
 
@@ -63,5 +61,5 @@ And only for the first time use the ```./configureAll.sh``` script to perform th
 ### Working on your own
 The script ``` ./fork-repos.sh``` should help you to fork all the repositories of this solution within your github account.
 
-### Add a IBM Secure Gateway
+## Add a IBM Secure Gateway
 To authorize the web application running on Bluemix to access the API Connect gateway running on on-premise servers, we use the IBM Secure Gateway product and the bluemix Secure Gateway service: the configuration details and best practices can be found in this [article](https://github.com/ibm-cloud-architecture/refarch-integration-utilities/blob/master/docs/ConfigureSecureGateway.md)
