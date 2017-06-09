@@ -1,12 +1,9 @@
 # Hybrid Integration Reference Architecture
 
 ## Architecture
-This project provides a reference implementation for building an hybrid integration solution, using cloud native  web application, connected via IBM secure gateway to an enterprise inventory database running on-premise server. The logical architecture for this reference implementation is shown in the picture below.
-![High level view of the architecture](docs/hybrid-ra.png)
+This project provides a reference implementation for building an hybrid integration solution, using cloud native web application, connected via IBM secure gateway to an enterprise inventory database running on-premise server. This compute model, called *brown compute*, represents existing SOA / Traditional IT landscape with product like ESB, BPM, Rule engine, Java based web service applications. One of the goal of this implementation is to reflect what is commonly found in IT landscape in 2017.
 
-It is important to note that the development approach on the back-end is to sue Service Oriented Architecture, with ESB pattern and SOAP interface. One of the goal of this implementation is to reflect what is commonly found in IT landscape in 2017.
 
-For information of the Hybrid architecture, visit the [Architecture Center - Hybrid Architecture](https://www.ibm.com/devops/method/content/architecture/hybridArchitecture#0_1)
 
 ## Application Overview
 The application is an extension of the "CASE.inc" retail store introduced in [cloud native](https://github.com/ibm-cloud-architecture/refarch-cloudnative) for internal users who want to manage the inventory items of the retail shops/warehouses. The data base is a simple inventory DB with products, supplier and stock information. A Data Access Layer component, based on JAXWS, produces a set of SOAP operations to be used as part of a SOA strategy define early 2004. With new team in place a new user interface is developed using Angular 2, nodejs/express on Bluemix, as a cloud foundry app, and with remote access to on-premise data source via IBM Secure Gateway. As part of the new IT strategy, the inventory SOAP operations are exposed as APIs using API Connect so it can be easily consumed as RESTful API. The component and physical deployment looks like the image below:
@@ -18,6 +15,9 @@ The application is an extension of the "CASE.inc" retail store introduced in [cl
 * The database is running on DB2 and is not directly accessed from API connect, but applying SOA principles, it is accessed via a Data Access Layer app.
 * The Data Access Layer app is a JAXWS application running on Websphere Liberty server.
 
+It is important to note that the development approach on the back-end is to sue Service Oriented Architecture, with ESB pattern and SOAP interface.
+
+For information of the Hybrid architecture, visit the [Architecture Center - Hybrid Architecture](https://www.ibm.com/devops/method/content/architecture/hybridArchitecture#0_1)
 ## Project Repositories
 This project leverages other projects by applying clear separation of concerns design, n-tiers architecture, and service oriented architecture.
 
