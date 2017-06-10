@@ -17,7 +17,9 @@ The application is an extension of the "CASE.inc" retail store introduced in [cl
 
 It is important to note that the development approach on the back-end is to sue Service Oriented Architecture, with ESB pattern and SOAP interface.
 
-For information of the Hybrid architecture, visit the [Architecture Center - Hybrid Architecture](https://www.ibm.com/devops/method/content/architecture/hybridArchitecture#0_1)
+For information of the Hybrid architecture, visit the [Architecture Center - Hybrid Architecture](https://www.ibm.com/devops/method/content/architecture/hybridArchitecture#0_1) with some light changes in the diagram as illustrated below:  
+![](docs/hybrid-da.png)
+
 ## Project Repositories
 This project leverages other projects by applying clear separation of concerns design, n-tiers architecture, and service oriented architecture.
 
@@ -32,7 +34,12 @@ This project leverages other projects by applying clear separation of concerns d
 ## Run the reference application locally and on IBM Bluemix
 The 'top of the iceberg' for this solution implementation is the Bluemix app 'Case Inc Portal' that offers access to the Inventory management. The details on how to build and run this application is [here](https://github.com/ibm-cloud-architecture/refarch-caseinc-app)
 
-To run the backend solution, we will deliver images for you to install on your servers... stay tuned, from now we are describing how each servers / code are configured in each of the specific github repository.
+To run the backend solution, we will deliver images for you to install on your servers... stay tuned, from now we are describing how each servers / code are configured in each of the specific github repository. We are using VmWare vSphere product to manage all the virtual machines.  
+![vsphere](docs/vsphere.png)
+
+To install:
+* DB2 server read [this note](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-db2#db2-installation)
+* Liberty App server read [this article]()
 
 ### Prerequisites
 * You need your own [github.com](http://github.com) account
@@ -40,6 +47,7 @@ To run the backend solution, we will deliver images for you to install on your s
 * Install [npm](https://www.npmjs.com/get-npm) and [nodejs](). Normally getting nodejs last stable version will bring npm too.
 * You need to have a [Bluemix](http://bluemix.net) account, and know how to use cloud foundry command line interface to push to bluemix, the web application used to demonstrate the solution.
 * Install the Bluemix CLI: As IBM Bluemix application, many commands will require the Bluemix CLI toolkit to be installed on your local environment. To install it, follow [these instructions](https://console.ng.bluemix.net/docs/cli/index.html#cli)
+* Use virtual machine images
 
 ### Create a New Space in Bluemix
 
