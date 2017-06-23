@@ -13,12 +13,12 @@ The application is an extension of the "CASE.inc" retail store introduced in [cl
 * APIC Connect, installed on-premise, is used as gateway to the different API run time and to do the interface mapping between the SOAP data access layer and the RESTful API exposed to the public applications.
 * The connection is done via a gateway tunnel using IBM Secure Gateway Client on a dedicated server.
 * The database is running on DB2 and is not directly accessed from API connect, but applying SOA principles, it is accessed via a Data Access Layer app.
-* The Data Access Layer app is a JAXWS application running on Websphere Liberty server.
+* The Data Access Layer app is a JAXWS application running on WebSphere Liberty server.
 
 It is important to note that the development approach on the back-end is to sue Service Oriented Architecture, with ESB pattern and SOAP interface.
 
 For information of the Hybrid architecture, visit the [Architecture Center - Hybrid Architecture](https://www.ibm.com/devops/method/content/architecture/hybridArchitecture#0_1) with some light changes in the diagram as illustrated below:  
-![](docs/hybrid-da.png)
+![RA](docs/hybrid-ra.png)
 
 ## Project Repositories
 This project leverages other projects by applying clear separation of concerns design, n-tiers architecture, and service oriented architecture.
@@ -31,8 +31,8 @@ This project leverages other projects by applying clear separation of concerns d
 * [Utility Server](https://github.com/ibm-cloud-architecture/refarch-integration-utilities) Server to manage a set of other components used for DevOps or connection like the secure gateway client.
 
 
-## Run the reference application locally and on IBM Bluemix
-The 'top of the iceberg' for this solution implementation is the Bluemix app 'Case Inc Portal' that offers access to the Inventory management. The details on how to build and run this application is [here](https://github.com/ibm-cloud-architecture/refarch-caseinc-app)
+## Run this reference application locally and on IBM Bluemix
+The 'top of the iceberg' for this solution implementation is the Bluemix app 'Case Inc Portal' that offers accesses to the Inventory management and other features. The details on how to build and run this application is [here](https://github.com/ibm-cloud-architecture/refarch-caseinc-app)
 
 To run the backend solution, we will deliver images for you to install on your servers... stay tuned, from now we are describing how each servers / code are configured in each of the specific github repository. We are using VmWare vSphere product to manage all the virtual machines.  
 ![vsphere](docs/vsphere.png)
@@ -69,5 +69,19 @@ And only for the first time use the ```./configureAll.sh``` script to perform th
 ### Working on your own
 The script ``` ./fork-repos.sh``` should help you to fork all the repositories of this solution within your github account.
 
-## Add a IBM Secure Gateway
-To authorize the web application running on Bluemix to access the API Connect gateway running on on-premise servers, we use the IBM Secure Gateway product and the bluemix Secure Gateway service: the configuration details and best practices can be found in this [article](https://github.com/ibm-cloud-architecture/refarch-integration-utilities/blob/master/docs/ConfigureSecureGateway.md)
+## Add a IBM Secure Gateway Service
+To authorize the web application running on Bluemix to access the API Connect gateway running on on-premise servers (or any end-point on on-premise servers), we use the IBM Secure Gateway product and the bluemix Secure Gateway service: the configuration details and best practices can be found in this [article](https://github.com/ibm-cloud-architecture/refarch-integration-utilities/blob/master/docs/ConfigureSecureGateway.md)
+
+## Contribute
+We welcome your contribution. There are multiple ways to contribute: report bugs and improvement suggestion, improve documentation and contribute code.
+We really value contributions and to maximize the impact of code contributions we request that any contributions follow these guidelines
+* Please ensure you follow the coding standard and code formatting used throughout the existing code base
+* All new features must be accompanied by associated tests
+* Make sure all tests pass locally before submitting a pull request
+* New pull requests should be created against the integration branch of the repository. This ensures new code is included in full stack integration tests before being merged into the master branch.
+* One feature / bug fix / documentation update per pull request
+* Include tests with every feature enhancement, improve tests with every bug fix
+* One commit per pull request (squash your commits)
+* Always pull the latest changes from upstream and rebase before creating pull request.
+
+If you want to contribute, start by using git fork on this repository and then clone your own repository to your local workstation for development purpose. Add the up-stream repository to keep synchronized with the master.
