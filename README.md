@@ -3,13 +3,13 @@
 This project provides a reference implementation for building and running an hybrid integration solution, using cloud native web application securely connected to an enterprise data source and SOA service running on-premise servers. This compute model, called **Brown compute**, represents existing SOA / Traditional IT landscape with products such as ESB, BPM, Rule engine, and Java based web service applications. One of the goal of this implementation is to reflect what is commonly found in IT landscape in 2017, and provides recommendation on how to manage such hybrid architecture.
 
 ## Table of content
-* [Application Overview](https://github.com/ibm-cloud-architecture/refarch-integration#application-overview)
-* [Project Repositories](https://github.com/ibm-cloud-architecture/refarch-integration#project-repositories)
-* [Run the Brown Compute model](https://github.com/ibm-cloud-architecture/refarch-integration#run-this-reference-application-locally-and-on-ibm-bluemix)
- * [Step 1: Environment Setup](https://github.com/ibm-cloud-architecture/refarch-integration#step-1:-environment-setup)
- * [Step 2: Provision Kubernetes Cluster on IBM Bluemix](https://github.com/ibm-cloud-architecture/refarch-integration)
- * [Step 3: Deploy and run](https://github.com/ibm-cloud-architecture/refarch-integration)
-* [DevOps automation, Resiliency and Cloud Management and Monitoring](https://github.com/ibm-cloud-architecture/refarch-integration)
+* [Application Overview](https://github.com/ibm-cloud-architecture/refarch-integration#application-overview)  
+* [Project Repositories](https://github.com/ibm-cloud-architecture/refarch-integration#project-repositories)  
+* [Run the Brown Compute model](https://github.com/ibm-cloud-architecture/refarch-integration#run-brown-compute)  
+  * [Step 1: Environment Setup](https://github.com/ibm-cloud-architecture/refarch-integration#step-1-environment-setup)
+  * [Step 2: Provision Kubernetes Cluster on IBM Bluemix](https://github.com/ibm-cloud-architecture/refarch-integration#step-2-provision-kubernetes-cluster-on-ibm-bluemix)
+  * [Step 3: Deploy and run](https://github.com/ibm-cloud-architecture/refarch-integration#step-3-deploy-and-run)
+* [DevOps automation, Resiliency and Cloud Management and Monitoring](https://github.com/ibm-cloud-architecture/refarch-integration#devops-automation-resiliency-and-cloud-management-and-monitoring)
 * [Contribute to the solution](https://github.com/ibm-cloud-architecture/refarch-integration#contribute)
 
 ## Application Overview
@@ -44,7 +44,7 @@ This project leverages other projects by applying clear separation of concerns d
 * [Utility Server](https://github.com/ibm-cloud-architecture/refarch-integration-utilities) Server to manage a set of other components used for DevOps or connection like the secure gateway client.
 
 
-## Run this reference application locally and on IBM Bluemix
+## Run Brown Compute
 The 'top of the iceberg' for this solution implementation is the Bluemix app 'Case Inc Portal' that offers accesses to the Inventory management and other features such as chatbots. The details on how to build and run this application is [detailed in this repository](https://github.com/ibm-cloud-architecture/refarch-caseinc-app)
 
 To run the backend solution, we will deliver images for you to install on your servers... stay tuned, from now we are describing how each servers / code are configured in each of the specific github repository. We are using VmWare vSphere product to manage all the virtual machines. The figure below present the *Brown* Resource Pool.
@@ -82,11 +82,11 @@ The script ` ./fork-repos.sh` should help you to fork all the repositories of th
 
 #### The Current Physical Deployment and Installation
 The  Current Physical deployment includes six servers, we are describing how installation was done in each matching project so you can replicate the configuration. It should take you 2 to 3 hours per server.
-* DB2 server read [this note](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-db2#db2-installation)
+* DB2 server read [this note](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-db2#db2-server-installation)
 * Liberty App server read [this article](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal/blob/master/docs/liberty-server.md)
 * API Connect see [Server config](https://github.com/ibm-cloud-architecture/refarch-integration-api#server-configuration)
-* For LDAP Server running on the utility server []()
-* Utility Server running Secure Gateway and Jenkins server[]()
+* For LDAP Server running on the utility server [LDAP Configuration](https://github.com/ibm-cloud-architecture/refarch-integration-utilities#ldap-configuration)
+* [Utility Server](https://github.com/ibm-cloud-architecture/refarch-integration-utilities#server-configuration) running Secure Gateway and [Jenkins server](https://github.com/ibm-cloud-architecture/refarch-integration-utilities/blob/master/docs/cicd.md#installation)
 As part of the Brown compute mission is to leverage the VM lift and shift approach by deploying vm image to Bluemix VM.
 
 #### Add a IBM Secure Gateway Bluemix Service
@@ -99,18 +99,30 @@ $ bx login
 $ bx cs init
 ```
 ### Step 3: Deploy and run
-<>
+There are multiple steps to make the solution working in the following order:
+* Start DB2 server
+* Start App server
+* Start API Connect servers: Gateway, Management and Portal
+* Start Utility server
+* Start 'case inc' portal APP
+* Run end to end validation testing with the [following script](https://github.com/ibm-cloud-architecture/refarch-integration-tests#integration-test)
+
+Then the demonstration script follow the instructions [here](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/demoflow.md)
+
+For demonstration purpose not all back end servers are set in high availability. For Resiliency testing some scenario are coded in the [testing project]().
+
+
 # DevOps automation, Resiliency and Cloud Management and Monitoring
-* DevOps
+* DevOps   
 You can setup and enable automated CI/CD for most of the *Brown Compute* components using Jenkins and Urban Code Deploy deploy on-premise. For detail, please check the DevOps project .
 
-* Cloud Management and monitoring
+* Cloud Management and monitoring   
 For guidance on how to manage and monitor the *Brown Compute* solution, please check the Management and Monitoring project.
 
-* Making the Portal App Resilient
+* Making the Portal App Resilient   
 Please check this repository on instructions and tools to improve availability and performances of the *Brown Compute* front end application.
 
-* Secure The Application
+* Secure The Application   
 Please review this page on how we secure the solution end-to-end.
 
 # Contribute
