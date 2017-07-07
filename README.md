@@ -123,7 +123,7 @@ For guidance on how to manage and monitor the *Brown Compute* solution, please c
 Please check this repository on instructions and tools to improve availability and performances of the *Brown Compute* front end application.
 
 * Secure The Application   
-Please review this page on how we secure the solution end-to-end.
+Please review the [TLS article](docs/TLS.md) on how we secure the solution end-to-end.
 
 # Contribute
 We welcome your contribution. There are multiple ways to contribute: report bugs and improvement suggestion, improve documentation and contribute code.

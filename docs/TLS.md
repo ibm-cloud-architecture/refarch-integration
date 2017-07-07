@@ -53,14 +53,75 @@ By default, s_client will print only the leaf certificate; as we want to print t
 
 Use this certificate for the client code in Bluemix.
 
+As an alternate we can download the authentication files from the Secure Gateway destination:  
+![](sg-dest-detail.png)  
+as explained in [this article](https://github.com/ibm-cloud-architecture/refarch-integration-utilities/blob/master/docs/ConfigureSecureGateway.md#step-3--define-destination-for-secure-gateway-service) and use all those certificates files to define the connection.
+
 ## 2. Get the APIC server certificate
-When connected via VPN to yor on-premise environment, you can get the TLS certificate for the API Connect Gateway server via the command:
+When connected via VPN to your on-premise environment, you can get the TLS certificate for the API Connect Gateway server via the command:
 `echo | openssl s_client -connect 172.16.50.8:443 -showcerts 2>&1 | sed  -n '/BEGIN CERTIFICATE/,/-END CERTIFICATE-/p'> apicgw.pem `
 
-## Using Self certified SSL certificate
+## 3. Using Self certified TSL certificates in a client app
+To make TSL working end to end we need to do certificate management, configure trust stores, understand handshaking, and other details that must be perfectly aligned to make the secure communication work.
 
-Generating client side key.
+We assume we downloaded the different certificates from secure gateway, the connection between the client app and the secure gateway is via TLS mutual auth.
 
+### Nodejs app
+Using the `request` module we can use the different certificates as settings to the `options` argument of the connection. Here is an example of a HTTP GET over TLS:
+
+```javascript
+request.get(
+    {url:'https://cap-sg-prd-5.integration.ibmcloud.com:16582/csplab/sb/sample-inventory-api/items',
+    timeout: 10000,
+    headers: {
+      'x-ibm-client-id': '1dc939dd-xxxx',
+      'accept': 'application/json',
+      'content-type': 'application/json'
+      }
+    });
+```
+So we need to prepare those input files on the client side (in the Case inc portal code source for example):
+* Create a key store with the openssl tool.
+`openssl pkcs12 -export -in "./ssl/qsn47KM8iTa_O495D_destCert.pem" -inkey "./ssl/qsn47KM8iTa_O495D_destKey.pem" -out "ssl/sg_key.p12" -name "CaseIncCliCert" -noiter -password pass:"asuperpwd"`
+ The file is sg_key.p12
+* Create a trust store from the DigiCertCA2.pem file
+`keytool -import -alias PrimaryCA -file /ssl/DigiCertCA2.pem -storepass password -keystore /ssl/sg_trust.jks`
+* Then for the secondary CA
+`keytool -import -alias SecondaryCA -file /ssl/DigiCertTrustedRoot.pem -storepass password -keystore /ssl/sg_trust.jks`
+* finally the certificate for the secure gateway
+`keytool -import -alias BmxGtwServ -file /ssl/secureGatewayCert.pem -storepass password -keystore /ssl/sg_trust.jks`
+
+
+### Step 5- Download the API Connect certificate  
+
+
+
+To access the certificate use a Web browser, like Firefox, to the target URL using HTTPS. Access the Security > Certificate from the locker icon on left side of the URL field. (Each web browser has their own way to access to the self certified certificates)
+
+![Certificate](APIC-cert.png)
+
+Use the export button to create a new local file with suffix .crt. From there you need to persist the file on the operating system trust store.
+
+ ```
+# get certificate in the form of a .crt file, then mv it to ca-certificate
+$ sudo mv APIConnect.crt /usr/local/share/ca-certificate
+# To add en try to the certificates use the command
+$ sudo update-ca-certificates
+# verify with
+$ ls -al /etc/ssl/certs | grep APIConnect
+$ openssl s_client -showcerts -connect 172.16.50.8:443
+```
+
+## Specific to Java Trust store
+Java Runtime Environment comes with a pre-configure set of trusted certificate authorities. The collection of trusted certificates can be found at $JAVA_HOME/jre/lib/security/cacerts The tests are run on the utility server, so the API Connect server CA certificate needs to be in place. To do so the following needs to be done:
+
+Remote connect to the API Connect Gateway Server with a Web Browser and download the certificate as .crt file
+```
+$ sudo keytool -import -trustcacerts -alias brownapic -file APIConnect.crt -keystore $JAVA_HOME/jre/lib/security/cacerts -storepass changeit
+$ keytool -list -keystore $JAVA_HOME/jre/lib/security/cacerts
+```
+
+Attention these steps will make the Java program using HTTP client working only if the certificate is defined by a certified agency. The self generated certificate has a CN attribute sets to a non-hostname, and HTTP client in Java when doing SSL connection are doing a hostname verification. See the test project for the detail on how it was bypassed, in Brown compute.
 
 # References
 * Open SSL [web site](http://www.openssl.org)
