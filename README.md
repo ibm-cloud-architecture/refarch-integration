@@ -9,7 +9,9 @@ This project provides a reference implementation for building and running an hyb
   * [Step 1: Environment Setup](https://github.com/ibm-cloud-architecture/refarch-integration#step-1-environment-setup)
   * [Step 2: Provision Kubernetes Cluster on IBM Bluemix](https://github.com/ibm-cloud-architecture/refarch-integration#step-2-provision-kubernetes-cluster-on-ibm-bluemix)
   * [Step 3: Deploy and run](https://github.com/ibm-cloud-architecture/refarch-integration#step-3-deploy-and-run)
+* [Security](https://github.com/ibm-cloud-architecture/refarch-integration#security)
 * [DevOps automation, Resiliency and Cloud Management and Monitoring](https://github.com/ibm-cloud-architecture/refarch-integration#devops-automation-resiliency-and-cloud-management-and-monitoring)
+
 * [Contribute to the solution](https://github.com/ibm-cloud-architecture/refarch-integration#contribute)
 
 ## Application Overview
@@ -111,6 +113,11 @@ Then the demonstration script follow the instructions [here](https://github.com/
 
 For demonstration purpose not all back end servers are set in high availability. For Resiliency testing some scenario are coded in the [testing project]().
 
+# Security
+Multiple security concerns are addressed by the **Brown compute** model. The first one is to support the deployment of private on-premise LDAP directory. The installation and configuration of the Open LDAP on the Utility server is described [here](https://github.com/ibm-cloud-architecture/refarch-integration-utilities#ldap-configuration).
+To control the access from a Bluemix app, we first implemented an adhoc solution by exposing a /login path in API Connect. See explanation [here]() on how we did it.  
+The connection between the web app, front end of **Brown compute** and the back end is done over TLS socket, we present a quick summary of TLS and how TLS end to end is performed in [this article](https://github.com/ibm-cloud-architecture/refarch-integration/blob/master/docs/TLS.md)
+The front end login mechanism on how we support injecting secure token for API calls is documented [here](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/login.md) 
 
 # DevOps automation, Resiliency and Cloud Management and Monitoring
 * DevOps   
@@ -124,6 +131,8 @@ Please check this repository on instructions and tools to improve availability a
 
 * Secure The Application   
 Please review the [TLS article](docs/TLS.md) on how we secure the solution end-to-end.
+
+
 
 # Contribute
 We welcome your contribution. There are multiple ways to contribute: report bugs and improvement suggestion, improve documentation and contribute code.
