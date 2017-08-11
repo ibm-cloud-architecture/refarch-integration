@@ -1,8 +1,10 @@
 # Hybrid Integration Reference Architecture
 
-This project provides a reference implementation for building and running an hybrid integration solution, using cloud native web application securely connected to an enterprise data source and SOA service running on-premise servers. This compute model, called **Brown compute**, represents existing SOA / Traditional IT landscape with products such as ESB, BPM, Rule engine, and Java based web service applications. One of the goal of this implementation is to reflect what is commonly found in IT landscape in 2017, and provides recommendation on how to manage such hybrid architecture.
+IT environments are becoming hybrid in nature; most businesses use cloud computing as part of their overall IT environment. While businesses continue to operate enterprise applications, processes, and systems of record on premises, they are rapidly developing cloud-native applications on cloud. The hybrid integration reference architecture describes an approach to connect cloud and on-premises components.
 
-## Table of content
+This current project provides a reference implementation for building and running an hybrid integration solution, using cloud native web application securely connected to an enterprise data source and SOA service running on-premise servers. This compute model, called **Brown compute**, represents existing SOA / Traditional IT landscape with products such as ESB, BPM, Rule engine, and Java based web service applications integrated with web app developed on Cloud using micro service pattern. One of the goal of this implementation is to reflect what is commonly found in IT landscape in 2017, and provides recommendations on how to manage such hybrid architecture.
+
+## Table of Contents
 * [Application Overview](https://github.com/ibm-cloud-architecture/refarch-integration#application-overview)  
 * [Project Repositories](https://github.com/ibm-cloud-architecture/refarch-integration#project-repositories)  
 * [Run the Brown Compute model](https://github.com/ibm-cloud-architecture/refarch-integration#run-brown-compute)  
@@ -115,13 +117,13 @@ For demonstration purpose not all back end servers are set in high availability.
 
 # Security
 Multiple security concerns are addressed by the **Brown compute** model. The first one is to support the deployment of private on-premise LDAP directory. The installation and configuration of the Open LDAP on the Utility server is described [here](https://github.com/ibm-cloud-architecture/refarch-integration-utilities#ldap-configuration).
-To control the access from a Bluemix app, we first implemented an adhoc solution by exposing a /login path in API Connect. See explanation [here]() on how we did it.  
+Second one, to control the access from a Bluemix app, we first implemented an adhoc solution by exposing a /login path in API Connect. See explanation [here](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/login.md#api-definition-on-back-end) on how we did it.  
 The connection between the web app, front end of **Brown compute** and the back end is done over TLS socket, we present a quick summary of TLS and how TLS end to end is performed in [this article](https://github.com/ibm-cloud-architecture/refarch-integration/blob/master/docs/TLS.md)
-The front end login mechanism on how we support injecting secure token for API calls is documented [here](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/login.md) 
+The front end login mechanism on how we support injecting secure token for API calls is documented [here](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/login.md)
 
 # DevOps automation, Resiliency and Cloud Management and Monitoring
 * DevOps   
-You can setup and enable automated CI/CD for most of the *Brown Compute* components using Jenkins and Urban Code Deploy deploy on-premise. For detail, please check the DevOps project .
+You can setup and enable automated CI/CD for most of the *Brown Compute* components using Jenkins and Urban Code Deploy deploy on-premise. For detail, please check the Utility project [CI/CD notes](https://github.com/ibm-cloud-architecture/refarch-integration-utilities/blob/master/docs/cicd.md).
 
 * Cloud Management and monitoring   
 For guidance on how to manage and monitor the *Brown Compute* solution, please check the Management and Monitoring project.
