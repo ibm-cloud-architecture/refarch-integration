@@ -10,7 +10,8 @@ This current project provides a reference implementation for building and runnin
 * [Run the Brown Compute model](https://github.com/ibm-cloud-architecture/refarch-integration#run-brown-compute)  
   * [Step 1: Environment Setup](https://github.com/ibm-cloud-architecture/refarch-integration#step-1-environment-setup)
   * [Step 2: Provision Kubernetes Cluster on IBM Bluemix](https://github.com/ibm-cloud-architecture/refarch-integration#step-2-provision-kubernetes-cluster-on-ibm-bluemix)
-  * [Step 3: Deploy and run](https://github.com/ibm-cloud-architecture/refarch-integration#step-3-deploy-and-run)
+  * [Step 3: Deploy and run on Bluemix](https://github.com/ibm-cloud-architecture/refarch-integration#step-3-deploy-and-run)
+  * [Step 3 Alternate: Deploy to run on IBM Cloud Private](./docs/icp-deploy.md)
 * [Security](https://github.com/ibm-cloud-architecture/refarch-integration#security)
 * [DevOps automation, Resiliency and Cloud Management and Monitoring](https://github.com/ibm-cloud-architecture/refarch-integration#devops-automation-resiliency-and-cloud-management-and-monitoring)
 
@@ -23,7 +24,7 @@ The end users will be able to authenticate to an internal LDAP, and access diffe
 
 A Data Access Layer component, based on JAXWS, produces a set of SOAP operations to be used as part of a SOA strategy defined early 2004. With new team in place a new user interface is developed using Angular 2, nodejs/express on Bluemix or on private cloud, as a containized nodejs app, and with remote access to on-premise data source via IBM Secure Gateway. As part of the new IT strategy, the inventory SOAP operations are exposed as RESTful APIs using API Connect so it can be easily consumed.
 
-The component view and physical deployment looks like the image below:
+The component view and physical deployment for the first configuration looks like the image below:
 ![Components and Physical view](docs/cp-phy-view.png)
 
 * On the left side the Case Inc Portal app defines a set of user interface to manage Inventory elements, and use the Back-end For Front-end pattern. The nodejs/expressjs accesses the REST api exposed by API Connect via a Secure Gateway service on bluemix which acts as a proxy. This application is containized and deployable on Kubernetes cluster.
@@ -32,7 +33,10 @@ The component view and physical deployment looks like the image below:
 * The database is running on DB2 and is not directly accessed from API connect, but applying SOA principles, it is accessed via a Data Access Layer app. The server is *BrownDB2*
 * The Data Access Layer app is a JAXWS application running on WebSphere Liberty server. The server is *BrownLibertyAppServer*.
 
-It is important to note that the development approach on the back-end is to use Service Oriented Architecture, with ESB pattern and SOAP interface.
+It is important to note that the development approach on the back-end is to use Service Oriented Architecture, with ESB pattern and SOAP interface. Which leads to a second configuration where API Connect is not used but a pure ESB pattern used:
+![ESB](docs/E32-iib-integration.png)
+
+The API from the consumer point of view is the same the implementation is done within a Gateway flow deployed in IBM Integration Bus. The backend stays the same. For detail see [this note](docs/iib.md) 
 
 For information of the Hybrid architecture, visit the [Architecture Center - Hybrid Architecture](https://www.ibm.com/devops/method/content/architecture/hybridArchitecture#0_1) with some light changes in the diagram as illustrated below:  
 ![RA](docs/hybrid-ra.png)
