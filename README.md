@@ -1,8 +1,18 @@
 # Hybrid Integration Reference Architecture
 
-IT environments are becoming hybrid in nature; most businesses use cloud computing as part of their overall IT environment. While businesses continue to operate enterprise applications, processes, and systems of record on premises, they are rapidly developing cloud-native applications on cloud. The hybrid integration reference architecture describes an approach to connect cloud and on-premises components.
+IT environments are becoming hybrid in nature; most businesses use cloud computing as part of their overall IT environment. While businesses continue to operate enterprise applications, processes, and systems of record on premises, they are rapidly developing cloud-native applications on cloud. The hybrid integration reference architecture describes an approach to connect cloud and on-premises components together.
 
-This current project provides a reference implementation for building and running an **hybrid integration** solution, using cloud native web application securely connected to an enterprise data source and SOA services running on on-premise servers. This compute model, represents existing SOA / Traditional IT landscape with products such as ESB, BPM, Rule engine, and Java based web service applications or even event driven publisher.  One of the goal of this implementation is to reflect what is commonly found in IT landscape in 2017, and provides recommendations on how to manage hybrid architecture with the cloud programming model.
+In this architecture, existing applications are moved to the infrastructure as a service (IaaS) of cloud providers. New applications are built on the cloud as a platform as a service (PaaS), using pre-built cloud-based software as a service (SaaS).
+Hybrid integration has a vast scope addressing integration points like:
+* Cloud native app and on-premise system of record, or business services
+* on-premise business applications or processes with public cloud service
+* SaaS application and cloud native app
+* App on private cloud and on-premise app
+
+Hybrid integration bridges data sources, applications or APIs wherever they might be on-premises, IaaS, PaaS or SaaS.   
+![Hybrid integration](docs/Fg1.png)
+
+This current project provides a reference implementation for building and running an **hybrid integration** solution, using cloud native web application securely connected to an enterprise data source and SOA services running on on-premise servers. This compute model, represents existing SOA / Traditional IT landscape with products such as ESB, BPM, Rule engine, and Java based web service applications or even event driven publisher.  One of the goal of this implementation is to reflect what is commonly found in IT landscape in 2017, and provides recommendations on how to manage hybrid architecture with the cloud programming model by addressing non-functional requirements as scalability, security, monitoring and resiliency.
 
 ## Table of Contents
 
@@ -142,6 +152,13 @@ Please check this repository on instructions and tools to improve availability a
 Please review the [TLS article](docs/TLS.md) on how we secure the solution end-to-end.
 
 
+# Compendium
+Architecture discussion on hybrid integration:
+* How to ensure your integration landscape keeps pace with digital transformation article: [The evolving hybrid integration reference architecture](https://www.ibm.com/developerworks/library/mw-1606-clark-trs/index.html)
+* How the 12 factors to measure component for cloud native app and micro service apply to hybrid integration: [The 12 factors integration](https://developer.ibm.com/integration/blog/2017/04/16/12-factor-integration/)
+Product related knowledge based:
+* API Connect
+* IIB
 
 # Contribute
 We welcome your contribution. There are multiple ways to contribute: report bugs and improvement suggestion, improve documentation and contribute code.
