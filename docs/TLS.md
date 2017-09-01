@@ -1,11 +1,17 @@
 # Configure TLS end to end between Bluemix app and back end service
 
 
+The connection between bluemix app to back end data access service needs to be over HTTPS, HTTP over SSL. To make SSL working end to end we need to do certificate management, configure trust stores, understand handshaking, and other details that must be perfectly aligned to make the secure communication work.
+
 ## Quick TLS summary
 
 TLS and SSL uses public key/private key cryptography to encrypt data communication between the server and client, to allow the server to prove its identity to the client, and the client to prove its identity to the server.
 
-Three fundamental components are involved in setting up an SSL connection between a server and client: a certificate, a public key, and a private key. Certificates are used to identify an identity: (CN, owner, location, state,... using the X509 distinguished name).
+Three fundamental components are involved in setting up an SSL connection between a server and client:
+* a certificate,
+* a public key,
+* a private key.   
+Certificates are used to identify an identity: (CN, owner, location, state,... using the X509 distinguished name).
 
 Entity can be a person or a computer. As part of the identity, the CN or Common Name attribute is the name used to identify the domain name of the server host.
 
