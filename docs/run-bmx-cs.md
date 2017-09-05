@@ -1,17 +1,32 @@
-# Run on Bluemix as Cloud Foundry App
+# Run on Bluemix Container Service
+The kubernetes cluster is optional as the Case Inc Portal app can run in a docker container or as a cloud foundry application. We still encourage to use Kebernetes to deploy microservices as it offers a lot of added values we need.
 
-You need to have a [Bluemix](http://bluemix.net) account, and know how to use cloud foundry command line interface and blumix container CLI to push to bluemix, the containized web application used to demonstrate the solution. Add a new space:
- 1. Click on the Bluemix account in the top right corner of the web interface.
- 2. Click Create a new space.
- 3. Enter a name like "ra-integration" for the space name and complete the wizard steps.
+You may have the CLI for bluemix container installed via the script: `./install_cli.sh`
 
-### Step1: Install the different CLI needed
-It includes bluemix, cf, and kubernetes. A script exists in this project for that see:  `./install_cli.sh`
+### Step1: Provision Kubernetes Cluster on IBM Bluemix
+In the Bluemix Catalog go to **Containers** on the left navigation panel and select ** Kubernetes Cluster**:
 
+![](./cs-create.png)
 
-### Step 2: Provision Kubernetes Cluster on IBM Bluemix
-The kubernetes cluster is optional as the Case Inc Portal app can run in a docker container or as a cloud foundry application. We still encourage to use Kebernetes to deploy microservices as it offers a lot of added values we need. So if you want to deploy to Kubernetes you need to do the following instructions:
+Select the **Lite** configuration for your development environment. For production use the **Standard** configuration.
+
+![](./cs-lite.png)  
+
+Once created, it can take sometime to get all the related infrastructure provisioned, you should be able to see the dashboard. One Worker node is running.
+
+![](cs-dashboard.png)
+
+So if you want to deploy to Kubernetes you need to do the following instructions:
 ```
 $ bx login
-$ bx cs init
+$ bx cs init --host https://us-south.containers.bluemix.net
 ```
+
+The following table summarized the command you may need
+| Command | Description | Comment|
+|---|---|---|
+| bx cs clusters | list the clusters from your org | return the name, ID, state... |
+| | Command to set the context of your interaction with the cluster |
+|---|---|---|
+
+The web application is dockerized and detail on the deployment is done in the related [repository](https://github.com/ibm-cloud-architecture/refarch-caseinc-app#deploy-the-caseinc-portal-app-in-bluemix-kubernetes-service).

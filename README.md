@@ -1,27 +1,28 @@
 # Hybrid Integration Reference Architecture
 
-IT environments are becoming hybrid in nature; most businesses use cloud computing as part of their overall IT environment. While businesses continue to operate enterprise applications, processes, and systems of record on premises, they are rapidly developing cloud-native applications on cloud. The hybrid integration reference architecture describes an approach to connect components which are split across cloud and on-premises environments, or across different clouds -- even across different cloud providers.
+IT environments are becoming hybrid in nature; most businesses use cloud computing as part of their overall IT environment. While businesses continue to operate enterprise applications, processes, and systems of record on premises, they are rapidly developing cloud-native applications on cloud. The hybrid integration reference architecture describes an approach to connect components which are split across cloud and on-premises environments, or across public and private clouds -- even across different cloud providers.
 
 In this architecture, existing applications are moved to the infrastructure as a service (IaaS) of cloud providers. New applications are built on the cloud as a platform as a service (PaaS), using pre-built cloud-based software as a service (SaaS).
 Hybrid integration has a vast scope addressing integration points like:
 * Cloud native app and on-premise system of record, or business SOA services
-* on-premise business applications or processes with public cloud service
-* SaaS application and cloud native app
+* On-premise business applications or processes with public cloud services
+* SaaS applications and cloud native app
 * App developed and running on private cloud and on-premise app
-* Application component running on different service providers
-* Internet of things generating events, partially processed on public cloud, aggregated and persisted on-premise DB, where analytics can be perform to classify the issue a risk, and trigger process for maintenance.
+* Application components running on different service providers
+* Internet of things generating events, partially processed on public cloud, aggregated and persisted on-premise database, where analytics can be performed to classify the issue as risk, and trigger process for trouble shooting and maintenance.
 
 Hybrid integration bridges data sources, applications or APIs wherever they might be on-premises, IaaS, PaaS or SaaS. The following diagram presents the high level view of the scope.
 ![Hybrid integration](docs/Fg1.png)
 
-This current project provides a reference implementation for building and running an **hybrid integration** solution, using cloud native web application securely connected to an enterprise data source and SOA services running on on-premise servers. This compute model, represents existing SOA / Traditional IT landscape with products such as ESB, BPM, Rule engine, and Java based web service applications or even event driven publisher.  One of the goal of this implementation is to reflect what is commonly found in IT landscape in 2017, and provides recommendations on how to manage hybrid architecture with the cloud programming model by addressing non-functional requirements as scalability, security, monitoring and resiliency.
+This current project provides a reference implementation for building and running an **hybrid integration** solution, using cloud native web application **securely** connected to an enterprise data source and SOA services running on on-premise servers. This compute model, represents existing SOA / Traditional IT landscape with products such as ESB, BPM, rule engine, and Java based web service applications or even event driven publisher.  One of the goal of this implementation is to reflect what is commonly found in IT landscape in 2017, and provides recommendations on how to manage hybrid architecture with the cloud programming model by addressing non-functional requirements as scalability, security, monitoring and resiliency.
 
 ## Table of Contents
 
 * [Scope Overview](https://github.com/ibm-cloud-architecture/refarch-integration#scope-overview)  
+* [What you will learn](https://github.com/ibm-cloud-architecture/refarch-integration#what-you-will-learn)
 * [Project Repositories](https://github.com/ibm-cloud-architecture/refarch-integration#project-repositories)  
-* [Run the Brown Compute model](https://github.com/ibm-cloud-architecture/refarch-integration#run-brown-compute)  
-  * [Environment Setup](https://github.com/ibm-cloud-architecture/refarch-integration#step-1-environment-setup)
+* **Run the hybrid integration Compute model**
+  * [Environment Setup](https://github.com/ibm-cloud-architecture/refarch-integration#deploy-and-runß)
   * [Deployment to Bluemix Container Service IBM Bluemix](./docs/run-bmx-cs.md)
   * [Deployment to IBM Cloud Private](./docs/icp-deploy.md)
   * [Deploy on Bluemix Cloud Foundry](./docs/run-bmx-cf.md)
@@ -33,8 +34,9 @@ This current project provides a reference implementation for building and runnin
 * [Contribute to the solution](https://github.com/ibm-cloud-architecture/refarch-integration#contribute)
 
 # Scope Overview
-As an hybrid cloud implementation the set of project cover different functional requirements:
+As an hybrid cloud implementation a set of projects cover different functional requirements:
 * [Inventory management](https://github.com/ibm-cloud-architecture/refarch-integration#inventory-management)
+* [IT Support bot or Help@Case](https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker)
 
 To demonstrate the set of feature, a front end application, representing an internal portal user interface, is used to plug and play the different use cases.
 
@@ -76,6 +78,21 @@ This set of projects are implementing the Hybrid integration reference architect
 
 The current implementation can run on private cloud and we are presenting this deployment in detail in [this article].
 
+## What you will learn
+By studying this set of projects and articles you will learn:
+- how to develop a SOAP app in Java using JPA, JAXWS deployed on WebSphere Liberty
+- how to develop message flow on IBM Integration Bus
+- how to define API product with API Connect, and use secure communication with TLS
+- how to set up secure connection from public cloud to on-premise service
+- how to develop a Angular 4 app with nodejs/expressjs back end
+- how to secure the web app with passport
+- how to access existing LDAP service for user authentication
+- how to proxy requests to IBM Secure gateway
+- how to perform CI/CD in hybrid world
+- how to monitor all those components using Application Performance Monitoring
+- how to deploy most of the component to IBM Cloud Private
+- how to adopt a test focus implementation
+
 ## Project Repositories
 This project leverages a set of projects by applying clear separation of concerns design, n-tiers architecture, and service oriented architecture. The repository order is from left to right from previous diagram.
 
@@ -92,7 +109,7 @@ This project leverages a set of projects by applying clear separation of concern
 # Deploy and Run
 The 'top of the iceberg' for this solution implementation is the cloud native app 'Case Inc Portal' that offers accesses to the Inventory management and other features such as IT support chatbots. The details on how to build and run this application is [here.](https://github.com/ibm-cloud-architecture/refarch-caseinc-app)
 
-To run the backend solution, we will deliver images for you to install on your servers... stay tuned, from now we are describing how each servers / code are configured in each of the specific github repository. We are using VmWare vSphere product to manage all the virtual machines. The figure below presents the *Brown* Resource Pool with all the servers:   
+To run the backend solution, we will deliver images for you to install on your servers... stay tuned, from now we are describing how each server is configured in each of the specific github repository. We are using VmWare vSphere product to manage all the virtual machines. The figure below presents the *Brown* Resource Pool with he current servers:   
 ![vsphere](docs/vsphere.png)
 
 ## Prerequisites
@@ -110,7 +127,7 @@ The  Current Physical deployment includes six servers, we are describing how ins
 * API Connect see [Server config](https://github.com/ibm-cloud-architecture/refarch-integration-api#server-configuration)
 * For LDAP Server running on the utility server [LDAP Configuration](https://github.com/ibm-cloud-architecture/refarch-integration-utilities#ldap-configuration)
 * [Utility Server](https://github.com/ibm-cloud-architecture/refarch-integration-utilities#server-configuration) running Secure Gateway and [Jenkins server](https://github.com/ibm-cloud-architecture/refarch-integration-utilities/blob/master/docs/cicd.md#installation)
-As part of the Brown compute mission is to leverage the VM lift and shift approach by deploying vm image to Bluemix VM.
+As part of the hybrid integration compute mission is to leverage the VM lift and shift approach by deploying vm image to Bluemix VM.
 
 ## Get application source code
 Clone this base repository using git client:
@@ -118,7 +135,7 @@ Clone this base repository using git client:
 git clone https://github.com/ibm-cloud-architecture/refarch-integration.git
 ```
 
-Then under the refarch-integration folder use the command ``` ./clonePeers.sh ``` to clone the peer repositories of the 'Brown compute' solution.
+Then under the refarch-integration folder use the command ``` ./clonePeers.sh ``` to clone the peer repositories of the 'hybrid integration compute' solution.
 
 And only for the first time use the ```./configureAll.sh``` script to perform the different dependency installations for the bluemix apps and other utilities.
 
@@ -141,7 +158,7 @@ The demonstration script instructions are [here](https://github.com/ibm-cloud-ar
 For demonstration purpose not all back end servers are set in high availability.
 
 ## Run on IBM Cloud Private
-Under development [here](docs/icp-deploy.md)
+Most of the components of this solution can run on IBM Cloud Private we are detailing it [here](docs/icp-deploy.md)
 
 ## Run on Bluemix Container Service
 See this detail note [here](docs/run-bmx-cs.md) to deploy and run the Web App as container inside the [Bluemix Container Service](https://console.bluemix.net/docs/containers/container_index.html).
@@ -151,32 +168,33 @@ See this detail note [here](./docs/run-bmx-cf.md) to deploy the Web App as cloud
 
 
 # Security
-Multiple security concerns are addressed by the **Brown compute** model. The first one is to support the deployment of private on-premise LDAP directory. The installation and configuration of the Open LDAP on the Utility server is described [here](https://github.com/ibm-cloud-architecture/refarch-integration-utilities#ldap-configuration).
+Multiple security concerns are addressed by the **hybrid integration compute** model. The first one is to support the deployment of private on-premise LDAP directory. The installation and configuration of the Open LDAP on the Utility server is described [here](https://github.com/ibm-cloud-architecture/refarch-integration-utilities#ldap-configuration).
 Second one, to control the access from a Bluemix app, we first implemented an adhoc solution by exposing a /login path in API Connect. See explanation [here](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/login.md#api-definition-on-back-end) on how we did it.  
-The connection between the web app, front end of **Brown compute** and the back end is done over TLS socket, we present a quick summary of TLS and how TLS end to end is performed in [this article](https://github.com/ibm-cloud-architecture/refarch-integration/blob/master/docs/TLS.md)
+The connection between the web app, front end of **hybrid integration compute** and the back end is done over TLS socket, we present a quick summary of TLS and how TLS end to end is performed in [this article](https://github.com/ibm-cloud-architecture/refarch-integration/blob/master/docs/TLS.md)
 The front end login mechanism on how we support injecting secure token for API calls is documented [here](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/login.md)
 
 ### Add a IBM Secure Gateway Bluemix Service
 To authorize the web application running on Bluemix to access the API Connect gateway running on on-premise servers (or any end-point on on-premise servers), we use the IBM Secure Gateway product and the bluemix Secure Gateway service: the configuration details and best practices can be found in this [article](https://github.com/ibm-cloud-architecture/refarch-integration-utilities/blob/master/docs/ConfigureSecureGateway.md)
 
 # DevOps  
-You can setup and enable automated CI/CD for most of the *Brown Compute* components using Jenkins and Urban Code Deploy deploy on-premise. For detail, please check the Utility project [CI/CD notes](https://github.com/ibm-cloud-architecture/refarch-integration-utilities/blob/master/docs/cicd.md).
+You can setup and enable automated CI/CD for most of the *hybrid integration Compute* components using Jenkins and Urban Code Deploy deploy on-premise. For detail, please check the Utility project [CI/CD notes](https://github.com/ibm-cloud-architecture/refarch-integration-utilities/blob/master/docs/cicd.md).
 
 # Resiliency
 * Making the Portal App Resilient   
-Please check this repository on instructions and tools to improve availability and performances of the *Brown Compute* front end application.
+Please check [this repository](https://github.com/ibm-cloud-architecture/refarch-caseinc-app) for instructions and tools to improve availability and performances of the *hybrid integration Compute* front end application.
 
 # CSMO
-For guidance on how to manage and monitor the *Brown Compute* solution, please check the Management and Monitoring project.
+For guidance on how to manage and monitor the *hybrid integration Compute* solution, please check the Management and Monitoring project.
 
 # Compendium
 Architecture discussion on hybrid integration:
 * How to ensure your integration landscape keeps pace with digital transformation article: [The evolving hybrid integration reference architecture](https://www.ibm.com/developerworks/library/mw-1606-clark-trs/index.html)
 * How the 12 factors to measure component for cloud native app and micro service apply to hybrid integration: [The 12 factors integration](https://developer.ibm.com/integration/blog/2017/04/16/12-factor-integration/)
+
 Product related knowledge based:
-* [API Connect knowledge center]()
+* [API Connect knowledge center](https://www.ibm.com/support/knowledgecenter/en/SSMNED_5.0.0/mapfiles/getting_started.html)
 * [IIB developing integration solution - knowledge center](https://www.ibm.com/support/knowledgecenter/en/SSMKHH_10.0.0/com.ibm.etools.mft.doc/bi12000_.htm)
-* [IBM Secure Gateway](https://console.bluemix.net/docs/services/SecureGateway/secure_gateway.html)
+* [IBM Secure Gateway - Bluemix documentation](https://console.bluemix.net/docs/services/SecureGateway/secure_gateway.html)
 
 # Contribute
 We welcome your contribution. There are multiple ways to contribute: report bugs and improvement suggestion, improve documentation and contribute code.
