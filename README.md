@@ -33,6 +33,21 @@ This current project provides a reference implementation for building and runnin
 * [Compendium](https://github.com/ibm-cloud-architecture/refarch-integration#compendium)
 * [Contribute to the solution](https://github.com/ibm-cloud-architecture/refarch-integration#contribute)
 
+## What you will learn
+By studying this set of projects and articles you will learn:
+- how to develop a SOAP app in Java using JPA, JAXWS deployed on WebSphere Liberty
+- how to develop message flow on IBM Integration Bus
+- how to define API product with API Connect, and use secure communication with TLS
+- how to set up secure connection from public cloud to on-premise service
+- how to develop a Angular 4 app with nodejs/expressjs back end
+- how to secure the web app with passport
+- how to access existing LDAP service for user authentication
+- how to proxy requests to IBM Secure gateway
+- how to perform CI/CD in hybrid world
+- how to monitor all those components using Application Performance Monitoring
+- how to deploy most of the component to IBM Cloud Private
+- how to adopt a test focus implementation
+
 # Scope Overview
 As an hybrid cloud implementation a set of projects cover different functional requirements:
 * [Inventory management](https://github.com/ibm-cloud-architecture/refarch-integration#inventory-management)
@@ -76,22 +91,7 @@ This set of projects are implementing the Hybrid integration reference architect
 * ESB is used to manage all SOA service
 * VPN or Secure Gateway is used to open secure tunneling between public cloud deployed applications and on-premise services.
 
-The current implementation can run on private cloud and we are presenting this deployment in detail in [this article].
-
-## What you will learn
-By studying this set of projects and articles you will learn:
-- how to develop a SOAP app in Java using JPA, JAXWS deployed on WebSphere Liberty
-- how to develop message flow on IBM Integration Bus
-- how to define API product with API Connect, and use secure communication with TLS
-- how to set up secure connection from public cloud to on-premise service
-- how to develop a Angular 4 app with nodejs/expressjs back end
-- how to secure the web app with passport
-- how to access existing LDAP service for user authentication
-- how to proxy requests to IBM Secure gateway
-- how to perform CI/CD in hybrid world
-- how to monitor all those components using Application Performance Monitoring
-- how to deploy most of the component to IBM Cloud Private
-- how to adopt a test focus implementation
+The current implementation can run on private cloud and we are presenting this deployment in detail in [this article](docs/icp-deploy.md).
 
 ## Project Repositories
 This project leverages a set of projects by applying clear separation of concerns design, n-tiers architecture, and service oriented architecture. The repository order is from left to right from previous diagram.
@@ -184,7 +184,7 @@ You can setup and enable automated CI/CD for most of the *hybrid integration Com
 Please check [this repository](https://github.com/ibm-cloud-architecture/refarch-caseinc-app) for instructions and tools to improve availability and performances of the *hybrid integration Compute* front end application.
 
 # CSMO
-For guidance on how to manage and monitor the *hybrid integration Compute* solution, please check the Management and Monitoring project.
+TBD
 
 # Compendium
 Architecture discussion on hybrid integration:
