@@ -1,5 +1,5 @@
 # Install a development environment with IBM Cloud Private 2.1
-This is a quick summary of what needs to be done for installing ICP 2.1 on a single VM, used for development purpose. We are using vSphere environment, and will define a VM with Ubuntu 16.10. For a full tutorial on how to install ICp see [this note]()
+This is a quick summary of what needs to be done for installing ICP 2.1 on a single VM, used for development purpose. We are using vSphere environment, and will define a VM with Ubuntu 16.10. For a full tutorial on how to install ICp with 5 hosts see [this note](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Installing_ICp_on_prem.md)
 
 See [product documentation](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/installing/install_containers_CE.html) to get details. We still found some tricks to be considered so here are our steps:
 ## Ubuntu Specifics:
@@ -20,7 +20,7 @@ apt-get update
 ```
 sudo hostname juvm
 ```
-* Install open ssh
+* Install open ssh, and authorize remote access
 ```
 sudo apt-get install openssh-server
 systemctl restart ssh
@@ -55,9 +55,19 @@ ntpq -p
 ```
 apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual
 ```
-
-* Install docker
- * install docker repository
+* install python
+  ```
+  $  apt-get install -y python-setuptools
+  $ easy_install pip
+  $ pip install docker-py
+  ```
+* disable firewall is enabled
+  ```
+  $ ufw status
+  $ sudo ufw disable
+  ```
+## Install docker
+* install docker repository
   ```
    $ apt-get install -y apt-transport-https ca-certificates curl software-properties-common
   ```
@@ -73,11 +83,11 @@ apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual
   $ apt-get install -y docker-ce
   ```
 
- * validate it runs
+* validate it runs
  ```
    docker run hello-world
  ```
-  * Add user to docker group
+* Add user to docker group
   ```
    # Verify docker group is here
    $ cat /etc/group
@@ -85,17 +95,6 @@ apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual
    $ usermod -G docker -a jerome
    # relogin the user to get the group assignment at the session level
    ```
-  * install python
-  ```
-  $  apt-get install -y python-setuptools
-  $ easy_install pip
-  $ pip install docker-py
-  ```
-  * disable firewall is enabled
-  ```
-  $ ufw status
-  $ sudo ufw disable
-  ```
 
 * Boot and log as root user
 
@@ -107,7 +106,7 @@ apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual
  mkdir /opt/ibm-cloud-private-ce-2.1.0
  cd /opt/ibm-cloud-private-ce-2.1.0
  ```
- The following command creates the cluster folder by mounting local the data folder from installer image
+ The following command extract configuration file under the *cluster* folder by mounting local the data folder from installer image
  ```
  docker run -e LICENSE=accept \
   -v "$(pwd)":/data ibmcom/cfc-installer:2.1.0 cp -r cluster /data
@@ -132,3 +131,13 @@ apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual
   cluster_name: jbcluster
   cluster_domain: adomain
   ```
+  * Copy security keys to the ssh_key file
+  ```
+  $ cp ~/.ssh/id_rsa /opt/cluster/ssh_key
+  $ chmod 400 /opt/cluster/ssh_key
+  ```
+  * Deploy the environment now
+  ```
+  docker run -e LICENSE=accept --net=host --rm -t -v "$(pwd)":/installer/cluster ibmcom/cfc-installer:2.1.0 install
+  ```
+  * Verify access to ICp console using http://ipaddress:8443 admin/admin
