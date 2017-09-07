@@ -7,6 +7,9 @@ The following diagram presents the target deployment approach.
 
 The Web app is packaged as docker container and deploy to ICp kubernetes cluster, as well as the JAXWS app running on Liberty, and the Gateway flow running on IBM Integration Bus. The LDAP, DB2 server and the API Connect servers are still running on Traditional IT servers. The build server will also stay on-premise as it is used by multiple teams. The approach is to illustrate a realist configuration often seen in current IT data center.
 
+# Use a ICp instance for development
+We have created a single VM to host ICp for development purpose. The detailed steps are documented [here](install-dev-icp21.md)
+
 # Deployment for each components
 * For IIB study this article: [Deploying IIB Application to IBM Cloud private](https://github.com/ibm-cloud-architecture/refarch-integration-esb/blob/master/deploy/README.md)
 * For the web application: [Deploy to ICp](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/run-icp.md)
