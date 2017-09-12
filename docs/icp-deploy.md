@@ -87,14 +87,25 @@ So you copied the public key. An administrator could have sent it to you too.
 
 On your computer you need to restart systemd and docker
 ```
-systemctl daemon
+systemctl daemon-reload
+service ssh restart
 service docker restart
 ```
 
 * Normally you should be able to login to remote docker with a userid know to the master node VM
 ```
-docker login user@master.cfc
+docker login master.cfc:8500
+User: admin
+Password:
 ```
+
+* Once done the process is the same for each Application
+   * build the docker image
+   * tag the image with information about the target repostiory server, namespace, tag and version
+   * push the image to the remote repository
+   * build the helm package from the chart definition
+   * install the package.
+
 ## Setup Private Docker Registry
 In this section you will set up the private Docker registry in ICp to host the Docker images securely. For this you will create an ICp user to access the registry, and kubernetes configmap and secret resources for the registry configuration and credentials.
 
