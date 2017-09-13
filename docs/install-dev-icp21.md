@@ -1,7 +1,11 @@
 # Install a development environment with IBM Cloud Private 2.1
-This is a quick summary of what needs to be done for installing ICP 2.1 on a single VM, used for development purpose. We are using vSphere environment, and will define a VM with Ubuntu 16.10. For a full tutorial on how to install ICp with 5 hosts see [this note](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Installing_ICp_on_prem.md)
+This is a quick summary of what may be done to instal a ICP 2.1 development host on a single VM. We are using vSphere environment, and will define a VM with Ubuntu 16.10.
 
-See [product documentation](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/installing/install_containers_CE.html) to get details. We still found some tricks to be considered so here are our steps:
+For a full tutorial on how to install ICP with 5 hosts see [this note](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Installing_ICP_on_prem.md)
+
+See [ICP 2.1 product documentation](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/installing/install_containers_CE.html) to get details.
+
+We still found some tricks to be consider so here are our steps:
 ## Ubuntu Specifics:
 * Access to the VM vSPhere and add a VM in your resource pool. The expected resource could be
 CPUs: 4 Memory: 32GB Disk: 600GB (Thin Provisioned)
@@ -44,7 +48,7 @@ $ systemctl restart ssh
 $ ssh-copy-id -i .ssh/id_rsa root@juvm
 ```
 Then you should be able to ssh via root too
-* install NTP to keep time sync
+* Install NTP to keep time sync
 ```
 apt-get install -y ntp
 sytemctl restart ntp
@@ -55,35 +59,35 @@ ntpq -p
 ```
 apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual
 ```
-* install python
+* Install python
   ```
   $  apt-get install -y python-setuptools
   $ easy_install pip
   $ pip install docker-py
   ```
-* disable firewall is enabled
+* Disable firewall if enabled
   ```
   $ ufw status
   $ sudo ufw disable
   ```
 ## Install docker
-* install docker repository
+* Install docker repository
   ```
    $ apt-get install -y apt-transport-https ca-certificates curl software-properties-common
   ```
 
-  * get the GPG key
+  * Get the GPG key
    ```
    $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - apt-key fingerprint 0EBFCD88
    ```
-  * setup docker stable repository
+  * Setup docker stable repository
   ```
   $ add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb\_release -cs) stable”
   $ apt-get update
   $ apt-get install -y docker-ce
   ```
 
-* validate it runs
+* Validate it runs
  ```
    docker run hello-world
  ```
@@ -99,16 +103,16 @@ apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual
 * Boot and log as root user
 
 ## IBM Cloud Private CE
-* Get the ICp  installer docker image using the following command
+* Get the ICP  installer docker image using the following command
  ```
- sudo docker pull ibmcom/cfc-installer:2.1.0
- su -
- mkdir /opt/ibm-cloud-private-ce-2.1.0
- cd /opt/ibm-cloud-private-ce-2.1.0
+ $ sudo docker pull ibmcom/cfc-installer:2.1.0
+ $ su -
+ $ mkdir /opt/ibm-cloud-private-ce-2.1.0
+ $ cd /opt/ibm-cloud-private-ce-2.1.0
  ```
- The following command extract configuration file under the *cluster* folder by mounting local the data folder from installer image
+ The following command extracts configuration file under the *cluster* folder by mounting local folder to /data inside the container:
  ```
- docker run -e LICENSE=accept \
+ $ docker run -e LICENSE=accept \
   -v "$(pwd)":/data ibmcom/cfc-installer:2.1.0 cp -r cluster /data
  ```
 * In the cluster folder there are multiple files to modify: config.yaml, hosts, and ssh-keys
@@ -116,7 +120,7 @@ apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual
   ```
   $ ip address
   ```
-  modify the hosts file
+   * Modify the hosts file
   ```
   [master]
    172.16.251.133
@@ -125,7 +129,7 @@ apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual
    [proxy]
    172.16.251.133
   ```
-  * modify the config.yaml file by specifying a domain name and cluster name, but also the loopback dns flag so the server will run in single VM without error.
+  * Modify the config.yaml file by specifying a domain name and cluster name, but also the loopback dns flag so the server will run in single VM without error.
   ```
   loopback_dns: true
   cluster_name: jbcluster
@@ -138,6 +142,9 @@ apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual
   ```
   * Deploy the environment now
   ```
-  docker run -e LICENSE=accept --net=host --rm -t -v "$(pwd)":/installer/cluster ibmcom/cfc-installer:2.1.0 install
+  $ docker run -e LICENSE=accept --net=host --rm -t -v "$(pwd)":/installer/cluster ibmcom/cfc-installer:2.1.0 install
   ```
-  * Verify access to ICp console using http://ipaddress:8443 admin/admin
+  * Verify access to ICP console using http://ipaddress:8443 admin/admin
+  You should see the dashboard as in figure below:
+
+  ![](icp-dashboard.png)
