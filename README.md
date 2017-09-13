@@ -18,28 +18,29 @@ This current project provides a reference implementation for building and runnin
 
 ## Table of Contents
 
-* [Scope Overview](https://github.com/ibm-cloud-architecture/refarch-integration#scope-overview)  
+* [Application Overview](https://github.com/ibm-cloud-architecture/refarch-integration#scope-overview)  
 * [What you will learn](https://github.com/ibm-cloud-architecture/refarch-integration#what-you-will-learn)
 * [Project Repositories](https://github.com/ibm-cloud-architecture/refarch-integration#project-repositories)  
-* **Run the hybrid integration Compute model**
-  * [Environment Setup](https://github.com/ibm-cloud-architecture/refarch-integration#deploy-and-runß)
+* **Build and run the hybrid integration Compute model**
+  * [Environment Setup](https://github.com/ibm-cloud-architecture/refarch-integration#deploy-and-run)
   * [Deployment to Bluemix Container Service IBM Bluemix](./docs/run-bmx-cs.md)
   * [Deployment to IBM Cloud Private](./docs/icp-deploy.md)
   * [Deploy on Bluemix Cloud Foundry](./docs/run-bmx-cf.md)
+* [Methodology](https://github.com/ibm-cloud-architecture/refarch-integration#methodology)
 * [Security](https://github.com/ibm-cloud-architecture/refarch-integration#security)
 * [DevOps](https://github.com/ibm-cloud-architecture/refarch-integration#devops)
-* [Resiliency](https://github.com/ibm-cloud-architecture/refarch-integration#resiliency)
+* [Resiliency / HA / DR](https://github.com/ibm-cloud-architecture/refarch-integration#resiliency)
 * [Cloud Service Management and Operations](https://github.com/ibm-cloud-architecture/refarch-integration#csmo)
 * [Compendium](https://github.com/ibm-cloud-architecture/refarch-integration#compendium)
 * [Contribute to the solution](https://github.com/ibm-cloud-architecture/refarch-integration#contribute)
 
 ## What you will learn
 By studying this set of projects and articles you will learn:
-- how to develop a SOAP app in Java using JPA, JAXWS deployed on WebSphere Liberty
-- how to develop message flow on IBM Integration Bus
-- how to define API product with API Connect, and use secure communication with TLS
+- how to develop a [SOAP app in Java](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal#code-explanation) using JPA, JAXWS deployed on WebSphere Liberty
+- how to develop [gateway message flow](https://github.com/ibm-cloud-architecture/refarch-integration-esb#inventory-flow) on IBM Integration Bus
+- how to define [API product](https://github.com/ibm-cloud-architecture/refarch-integration-api#implementation-details) with API Connect, and use secure communication with TLS
 - how to set up secure connection from public cloud to on-premise service
-- how to develop a Angular 4 app with nodejs/expressjs back end
+- how to develop a [Angular 4 app](https://github.com/ibm-cloud-architecture/refarch-caseinc-app#code-explanation) with nodejs/expressjs back end
 - how to secure the web app with passport
 - how to access existing LDAP service for user authentication
 - how to proxy requests to IBM Secure gateway
@@ -106,7 +107,7 @@ This project leverages a set of projects by applying clear separation of concern
 * [Testing](https://github.com/ibm-cloud-architecture/refarch-integration-tests) This repository includes a set of test cases to do component testing, functional testing and integration tests.
 
 
-# Deploy and Run
+# Build and Run
 The 'top of the iceberg' for this solution implementation is the cloud native app 'Case Inc Portal' that offers accesses to the Inventory management and other features such as IT support chatbots. The details on how to build and run this application is [here.](https://github.com/ibm-cloud-architecture/refarch-caseinc-app)
 
 To run the backend solution, we will deliver images for you to install on your servers... stay tuned, from now we are describing how each server is configured in each of the specific github repository. We are using VmWare vSphere product to manage all the virtual machines. The figure below presents the *Brown* Resource Pool with he current servers:   
@@ -120,13 +121,14 @@ To run the backend solution, we will deliver images for you to install on your s
 * As we are migrating to Kubernetes and IBM Cloud Private a set of components will run as docker container in pods.
 
 ## The Current Physical Deployment and Installation
-The  Current Physical deployment includes six servers, we are describing how installations were done in each matching project so you can replicate the configuration if you want. It should take you 2 to 3 hours per server.
+The  Current Physical deployment includes six servers, we are describing how installations were done in separate git hub repository so you can replicate the configuration if you want. It should take you 1 to 2 hours per server.
 * DB2 server read [this note](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-db2#db2-server-installation)
 * Liberty App server read [this article](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal/blob/master/docs/liberty-server.md)
-* For IBM Integration Bus see [this article]().
+* IBM Integration Bus see [this article]().
 * API Connect see [Server config](https://github.com/ibm-cloud-architecture/refarch-integration-api#server-configuration)
-* For LDAP Server running on the utility server [LDAP Configuration](https://github.com/ibm-cloud-architecture/refarch-integration-utilities#ldap-configuration)
-* [Utility Server](https://github.com/ibm-cloud-architecture/refarch-integration-utilities#server-configuration) running Secure Gateway and [Jenkins server](https://github.com/ibm-cloud-architecture/refarch-integration-utilities/blob/master/docs/cicd.md#installation)
+* Open LDAP Server running on the utility server [LDAP Configuration](https://github.com/ibm-cloud-architecture/refarch-integration-utilities#ldap-configuration)
+* [Utility Server](https://github.com/ibm-cloud-architecture/refarch-integration-utilities#server-configuration) runs IBM Secure Gateway and [Jenkins server](https://github.com/ibm-cloud-architecture/refarch-integration-utilities/blob/master/docs/cicd.md#installation)  
+
 As part of the hybrid integration compute mission is to leverage the VM lift and shift approach by deploying vm image to Bluemix VM.
 
 ## Get application source code
@@ -137,13 +139,13 @@ git clone https://github.com/ibm-cloud-architecture/refarch-integration.git
 
 Then under the refarch-integration folder use the command ``` ./clonePeers.sh ``` to clone the peer repositories of the 'hybrid integration compute' solution.
 
-And only for the first time use the ```./configureAll.sh``` script to perform the different dependency installations for the bluemix apps and other utilities.
+Finally the first time you get the code, use the ```./configureAll.sh``` script to perform the different dependency installations for the bluemix apps and other utilities.
 
 ### Working on your own
 The script ` ./fork-repos.sh` should help you to fork all the repositories of this solution within your github account.
 
 ## Run on premise servers
-There are multiple steps to make the solution working in the following order:
+There are multiple steps to make the solution working. Be sure to start each sever in the following order:
 * Start DB2 server
 * Start App server
 * Start IIB
@@ -166,22 +168,34 @@ See this detail note [here](docs/run-bmx-cs.md) to deploy and run the Web App as
 ## Run on Bluemix Cloud Foundry
 See this detail note [here](./docs/run-bmx-cf.md) to deploy the Web App as cloud foundry app on Bluemix
 
+# Methodology
+There are a set of development methodology practices to consider when doing hybrid integration.
+<TBD>
 
 # Security
-Multiple security concerns are addressed by the **hybrid integration compute** model. The first one is to support the deployment of private on-premise LDAP directory. The installation and configuration of the Open LDAP on the Utility server is described [here](https://github.com/ibm-cloud-architecture/refarch-integration-utilities#ldap-configuration).
-Second one, to control the access from a Bluemix app, we first implemented an adhoc solution by exposing a /login path in API Connect. See explanation [here](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/login.md#api-definition-on-back-end) on how we did it.  
+Multiple security concerns are addressed by the **hybrid integration compute** model. The first one is to support the deployment of private on-premise LDAP directory. The installation and configuration of the Open LDAP on the **Utility server** is described [here](https://github.com/ibm-cloud-architecture/refarch-integration-utilities#ldap-configuration).
+
+Second, to control the access from a Bluemix app, we first implemented an adhoc solution integrating passport.js and using a /login path defined in our inventory product in API Connect. See explanation [here](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/login.md#api-definition-on-back-end) on how we did it.  
 The connection between the web app, front end of **hybrid integration compute** and the back end is done over TLS socket, we present a quick summary of TLS and how TLS end to end is performed in [this article](https://github.com/ibm-cloud-architecture/refarch-integration/blob/master/docs/TLS.md)
+
 The front end login mechanism on how we support injecting secure token for API calls is documented [here](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/login.md)
 
 ### Add a IBM Secure Gateway Bluemix Service
 To authorize the web application running on Bluemix to access the API Connect gateway running on on-premise servers (or any end-point on on-premise servers), we use the IBM Secure Gateway product and the bluemix Secure Gateway service: the configuration details and best practices can be found in this [article](https://github.com/ibm-cloud-architecture/refarch-integration-utilities/blob/master/docs/ConfigureSecureGateway.md)
 
-# DevOps  
-You can setup and enable automated CI/CD for most of the *hybrid integration Compute* components using Jenkins and Urban Code Deploy deploy on-premise. For detail, please check the Utility project [CI/CD notes](https://github.com/ibm-cloud-architecture/refarch-integration-utilities/blob/master/docs/cicd.md).
+### Use VPN
+<TBD>
 
-# Resiliency
+# DevOps  
+You can setup and enable automated CI/CD for most of the *hybrid integration Compute* components using Jenkins. For detail, please check the Utility project [CI/CD notes](https://github.com/ibm-cloud-architecture/refarch-integration-utilities/blob/master/docs/cicd.md).
+
+
+# Resiliency / HA / DR
 * Making the Portal App Resilient   
 Please check [this repository](https://github.com/ibm-cloud-architecture/refarch-caseinc-app) for instructions and tools to improve availability and performances of the *hybrid integration Compute* front end application.
+
+## High availability
+<TBD>. We do not plan to implement complex topology for the on-premise server. For cost and time reason.
 
 # CSMO
 TBD
