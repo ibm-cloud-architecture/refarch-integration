@@ -22,7 +22,8 @@ This current project provides a reference implementation for building and runnin
 * [What you will learn](https://github.com/ibm-cloud-architecture/refarch-integration#what-you-will-learn)
 * [Project Repositories](https://github.com/ibm-cloud-architecture/refarch-integration#project-repositories)  
 * **Build and run the hybrid integration Compute model**
-  * [Environment Setup](https://github.com/ibm-cloud-architecture/refarch-integration#deploy-and-run)
+  * [Environment Setup](https://github.com/ibm-cloud-architecture/refarch-integration#the-current-physical-deployment-and-installation)
+  * [Build and run](https://github.com/ibm-cloud-architecture/refarch-integration#deploy-and-run)
   * [Deployment to Bluemix Container Service IBM Bluemix](./docs/run-bmx-cs.md)
   * [Deployment to IBM Cloud Private](./docs/icp-deploy.md)
   * [Deploy on Bluemix Cloud Foundry](./docs/run-bmx-cf.md)

@@ -3,7 +3,7 @@ In this section we are presenting how *Hybrid integration compute* is deployed t
 
 The following diagram presents the target deployment approach.
 
-![Brown on ICP](./bc-icp-bt-view.png)
+![Brown on ICP](./bc-icp-view.png)
 
 The *Cloud native Web app* is packaged as docker container and deployed to ICP kubernetes cluster, as well as the *Inventory Data Access Layer* app running on Liberty, and the Gateway flow running on IBM Integration Bus.
 
@@ -108,14 +108,14 @@ Password:
    * tag the image with information about the target repository server, namespace, tag and version
    * push the image to the remote repository
    * build the helm package from the chart definition
-   * install the package.
+   * install the chart to cluster.
 
 ## Setup Private Docker Registry
-In this section you will set up the private Docker registry in ICP to host the Docker images securely. For this you will create an ICP user to access the registry, and kubernetes configmap and secret resources for the registry configuration and credentials.
-@@@ TBD
+
+TBD
 
 # Hybrid integration components
-As illustrates in first figure above we are deploying 3 components to ICP
-* For IIB study this article: [Deploying IIB Application to IBM Cloud private](https://github.com/ibm-cloud-architecture/refarch-integration-esb/blob/master/IBMCloudprivate/README.md)
-* For the web application see [Deploy web app to ICP](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/run-icp.md)
-* For the SOA data access layer service running on WebSphere Liberty [Deploy DAL to ICP](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal/blob/master/docs/icp-deploy.md)
+As illustrated in first figure above we are deploying 3 components to ICP: so do the following steps in the same order
+1. Deploy the SOA data access layer service running on WebSphere Liberty [Deploy DAL to ICP](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal/blob/master/docs/icp-deploy.md)
+1. For IIB study this article: [Deploying IIB Application to IBM Cloud private](https://github.com/ibm-cloud-architecture/refarch-integration-esb/blob/master/IBMCloudprivate/README.md)
+1. For the web application see [Deploy web app to ICP](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/run-icp.md)
