@@ -15,7 +15,7 @@ fi
 BASEREPO="https://github.com/ibm-cloud-architecture/refarch-integration"
 REPO_DB2="https://github.com/ibm-cloud-architecture/refarch-integration-inventory-db2"
 REPO_DAL="https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal"
-REPO_ESB="https://github.com/ibm-cloud-architecture/refarch-integration-inventory-esb"
+REPO_ESB="https://github.com/ibm-cloud-architecture/refarch-integration-esb"
 REPO_TESTS="https://github.com/ibm-cloud-architecture/refarch-integration-tests"
 REPO_API="https://github.com/ibm-cloud-architecture/refarch-integration-api"
 REPO_PORTAL="https://github.com/ibm-cloud-architecture/refarch-caseinc-app"

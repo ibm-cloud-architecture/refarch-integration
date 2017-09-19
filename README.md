@@ -31,7 +31,7 @@ This current project provides a reference implementation for building and runnin
 * [Security](https://github.com/ibm-cloud-architecture/refarch-integration#security)
 * [DevOps](https://github.com/ibm-cloud-architecture/refarch-integration#devops)
 * [Resiliency / HA / DR](https://github.com/ibm-cloud-architecture/refarch-integration#resiliency)
-* [Cloud Service Management and Operations](https://github.com/ibm-cloud-architecture/refarch-integration#csmo)
+* [Hybrid Service Management and Operations](https://github.com/ibm-cloud-architecture/refarch-integration#hybrid-service-management)
 * [Compendium](https://github.com/ibm-cloud-architecture/refarch-integration#compendium)
 * [Contribute to the solution](https://github.com/ibm-cloud-architecture/refarch-integration#contribute)
 
@@ -198,7 +198,7 @@ Please check [this repository](https://github.com/ibm-cloud-architecture/refarch
 ## High availability
 <TBD>. We do not plan to implement complex topology for the on-premise server. For cost and time reason.
 
-# CSMO
+# Hybrid Service Management
 TBD
 
 # Compendium
@@ -224,3 +224,5 @@ We really value contributions and to maximize the impact of code contributions w
 * Always pull the latest changes from upstream and rebase before creating pull request.
 
 If you want to contribute, start by using git fork on this repository and then clone your own repository to your local workstation for development purpose. Add the up-stream repository to keep synchronized with the master.
+## Status of the project
+This project is still under active development, so you might run into [issues](https://github.com/ibm-cloud-architecture/refarch-integration/issues). If you do, please don't be shy about letting us know, or better yet, contribute a fix or feature.
