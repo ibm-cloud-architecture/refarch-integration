@@ -58,7 +58,13 @@ helm init --client-only
 
 If you get the kubectl connected to ICP cluster (as presented in previous figure), then the following command should give you the version of the **Tiller** server running in ICP.
 ```
-helm version
+$ helm version
+```
+If you have configured kubeclt to connect to the ICP master server, the above command should return a client and server version.
+```
+Client: &version.Version{SemVer:"v2.5.0", GitCommit:"012cb0ac1a1b2f888144ef5a67b8dab6c2d45be6", GitTreeState:"clean"}
+Server: &version.Version{SemVer:"v2.5.0", GitCommit:"012cb0ac1a1b2f888144ef5a67b8dab6c2d45be6", GitTreeState:"clean"}
+
 ```
 See also the [ICP product documentation](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/app_center/create_helm_cli.html)
 

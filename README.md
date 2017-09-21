@@ -25,11 +25,11 @@ This current project provides a reference implementation for building and runnin
   * [Environment Setup](https://github.com/ibm-cloud-architecture/refarch-integration#the-current-physical-deployment-and-installation)
   * [Build and run](https://github.com/ibm-cloud-architecture/refarch-integration#deploy-and-run)
   * [Deployment to Bluemix Container Service IBM Bluemix](./docs/run-bmx-cs.md)
-  * [Deployment to IBM Cloud Private](./docs/icp-deploy.md)
+  * [Deployment to IBM Cloud Private](./docs/icp/icp-deploy.md)
   * [Deploy on Bluemix Cloud Foundry](./docs/run-bmx-cf.md)
 * [Methodology](https://github.com/ibm-cloud-architecture/refarch-integration#methodology)
 * [Security](https://github.com/ibm-cloud-architecture/refarch-integration#security)
-* [DevOps](https://github.com/ibm-cloud-architecture/refarch-integration#devops)
+* [DevOps](docs/devops/cicd.md)
 * [Resiliency / HA / DR](https://github.com/ibm-cloud-architecture/refarch-integration#resiliency)
 * [Hybrid Service Management and Operations](https://github.com/ibm-cloud-architecture/refarch-integration#hybrid-service-management)
 * [Compendium](https://github.com/ibm-cloud-architecture/refarch-integration#compendium)
@@ -99,7 +99,7 @@ The current implementation can run on private cloud and we are presenting this d
 This project leverages a set of projects by applying clear separation of concerns design, n-tiers architecture, and service oriented architecture. The repository order is from left to right from previous diagram.
 
 * [Case Inc Internal Portal](https://github.com/ibm-cloud-architecture/refarch-caseinc-app) Portal web app to expose access and user interface for inventory DB.
-* [Utility Server](https://github.com/ibm-cloud-architecture/refarch-integration-utilities) Server to manage a set of other components used for DevOps or connection like the [IBM Secure Gateway](https://console.bluemix.net/docs/services/SecureGateway/secure_gateway.html) client.
+* [Utility Server](https://github.com/ibm-cloud-architecture/refarch-integration-utilities) Server used to manage secure connection with [IBM Secure Gateway](https://console.bluemix.net/docs/services/SecureGateway/secure_gateway.html) client.
 * [APIC Connect](https://github.com/ibm-cloud-architecture/refarch-integration-api) Content for the Inventory API definition and management
 * [IBM Integration Bus - Inventory gateway flow](https://github.com/ibm-cloud-architecture/refarch-integration-esb) Gateway and orchestration flow
 * [Data Access Layer](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal) to deliver SOAP interface for Inventory management. JAXWS / JPA app.
@@ -109,17 +109,17 @@ This project leverages a set of projects by applying clear separation of concern
 
 
 # Build and Run
-The 'top of the iceberg' for this solution implementation is the cloud native app 'Case Inc Portal' that offers accesses to the Inventory management and other features such as IT support chatbots. The details on how to build and run this application is [here.](https://github.com/ibm-cloud-architecture/refarch-caseinc-app)
+The 'top of the iceberg' for this solution implementation is the cloud native app 'Case Inc Portal' that offers accesses to the Inventory management and other features such as IT support chatbot. The details on how to build and run this web application is [here.](https://github.com/ibm-cloud-architecture/refarch-caseinc-app)
 
-To run the backend solution, we will deliver images for you to install on your servers... stay tuned, from now we are describing how each server is configured in each of the specific github repository. We are using VmWare vSphere product to manage all the virtual machines. The figure below presents the *Brown* Resource Pool with he current servers:   
+To run the backend solution, we will deliver images for you to install on your servers... stay tuned, from now we are describing how each server is configured in each of the specific github repository. We are using VmWare vSphere product to manage all the virtual machines. The figure below presents the *Brown* Resource Pool with the current servers:   
 ![vsphere](docs/vsphere.png)
 
 ## Prerequisites
 * You need your own [github.com](http://github.com) account
 * You need a git client code. For example for [Windows](https://git-scm.com/download/win) and for [Mac](https://git-scm.com/download/mac)
-* Install [npm](https://www.npmjs.com/get-npm) and [nodejs](). Normally getting nodejs last stable version will bring npm too.
+* Install [npm](https://www.npmjs.com/get-npm) and [nodejs](https://nodejs.org). Normally getting nodejs last stable version will bring npm too.
 * You need to have some knowledge on using virtual machine images and tool like vSphere.
-* As we are migrating to Kubernetes and IBM Cloud Private a set of components will run as docker container in pods.
+* As we are migrating to IBM Cloud Private a set of components run as docker container in pods.
 
 ## The Current Physical Deployment and Installation
 The  Current Physical deployment includes six servers, we are describing how installations were done in separate git hub repository so you can replicate the configuration if you want. It should take you 1 to 2 hours per server.
@@ -187,8 +187,7 @@ To authorize the web application running on Bluemix to access the API Connect ga
 ### Use VPN
 <TBD>
 
-# DevOps  
-You can setup and enable automated CI/CD for most of the *hybrid integration Compute* components using Jenkins. For detail, please check the Utility project [CI/CD notes](https://github.com/ibm-cloud-architecture/refarch-integration-utilities/blob/master/docs/cicd.md).
+
 
 
 # Resiliency / HA / DR
