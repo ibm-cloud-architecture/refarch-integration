@@ -1,11 +1,17 @@
 # Install a development environment with IBM Cloud Private 2.1
-This is a quick summary of what may be done to instal a ICP 2.1 development host on a single VM. We are using vSphere environment, and will define a VM with Ubuntu 16.10.
+This is a quick summary of what you may do to install a ICP 2.1 CE development host on a single VM with Ubuntu 64 bits 16.10.
 
-For a full tutorial on how to install ICP with 5 hosts see [this note](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Installing_ICP_on_prem.md)
+The developer environment may look like the following diagram, for a developer on Mac and a VM ubuntu image (Windows will look similar)
+![](dev-env.png)
 
-See [ICP 2.1 product documentation](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/installing/install_containers_CE.html) to get details.
+A developer needs to have on his development environment the following components:
+* [Docker](#install-docker)
+* [Kubectl](#install-kubectl)
+* [Helm](#install-helm)
+* A VM player to install and run ubuntu machine
 
-We still found some tricks to be consider so here are our steps:
+If you need to access the dockerhub IBM public image, use [docker hub explorer](https://hub.docker.com/explore/)
+
 ## Ubuntu Specifics:
 * Access to the VM vSPhere and add a VM in your resource pool. The expected resource could be
 CPUs: 4 Memory: 32GB Disk: 600GB (Thin Provisioned)
