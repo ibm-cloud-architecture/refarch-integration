@@ -44,26 +44,38 @@ The how to do this kind of deployment is described [here](https://github.com/ibm
 The build server will also stay on-premise as it is used by "multiple teams". This approach is to illustrate a real hybrid IT environment (We do not need to proof that all the pieces can run on cloud based solutions).
 
 # ICP installation
-You will different installation done for your different staging environment. For multi worker nodes installation see the note here:
-
-For a full tutorial on how to install ICP with 5 hosts see [this note](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Installing_ICP_on_prem.md)
-
-For a full HA deployment.
+You will different installation done for your different staging environment. For a full tutorial on how to install ICP with 5 hosts see [this note](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Installing_ICP_on_prem.md)
 
 See [ICP 2.1 product documentation](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/installing/install_containers_CE.html) to get other details.
 
 ## ICP instance for development
-We have created a single VM to host ICP for development purpose. The approach is to follow staging environments to promote the code between those environment. The detailed steps to install ICP on single VM are documented [here](install-dev-icp21.md)
+We have created a single VM to host ICP for development purpose (See detail [in VM Configuration for IBM Cloud Private 2.1](install-dev-icp21.md)). The approach is to follow staging environments to promote the code between those environments.
+
+This section is a quick summary of what you may do to install a ICP 2.1 CE development host on a single VM with Ubuntu 64 bits 16.10.
+
+The developer environment may look like the following diagram, for a developer on Mac and a VM ubuntu image (Windows will look similar)
+![](dev-env.png)
+
+The developer's machine and VM needs both to have docker or at most the VM needs it. In this last case the docker build will be perform inside the VM. To access the cluster environment you need *kubectl** command line interface and hosts conguration to march the configuration defined during the ICP install.
+
+A developer needs to have on his development environment the following components:
+* [Docker](#install-docker)
+* [Kubectl](#install-kubectl)
+* [Helm](#install-helm)
+* A VM player to install and run ubuntu machine
+
+If you need to access the dockerhub IBM public image, use [docker hub explorer](https://hub.docker.com/explore/) and search for **ibmcom**
 
 # Common installation tasks
-There are a set of tools and configuration you need to perform, to connect to ICP master node to interact with Kubernetes cluster, docker private registry and helm charts Tiller server.
+There are a set of tools and configuration you need to perform, to connect to ICP master node and interact with Kubernetes cluster, docker private registry and helm charts Tiller server.
 As an example we are configuring the *build* server to be able to build the different docker images necessary for the solution to work. The figure below illustrates what need to be done:
 ![](devops-icp.png)
 
 A Jenkins server implements different pipeline to pull the different project from github, execute the jenkins file to build the different elements: compiled code, docker image, helm package.
 
 ## Install docker
-If you do not have docker install on your development machine, we will not describe it again ;-). See [docker download](https://docs.docker.com/engine/installation/). You need it on the build server where you have Jenkins or other CI tool.
+If you do not have docker install on your development machine, we will not describe it again ;-). See [docker download](https://docs.docker.com/engine/installation/).
+You also need docker on your build server where you have Jenkins or other CI tool up and running, as build steps for each component include *docker build*.
 
 ## Install Kubectl
 You need to have kubectl on your development computer, on build server and on the ICP development server.
@@ -81,7 +93,7 @@ From the Client configuration menu under your userid on the top right of the mai
 
 ![](kube-cli-settings.png)
 
-Copy and paste in a script or in a terminal to execute those commands. So now a command like:
+Copy and paste in a script or in a terminal windows to execute those commands. So now a command like:
 ```
 kubectl cluster-info
 ```  
@@ -109,7 +121,6 @@ Client: &version.Version{SemVer:"v2.5.0", GitCommit:"012cb0ac1a1b2f888144ef5a67b
 Server: &version.Version{SemVer:"v2.5.0", GitCommit:"012cb0ac1a1b2f888144ef5a67b8dab6c2d45be6", GitTreeState:"clean"}
 
 ```
-See also the [ICP product documentation](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/app_center/create_helm_cli.html)
 
 
 # Docker repository
@@ -117,19 +128,15 @@ You have two choices: using the private image repository deployed in ICP or crea
 
 ## Access to ICP private repository
 You need the public ssh keys of the master-node:
-* connect to the VM where the master node returns, get the ip address, and the ca.crt with commands like below:
+* connect to the VM where the master node runs, get the ip address, and the ca.crt with commands like below:
 ```
-# from my machine
+# on client machine
 $ cd /etc/docker
+# create a directory that marches the name of the cluster as defined in the config.yaml of ICP. 8500 is the port number.
 $ mkdir certs.d/master.cfc:8500
 $ cd certs.d/master.cfc:8500
-$ ssh root@masternodevmipaddress
-$ cd /etc/docker/certs.d/
-$ ls
-master.cfc:8500
-$ scp master.cfc:8500/ca.crts .
+$ scp root@masternodevmipaddress:/etc/docker/certs.d/master.cfc:8500/ca.crts .
 ```
-The master.cfc:8500 is the name of the cluster as defined in the config.yaml you used during the product installation. 8500 is the port number.
 
 So you copied the public key. An administrator could have sent it to you too.
 
@@ -145,16 +152,16 @@ service ssh restart
 service docker restart
 ```
 
-* Normally you should be able to login to remote docker with a userid know to the master node VM
+* Normally you should be able to login to remote docker with a userid know to the master node VM: admin is the default user.
 ```
 docker login master.cfc:8500
 User: admin
 Password:
 ```
 
-* Once done the process is the same for each Application
+* Once done the deployment process is the same for each Application
    * build the docker image
    * tag the image with information about the target repository server, namespace, tag and version
    * push the image to the remote repository
    * build the helm package from the chart definition
-   * install the chart to cluster.
+   * install the chart to cluster using *helm*
