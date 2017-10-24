@@ -1,7 +1,7 @@
 # IBM Cloud Private Deployment
-In this section we are presenting how *Hybrid integration compute implementation* is deployed to IBM Cloud Private. For that we will address different configurations as business and operation requirements may differ per data center.
+In this section we are presenting how *Hybrid integration compute implementation* is deployed to IBM Cloud Private. For that we will address different configurations as business and operation requirements may differ per data center and even per business application.
 
-Updated 10/18/2107
+Updated 10/23/2107
 
 ## Prerequisites
 * A conceptual understanding of how [Kubernetes](https://kubernetes.io/docs/concepts/) works.
@@ -9,38 +9,45 @@ Updated 10/18/2107
 * A basic understanding of [IBM Cloud Private cluster architecture](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/getting_started/architecture.html).
 * Access to an operational IBM Cloud Private cluster.
 * Install the IBM Cloud Private command line interface to manage applications, containers, services...
-* Add a **brown** namespace using ICP admin console, under Admin > Namespaces menu
+* Add a **brown** namespace using ICP admin console, under **Admin > Namespaces** menu
+
 ![](icp-namespace.png)
 
 ![](icp-brown-ns.png)
 
-We will use this namespace to push brown components.
+We will use this namespace to push *brown* components.
 
 # ICP installation
-For the development purpose, tutorial, etc, we are using a deployment in a single virtual machine, but you will have different installation for each of you different staging environments. See [how to install a ubuntu VM and ICP 2.1](https://github.com/ibm-cloud-architecture/refarch-cognitive/blob/master/docs/ICP/README.txt)
-
-For a full tutorial on how to install ICP with 5 hosts see [this note](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Installing_ICP_on_prem.md)
+For development purpose and tutorials, we are using a ICP CE deployment in a single virtual machine. We documented how to install ICP 2.1 on ubuntu VM [here](https://github.com/ibm-cloud-architecture/refarch-cognitive/blob/master/docs/ICP/README.txt)
+For enterprise scale solution you may use multi-environments, and for high availability you will use multiple master, proxy and worker nodes.  There [following](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Installing_ICp_on_prem.md) tutorial will help you.
 
 See [ICP 2.1 product documentation](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/installing/install_containers_CE.html) to get other details.
 
 # Configurations
-As an hybrid solution each components of the solution can run on existing on-premise servers or some of the components may run on IBM Cloud private. The decision to move will be linked to business requirements and availability of IBM middleware products as docker image.
-For each components of the solution the following needs to be done
+As an hybrid solution each component of the solution may run on existing on-premise server or on IBM Cloud Private. The deployment decision will be driven by the business requirements and the availability of underlying IBM middleware product as docker image.
+
+For each component of the 'hybrid integration' solution the following needs may be done:
    * build the docker image
    * tag the image with information about the target repository server, namespace, tag and version
-   * push the image to the remote docker repository
+   * push the image to the remote docker repository (most likely the one inside ICP)
    * build the helm package from the chart definition
-   * install the chart to cluster using *helm*
+   * install the chart to ICP cluster using *helm* command line interface
    * access the URL end point
 
 ## Cfg 1: Cloud native application on ICP
-This is the simplest deployment where the cloud native web application ([the 'case' portal](https://github.com/ibm-cloud-architecture/refarch-caseinc-app)) is deployed as container running in ICP, but it accesses the back end service via API Connect running on-premise. All other components run on-premise.
+This is the simplest deployment where the cloud native web application ([the 'case' portal](https://github.com/ibm-cloud-architecture/refarch-caseinc-app)) is deployed as container running in ICP, and accesses the back end service via API Connect running on-premise. All other components run on-premise.
 
 ![WebApp](./bc-icp-cfg1.png)
 
-This approach will be the less disruptive, let the development team to innovate with new polyglot runtime environments supported by Cloud native based application.
+This approach will be the less disruptive, let the development team innovating with new polyglot runtime environments supported by cloud native based application and micro services.
 
 To support this configuration you just need to package the web application as docker container, define a helm chart for ICP deployment configuration settings, and use helm and kubectl command line interface. The [following tutorial](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/run-icp.md) presents those steps in detail.
+
+If you want to review each component here are their relative description:
+* [API Connect - Inventory product](https://github.com/ibm-cloud-architecture/refarch-integration#inventory-management)
+* [Gateway flow in integration broker](https://github.com/ibm-cloud-architecture/refarch-integration-esb#inventory-flow)
+* [SOAP service for data access Layer](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal#code-explanation)
+* [Inventory database](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-db2#inventory-database)
 
 ## Cfg 2: Web App, API Connect on ICP
 This configuration is not yet supported. The API Connect gateway component, the API manager and API developer portal are all deployed on ICP.
@@ -86,6 +93,53 @@ This approach has an impact on the way to manage application inside IIB. Instead
 The how to do this kind of deployment is described [here](https://github.com/ibm-cloud-architecture/refarch-integration-esb/blob/master/IBMCloudprivate/README.md)
 
 The last configuration will be to run all the components on ICP, and we already documented how each component deploy.
+
+## Use ICP Catalog
+A packaged application can be used as template for creating application. Using the ICP admin console you can get the list of repositories using the ** Admin > Repositories ** :
+
+![](icp-repo.png)
+
+Once the helm chart is packaged, a zip file is created and the publishing steps look like the following:
+
+* copy the tfgz file to an HTTP server. (172.16.0.5 is a HTTP server running in our data center). Be sure to have write access to it.
+```
+$ scp casewebportal-0.0.1.tgz admin@172.16.0.5/storage/local-charts
+```
+* Then you need to update your private catalog index.yaml file.  The index file describes how your applications is listed in the ICP Application Center:
+```
+$ curl get -k https://9.19.34.107:8443/helm-repo/charts/index.yaml
+$ helm repo index --merge index.yaml --url http://9.19.34.117:/storage/CASE/refarch-privatecloud ./
+$ scp index.yaml admin@9.19.34.107:8443/helm-repo/charts
+```
+
+Once the repository are synchronized your helm chart should be in the catalog:
+![](helm-in-app-center.png)
+
+## Troubleshooting
+When you deploy a helm chart you can assess how the deployment went using the ICP admin console or the kubectl CLI. For the user interface, go to the ** Workloads > Deployments ** menu to access the list of current deployments. Select the deployment and then the pod list.
+In the pog view select the events to assess how the pod deployment performed
+
+![](icp-pod-events.png)
+
+and the log file in *Logs* menu
+
+![](icp-pod-logs.png)
+
+Using kublectl to get the status of a deployment
+```
+$ kubectl get deployments --namespace browncompute
+> NAME                          DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+casewebportal-casewebportal   1         1         1            1           2d
+
+```
+Get the logs and events
+```
+$  export POD_NAME=$(kubectl get pods --namespace browncompute -l "app=casewebportal-casewebportal" -o jsonpath="{.items[0].metadata.name}")
+
+$ kubectl logs $POD_NAME --namespace browncompute
+
+$  kubectl get events --namespace browncompute  --sort-by='.metadata.creationTimestamp'
+```
 
 ## Build server
 The build server will also stay on-premise as it is used by "multiple teams". This approach is to illustrate a real hybrid IT environment (We do not need to proof that all the pieces can run on cloud based solutions).
