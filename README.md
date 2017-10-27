@@ -1,6 +1,6 @@
 # Hybrid Integration Reference Architecture
 
-IT environments are becoming hybrid in nature; most businesses use cloud computing as part of their overall IT environment. While businesses continue to operate enterprise applications, processes, and systems of record on premises, they are rapidly developing cloud-native applications on cloud. The hybrid integration reference architecture describes an approach to connect components which are split across cloud and on-premises environments, or across public and private clouds -- even across different cloud providers.
+IT environments are becoming hybrid in nature; most businesses use cloud computing as part of their overall IT environment. While businesses continue to operate enterprise applications, processes, and systems of record on premises, they are rapidly developing cloud-native applications on cloud. The [hybrid integration reference architecture](https://www.ibm.com/cloud/garage/content/architecture/integrationServicesDomain/) describes an approach to connect components which are split across cloud and on-premises environments, or across public and private clouds -- even across different cloud providers.
 
 In this architecture, existing applications are moved to the infrastructure as a service (IaaS) of cloud providers. New applications are built on the cloud as a platform as a service (PaaS), using pre-built cloud-based software as a service (SaaS).
 Hybrid integration has a vast scope addressing integration points like:
@@ -55,6 +55,13 @@ As an hybrid cloud implementation a set of projects cover different functional r
 * [Inventory management](https://github.com/ibm-cloud-architecture/refarch-integration#inventory-management)
 * [IT Support bot or Help@Case](https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker)
 
+## System context
+The following diagram illustrates the components involved in the solution
+![](docs/br-syst-ctx.png)
+
+*The Watson conversation is used to demonstrate integration to public service*
+
+## User interface
 To demonstrate the set of feature, a front end application, representing an internal portal user interface, is used to plug and play the different use cases.
 
 ![HomePage](docs/homepage.png)  
@@ -123,6 +130,7 @@ To run the backend solution, we will deliver images for you to install on your s
 
 ## The Current Physical Deployment and Installation
 The  Current Physical deployment includes six servers, we are describing how installations were done in separate git hub repository so you can replicate the configuration if you want. It should take you 1 to 2 hours per server.
+As an alternate and easier approach we are delivering a Vagrant file and explanation on how to use it [here](vm/README.md)
 * DB2 server read [this note](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-db2#db2-server-installation)
 * Liberty App server read [this article](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal/blob/master/docs/liberty-server.md)
 * IBM Integration Bus see [this article]().

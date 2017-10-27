@@ -1,0 +1,1 @@
+{"virtualbox":{"/home/vagrant/brown":{"create":true,"owner":"vagrant","guestpath":"/home/vagrant/brown","hostpath":"/Users/jeromeboyer/Code/BrownCompute","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/jeromeboyer/Code/BrownCompute/refarch-integration/vm","disabled":false,"__vagrantfile":true}}}
