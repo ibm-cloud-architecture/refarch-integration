@@ -25,8 +25,8 @@ This current project provides a reference implementation for building and runnin
   * [Environment Setup](https://github.com/ibm-cloud-architecture/refarch-integration#the-current-physical-deployment-and-installation)
   * [Build and run](https://github.com/ibm-cloud-architecture/refarch-integration#build-and-run)
   * [Deployment to IBM Cloud Private](./docs/icp/README.md)
-  * [Deployment to Bluemix Container Service IBM Bluemix](./docs/run-bmx-cs.md)
-  * [Deploy on Bluemix Cloud Foundry](./docs/run-bmx-cf.md)
+  * [Deployment to IBM Cloud Container Service IBM Cloud](./docs/run-bmx-cs.md)
+  * [Deploy on IBM Cloud Cloud Foundry](./docs/run-bmx-cf.md)
 * [Methodology](https://github.com/ibm-cloud-architecture/refarch-integration#methodology)
 * [Security](https://github.com/ibm-cloud-architecture/refarch-integration#security)
 * [DevOps](docs/devops/cicd.md)
@@ -82,7 +82,7 @@ From left to right:
 * The Case Inc Portal app defines a set of user interface to manage Inventory elements, it is a modern Angular 4 / nodejs app which uses the [Back-end For Front-end pattern](http://philcalcado.com/2015/09/18/the_back_end_for_front_end_pattern_bff.html).
  The general-purpose API backend is implemented in ESB running on-premise. The client specific APIs to serve the Angular js app are done in this BFF component.
 
-* The nodejs/expressjs accesses the REST api exposed by API Connect via a Secure Gateway service on bluemix which acts as a proxy. A second security configuration is to use VPN. This application is containized and deployable on Kubernetes cluster. See [this repository.](https://github.com/ibm-cloud-architecture/refarch-caseinc-app)
+* The nodejs/expressjs accesses the REST api exposed by API Connect via a Secure Gateway service on IBM Cloud which acts as a proxy. A second security configuration is to use VPN. This application is containized and deployable on Kubernetes cluster. See [this repository.](https://github.com/ibm-cloud-architecture/refarch-caseinc-app)
 
 * The connection between public cloud and internal IT resources, is done via a VPN IPsec tunnel or IBM Secure Gateway. As of now we are using IBM Secure Gateway Client on a dedicated server. This server is called [BrownUtilityServer](https://github.com/ibm-cloud-architecture/refarch-integration-utilities).
 
@@ -138,7 +138,7 @@ As an alternate and easier approach we are delivering a Vagrant file and explana
 * Open LDAP Server running on the utility server [LDAP Configuration](https://github.com/ibm-cloud-architecture/refarch-integration-utilities#ldap-configuration)
 * [Utility Server](https://github.com/ibm-cloud-architecture/refarch-integration-utilities#server-configuration) runs IBM Secure Gateway and [Jenkins server](https://github.com/ibm-cloud-architecture/refarch-integration-utilities/blob/master/docs/cicd.md#installation)  
 
-As part of the hybrid integration compute mission is to leverage the VM lift and shift approach by deploying vm image to Bluemix VM.
+As part of the hybrid integration compute mission is to leverage the VM lift and shift approach by deploying vm image to IBM Cloud VM.
 
 ## Get application source code
 Clone this base repository using git client:
@@ -148,7 +148,7 @@ git clone https://github.com/ibm-cloud-architecture/refarch-integration.git
 
 Then under the refarch-integration folder use the command ``` ./clonePeers.sh ``` to clone the peer repositories of the 'hybrid integration compute' solution.
 
-Finally the first time you get the code, use the ```./configureAll.sh``` script to perform the different dependency installations for the bluemix apps and other utilities.
+Finally the first time you get the code, use the ```./configureAll.sh``` script to perform the different dependency installations for the IBM Cloud apps and other utilities.
 
 ### Working on your own
 The script ` ./fork-repos.sh` should help you to fork all the repositories of this solution within your github account.
@@ -171,11 +171,11 @@ For demonstration purpose not all back end servers are set in high availability.
 ## Run on IBM Cloud Private
 Most of the components of this solution can run on IBM Cloud Private we are detailing it [here](docs/icp-deploy.md)
 
-## Run on Bluemix Container Service
-See this detail note [here](docs/run-bmx-cs.md) to deploy and run the Web App as container inside the [Bluemix Container Service](https://console.bluemix.net/docs/containers/container_index.html).
+## Run on IBM Cloud Container Service
+See this detail note [here](docs/run-bmx-cs.md) to deploy and run the Web App as container inside the [IBM Cloud Container Service](https://console.bluemix.net/docs/containers/container_index.html).
 
-## Run on Bluemix Cloud Foundry
-See this detail note [here](./docs/run-bmx-cf.md) to deploy the Web App as cloud foundry app on Bluemix
+## Run on IBM Cloud Cloud Foundry
+See this detail note [here](./docs/run-bmx-cf.md) to deploy the Web App as cloud foundry app on IBM Cloud
 
 # Methodology
 There are a set of development methodology practices to consider when doing hybrid integration.
@@ -184,13 +184,13 @@ There are a set of development methodology practices to consider when doing hybr
 # Security
 Multiple security concerns are addressed by the **hybrid integration compute** model. The first one is to support the deployment of private on-premise LDAP directory. The installation and configuration of the Open LDAP on the **Utility server** is described [here](https://github.com/ibm-cloud-architecture/refarch-integration-utilities#ldap-configuration).
 
-Second, to control the access from a Bluemix app, we first implemented an adhoc solution integrating passport.js and using a /login path defined in our inventory product in API Connect. See explanation [here](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/login.md#api-definition-on-back-end) on how we did it.  
+Second, to control the access from a IBM Cloud app, we first implemented an adhoc solution integrating passport.js and using a /login path defined in our inventory product in API Connect. See explanation [here](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/login.md#api-definition-on-back-end) on how we did it.  
 The connection between the web app, front end of **hybrid integration compute** and the back end is done over TLS socket, we present a quick summary of TLS and how TLS end to end is performed in [this article](https://github.com/ibm-cloud-architecture/refarch-integration/blob/master/docs/TLS.md)
 
 The front end login mechanism on how we support injecting secure token for API calls is documented [here](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/login.md)
 
-### Add a IBM Secure Gateway Bluemix Service
-To authorize the web application running on Bluemix to access the API Connect gateway running on on-premise servers (or any end-point on on-premise servers), we use the IBM Secure Gateway product and the bluemix Secure Gateway service: the configuration details and best practices can be found in this [article](https://github.com/ibm-cloud-architecture/refarch-integration-utilities/blob/master/docs/ConfigureSecureGateway.md)
+### Add a IBM Secure Gateway IBM Cloud Service
+To authorize the web application running on IBM Cloud to access the API Connect gateway running on on-premise servers (or any end-point on on-premise servers), we use the IBM Secure Gateway product and the IBM Cloud Secure Gateway service: the configuration details and best practices can be found in this [article](https://github.com/ibm-cloud-architecture/refarch-integration-utilities/blob/master/docs/ConfigureSecureGateway.md)
 
 ### Use VPN
 <TBD>
@@ -212,11 +212,12 @@ TBD
 Architecture discussion on hybrid integration:
 * How to ensure your integration landscape keeps pace with digital transformation article: [The evolving hybrid integration reference architecture](https://www.ibm.com/developerworks/library/mw-1606-clark-trs/index.html)
 * How the 12 factors to measure component for cloud native app and micro service apply to hybrid integration: [The 12 factors integration](https://developer.ibm.com/integration/blog/2017/04/16/12-factor-integration/)
+* [Achieving lightweight integration with IBM Integration Bus](https://www.ibm.com/developerworks/library/mw-1708-bornert/index.html)
 
 Product related knowledge based:
 * [API Connect knowledge center](https://www.ibm.com/support/knowledgecenter/en/SSMNED_5.0.0/mapfiles/getting_started.html)
 * [IIB developing integration solution - knowledge center](https://www.ibm.com/support/knowledgecenter/en/SSMKHH_10.0.0/com.ibm.etools.mft.doc/bi12000_.htm)
-* [IBM Secure Gateway - Bluemix documentation](https://console.bluemix.net/docs/services/SecureGateway/secure_gateway.html)
+* [IBM Secure Gateway - IBM Cloud documentation](https://console.bluemix.net/docs/services/SecureGateway/secure_gateway.html)
 
 # Contribute
 We welcome your contribution. There are multiple ways to contribute: report bugs and improvement suggestion, improve documentation and contribute code.

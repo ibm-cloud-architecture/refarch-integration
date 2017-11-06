@@ -18,5 +18,5 @@ if [ -z "$(java -version)" ]; then
   cp brown/refarch-integration-inventory-dal/src/main/liberty/config/server.xml  wlp/usr/servers/brownServer/
 fi
 
-wget https://jazz.net/downloads/DB2/releases/10.1/db2_v1012_linuxx64_expc.tar.gz
+wget -c https://jazz.net/downloads/DB2/releases/10.1/db2_v1012_linuxx64_expc.tar.gz
 tar -xvf db2_v1012_linuxx64_expc.tar.gz
