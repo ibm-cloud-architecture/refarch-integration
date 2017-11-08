@@ -50,15 +50,13 @@ If you want to review each component here are their relative description:
 * [Inventory database](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-db2#inventory-database)
 
 ## Cfg 2: Web App, API Connect on ICP
-This configuration is not yet supported. The API Connect gateway component, the API manager and API developer portal are all deployed on ICP.
+The approach of this configuration is to deploy API management components to private cloud. This configuration is not yet supported as not all of those components are deployable on ICP. Only the API gateway is running on ICP.
 
 ![](./bc-icp-cfg2.png)
 
-The gateway flow running the interface mapping runs on IBM Integration bus.
+The gateway flow running the interface mapping runs on IBM Integration bus on premise: this configuration illustrates deep adoption of the ESB pattern leveraging existing high end deployments, scaling both horizontally and vertically. In this model the concept of operation for mediation and integration logic is kept.
 
-This configuration should be quite common as the Integration Bus is using existing high end deployment, scale both horizontally and vertically, and most likely will not move to ICP.
-
-When API Connect will support full container deployment this configuration will be valid and documented here.
+When API Connect will support full container deployment this configuration will be completed.
 
 ## Cfg 3: Web App, API Connect and Liberty App on ICP
 
