@@ -115,7 +115,7 @@ Once the repository are synchronized your helm chart should be in the catalog:
 
 ## Troubleshooting
 When you deploy a helm chart you can assess how the deployment went using the ICP admin console or the kubectl CLI. For the user interface, go to the ** Workloads > Deployments ** menu to access the list of current deployments. Select the deployment and then the pod list.
-In the pog view select the events to assess how the pod deployment performed
+In the pod view select the events to assess how the pod deployment performed
 
 ![](icp-pod-events.png)
 
