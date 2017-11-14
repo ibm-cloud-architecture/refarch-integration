@@ -14,6 +14,8 @@ Hybrid integration has a vast scope addressing integration points like:
 Hybrid integration bridges data sources, applications or APIs wherever they might be on-premises, IaaS, PaaS or SaaS. The following diagram presents the high level view of the scope.
 ![Hybrid integration](docs/Fg1.png)
 
+It is important to note that any part of the architecture can be on-premises or fully cloud-based. Systems of records are more likely to be on-premises, but a new system of record might be deployed on a cloud infrastructure, or even be SaaS.
+
 This current project provides a reference implementation for building and running an **hybrid integration** solution, using cloud native web application **securely** connected to an enterprise data source and SOA services running on on-premise servers. This compute model, represents existing SOA / Traditional IT landscape with products such as ESB, BPM, rule engine, and Java based web service applications or even event driven publisher.  One of the goal of this implementation is to reflect what is commonly found in IT landscape in 2017, and provides recommendations on how to manage hybrid architecture with the cloud programming model by addressing non-functional requirements as scalability, security, monitoring and resiliency.
 
 ## Table of Contents
@@ -47,13 +49,13 @@ By studying this set of projects and articles you will learn:
 - how to proxy requests to IBM Secure gateway
 - how to perform CI/CD in hybrid world
 - how to monitor all those components using Application Performance Monitoring
-- how to deploy most of the component to IBM Cloud Private
+- how to deploy most of the components of the solution to IBM Cloud Private
 - how to adopt a test focus implementation
 
 # Scope Overview
-As an hybrid cloud implementation a set of projects cover different functional requirements:
-* [Inventory management](https://github.com/ibm-cloud-architecture/refarch-integration#inventory-management)
-* [IT Support bot or Help@Case](https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker)
+As an hybrid cloud implementation the set of projects of this solution cover different functional requirements:
+* [Inventory management](https://github.com/ibm-cloud-architecture/refarch-integration#inventory-management) a simple item inventory catalog deployed in DB2, with a SOAP data access layer, and IIB gateway flow and an API product defined in API Connect
+* [IT Support bot or Help@Case](https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker) a set of bots implemented in Watson Conversation
 
 ## System context
 The following diagram illustrates the components involved in the solution

@@ -23,6 +23,7 @@ For enterprise scale solution you may use multi-environments, and for high avail
 
 See [ICP 2.1 product documentation](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/installing/install_containers_CE.html) to get other details.
 
+Also we are explaining in [this note](build-helm-rep.md) how to build your own Helm repository to be referenceable by ICP.
 # Configurations
 As an hybrid solution each component of the solution may run on existing on-premise server or on IBM Cloud Private. The deployment decision will be driven by the business requirements and the availability of underlying IBM middleware product as docker image.
 
@@ -41,7 +42,9 @@ This is the simplest deployment where the cloud native web application ([the 'ca
 
 This approach will be the less disruptive, let the development team innovating with new polyglot runtime environments supported by cloud native based application and micro services.
 
-To support this configuration you just need to package the web application as docker container, define a helm chart for ICP deployment configuration settings, and use helm and kubectl command line interface. The [following tutorial](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/run-icp.md) presents those steps in detail.
+To support this configuration you just need to package the web application as docker container, define a helm chart for ICP deployment configuration settings, and use `helm` and `kubectl` command line interfaces.
+
+The [following tutorial](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/run-icp.md) presents how the web app is deployed in detail.
 
 If you want to review each component here are their relative description:
 * [API Connect - Inventory product](https://github.com/ibm-cloud-architecture/refarch-integration#inventory-management)
