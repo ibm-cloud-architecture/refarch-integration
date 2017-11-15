@@ -50,9 +50,18 @@ You can do that using the web interface of the ICP admin console: in the upper-l
 ![](icp-admin-repo.png)
 
 and add the repository using the url to the docs/charts folder
+
 ![](add-helm-repo.png)
 
 As an alternate using the following command will have the same result
 ```
 $ kubectl repo add ibmcase-hybrid https://raw.githubusercontent.com/ibm-cloud-architecture/refarch-integration/master/docs/charts
+```
+
+Once done accessing the catalog and searching for **caseweb** you should see the application in the catalog:  
+![](icp-catalog.png)
+
+You can then install it from the catalog using the **configure** button or use the command:
+```
+$ helm install --name casewebapp ibmcase-hybrid/casewebportal
 ```

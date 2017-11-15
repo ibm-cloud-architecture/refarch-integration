@@ -3,15 +3,16 @@
 IT environments are becoming hybrid in nature; most businesses use cloud computing as part of their overall IT environment. While businesses continue to operate enterprise applications, processes, and systems of record on premises, they are rapidly developing cloud-native applications on cloud. The [hybrid integration reference architecture](https://www.ibm.com/cloud/garage/content/architecture/integrationServicesDomain/) describes an approach to connect components which are split across cloud and on-premises environments, or across public and private clouds -- even across different cloud providers.
 
 In this architecture, existing applications are moved to the infrastructure as a service (IaaS) of cloud providers. New applications are built on the cloud as a platform as a service (PaaS), using pre-built cloud-based software as a service (SaaS).
+
 Hybrid integration has a vast scope addressing integration points like:
 * Cloud native app and on-premise system of record, or business SOA services
 * On-premise business applications or processes with public cloud services
 * SaaS applications and cloud native app
-* App developed and running on private cloud and on-premise app
+* Applications developed and running on private cloud and on-premise app
 * Application components running on different service providers
 * Internet of things generating events, partially processed on public cloud, aggregated and persisted on-premise database, where analytics can be performed to classify the issue as risk, and trigger process for trouble shooting and maintenance.
 
-Hybrid integration bridges data sources, applications or APIs wherever they might be on-premises, IaaS, PaaS or SaaS. The following diagram presents the high level view of the scope.
+Hybrid integration bridges data sources, applications or APIs wherever they might be on-premises, IaaS, PaaS or SaaS. The following diagram presents the high level view of the scope for an hybrid integration platform with API exposure, data integration, and different design styles of application integration.
 ![Hybrid integration](docs/Fg1.png)
 
 It is important to note that any part of the architecture can be on-premises or fully cloud-based. Systems of records are more likely to be on-premises, but a new system of record might be deployed on a cloud infrastructure, or even be SaaS.
@@ -40,13 +41,13 @@ This current project provides a reference implementation for building and runnin
 ## What you will learn
 By studying this set of projects and articles you will learn:
 - how to develop a [SOAP app in Java](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal#code-explanation) using JPA, JAXWS deployed on WebSphere Liberty
-- how to develop [gateway message flow](https://github.com/ibm-cloud-architecture/refarch-integration-esb#inventory-flow) on IBM Integration Bus
+- how to develop [gateway message flow](https://github.com/ibm-cloud-architecture/refarch-integration-esb#inventory-flow) with IBM Integration Bus
 - how to define [API product](https://github.com/ibm-cloud-architecture/refarch-integration-api#implementation-details) with API Connect, and use secure communication with TLS
 - how to set up secure connection from public cloud to on-premise service
 - how to develop a [Angular 4 app](https://github.com/ibm-cloud-architecture/refarch-caseinc-app#code-explanation) with nodejs/expressjs back end
-- how to secure the web app with passport
+- how to [secure the web app with passport](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/login.md)
 - how to access existing LDAP service for user authentication
-- how to proxy requests to IBM Secure gateway
+- how to proxy requests to IBM Secure gateway to secure connection between public cloud and private servers
 - how to perform CI/CD in hybrid world
 - how to monitor all those components using Application Performance Monitoring
 - how to deploy most of the components of the solution to IBM Cloud Private
@@ -58,17 +59,25 @@ As an hybrid cloud implementation the set of projects of this solution cover dif
 * [IT Support bot or Help@Case](https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker) a set of bots implemented in Watson Conversation
 
 ## System context
-The following diagram illustrates the components involved in the solution
+The following diagram illustrates the components involved in the current solution:  
 ![](docs/br-syst-ctx.png)
 
-*The Watson conversation is used to demonstrate integration to public service*
+* [Web App "Case Portal"](https://github.com/ibm-cloud-architecture/refarch-caseinc-app) Portal web app to expose access and user interface to different applications.
+* Interaction APIs to combine system and public APIs to support specific application and channels they serve.
+* System API to define backend service API product
+* Integration Bus to connect to deep back end systems and SOA services, and do interface mapping or gateway flow.
+* [Watson conversation broker micro service](https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker) to facade and implement orchestration and business logic for chatbots using Watson Conversation.
+* Decision engine to automate business rules execution and Management
+* [Data SOA Java WS service](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal) to expose a data access layer on top of relational data based
+* Inventory, supplier and stock database
+* LDAP for user Management
 
 ## User interface
-To demonstrate the set of feature, a front end application, representing an internal portal user interface, is used to plug and play the different use cases.
+To demonstrate the set of features of this solution , a front end application, representing an internal portal user interface, is used to plug and play the different use cases.
 
 ![HomePage](docs/homepage.png)  
 
-This front end application is an extension of the "CASE.inc" retail store introduced in [cloud native](https://github.com/ibm-cloud-architecture/refarch-cloudnative) which manages old computer, extended with internet of things capabilities, IT support chat bot and other goodies.
+This front end application is an extension of the "CASE.inc" retail store introduced in [cloud native solution or "Blue compute"](https://github.com/ibm-cloud-architecture/refarch-cloudnative) which manages old computers, extended with internet of things capabilities, IT support chat bot and other goodies.
 
 The end users will be able to authenticate to an internal LDAP.
 
@@ -104,7 +113,7 @@ This set of projects are implementing the Hybrid integration reference architect
 
 The current implementation can run on private cloud and we are presenting this deployment in detail in [this article](docs/icp-deploy.md).
 
-## Project Repositories
+# Project Repositories
 This project leverages a set of projects by applying clear separation of concerns design, n-tiers architecture, and service oriented architecture. The repository order is from left to right from previous diagram.
 
 * [Case Inc Internal Portal](https://github.com/ibm-cloud-architecture/refarch-caseinc-app) Portal web app to expose access and user interface for inventory DB.
@@ -181,7 +190,7 @@ See this detail note [here](./docs/run-bmx-cf.md) to deploy the Web App as cloud
 
 # Methodology
 There are a set of development methodology practices to consider when doing hybrid integration.
-<TBD>
+TBD
 
 # Security
 Multiple security concerns are addressed by the **hybrid integration compute** model. The first one is to support the deployment of private on-premise LDAP directory. The installation and configuration of the Open LDAP on the **Utility server** is described [here](https://github.com/ibm-cloud-architecture/refarch-integration-utilities#ldap-configuration).
@@ -195,9 +204,7 @@ The front end login mechanism on how we support injecting secure token for API c
 To authorize the web application running on IBM Cloud to access the API Connect gateway running on on-premise servers (or any end-point on on-premise servers), we use the IBM Secure Gateway product and the IBM Cloud Secure Gateway service: the configuration details and best practices can be found in this [article](https://github.com/ibm-cloud-architecture/refarch-integration-utilities/blob/master/docs/ConfigureSecureGateway.md)
 
 ### Use VPN
-<TBD>
-
-
+TBD
 
 
 # Resiliency / HA / DR
@@ -205,7 +212,7 @@ To authorize the web application running on IBM Cloud to access the API Connect 
 Please check [this repository](https://github.com/ibm-cloud-architecture/refarch-caseinc-app) for instructions and tools to improve availability and performances of the *hybrid integration Compute* front end application.
 
 ## High availability
-<TBD>. We do not plan to implement complex topology for the on-premise server. For cost and time reason.
+TBD. We do not plan to implement complex topology for the on-premise servers to suport HA, mostly because of cost and time reason and the fact that it is covered a lot in different articles.
 
 # Hybrid Service Management
 TBD
@@ -215,6 +222,7 @@ Architecture discussion on hybrid integration:
 * How to ensure your integration landscape keeps pace with digital transformation article: [The evolving hybrid integration reference architecture](https://www.ibm.com/developerworks/library/mw-1606-clark-trs/index.html)
 * How the 12 factors to measure component for cloud native app and micro service apply to hybrid integration: [The 12 factors integration](https://developer.ibm.com/integration/blog/2017/04/16/12-factor-integration/)
 * [Achieving lightweight integration with IBM Integration Bus](https://www.ibm.com/developerworks/library/mw-1708-bornert/index.html)
+* [Redbook: "A practical Guide for IBM Hybrid Integration Platform"](http://www.redbooks.ibm.com/redbooks/pdfs/sg248351.pdf)
 
 Product related knowledge based:
 * [API Connect knowledge center](https://www.ibm.com/support/knowledgecenter/en/SSMNED_5.0.0/mapfiles/getting_started.html)
