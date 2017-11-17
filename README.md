@@ -21,22 +21,22 @@ This current project provides a reference implementation for building and runnin
 
 ## Table of Contents
 
-* [Application Overview](https://github.com/ibm-cloud-architecture/refarch-integration#scope-overview)  
-* [What you will learn](https://github.com/ibm-cloud-architecture/refarch-integration#what-you-will-learn)
-* [Project Repositories](https://github.com/ibm-cloud-architecture/refarch-integration#project-repositories)  
+* [Application Overview](#scope-overview)  
+* [What you will learn](#what-you-will-learn)
+* [Project Repositories](#project-repositories)  
 * **Build and run the hybrid integration Compute model**
-  * [Environment Setup](https://github.com/ibm-cloud-architecture/refarch-integration#the-current-physical-deployment-and-installation)
-  * [Build and run](https://github.com/ibm-cloud-architecture/refarch-integration#build-and-run)
+  * [Environment Setup](#the-current-physical-deployment-and-installation)
+  * [Build and run](#build-and-run)
   * [Deployment to IBM Cloud Private](./docs/icp/README.md)
   * [Deployment to IBM Cloud Container Service IBM Cloud](./docs/run-bmx-cs.md)
   * [Deploy on IBM Cloud Cloud Foundry](./docs/run-bmx-cf.md)
-* [Methodology](https://github.com/ibm-cloud-architecture/refarch-integration#methodology)
-* [Security](https://github.com/ibm-cloud-architecture/refarch-integration#security)
-* [DevOps](docs/devops/cicd.md)
-* [Resiliency / HA / DR](https://github.com/ibm-cloud-architecture/refarch-integration#resiliency)
-* [Hybrid Service Management and Operations](https://github.com/ibm-cloud-architecture/refarch-integration#hybrid-service-management)
-* [Compendium](https://github.com/ibm-cloud-architecture/refarch-integration#compendium)
-* [Contribute to the solution](https://github.com/ibm-cloud-architecture/refarch-integration#contribute)
+* [Methodology](#methodology)
+* [Security](#security)
+* [DevOps / CI/CD](docs/devops/README.md)
+* [Resiliency / HA / DR](#resiliency)
+* [Hybrid Service Management and Operations](#hybrid-service-management)
+* [Compendium](#compendium)
+* [Contribute to the solution](#contribute)
 
 ## What you will learn
 By studying this set of projects and articles you will learn:
