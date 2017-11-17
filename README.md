@@ -111,7 +111,7 @@ This set of projects are implementing the Hybrid integration reference architect
 * ESB is used to manage all SOA service
 * VPN or Secure Gateway is used to open secure tunneling between public cloud deployed applications and on-premise services.
 
-The current implementation can run on private cloud and we are presenting this deployment in detail in [this article](docs/icp-deploy.md).
+The current implementation can run on private cloud and we are presenting this deployment in detail in [this article](docs/icp/README.md).
 
 # Project Repositories
 This project leverages a set of projects by applying clear separation of concerns design, n-tiers architecture, and service oriented architecture. The repository order is from left to right from previous diagram.
