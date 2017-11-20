@@ -49,18 +49,18 @@ To support this configuration you just need to:
 1. compile and package the web application as docker container
 1. define a helm chart for ICP deployment using yaml for configuration
 1. use `helm` and `kubectl` command line interfaces to install and control deployment
-1. test with integration test defines in [this project](https://github.com/ibm-cloud-architecture/refarch-integration-tests)
+1. test with integration test defined in [this project](https://github.com/ibm-cloud-architecture/refarch-integration-tests)
 
 Follow the step by step [tutorial here](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/icp/README.md).
 
-If you want to review each component here are their description:
+If you want to review each component, their descriptions are below:
 * [API Connect - Inventory product](https://github.com/ibm-cloud-architecture/refarch-integration#inventory-management)
 * [Gateway flow in integration broker](https://github.com/ibm-cloud-architecture/refarch-integration-esb#inventory-flow)
 * [SOAP service for data access Layer](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal#code-explanation)
 * [Inventory database](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-db2#inventory-database)
 
 ## Cfg 2: Web App, Datapower Gateway on ICP
-This configuration goal is to deploy Data power gateway to private cloud and deploy the interaction APIs defined within API Connect running on-premise.
+The goal for this configuration is to deploy Data power gateway to private cloud and deploy the interaction APIs defined within API Connect running on-premise.
 
 ![](./bc-icp-cfg2.png)
 
