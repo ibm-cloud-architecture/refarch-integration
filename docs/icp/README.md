@@ -103,7 +103,7 @@ This configuration runs every component on ICP, leverage public cloud service, a
 
 
 ## Use ICP Catalog
-A packaged application can be used as template for creating application. Using the ICP admin console you can get the list of repositories using the ** Admin > Repositories ** :
+A packaged application can be used as template for creating application. Using the ICP admin console you can get the list of repositories using the ** Admin > Repositories ** menu:
 
 ![](icp-repo.png)
 
@@ -124,30 +124,7 @@ Once the repository are synchronized your helm chart should be in the catalog:
 ![](helm-in-app-center.png)
 
 ## Troubleshooting
-When you deploy a helm chart you can assess how the deployment went using the ICP admin console or the kubectl CLI. For the user interface, go to the ** Workloads > Deployments ** menu to access the list of current deployments. Select the deployment and then the pod list.
-In the pod view select the events to assess how the pod deployment performed
-
-![](icp-pod-events.png)
-
-and the log file in *Logs* menu
-
-![](icp-pod-logs.png)
-
-Using kublectl to get the status of a deployment
-```
-$ kubectl get deployments --namespace browncompute
-> NAME                          DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-casewebportal-casewebportal   1         1         1            1           2d
-
-```
-Get the logs and events
-```
-$  export POD_NAME=$(kubectl get pods --namespace browncompute -l "app=casewebportal-casewebportal" -o jsonpath="{.items[0].metadata.name}")
-
-$ kubectl logs $POD_NAME --namespace browncompute
-
-$  kubectl get events --namespace browncompute  --sort-by='.metadata.creationTimestamp'
-```
+See the centralized note on IPC and k8s [Troubleshooting](Troubleshooting.md)
 
 ## Build server
 The build server will also stay on-premise as it is used by "multiple teams". This approach is to illustrate a real hybrid IT environment (We do not need to proof that all the pieces can run on cloud based solutions).
@@ -156,3 +133,13 @@ As an example we are configuring the *build* server to be able to build the diff
 ![](devops-icp.png)
 
 A Jenkins server implements different pipeline to pull the different project from github, executes each jenkins file to build the different elements: compiled code, docker image, helm package.
+
+## Kubernetes Compendium
+* [Official site](https://kubernetes.io)
+* [Very good tutorial from kubernetes web site](https://kubernetes.io/docs/tutorials/kubernetes-basics/scale-intro/)
+* [Garage method tutorial on Kubernetes](https://cloudcontent.mybluemix.net/devops/method/tutorials/kubernetes)
+
+## IBM Cloud Private Compendium
+* [IBM technical community](https://www.ibm.com/developerworks/community/wikis/home?lang=en#!/wiki/W1559b1be149d_43b0_881e_9783f38faaff)
+* [ICP blog](https://www.ibm.com/developerworks/community/blogs/fe25b4ef-ea6a-4d86-a629-6f87ccf4649e?lang=en)
+* [Common configuration for developer](https://github.com/ibm-cloud-architecture/refarch-integration/blob/master/docs/icp/icp-deploy.md#common-installation-tasks)
