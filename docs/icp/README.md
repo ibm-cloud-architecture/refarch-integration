@@ -11,7 +11,6 @@ Updated 11/16/2017
 * Install the IBM Cloud Private command line interface to manage applications, containers, services...
 * Add a **browncompute** namespace using ICP admin console, under **Admin > Namespaces** menu
 
-![](icp-namespace.png)
 
 ![](icp-brown-ns.png)
 
@@ -19,7 +18,7 @@ We will use this namespace to push *brown compute* components.
 
 # ICP installation
 For development purpose and tutorials, we are using a ICP EE deployment in a five virtual machine cluster.
-We also documented how to install ICP 2.1 Community edution on ubuntu VM [here](https://github.com/ibm-cloud-architecture/refarch-cognitive/blob/master/docs/ICP/README.txt)
+We also documented how to install ICP 2.1 Community edition on ubuntu VM [here](https://github.com/ibm-cloud-architecture/refarch-cognitive/blob/master/docs/ICP/README.txt)
 
 For enterprise deployment the [following tutorial](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Installing_ICp_on_prem.md) will teach you how to do the installation.
 
@@ -45,13 +44,13 @@ This is the simplest deployment where the cloud native web application ([the 'ca
 
 This approach will be the less disruptive, let the development team innovating with new polyglot runtime environments supported by cloud native based application and micro services.
 
-To support this configuration you just need to:  
+To support this configuration you need to:  
 1. compile and package the web application as docker container
-1. define a helm chart for ICP deployment using yaml for configuration
+1. define a helm chart for ICP using yaml files
 1. use `helm` and `kubectl` command line interfaces to install and control deployment
-1. test with integration test defined in [this project](https://github.com/ibm-cloud-architecture/refarch-integration-tests)
+1. test with integration tests as defined in [this project](https://github.com/ibm-cloud-architecture/refarch-integration-tests)
 
-Follow the step by step [tutorial here](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/icp/README.md).
+For the web app deployment follow the step by step [tutorial here](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/icp/README.md).
 
 If you want to review each component, their descriptions are below:
 * [API Connect - Inventory product](https://github.com/ibm-cloud-architecture/refarch-integration#inventory-management)
@@ -64,7 +63,7 @@ The goal for this configuration is to deploy Data power gateway to private cloud
 
 ![](./bc-icp-cfg2.png)
 
-The second API Datapower gateway is used to present 'System' APIs.
+The second API Datapower gateway is used to present 'System' APIs. (see this redbook ["A practical Guide for IBM Hybrid Integration Platform"](http://www.redbooks.ibm.com/redbooks/pdfs/sg248351.pdf) for detail about those clear separation of APIs)
 
 The gateway flow, doing the REST to SOAP interface mapping, runs on IBM Integration bus on-premise: this configuration illustrates deep adoption of the ESB pattern leveraging existing high end deployments, scaling both horizontally and vertically. In this model the concept of operation for mediation and integration logic is kept.
 
@@ -78,7 +77,9 @@ For this configuration the web service application running on WebSphere Liberty 
 
 ![Brown on ICP](./bc-icp-cfg3.png)
 
-To support this configuration on top of config 2, the  *Inventory Data Access Layer* app running on Liberty is packaged as docker container and deployed using helm chart deployment configuration. The step by step instruction are in [this article](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal/blob/master/docs/icp/README.md).
+To support this configuration on top of config 2, the  *Inventory Data Access Layer* app running on Liberty is packaged as docker container and deployed using helm chart deployment configuration.
+
+The step by step instructions are in [this article](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal/blob/master/docs/icp/README.md).
 
 The LDAP, DB2 server servers are still running on Traditional IT servers.
 
@@ -124,7 +125,7 @@ Once the repository are synchronized your helm chart should be in the catalog:
 ![](helm-in-app-center.png)
 
 ## Troubleshooting
-See the centralized note on IPC and k8s [Troubleshooting](Troubleshooting.md)
+See the centralized note on ICP and k8s [Troubleshooting](Troubleshooting.md)
 
 ## Build server
 The build server will also stay on-premise as it is used by "multiple teams". This approach is to illustrate a real hybrid IT environment (We do not need to proof that all the pieces can run on cloud based solutions).
@@ -136,10 +137,14 @@ A Jenkins server implements different pipeline to pull the different project fro
 
 ## Kubernetes Compendium
 * [Official site](https://kubernetes.io)
+* [Kubernetes concepts](https://kubernetes.io/docs/concepts/)
+* [Helm and Kubernetes package management](https://docs.helm.sh/architecture/)
 * [Very good tutorial from kubernetes web site](https://kubernetes.io/docs/tutorials/kubernetes-basics/scale-intro/)
 * [Garage method tutorial on Kubernetes](https://cloudcontent.mybluemix.net/devops/method/tutorials/kubernetes)
 
 ## IBM Cloud Private Compendium
 * [IBM technical community](https://www.ibm.com/developerworks/community/wikis/home?lang=en#!/wiki/W1559b1be149d_43b0_881e_9783f38faaff)
 * [ICP blog](https://www.ibm.com/developerworks/community/blogs/fe25b4ef-ea6a-4d86-a629-6f87ccf4649e?lang=en)
-* [Common configuration for developer](https://github.com/ibm-cloud-architecture/refarch-integration/blob/master/docs/icp/icp-deploy.md#common-installation-tasks)
+* [Our install ICP 2.1 Community edition on ubuntu VM](https://github.com/ibm-cloud-architecture/refarch-cognitive/blob/master/docs/ICP/README.txt)
+* [ICP Enterprise deployment tutorial](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Installing_ICp_on_prem.md)
+* [Build your own helm repository](https://github.com/ibm-cloud-architecture/refarch-integration/blob/master/docs/icp/build-helm-rep.md)
