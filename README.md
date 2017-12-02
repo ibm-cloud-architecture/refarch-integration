@@ -217,9 +217,6 @@ TBD. We do not plan to implement complex topology for the on-premise servers to 
 # Hybrid Service Management
 TBD
 
-# Compendium
-
-
 # Contribute
 We welcome your contribution. There are multiple ways to contribute: report bugs and improvement suggestion, improve documentation and contribute code.
 We really value contributions and to maximize the impact of code contributions we request that any contributions follow these guidelines
