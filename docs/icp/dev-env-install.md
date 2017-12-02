@@ -8,21 +8,9 @@ The developer environment may look like the following diagram, for a developer o
 
 There is a nice alternate solution to get an ICP single VM up and running in fe minutes by using a Vagrant file: Clone [this github](https://github.com/IBM/deploy-ibm-cloud-private) and do a ```vagrant up```, 15 minutes later you have your environment with one proxy-master node and 3 worker nodes. Excellent!
 
-## Prerequisites
-* A conceptual understanding of how [Kubernetes](https://kubernetes.io/docs/concepts/) works.
-* A high-level understanding of [Helm and Kubernetes package management](https://docs.helm.sh/architecture/).
-* A basic understanding of [IBM Cloud Private cluster architecture](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/getting_started/architecture.html).
-
-A developer needs to have on his development environment the following components:
-* [Docker](#install-docker)
-* [Kubectl](#install-kubectl)
-* [Helm](#install-helm)
-* [Bluemix Command Line Interface with ICP plugin](#)
-* A VM player to install and run ubuntu machine
-
 If you need to access the dockerhub IBM public image, use [docker hub explorer](https://hub.docker.com/explore/)  and search for **ibmcom**
 
-# Preparing your laptop
+# Preparing your guest machine
 ## Install ubuntu
 Follow your VM player instruction to create a virtual machine and access an ubuntu 16.10 .iso file
 
@@ -41,7 +29,34 @@ $ passwd
 apt-get update
 ```
 
-* Install open ssh, and authorize remote access
+* Install Linux image extra packages
+```
+apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual
+```
+* Install python
+  ```
+  $  apt-get install -y python-setuptools
+  $ easy_install pip
+  $ pip install docker-py
+  ```
+* Disable firewall if enabled
+  ```
+  $ ufw status
+  $ sudo ufw disable
+  ```
+
+* Boot and log as root user
+
+* Install NTP to keep time sync
+```
+apt-get install -y ntp
+sytemctl restart ntp
+# test it
+ntpq -p
+```
+
+## Configure ssh for remote access
+Install [openssh](https://www.openssh.com/), and authorize remote access
 ```
 sudo apt-get install openssh-server
 systemctl restart ssh
@@ -68,35 +83,11 @@ Copy the public key to the root user .ssh folder
 $ ssh-copy-id -i .ssh/id_rsa root@ubuntu
 ```
 Then you should be able to ssh root user to the guest machine.
-* Install NTP to keep time sync
-```
-apt-get install -y ntp
-sytemctl restart ntp
-# test it
-ntpq -p
-```
-* Install Linux image extra packages
-```
-apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual
-```
-* Install python
-  ```
-  $  apt-get install -y python-setuptools
-  $ easy_install pip
-  $ pip install docker-py
-  ```
-* Disable firewall if enabled
-  ```
-  $ ufw status
-  $ sudo ufw disable
-  ```
 
-* Boot and log as root user
-
-
-The developer's machine and VM need both to have docker or at least the VM needs it. To access the cluster environment you need *kubectl** command line interface and hosts configuration to match the configuration defined during the ICP install.
 
 ## Install docker
+The developer's machine and VM need both to have docker or at least the VM needs it. To access the cluster environment you need *kubectl** command line interface and hosts configuration to match the configuration defined during the ICP install.
+
 If you do not have docker install on your development machine, we will not describe it again ;-). See [docker download](https://docs.docker.com/engine/installation/).
 
 * Install docker on the ubuntu machine
@@ -258,7 +249,6 @@ Password:
 
    The hybrid integration set of projects has each component creating its own helm packaging (tgz files) and persisted into the current project *charts* folder. An **index.yaml** file defines the components part of this repository.
 
-# Troubleshooting
 
 ## Connect kubectl to remote cluster-master
 * Access the ICP kubernetes cluster information from the ICP Console.

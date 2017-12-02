@@ -6,29 +6,27 @@ Updated 12/01/2017
 ## Table of Contents
 * [Prerequisites](#prerequisites)
 * [Community Edition installation (for development environment)](./dev-env-install.md)
+* [Enterprise Edition Installation]((https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Installing_ICp_on_prem.md)
+* [Hybrid integration deployment configurations](#configurations) We are proposing different configurations for the deployment of each components of the solution: Webapp, API gateway, message flow, SOAP service, data base.
+* [Troubleshooting](troubleshooting.md)
 
 ## Prerequisites
 * A conceptual understanding of how [Kubernetes](https://kubernetes.io/docs/concepts/) works.
 * A high-level understanding of [Helm and Kubernetes package management](https://docs.helm.sh/architecture/).
 * A basic understanding of [IBM Cloud Private cluster architecture](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/getting_started/architecture.html).
-* Access to an operational IBM Cloud Private cluster.
+* Access to an operational IBM Cloud Private cluster [see installation note](./dev-env-install.md) for the different approaches.
+
+A developer needs to have on his development environment the following components:
+* [Docker](dev-env-install.md#install-docker)
+* [Kubectl](dev-env-install.md#install-kubectl)
+* [Helm](dev-env-install.md#install-helm)
+
 * Install the IBM Cloud Private command line interface to manage applications, containers, services...
 * Add a **browncompute** namespace using ICP admin console, under **Admin > Namespaces** menu
-
 
 ![](icp-brown-ns.png)
 
 We will use this namespace to push *brown compute* components.
-
-# ICP installation
-For development purpose and tutorials, we are using a ICP EE deployment in a five virtual machine cluster.
-We also documented how to install ICP 2.1 Community edition on ubuntu VM [here](https://github.com/ibm-cloud-architecture/refarch-cognitive/blob/master/docs/ICP/README.txt)
-
-For enterprise deployment the [following tutorial](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Installing_ICp_on_prem.md) will teach you how to do the installation.
-
-See also [ICP 2.1 product documentation](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/installing/install_containers_CE.html) to get other details.
-
-Also we are explaining in [this note](build-helm-rep.md) how to build your own Helm repository to be reference-able by ICP.
 
 # Configurations
 As an hybrid solution each component of the solution may run on existing on-premise server or on IBM Cloud Private. The deployment decision will be driven by the business requirements and the availability of underlying IBM middleware product as docker image.
@@ -128,8 +126,6 @@ $ scp index.yaml admin@9.19.34.107:8443/helm-repo/charts
 Once the repository are synchronized your helm chart should be in the catalog:
 ![](helm-in-app-center.png)
 
-## Troubleshooting
-See the centralized note on ICP and k8s [Troubleshooting](Troubleshooting.md)
 
 ## Build server
 The build server will also stay on-premise as it is used by "multiple teams". This approach is to illustrate a real hybrid IT environment (We do not need to proof that all the pieces can run on cloud based solutions).
@@ -138,17 +134,3 @@ As an example we are configuring the *build* server to be able to build the diff
 ![](devops-icp.png)
 
 A Jenkins server implements different pipeline to pull the different project from github, executes each jenkins file to build the different elements: compiled code, docker image, helm package.
-
-## Kubernetes Compendium
-* [Official site](https://kubernetes.io)
-* [Kubernetes concepts](https://kubernetes.io/docs/concepts/)
-* [Helm and Kubernetes package management](https://docs.helm.sh/architecture/)
-* [Very good tutorial from kubernetes web site](https://kubernetes.io/docs/tutorials/kubernetes-basics/scale-intro/)
-* [Garage method tutorial on Kubernetes](https://cloudcontent.mybluemix.net/devops/method/tutorials/kubernetes)
-
-## IBM Cloud Private Compendium
-* [IBM technical community](https://www.ibm.com/developerworks/community/wikis/home?lang=en#!/wiki/W1559b1be149d_43b0_881e_9783f38faaff)
-* [ICP blog](https://www.ibm.com/developerworks/community/blogs/fe25b4ef-ea6a-4d86-a629-6f87ccf4649e?lang=en)
-* [Our install ICP 2.1 Community edition on ubuntu VM](https://github.com/ibm-cloud-architecture/refarch-cognitive/blob/master/docs/ICP/README.txt)
-* [ICP Enterprise deployment tutorial](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Installing_ICp_on_prem.md)
-* [Build your own helm repository](https://github.com/ibm-cloud-architecture/refarch-integration/blob/master/docs/icp/build-helm-rep.md)
