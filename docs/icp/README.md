@@ -1,7 +1,11 @@
 # IBM Cloud Private Deployment
 In this section we are presenting how *Hybrid integration compute implementation* is deployed to IBM Cloud Private. For that we will address different configurations as business and operation requirements may differ per data center and even per business application.
 
-Updated 11/16/2017
+Updated 12/01/2017
+
+## Table of Contents
+* [Prerequisites](#prerequisites)
+* [Community Edition installation (for development environment)](./dev-env-install.md)
 
 ## Prerequisites
 * A conceptual understanding of how [Kubernetes](https://kubernetes.io/docs/concepts/) works.

@@ -1,5 +1,20 @@
 # Troubleshooting in ICP
 
+## Not able to login to docker running on master node
+The type of messages
+### Unknown authority
+`Error response from daemon: Get https://greencluster.icp:8500/v2/: x509: certificate signed by unknown authority.
+You need to configure your local docker to accept to connect to insecure registries by adding an entry about the target host.
+On MACOS the Preferences> Daemon > Advanced   
+
+![](docker-pref-insecure-reg.png)
+
+
+See also the note about accessing ICP private repository [here](https://github.com/ibm-cloud-architecture/refarch-cognitive/tree/master/docs/ICP#access-to-icp-private-docker-repository) and how to copy SSL certificate to your local host.
+
+### x509 certificate not valid for a specific hostname
+Be sure the hostname you are using is in your /etc/hosts and you `docker login` to the good host.
+
 ## Verify deployment
 When you deploy a helm chart you can assess how the deployment went using the ICP admin console or the kubectl CLI.
 
@@ -19,6 +34,11 @@ $ kubectl get deployments --namespace browncompute
 casewebportal-casewebportal   1         1         1            1           2d
 
 ```
+or a specific detail view:
+```
+kubectl describe deployment browncompute-dal-browncompute-dal
+```
+
 Get the logs and events
 ```
 $  export POD_NAME=$(kubectl get pods --namespace browncompute -l "app=casewebportal-casewebportal" -o jsonpath="{.items[0].metadata.name}")
@@ -52,14 +72,4 @@ $ kubectl describe deployment
 ```
 
 ## Understanding networking
-
-## Common issues
-While connecting to secure gateway the following error could happen.
-```
-Error: connect ECONNREFUSED 169.55.54.178:16582
-     at Object.exports._errnoException (util.js:1022:11)
-     at exports._exceptionWithHostPort (util.js:1045:20)
-     at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1087:14)
-```
-
-Error response from daemon: Get https://mycluster:8500/v2/: x509: certificate signed by unknown authority
+TBD
