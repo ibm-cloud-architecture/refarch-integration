@@ -271,11 +271,7 @@ platform-ui is running at https://192.168.27.100:8001/api/v1/proxy/namespaces/ku
 
 To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 ```
-## Try to do 'kubectl cluster-info': failed: error: You must be logged in to the server (the server has asked for the client to provide credentials)
-Be sure to have use the settings from the 'configure client'.
-Be sure the cluster name / IP address are mapped in /etc/hosts
-Be sure to have a ca.crt into
-Use the `bx pr login -a <clustername>/api -u admin` command
+
 
 ## Verify Helm is connected to Tiller server running on ICP
 If you get the kubectl connected to ICP cluster (as presented in previous figure), then the following command should give you the version of the **Tiller** server running in ICP.
@@ -288,47 +284,3 @@ Client: &version.Version{SemVer:"v2.5.0", GitCommit:"012cb0ac1a1b2f888144ef5a67b
 Server: &version.Version{SemVer:"v2.5.0", GitCommit:"012cb0ac1a1b2f888144ef5a67b8dab6c2d45be6", GitTreeState:"clean"}
 
 ```
-## hostname not resolved
-  ```
-   fatal: [...] => Failed to connect to the host via ssh: ssh: Could not resolve hostname ...:
-   Name or service not known
-  ```
-  * verify the hostname match the ip address in /etc/hosts
-  * be sure to start the installation from the folder with the hosts file. It should be cluster or modify $(pwd) to $(pwd)/cluster
-
-## ssh connect failure
-  ```
-  fatal: [192.168.1.147] => Failed to connect to the host via ssh:
-  Permission denied (publickey,password).
-  ```
-This is a problem of accessing root user during the installation. Be sure to authorize root login, (ssh_config file), that the ssh_key is in the root user home/.ssh. See [above](#ubuntu-specifics)
-
-
-While login from a developer's laptop.
-```
-$ docker login cluster.icp:8500
->
-Error response from daemon: Get https://cluster.icp:8500/v2/: net/http:
-request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
-```
-Be sure the cluster.icp hostname is mapped to the host's IP address in the local /etc/hosts
-
-## Unknown certificate authority
-```
-$ docker login mycluster.icp:8500
-Error response from daemon: Get https://mycluster.icp:8500/v2/: x509: certificate signed by unknown authority
-```
-
-Go to your docker engine configuration and add the remote registry as an insecure one. On MAC you select the docker > preferences > Advanced meny and then add the remote master name
-```json
-{
-  "debug" : true,
-  "experimental" : true,
-  "insecure-registries" : [
-    "jbcluster.icp:8500",
-    "mycluster.icp:8500"
-  ]
-}
-```
-
-You can also verify the certificates are in the logged user **~/.docker** folder. This folder should have a **certs.d** folder and one folder per remote server, you need to access. So the mycluster.icp:8500/ca.crt file needs to be copied there too.

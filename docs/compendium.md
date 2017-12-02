@@ -35,5 +35,9 @@ Here is a list of important public content to improve your skill on the products
 * [ICP Enterprise deployment tutorial](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Installing_ICp_on_prem.md)
 * [Build your own helm repository](https://github.com/ibm-cloud-architecture/refarch-integration/blob/master/docs/icp/build-helm-rep.md)
 
+### IBM Operational Decision management
+* [Kubernetes helm charts for ODM](https://github.com/ODMDev/odm-docker-kubernetes)
+* [ODM on Docker, Kubernetes, and IBM Cloud Private](https://developer.ibm.com/odm/2017/10/02/odm-docker-kubernetes-ibm-cloud-private/)
+
 ### Secure Gateway
 * [IBM Secure Gateway - IBM Cloud documentation](https://console.bluemix.net/docs/services/SecureGateway/secure_gateway.html)
