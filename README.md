@@ -13,7 +13,7 @@ Hybrid integration has a vast scope addressing integration points like:
 * Internet of things generating events, partially processed on public cloud, aggregated and persisted on-premise database, where analytics can be performed to classify the issue as risk, and trigger process for trouble shooting and maintenance.
 
 Hybrid integration bridges data sources, applications or APIs wherever they might be on-premises, IaaS, PaaS or SaaS. The following diagram presents the high level view of the scope for an hybrid integration platform with API exposure, data integration, and different design styles of application integration.
-![Hybrid integration](docs/Fg1.png)
+![Hybrid integration](docs/fig1.png)
 
 It is important to note that any part of the architecture can be on-premises or fully cloud-based. Systems of records are more likely to be on-premises, but a new system of record might be deployed on a cloud infrastructure, or even be SaaS.
 
@@ -57,6 +57,15 @@ By studying this set of projects and articles you will learn:
 As an hybrid cloud implementation the set of projects of this solution cover different functional requirements:
 * [Inventory management](https://github.com/ibm-cloud-architecture/refarch-integration#inventory-management) a simple item inventory catalog deployed in DB2, with a SOAP data access layer, and IIB gateway flow and an API product defined in API Connect
 * [IT Support bot or Help@Case](https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker) a set of bots implemented in Watson Conversation
+* [Customer management for analytics](https://github.com/ibm-cloud-architecture/refarch-integration-services) is a set of function to manage customer, account and usage (telecom) for churn assessment.
+
+In the longer term the brown compute will support this multiple patterns view:
+
+![](docs/brown-scope.png)
+
+where cloud native applications deployed on public cloud can access on-premise resource deployed on IBM cloud private or more traditional IT. Where cloud native applications are deployed on ICP, using integration microflows, and where micro services are part of event driven pattern, pub/sub or queues, where API definition exposes product for the public consumers or internal consumers and even business partner channels.
+
+As of December 2017, public webapp accessing backend is supported, and private webapp on ICP are also supported see [this note](docs/icp/README.md)
 
 ## System context
 The following diagram illustrates the components involved in the current solution:  
@@ -68,8 +77,7 @@ The following diagram illustrates the components involved in the current solutio
 * Integration Bus to connect to deep back end systems and SOA services, and do interface mapping or gateway flow.
 * [Watson conversation broker micro service](https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker) to facade and implement orchestration and business logic for chatbots using Watson Conversation.
 * Decision engine to automate business rules execution and Management
-* [Data SOA Java WS service](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal) to expose a data access layer on top of relational data based
-* Inventory, supplier and stock database
+* [Data SOA Java WS service](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal) to expose a data access layer on top of relational item, inventory, supplier database
 * LDAP for user Management
 
 ## User interface
