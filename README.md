@@ -220,7 +220,7 @@ TBD
 Please check [this repository](https://github.com/ibm-cloud-architecture/refarch-caseinc-app) for instructions and tools to improve availability and performances of the *hybrid integration Compute* front end application.
 
 ## High availability
-TBD. We do not plan to implement complex topology for the on-premise servers to suport HA, mostly because of cost and time reason and the fact that it is covered a lot in different articles.
+We do not plan to implement complex topology for the on-premise servers to support HA, mostly because of cost and time reason and the fact that it is covered a lot in different articles. For IBM Cloud Private read the following [ICP cluster HA article](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Resiliency/Configure_HA_ICP_cluster.md)
 
 # Hybrid Service Management
 TBD

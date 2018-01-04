@@ -1,7 +1,7 @@
 # IBM Cloud Private Deployment
 In this section we are presenting how *Hybrid integration compute implementation* is deployed to IBM Cloud Private. For that we will address different configurations as business and operation requirements may differ per data center and even per business application.
 
-Updated 12/01/2017
+Updated 01/04/2017
 
 ## Table of Contents
 * [Prerequisites](#prerequisites)
@@ -15,6 +15,7 @@ The following points should be considered before going in more detail of the ICP
 * A conceptual understanding of how [Kubernetes](https://kubernetes.io/docs/concepts/) works.
 * A high-level understanding of [Helm and Kubernetes package management](https://docs.helm.sh/architecture/).
 * A basic understanding of [IBM Cloud Private cluster architecture](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/getting_started/architecture.html).
+* Understand the different [ICP environment and sizing](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Sizing.md)
 * Access to an operational IBM Cloud Private cluster [see installation note](./dev-env-install.md) for the different approaches.
 
 A developer needs to have on his development environment the following components:
@@ -27,7 +28,7 @@ we have provided a shell script to do those installation. Execute `./install_cli
 
 ![](icp-brown-ns.png)
 
-We will use this namespace to push the *hybrid integration* components.
+We will use this namespace to push the *hybrid integration* components into ICP cluster.
 
 # Configurations
 As an hybrid solution each component of the solution may run on existing on-premise server or on IBM Cloud Private. The deployment decision will be driven by the business requirements and the availability of underlying IBM middleware product as docker image.
@@ -104,7 +105,7 @@ This approach leverages existing investment and IIB concept of operation, and IB
 1. Deploy the api product to the new gateway.
 
 
-## Cfg 5: IIB to ICP
+## Cfg 5: All API Connect to ICP
 This configuration runs every component on ICP, leverage public cloud service, and on-premise directory services.
 
 ![](./bc-icp-cfg5.png)
