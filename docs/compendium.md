@@ -41,3 +41,8 @@ Here is a list of important public content to improve your skill on the products
 
 ### Secure Gateway
 * [IBM Secure Gateway - IBM Cloud documentation](https://console.bluemix.net/docs/services/SecureGateway/secure_gateway.html)
+
+### Open source used
+* [Angular 4 tutorial from the angular site](https://angular.io/tutorial) this tutorial is updated with new release and covers the most important features used in our angular app.
+* [Helm getting started](https://docs.helm.sh/using_helm/#quickstart-guide)
+* [Kubernetes tutorials](https://kubernetes.io/docs/tutorials/): you need to study basic, 101, 201 at least.

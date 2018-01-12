@@ -38,6 +38,7 @@ refarch-integration-api
 refarch-integration-inventory-dal
 refarch-integration-inventory-db2
 refarch-integration-tests
+refarch-integration-services
 refarch-caseinc-app
 EOF
 
