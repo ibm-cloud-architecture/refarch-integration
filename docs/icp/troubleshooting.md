@@ -46,7 +46,7 @@ Go to your docker engine configuration and add the remote registry as an insecur
 You can also verify the certificates are in the logged user **~/.docker** folder. This folder should have a **certs.d** folder and one folder per remote server, you need to access. So the mycluster.icp:8500/ca.crt file needs to be copied there too.
 
 ## Not able to login to docker running on master node
-The type of messages
+Different type of messages:
 ### Unknown authority
 `Error response from daemon: Get https://greencluster.icp:8500/v2/: x509: certificate signed by unknown authority.
 You need to configure your local docker to accept to connect to insecure registries by adding an entry about the target host.
@@ -59,6 +59,27 @@ See also the note about accessing ICP private repository [here](https://github.c
 
 ### x509 certificate not valid for a specific hostname
 Be sure the hostname you are using is in your /etc/hosts and you `docker login` to the good host.
+
+## Pod not getting the image from docker private repository
+Looking at the Events report from the pod view you got a message like:
+```
+Failed to pull image “greencluster.icp:8500/greencompute/customerms:v0.0.7”: rpc error: code = Unknown desc = Error response from daemon: Get https://greencluster.icp:8500/v2/greencompute/customerms/manifests/v0.0.7: unauthorized: authentication required
+```
+
+The new version of k8s enforces the use of secret to access the docker private repository. So you need to add a secret, named for example regsecret, for the docker registry object.
+```
+$ kubectl create secret docker-registry regsecret --docker-server=172.16.40.130 --docker-username=admin --docker-password=<> --docker-email=<email> --namespace=greencompute
+$ kubectl get secret regsecret --output=yaml --namespace=greencompute
+```
+Then modify the deployment.yaml to reference this secret so the pod can access the repo during deployment:
+```  spec:
+    containers:
+      - name: {{ .Chart.Name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        ....
+    imagePullSecrets:
+      - name: regsecret
+```
 
 ## Verify deployment
 When you deploy a helm chart you can assess how the deployment went using the ICP admin console or the kubectl CLI.
@@ -101,7 +122,7 @@ $ kubectl describe pods
 
 $ export POD_NAME=$(kubectl get pods -o go-template='{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}’)
 
-$ kubectl exec $POD_NAME env
+$ kubectl exec $POD_NAME env  --namespace browncompute
 
 $ kubectl logs $POD_NAME
 
@@ -116,7 +137,8 @@ $ export NODE_PORT=$(kubectl get services/casewdsbroker -o go-template='{{(index
 $ kubectl describe deployment
 ```
 
-## Try to do 'kubectl cluster-info': failed: error: You must be logged in to the server (the server has asked for the client to provide credentials)
+## Error while getting cluster info
+Try to do 'kubectl cluster-info': failed: error: You must be logged in to the server (the server has asked for the client to provide credentials)
 Be sure to have use the settings from the 'configure client'.
 Be sure the cluster name / IP address are mapped in /etc/hosts
 Be sure to have a ca.crt into
