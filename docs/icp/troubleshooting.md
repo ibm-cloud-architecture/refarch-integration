@@ -174,3 +174,19 @@ Rules:
 Annotations:
 No events.
   ```
+
+  2. If ingress rules are correct for your release, check to see if there are other releases sharing the same host rule. This can happen if the release was deleted without the ingress rule being removed.
+  ```
+  kubectl get ing --all-namespaces=true
+
+  NAMESPACE      NAME                                               HOSTS                 ADDRESS         PORTS     AGE
+  greencompute   greencompute-green-customerapp-green-customerapp   greenapp.green.case   172.16.40.131   80        1h
+  greencompute   greencustomerapp-green-customerapp                 greenapp.green.case   172.16.40.131   80        1h
+  ```
+
+  Delete the conflicting namespace.
+  ```
+  kubectl delete ing greencompute-green-customerapp-green-customerapp
+
+  ingress "greencompute-green-customerapp-green-customerapp" deleted
+  ```
