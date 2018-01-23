@@ -135,3 +135,8 @@ Once the repository are synchronized your helm chart should be in the catalog:
 
 # Understanding networking
 TBD
+
+## kube-dns
+Kubelets resolve hostnames for pods through a Service named `kube-dns`. kube-dns runs as a pod in the kube-system namespace. Every Service that is created is automatically assigned a DNS name. By default, this hostname is ServiceName.Namespace. All Services that are in the same namespace may omit Namespace and just use ServiceName. Here is an example:
+
+Assume a Service named `foo` in the namespace `bar`. A Pod running in namespace `bar` can look up this service by simply doing a DNS query for `foo`. A Pod running in namespace `baz` can look up this service by doing a DNS query for `foo.bar`.
