@@ -31,14 +31,15 @@ $ docker login mycluster.icp:8500
 Error response from daemon: Get https://mycluster.icp:8500/v2/: x509: certificate signed by unknown authority
 ```
 
-Go to your docker engine configuration and add the remote registry as an insecure one. On MAC you select the docker > preferences > Advanced meny and then add the remote master name
+Go to your docker engine configuration and add the remote registry as an insecure one. On MAC you select the docker > preferences > Daemons> Advanced menu and then add the remote master name
 ```json
 {
   "debug" : true,
   "experimental" : true,
   "insecure-registries" : [
     "jbcluster.icp:8500",
-    "mycluster.icp:8500"
+    "mycluster.icp:8500",
+    "cpscluster.icp:8500"
   ]
 }
 ```
