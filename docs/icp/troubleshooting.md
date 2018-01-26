@@ -190,3 +190,82 @@ No events.
 
   ingress "greencompute-green-customerapp-green-customerapp" deleted
   ```
+
+## ICP Cluster is Inaccessible via Web Console
+After restart of the ICP master node, the ICP cluster is inaccessible remotely.
+
+  1. Log into master node via SSH and check kube-system pods
+  ```
+  $ kubectl -s 127.0.0.1:8888 -n kube-system get pods
+  ```
+
+  2. Check if any pods are in a bad state such as CrashLoopBackOff
+  ```
+  ...
+  k8s-master-172.16.40.130                                  2/3       CrashLoopBackOff   393        40s
+  ...
+  ```
+
+  3. Check the containers for that pod
+  ```
+  $ kubectl –s 127.0.0.1:8888 –n kube-system describe pods k8s-master-172.16.40.130
+  ```
+
+  4. To view the logs for a specific container, use the following command. For example, the controller-manager in the k8s-master-172.16.40.130 pod:
+  ```
+  $ kubectl –s 127.0.0.1:8888 –n kube-system logs k8s-master-172.16.40.130 –p controller-manager
+  ```
+
+## Issues during upgrade to 2.1.0.1
+The following issues are errors that may occur during the upgrade to ICP 2.1.0.1.
+
+### Etcd Fails to Start During Upgrade
+While running the Kubernetes upgrade on the master node, Etcd fails to start. This is due to swap being enabled on the OS. Resolution is to disable swap.
+
+#### Error Message
+  ```
+  TASK [upgrade-master : Waiting for Etcd to start] ******************************
+  fatal: [172.16.40.130]: FAILED! => {"changed": false, "elapsed": 600, "failed": true, "msg": "The Etcd component failed to start. For more details, see https://ibm.biz/etcd-fails."}
+  ```
+
+#### Problem Determination & Resolution
+  1. Check Kubelet Logs to determine why node has not started.
+  ```
+  $ journalctl -u kubelet &> kl.log
+  ```
+  2. Open kl.log and check the error.
+  ```
+  Jan 18 11:42:32 green-icp-proxy hyperkube[31106]: Error: failed to run Kubelet: Running with swap on is not supported, please disable swap! or set --fail-swap-on flag to false. /proc/swaps contained: [Filename
+  ```
+  3. Disable swap.
+  ```
+  $ swapoff -a
+  $ sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+  ```
+
+### Kubelet Install Fails on Nodes
+During the Kubernetes upgrade step, the installer attempts to install Kubelet on each of the nodes. The installation fails because the ibmcom/kubernetes:v1.8.3-ee image is not on the nodes. Resolution is to put the image on the nodes manually.
+
+#### Error Message
+  ```
+  TASK [upgrade-kubelet : Ensuring kubelet install dir exists] ****************************************************************************************************************************************
+  ok: [172.16.40.135]
+  FAILED - RETRYING: Copying hyperkube onto operating system (3 retries left).
+  FAILED - RETRYING: Copying hyperkube onto operating system (2 retries left).
+  FAILED - RETRYING: Copying hyperkube onto operating system (1 retries left).
+
+  TASK [upgrade-kubelet : Copying hyperkube onto operating system] ************************************************************************************************************************************
+  fatal: [172.16.40.135]: FAILED! => {"attempts": 3, "changed": true, "cmd": "docker run --rm -v /opt/kubernetes/:/data ibmcom/kubernetes:v1.8.3-ee sh -c 'cp -f /hyperkube /data/'", "delta": "0:00:00.574937", "end": "2018-01-18 10:03:52.881064", "failed": true, "rc": 125, "start": "2018-01-18 10:03:52.306127", "stderr": "Unable to find image 'ibmcom/kubernetes:v1.8.3-ee' locally\ndocker: Error response from daemon: manifest for ibmcom/kubernetes:v1.8.3-ee not found.\nSee 'docker run --help'.", "stderr_lines": ["Unable to find image 'ibmcom/kubernetes:v1.8.3-ee' locally", "docker: Error response from daemon: manifest for ibmcom/kubernetes:v1.8.3-ee not found.", "See 'docker run --help'."], "stdout": "", "stdout_lines": []}
+  ```
+#### Problem Determination & Resolution
+  1. Log onto node and checked the local images. Notice that the ibmcom/kubernetes:v1.8.3-ee image is absent.
+  ```
+  $ docker image ls
+  ```
+
+  2. Copy ibm-cloud-private-x86_64-2.1.0.1.tar.gz package to the node.
+
+  3. Extract the images and load into Docker
+  ```
+  $ tar xf ibm-cloud-private-x86_64-2.1.0.1.tar.gz -O | sudo docker load
+  ```
