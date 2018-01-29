@@ -24,7 +24,7 @@ This current project provides a reference implementation for building and runnin
 * [Application Overview](#scope-overview)  
 * [What you will learn](#what-you-will-learn)
 * [Project Repositories](#project-repositories)  
-* **Build and run the hybrid integration Compute model**
+* **Build and run the Hybrid Integration Compute model**
   * [Environment Setup](#the-current-physical-deployment-and-installation)
   * [Build and run](#build-and-run)
   * [Deployment to IBM Cloud Private](./docs/icp/README.md)
@@ -37,6 +37,11 @@ This current project provides a reference implementation for building and runnin
 * [Hybrid Service Management and Operations](#hybrid-service-management)
 * [Compendium](./docs/compendium.md)
 * [Contribute to the solution](#contribute)
+
+## Target audiences
+* Architects who want to deeply understand how all the components work together, and how to support the non-functional requirements
+* Developers who want to understand best practices for implementation, logging, devops, testing.
+* Project managers to understand all the artifacts to be included in an hybrid integration solution
 
 ## What you will learn
 By studying this set of projects and articles you will learn:
@@ -68,13 +73,13 @@ where cloud native applications deployed on public cloud can access on-premise r
 As of December 2017, public webapp accessing backend is supported, and private webapp on ICP are also supported see [this note](docs/icp/README.md)
 
 ## System context
-The following diagram illustrates the components involved in the current solution:  
+The following diagram illustrates the logical components involved in the current solution:  
 ![](docs/br-syst-ctx.png)
 
 * [Web App "Case Portal"](https://github.com/ibm-cloud-architecture/refarch-caseinc-app) Portal web app to expose access and user interface to different applications.
-* Interaction APIs to combine system and public APIs to support specific application and channels they serve.
-* System API to define backend service API product
-* Integration Bus to connect to deep back end systems and SOA services, and do interface mapping or gateway flow.
+* Interaction APIs to expose API products for public WebApp consumptions. Those APIs support specific resources needed by user interface app and channels they serve.
+* System API to define backend service API product, used by multiple consumers.
+* Integration Bus to connect to deep back end systems and SOA services, and do interface mapping and [mediation flows](https://github.com/ibm-cloud-architecture/refarch-integration-esb).
 * [Watson conversation broker micro service](https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker) to facade and implement orchestration and business logic for chatbots using Watson Conversation.
 * Decision engine to automate business rules execution and Management
 * [Data SOA Java WS service](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal) to expose a data access layer on top of relational item, inventory, supplier database
@@ -85,25 +90,23 @@ To demonstrate the set of features of this solution , a front end application, r
 
 ![HomePage](docs/homepage.png)  
 
-This front end application is an extension of the "CASE.inc" retail store introduced in [cloud native solution or "Blue compute"](https://github.com/ibm-cloud-architecture/refarch-cloudnative) which manages old computers, extended with internet of things capabilities, IT support chat bot and other goodies.
+This front end application is an extension of the "CASE.inc" retail store introduced in [cloud native solution or "Blue compute"](https://github.com/ibm-cloud-architecture/refarch-cloudnative) which manages old computers, extended with IT support chat bot and other goodies.
 
 The end users will be able to authenticate to an internal LDAP.
 
 ## Inventory management
 This component is dedicated to the internal users who want to manage the inventory items of the retail shops/warehouses. The data base is a simple inventory DB with products, supplier and stock information.
 
-To read a demonstration flow see the note [here](docs/brown-demo-flow.md)
-
-**Inventory Plus** is the application that illustrates hybrid integration by consuming back-end services running on-premise servers. The component view and physical deployment for the first configuration looks like the image below:
+**Inventory Plus** is the application that illustrates hybrid integration by consuming back-end services running on-premise servers. The component view and physical deployment for the IBM Cloud to on-premise servers configuration looks like the image below:
 ![Components and Physical view](docs/cp-phy-view0.png)
 
 From left to right:
-* The Case Inc Portal app defines a set of user interface to manage Inventory elements, it is a modern Angular 4 / nodejs app which uses the [Back-end For Front-end pattern](http://philcalcado.com/2015/09/18/the_back_end_for_front_end_pattern_bff.html).
+* The [Case Inc Portal app](https://github.com/ibm-cloud-architecture/refarch-caseinc-app) defines a set of user interface to manage Inventory elements, it is a modern Angular 4 / nodejs app which uses the [Back-end For Front-end pattern](http://philcalcado.com/2015/09/18/the_back_end_for_front_end_pattern_bff.html).
  The general-purpose API backend is implemented in ESB running on-premise. The client specific APIs to serve the Angular js app are done in this BFF component.
 
-* The nodejs/expressjs accesses the REST api exposed by API Connect via a Secure Gateway service on IBM Cloud which acts as a proxy. A second security configuration is to use VPN. This application is containized and deployable on Kubernetes cluster. See [this repository.](https://github.com/ibm-cloud-architecture/refarch-caseinc-app)
+* The nodejs/expressjs accesses the REST api exposed by API Connect via a [Secure Gateway service](https://github.com/ibm-cloud-architecture/refarch-integration-utilities/blob/master/docs/ConfigureSecureGateway.md) on IBM Cloud which acts as a proxy or via direct VPN connection. This application is containized and deployable on Kubernetes cluster. See [this repository.](https://github.com/ibm-cloud-architecture/refarch-caseinc-app)
 
-* The connection between public cloud and internal IT resources, is done via a VPN IPsec tunnel or IBM Secure Gateway. As of now we are using IBM Secure Gateway Client on a dedicated server. This server is called [BrownUtilityServer](https://github.com/ibm-cloud-architecture/refarch-integration-utilities).
+* The connection between public cloud and internal IT resources, is done via a VPN IPsec tunnel or [IBM Secure Gateway](https://github.com/ibm-cloud-architecture/refarch-integration-utilities/blob/master/docs/ConfigureSecureGateway.md). As of now we are using IBM Secure Gateway Client on a dedicated server. This server is called [BrownUtilityServer and the installation and configuration is detailed here ](https://github.com/ibm-cloud-architecture/refarch-integration-utilities).
 
 * [API Connect](https://github.com/ibm-cloud-architecture/refarch-integration-api), installed on-premise, is used as API gateway to the different API run times.
 
@@ -113,11 +116,11 @@ From left to right:
 
 * The inventory **database** is running on DB2 and is not directly accessed from API connect, but applying SOA principles, it is accessed via a Data Access Layer app. The server is *BrownDB2*.
 
-This set of projects are implementing the Hybrid integration reference architecture describe in IBM [Architecture Center - Hybrid Architecture](https://www.ibm.com/devops/method/content/architecture/hybridArchitecture#0_1) with some light changes as illustrated below:    
+This set of projects are implementing the Hybrid integration reference architecture described in IBM [Architecture Center - Hybrid Architecture](https://www.ibm.com/cloud/garage/content/architecture/hybridArchitecture) with some light changes as illustrated below:    
 ![RA](docs/hybrid-ra.png)
 * API Connect runs on premise
-* ESB is used to manage all SOA service
-* VPN or Secure Gateway is used to open secure tunneling between public cloud deployed applications and on-premise services.
+* ESB is used to manage all SOA services
+* VPN or Secure Gateway are used to open secure tunneling between public cloud deployed applications and on-premise services.
 
 The current implementation can run on private cloud and we are presenting this deployment in detail in [this article](docs/icp/README.md).
 
@@ -223,7 +226,11 @@ Please check [this repository](https://github.com/ibm-cloud-architecture/refarch
 We do not plan to implement complex topology for the on-premise servers to support HA, mostly because of cost and time reason and the fact that it is covered a lot in different articles. For IBM Cloud Private read the following [ICP cluster HA article](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Resiliency/Configure_HA_ICP_cluster.md)
 
 # Hybrid Service Management
-TBD
+We are using a dedicated set of servers to support service management. You can read the following articles:
+* https://www.ibm.com/blogs/bluemix/2018/01/dashboards-for-ibm-cloud-private/
+* https://www.ibm.com/cloud/garage/content/architecture/serviceManagementArchitecture/2_0
+
+We will detail in close future all the configuration, settings to monitor brown compute.
 
 # Contribute
 We welcome your contribution. There are multiple ways to contribute: report bugs and improvement suggestion, improve documentation and contribute code.
