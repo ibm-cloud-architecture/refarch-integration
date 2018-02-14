@@ -5,11 +5,48 @@ With all the components involved in this solution we want to enable CI/CD to dep
 For continuous integration and deployment we are using a `Build server` with [Jenkins](http://jenkins.io) server deployed on it. With Jenkins we can do continuous build, execute non regression tests, integration tests and deployment of each components to different target servers.
 
 # Table of content
-* [Server configuration](#installation)
+* [Installation](#installation)
 * [Pipeline definition](#pipeline)
 * [Specific project CI/CD](#projects_build)
 
 ## Installation
+There are multiple ways to install Jenkins server: using a dedicated VM server installing the binary or running as docker container, or deploy the jenkins helm release to IBM Cloud Private.
+### Jenkins on ICP
+* Add the public kubernetes repositiries, using the admin console > Manager > Repositories and use the URL: https://github.com/kubernetes/charts/tree/master/stable
+* Create a Persistence Volume Claim named `jenkins-home`
+
+* Then install the chart
+```
+helm install --name jenkins --set Persistence.ExistingClaim=jenkins-home --set Master.ImageTag=2.67 stable/jenkins
+```
+* Once the pod is started, the service exposes a NodePort as you can see in the figure below:
+![](jenkins-svc.png)  
+
+so going to the address should launch the console. You need to access the initial admin password. The following command may not give the expected password:
+
+```
+$ printf $(kubectl get secret --namespace browncompute jenkins-jenkins -o jsonpath="{.data.jenkins-admin-password}" | base64 --decode);echo
+```
+As an alternate solution, try to remote connect to the pods and then navigating to the good path to see the password persisted in a file named `initialAdminPassword`:
+```
+$ kubectl exec -ti jenkins-jenkins-7995cd796f-btdjz  /bin/bash
+$ cd /var/jenkins_home/secrets
+$ cat initialAdminPassword
+```
+* Create a user and change the password. When Jenkins server starts it may be needed to upgrade the deployed version.
+* Define configmap and secrets to reference private docker registry, running on the ICP Master node: A file under the charts folder defines the cluster to be `greencluster.icp:8500`
+```
+$ kubectl create -f docker-reg-configMap.yaml
+```
+For the secrets we need to encode the user defined for admin and its password. You can use the online encoder at: https://www.base64encode.org/. For `admin` userid the code is `YWRtaW4NCg==`. Reuse the secret yaml file under the charts folder.
+```
+$ kubectl create -f registry-secret.yaml
+```  
+* Create pipeline: create new jobs... [See note](#pipeline) below.
+
+See also [this tutorial](https://www.ibm.com/cloud/garage/tutorials/cloud-private-jenkins-pipeline) on Garage method tutorial web page.
+
+### Jenkins on-premise server
 The installation is following a non-docker install approach as described [here]( https://jenkins.io/doc/book/getting-started/installing), specially the following steps should be done:
 #### Get the jenkins binary and install
 ```
