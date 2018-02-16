@@ -12,10 +12,16 @@ For continuous integration and deployment we are using a `Build server` with [Je
 ## Installation
 There are multiple ways to install Jenkins server: using a dedicated VM server installing the binary or running as docker container, or deploy the jenkins helm release to IBM Cloud Private.
 ### Jenkins on ICP
-* Add the public kubernetes repositiries, using the admin console > Manager > Repositories and use the URL: https://github.com/kubernetes/charts/tree/master/stable
+The Jenkins architecture while deployed to kubernetes cluster looks like the diagram below:
+![](jenkins-architecture.png)
+
+The installation process will deploy a Jenkins master responsible to eecute build jobs. Each build jobs is in fact a `slave pod`, so another docker images that executes a jenkins file as defined in the pipeline definition. As applications built with this approach are docker containers and helm releases, there is a need to use a docker registry, could be public or private to ICP. To support dynamic pod creation, there is a [jenkins plugin for kubernetes](https://github.com/jenkinsci/kubernetes-plugin). This plugin helps to define specific elements in the Jenkins file to execute the build using docker containers.
+So the installation should install the jenkins master as a helm release, configure some parameters to access private docker repository, and add necessary jenkins plugins:
+
+* Add the public kubernetes repositories, using the admin console > Manager > Repositories and use the URL: https://github.com/kubernetes/charts/tree/master/stable
 * Create a Persistence Volume Claim named `jenkins-home`
 
-* Then install the chart
+* Then install the jenkins-master chart
 ```
 helm install --name jenkins --set Persistence.ExistingClaim=jenkins-home --set Master.ImageTag=2.67 stable/jenkins
 ```
@@ -42,9 +48,11 @@ For the secrets we need to encode the user defined for admin and its password. Y
 ```
 $ kubectl create -f registry-secret.yaml
 ```  
+* Add kubernetes plugin and nodejs plugin using the `Jenkins > Manage Jenkins> Manage Plugins` in Jenkins master console. Restart Jenkins.
+
 * Create pipeline: create new jobs... [See note](#pipeline) below.
 
-See also [this tutorial](https://www.ibm.com/cloud/garage/tutorials/cloud-private-jenkins-pipeline) on Garage method tutorial web page.
+See also [this jenkins pipeline tutorial](https://github.com/ibm-cloud-architecture/refarch-cloudnative-devops-kubernetes).
 
 ### Jenkins on-premise server
 The installation is following a non-docker install approach as described [here]( https://jenkins.io/doc/book/getting-started/installing), specially the following steps should be done:

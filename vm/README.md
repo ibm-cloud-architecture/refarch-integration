@@ -5,3 +5,8 @@ To make testing easier for you, we are building a [Vagrant](https://www.vagrantu
 
 ## Vagrantfile
 The file is under `vm` folder.
+
+```
+vagrant up
+vagrant ssh
+```
