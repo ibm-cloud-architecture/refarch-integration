@@ -2,6 +2,8 @@
 
 IT environments are becoming hybrid in nature; most businesses use cloud computing as part of their overall IT environment. While businesses continue to operate enterprise applications, processes, and systems of record on premises, they are rapidly developing cloud-native applications on cloud. The [hybrid integration reference architecture](https://www.ibm.com/cloud/garage/content/architecture/integrationServicesDomain/) describes an approach to connect components which are split across cloud and on-premises environments, or across public and private clouds -- even across different cloud providers.
 
+Updated (02/27/2018)
+
 In this architecture, existing applications are moved to the infrastructure as a service (IaaS) of cloud providers. New applications are built on the cloud as a platform as a service (PaaS), using pre-built cloud-based software as a service (SaaS).
 
 Hybrid integration has a vast scope addressing integration points like:
@@ -28,8 +30,8 @@ This current project provides a reference implementation for building and runnin
   * [Environment Setup](#the-current-physical-deployment-and-installation)
   * [Build and run](#build-and-run)
   * [Deployment to IBM Cloud Private](./docs/icp/README.md)
-  * [Deployment to IBM Cloud Container Service IBM Cloud](./docs/run-bmx-cs.md)
-  * [Deploy on IBM Cloud Cloud Foundry](./docs/run-bmx-cf.md)
+  * [Deployment webapp to IBM Cloud Container Service IBM Cloud](./docs/run-bmx-cs.md)
+  * [Deploy webapp on IBM Cloud using Cloud Foundry](./docs/run-bmx-cf.md)
 * [Methodology](#methodology)
 * [Security](#security)
 * [DevOps / CI/CD](docs/devops/README.md)
@@ -39,9 +41,9 @@ This current project provides a reference implementation for building and runnin
 * [Contribute to the solution](#contribute)
 
 ## Target audiences
-* Architects who want to deeply understand how all the components work together, and how to support the non-functional requirements
+* Architects who want to deeply understand how all the components work together, and how to support the non-functional requirements.
 * Developers who want to understand best practices for implementation, logging, devops, testing.
-* Project managers to understand all the artifacts to be included in an hybrid integration solution
+* Project managers to understand all the artifacts to be included in an hybrid integration solution.
 
 ## What you will learn
 By studying this set of projects and articles you will learn:
@@ -68,22 +70,24 @@ In the longer term the brown compute will support this multiple patterns view:
 
 ![](docs/brown-scope.png)
 
-where cloud native applications deployed on public cloud can access on-premise resource deployed on IBM cloud private or more traditional IT. Where cloud native applications are deployed on ICP, using integration microflows, and where micro services are part of event driven pattern, pub/sub or queues, where API definition exposes product for the public consumers or internal consumers and even business partner channels.
+where cloud native applications deployed on public cloud can access on-premise resource deployed on IBM cloud private or more traditional IT. Where cloud native applications are deployed on ICP ([See this note](docs/icp/README.md)), using integration microflows, and where micro services are part of event driven pattern, pub/sub or queues, where API definition exposes product for the public consumers or internal consumers and even business partner channels.
 
-As of December 2017, public webapp accessing backend is supported, and private webapp on ICP are also supported see [this note](docs/icp/README.md)
 
 ## System context
 The following diagram illustrates the logical components involved in the current solution:  
 ![](docs/br-syst-ctx.png)
 
-* [Web App "Case Portal"](https://github.com/ibm-cloud-architecture/refarch-caseinc-app) Portal web app to expose access and user interface to different applications.
-* Interaction APIs to expose API products for public WebApp consumptions. Those APIs support specific resources needed by user interface app and channels they serve.
-* System API to define backend service API product, used by multiple consumers.
-* Integration Bus to connect to deep back end systems and SOA services, and do interface mapping and [mediation flows](https://github.com/ibm-cloud-architecture/refarch-integration-esb).
-* [Watson conversation broker micro service](https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker) to facade and implement orchestration and business logic for chatbots using Watson Conversation.
-* Decision engine to automate business rules execution and Management
-* [Data SOA Java WS service](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal) to expose a data access layer on top of relational item, inventory, supplier database
-* LDAP for user Management
+1. [Web App "Case Portal"](https://github.com/ibm-cloud-architecture/refarch-caseinc-app) Portal web app to expose access and user interface to different applications.
+1. Interaction APIs to expose API products for public WebApp consumptions. Those APIs support specific resources needed by user interface app and channels they serve.
+1. System API to define backend service API product ([inventory APIs](https://github.com/ibm-cloud-architecture/refarch-integration-api/blob/master/docs/apic-to-soap.md)), used by multiple consumers.
+1. Integration Bus to connect to back end systems and SOA services, and do interfaces mapping and [mediation flows](https://github.com/ibm-cloud-architecture/refarch-integration-esb).
+1. [Data SOA Java WS service](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal) to expose a data access layer on top of relational item, inventory, supplier database
+1. Db2 deployment of the [Inventory and Supplier](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-db2) database.
+1. [Watson conversation broker micro service](https://github.com/ibm-cloud-architecture/refarch-cognitive-conversation-broker) to facade and implement orchestration and business logic for chatbots using Watson Conversation IBM Cloud service.
+1. [Supplier on boarding process](https://github.com/ibm-cloud-architecture/refarch-cognitive-supplier-process), deployed as human centric process on IBM BPM on Cloud and triggered by Watson Conversation chatbot.
+1. [Customer management for analytics](https://github.com/ibm-cloud-architecture/refarch-integration-services) micro services to support RESTful API.
+1. Decision engine to automate business rules execution and Management for [product recommendation in the context of user moving in different location](https://github.com/ibm-cloud-architecture/refarch-cognitive-prod-recommendations)
+1. [LDAP for user Management](https://github.com/ibm-cloud-architecture/refarch-integration-utilities#ldap-configuration) to centralize authentication use cases.
 
 ## User interface
 To demonstrate the set of features of this solution , a front end application, representing an internal portal user interface, is used to plug and play the different use cases.
@@ -133,7 +137,8 @@ This project leverages a set of projects by applying clear separation of concern
 * [IBM Integration Bus - Inventory gateway flow](https://github.com/ibm-cloud-architecture/refarch-integration-esb) Gateway and orchestration flow
 * [Data Access Layer](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal) to deliver SOAP interface for Inventory management. JAXWS / JPA app.
 * [DB2](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-db2) to support scripting and ddl for Inventory DB.
-
+* [Customer management for analytics micro service in JAXRS on Liberty](https://github.com/ibm-cloud-architecture/refarch-integration-services)
+* [Operational Decision Management based product recommendation in the context of user moving in different location](https://github.com/ibm-cloud-architecture/refarch-cognitive-prod-recommendations)
 * [Testing](https://github.com/ibm-cloud-architecture/refarch-integration-tests) This repository includes a set of test cases to do component testing, functional testing and integration tests.
 
 

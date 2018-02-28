@@ -1,7 +1,7 @@
 # IBM Cloud Private Deployment
-In this section we are presenting how *Hybrid integration compute implementation* is deployed to IBM Cloud Private. For that we will address different configurations as business and operation requirements may differ per data center and even per business application.
+In this section we are presenting how *Hybrid integration solution implementation* is deployed to IBM Cloud Private. We address different configurations as business and operation requirements may differ per data center and even per business applications. Each configuration describe how some of the components of the solution may be deployed to ICP or kept on-premise servers
 
-Updated 01/04/2017
+Updated 02/26/2018
 
 ## Table of Contents
 * [Prerequisites](#prerequisites)
@@ -11,42 +11,41 @@ Updated 01/04/2017
 * [Troubleshooting](troubleshooting.md)
 
 ## Prerequisites
-The following points should be considered before going in more detail of the ICP deployment:
+The following points should be considered before going into more detail of the ICP deployment:
 * A conceptual understanding of how [Kubernetes](https://kubernetes.io/docs/concepts/) works.
 * A high-level understanding of [Helm and Kubernetes package management](https://docs.helm.sh/architecture/).
 * A basic understanding of [IBM Cloud Private cluster architecture](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/getting_started/architecture.html).
 * Understand the different [ICP environment and sizing](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Sizing.md)
-* Access to an operational IBM Cloud Private cluster [see installation note](./dev-env-install.md) for the different approaches.
+* Access to an operational IBM Cloud Private cluster [see installation note](./dev-env-install.md) for the different approaches you could use.
 
 A developer needs to have on his development environment the following components:
 * [Docker](dev-env-install.md#install-docker)
 * [Kubectl](dev-env-install.md#install-kubectl)
 * [Helm](dev-env-install.md#install-helm)
 we have provided a shell script to do those installation. Execute `./install_cli.sh` ( or `./install_cli.bat` for Windows)
-
-* Add a **browncompute** namespace using ICP admin console, under **Admin > Namespaces** menu
+* Add a **browncompute** namespace using ICP admin console, under **Admin > Namespaces** menu.
 
 ![](icp-brown-ns.png)
 
 We will use this namespace to push the *hybrid integration* components into ICP cluster.
 
 # Configurations
-As an hybrid solution each component of the solution may run on existing on-premise server or on IBM Cloud Private. The deployment decision will be driven by the business requirements and the availability of underlying IBM middleware product as docker image.
+As an hybrid solution each component of the solution may run on existing on-premise servers or within IBM Cloud Private cluster. The deployment decision will be driven by the business requirements and the availability of underlying IBM middleware product as docker image and helm chart.
 
 For each component of the 'hybrid integration' solution the following needs may be done:
    * build the docker image
    * tag the image with information about the target repository server, namespace, tag and version
-   * push the image to the remote docker repository (most likely the one inside ICP)
+   * push the image to the remote docker repository (most likely the one inside ICP master node)
    * build the helm package from the chart definition
-   * install the chart to ICP cluster using *helm* command line interface
+   * install the chart to ICP cluster using *helm install or upgrade* command line interface
    * access the URL end point
 
 ## Cfg 1: Cloud native application on ICP
-This is the simplest deployment where the cloud native web application ([the 'case' portal](https://github.com/ibm-cloud-architecture/refarch-caseinc-app)) is deployed as container running in ICP, and accesses the back end service via API Connect running on-premise. All other components run on-premise.
+This is the simplest deployment where only the cloud native web application ([the 'case' portal](https://github.com/ibm-cloud-architecture/refarch-caseinc-app)) is deployed. It still accesses the back end services via API Connect running on-premise. All other components run on-premise. The figure below illustrates this deployment:
 
 ![WebApp](./bc-icp-cfg1.png)
 
-This approach will be the less disruptive, let the development team innovating with new polyglot runtime environments supported by cloud native based application and micro services.
+The webapp was developed as Angular / nodejs app, using cloud foundry deployment model. The approach was to externalize the configuration outside of CF and package the application as docker container. This approach will be the less disruptive as developers can quickly innovate using cloud native development practices.
 
 To support this configuration you need to:  
 1. compile and package the web application as docker container
@@ -54,9 +53,9 @@ To support this configuration you need to:
 1. use `helm` and `kubectl` command line interfaces to install and control the chart deployment
 1. test with integration tests as defined in [this project](https://github.com/ibm-cloud-architecture/refarch-integration-tests)
 
-For the web app deployment follow the step by step [tutorial here](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/icp/README.md).
+For the web app deployment follow [the step by step tutorial](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/icp/README.md).
 
-If you want to review each component, their descriptions are below:
+If you want to review each on-premise component, their descriptions are below:
 * [API Connect - Inventory product](https://github.com/ibm-cloud-architecture/refarch-integration#inventory-management)
 * [Gateway flow in integration broker](https://github.com/ibm-cloud-architecture/refarch-integration-esb#inventory-flow)
 * [SOAP service for data access Layer](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal#code-explanation)
@@ -69,7 +68,7 @@ The goal for this configuration is to deploy Data power gateway to IBM cloud pri
 
 The second Datapower gateway is used to present 'System' APIs. (see this redbook ["A practical Guide for IBM Hybrid Integration Platform"](http://www.redbooks.ibm.com/redbooks/pdfs/sg248351.pdf) for detail about this clear APIs separation)
 
-The `gateway flow`, deployed on IIB, is doing the REST to SOAP interface mapping: this configuration illustrates deep adoption of the ESB pattern leveraging existing high end deployments, scaling both horizontally and vertically. In this model the concept of operation for mediation and integration logic development is kept.
+The `gateway flow`, deployed on IIB, is doing the REST to SOAP interface mapping: this configuration illustrates deep adoption of the ESB pattern leveraging existing high end deployments, scaling both horizontally and vertically. In this model the concept of operation for mediation and integration logic development and deployment are kept.
 
 The steps are:
 1. Modify the webapp configuration to use a different URL for the gateway flow: The settings is done in the `values.yaml` in the chart folder of the [case portal app](https://github.com/ibm-cloud-architecture/refarch-caseinc-app)
@@ -106,7 +105,7 @@ This approach leverages existing investment and IIB concept of operation, and IB
 
 
 ## Cfg 5: All API Connect to ICP
-This configuration runs every component on ICP, leverage public cloud service, and on-premise directory services.
+This configuration runs every components on ICP, leverage public cloud services, and on-premise directory services.
 
 ![](./bc-icp-cfg5.png)
 
@@ -132,9 +131,6 @@ $ scp index.yaml admin@9.19.34.107:8443/helm-repo/charts
 Once the repository are synchronized your helm chart should be in the catalog:
 ![](helm-in-app-center.png)
 
-
-# Understanding networking
-TBD
 
 ## kube-dns
 Kubelets resolve hostnames for pods through a Service named `kube-dns`. kube-dns runs as a pod in the kube-system namespace. Every Service that is created is automatically assigned a DNS name. By default, this hostname is `ServiceName.Namespace`. All Services that are in the same namespace may omit `Namespace` and just use `ServiceName`. Here is an example:
