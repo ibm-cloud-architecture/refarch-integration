@@ -1,6 +1,12 @@
 # Hybrid Service Management
 -- UNDER CONSTRUCTION
 
+We are using a dedicated set of servers to support service management. You can read the following articles:
+* https://www.ibm.com/blogs/bluemix/2018/01/dashboards-for-ibm-cloud-private/
+* https://www.ibm.com/cloud/garage/content/architecture/serviceManagementArchitecture/2_0
+
+We will detail in close future all the configuration, settings to monitor brown compute.
+
 In this section we are detailing how to manage the deployed components of the hybrid solution, mixing ICP workloads and on-premise applications.
 
 For information about the [service management reference architecture, read this](https://www.ibm.com/cloud/garage/content/architecture/serviceManagementArchitecture)
