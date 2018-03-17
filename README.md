@@ -30,7 +30,7 @@ The following diagram presents the high level view of the components involved in
 Each component may run on-premises, IaaS, PaaS or SaaS.
 
 This current project provides a reference implementation for building and running an **hybrid integration** solution, using cloud native web application **securely** connected to an enterprise data source and SOA services running on on-premise servers. We want to illustrate how to leverage existing SOA / Traditional IT landscape with products such as ESB, BPM, rule engine, Java based web service applications or even event driven publishers.  
-In the longer term the brown compute will support the multiple integration patterns as presented in the figure below, and for more information please read [this note](hybrid-itg-platform.md):
+In the longer term the brown compute will support the multiple integration patterns as presented in the figure below, and for more information please read [this note](docs/hybrid-itg-platform.md):
 
 ![](docs/brown-scope.png)
 
