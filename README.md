@@ -14,8 +14,8 @@ This solution implementation covers a lot of different and interesting subject. 
 ## Table of Contents
 * [Introduction](#introduction)
 * [What you will learn](#what-you-will-learn)
-* [Application Overview](#scope-overview)   
-* [Build, deploy and run](./docs/build-and-run.md)
+* [Application Overview](#application-overview)   
+* [Build, deploy and run](./docs/build-run.md)
 * [Non-functional requirements](./docs/nfr.md)
 * [Compendium](./docs/compendium.md)
 * [Contribute to the solution](#contribute)
@@ -24,8 +24,8 @@ This solution implementation covers a lot of different and interesting subject. 
 ## Introduction
 In this architecture, existing applications are moved to the infrastructure as a service (IaaS) of cloud providers, new applications are built on the cloud as a platform as a service (PaaS), using pre-built cloud-based software as a service (SaaS) services.
 
-The following diagram presents the high level view of the components involved in the hybrid integration reference architecture. For an deeper explanation of this architecture read [this note](docs/hybrid-ref-arch.md)
-![Hybrid integration](docs/fig1.png).
+The following diagram presents the high level view of the components involved in the hybrid integration reference architecture. For an deeper explanation of this architecture read [this note](./docs/hybrid-ref-arch.md)
+![Hybrid integration](./docs/fig1.png).
 
 Each component may run on-premises, IaaS, PaaS or SaaS.
 
