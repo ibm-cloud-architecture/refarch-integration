@@ -11,7 +11,7 @@ While enterprise systems are usually considered as systems of record, the adopti
 
 * Application migrated to ICP connecting to backend systems using integration services running in backend layer.
 * Applications and the required integration services are migrated to ICP. Multiple applications can share the integration services.
-* Each microservice within an application has a dedicated integration service. This pattern would apply where the microservice and integration service are owned by the same team. The integration service can be shared by other microservices as well e.g integration service defines integration with a backend HR system. The integration services will follow the principles of lightweight integration - https://www.ibm.com/developerworks/cloud/library/cl-lightweight-integration-1/index.html
+* Each microservice within an application has a dedicated integration service. This pattern would apply where the microservice and integration service are owned by the same team. The integration service can be shared by other microservices as well e.g integration service defines integration with a backend HR system. The integration services will follow the principles of lightweight integration - https://www.ibm.com/developerworks/cloud/library/cl-lightweight-integration-2/index.html
 * Applications with decoupled microservices for robustness could use lightweight publish/subscribe messaging for inter-communication and call backend systems using internal APIs.
 * Internal APIs are exposed using a dedicated API Gateway and consumed by internal applications.
 

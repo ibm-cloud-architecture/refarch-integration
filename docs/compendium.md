@@ -8,6 +8,9 @@ Here is a list of important public content to improve your skill on the products
 * [Redbook: "A practical Guide for IBM Hybrid Integration Platform"](http://www.redbooks.ibm.com/redbooks/pdfs/sg248351.pdf)
 
 ## Product related knowledge based:
+### Integration
+* [The fate of ESB- Integration pattern](https://www.ibm.com/developerworks/cloud/library/cl-lightweight-integration-1/index.html)
+* [Moving to lightweight integration](https://www.ibm.com/developerworks/cloud/library/cl-lightweight-integration-2/index.html)
 ### API Connect
 * [API Connect knowledge center](https://www.ibm.com/support/knowledgecenter/en/SSMNED_5.0.0/mapfiles/getting_started.html)
 ### IBM Integration Bus
