@@ -1,19 +1,18 @@
 
 # Build, Deploy and Run
-
-We are covering two major configurations to represent the hybrid integration patterns according to the deployment of the different component to public, private cloud or on-premise traditional servers:
-1. the Portal Web Application, BFF micro service and API Management run on public cloud and the other legacy components on-premise servers:
+To address the hybrid integration patterns, we are proposing two deployment configurations combining public cloud, private cloud and on-premise traditional servers:
+1. **Configuration 1**: the Portal Web Application, BFF micro service and API Management run on public cloud and the other legacy components on-premise servers:
 
   ![](public-cloud-deployment.png)
 
-  On left side is the cloud public deployment, on the right bear metal or VM servers. The Web Application is deployed using container and IBM Cloud container service. (See [this note](./docs/run-bmx-cs.md) for explanations). Using docker container helped us to move workload to Kubernetes cluster running on-premise as part of the second configuration. The communication between the two environments is done using IBM [Secure Gateway service](https://github.com/ibm-cloud-architecture/refarch-integration-utilities/blob/master/docs/ConfigureSecureGateway.md).
+  On left side is the cloud public deployment, on the right bear metal or VM servers. The Web Application is deployed using container and IBM Cloud container service. (See [this note](./run-bmx-cs.md) for explanations). Using docker container helped us to move workload to Kubernetes cluster running on-premise as part of the second configuration. The communication between the two environments is done using IBM [Secure Gateway service](https://github.com/ibm-cloud-architecture/refarch-integration-utilities/blob/master/docs/ConfigureSecureGateway.md).
 
 
-1. we deploy a lot of the components on IBM Cloud Private, the IBM extenstion to Kubernetes, calling IBM cloud cognitive services and on-premise backend services as illustrated in the figure below:
+1. **Configuration 2**:  covers the deployment of most of the solution components on to IBM Cloud Private, the IBM extenstion to Kubernetes. The BFF micro service is calling IBM cloud cognitive services running on IBM Cloud and on-premise backend services:
 
  ![](icp-deployment.png)
 
-See detail in [Deployment to IBM Cloud Private article](./icp/README.md)
+The light blue area represents on-premise servers, while the green area represents the Cloud Private, kubernetes cluster. See detail in [Deployment to IBM Cloud Private article](./icp/README.md)
 
 ## Prerequisites
 * You need your own [github.com](http://github.com) account
@@ -23,10 +22,10 @@ See detail in [Deployment to IBM Cloud Private article](./icp/README.md)
 * As we are migrating most of the workload to IBM Cloud Private, we delivered dockerfiles and helm charts to deploy on Kubernetes.
 
 ## Specifics deployment
-Each project covers detail on how to build and run.
-* The [Case Inc Portal app deployment](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/icp/README.md)
-* [API Connect](https://github.com/ibm-cloud-architecture/refarch-integration-api), installed on-premise, is used as API gateway to the different API run times.
-* [IBM Integration Bus deployment](https://github.com/ibm-cloud-architecture/refarch-integration-esb#deployment), is used to do interfaces mapping between the SOAP data access layer, implemented in Java, and the RESTful API exposed to the public applications, and other mediation or orchestration flow. For detail see [this note](./iib.md)
+Each project covers in detail how to build and run their own components.
+* For the Case Inc Portal app [see the deployment note.](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/icp/README.md)
+* For [API Connect](https://github.com/ibm-cloud-architecture/refarch-integration-api), installed on-premise, is used as API gateway to the different API run times.
+* The [IBM Integration Bus deployment](https://github.com/ibm-cloud-architecture/refarch-integration-esb#deployment), is used to do interfaces mapping between the SOAP data access layer, implemented in Java, and the RESTful API exposed to the public applications, and other mediation or orchestration flow. For detail see [this note](./iib.md)
 * The **Data Access Layer** is a JAXWS application running on WebSphere Liberty server and exposing a set of SOAP services. The server is *BrownLibertyAppServer*. See [this repository](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal/#build-and-deploy) for detail.
 * The inventory **database** is running on DB2 and is not directly accessed from API connect, but applying SOA principles, it is accessed via a Data Access Layer app. The server is *BrownDB2*.
 
