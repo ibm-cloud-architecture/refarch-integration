@@ -6,7 +6,7 @@ Updated (03/16/2018)
 
 ## Target audiences
 This solution implementation covers a lot of different and interesting subject. If you are...
-* an architect, you will get a deeper understanding on how all the components work together, and how to address API economy, support cloud native polyglot applications and micro service while leveraging your existing investments in SOA.
+* an architect, you will get a deeper understanding on how all the components work together, and how to address API economy, support cloud native polyglot applications and micro service while leveraging your existing investments in SOA and ESB pattern.
 * a developer, you will get a broader view of the solution end to end and get existing starting code, and practices you may want to reuse during your future implementation. We focus on hybrid cloud and private cloud so some interesting areas like CI/CD in hybrid are covered. Test Driven Development with consumer driven contract testing.
 * a project manager, you may understand all the artifacts to develop in an hybrid integration solution, and we may help in the future to do project estimation.
 * a marketing person, you may want to google something else...
@@ -66,7 +66,7 @@ As architect we need to develop a system context, so the following diagram illus
 (the links below send you to the corresponding git repository where you can get specific deeper dive and executable code and scripts)
 1. [Web App "Case Portal"](https://github.com/ibm-cloud-architecture/refarch-caseinc-app) Portal web app (Angular 4) exposes a set of capabilities to internal users for inventory management, chatbots...
 1. Interaction APIs exposes API products for public WebApp consumptions. Those [APIs](https://github.com/ibm-cloud-architecture/refarch-integration-api) support specific resources needed by user interface app and the channels they serve.
-1. Back End For Front End to support business logic of the web app, and simple integration of RESTful services. This is currently the server part of the [web app](https://github.com/ibm-cloud-architecture/refarch-caseinc-app)). We want to separate the Angular 4 static pages so it can be deployed on HTTP server like NGinx, as of now the BFF ([Back-end For Front-end pattern](http://philcalcado.com/2015/09/18/the_back_end_for_front_end_pattern_bff.html)) is nodejs app serving the Angular single page application.
+1. Back End For Front End to support business logic of the web app, and simple integration of RESTful services. This is currently the server part of the [web app](https://github.com/ibm-cloud-architecture/refarch-caseinc-app)). We want to separate the Angular 4 static pages so it can be deployed on HTTP server like NGinx, as of now the BFF ([Back-end For Front-end pattern](http://philcalcado.com/2015/09/18/the_back_end_for_front_end_pattern_bff.html)) is nodejs app serving the Angular single page application. BFF pattern is still prevalent for mobile applications and single-page web applications. In this pattern, APIs are created specifically for the front-end application and perfectly suited to its needs with rationalized data models, ideal granularity of operations, specialized security models, and more. We are migrating to be a separate component.
 1. System API to define backend service API product ([inventory APIs](https://github.com/ibm-cloud-architecture/refarch-integration-api/blob/master/docs/apic-to-soap.md)), used by multiple consumers.
 1. Mediation flow deployed on Integration Bus to connect to back end systems and SOA services, and do interfaces mapping and [mediation flows](https://github.com/ibm-cloud-architecture/refarch-integration-esb).
 1. [Data SOA, Java WS service](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal) to expose a data access layer on top of relational item, inventory, supplier database
@@ -111,3 +111,4 @@ Here is a high level plan of future working
 * Separate BFF from angular app.
 * Run angular app on nginx
 * Explain a TDD approach to develop the Angular app
+* Add MQ messaging. 

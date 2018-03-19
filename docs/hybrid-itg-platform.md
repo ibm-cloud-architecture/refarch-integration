@@ -15,4 +15,10 @@ While enterprise systems are usually considered as systems of record, the adopti
 * Applications with decoupled microservices for robustness could use lightweight publish/subscribe messaging for inter-communication and call backend systems using internal APIs.
 * Internal APIs are exposed using a dedicated API Gateway and consumed by internal applications.
 
+The figure below zoom into the pattern of using micro services and application as a group of micro services to support the system of engagement. Those applications are exposing API to the external consumers (mobile app, Single page application) and consume internal / system APIs.
+
+![](ms-itg-api.png)
+
+Micro service component could also be used to improve the agility, scalability, and resilience of a system of record. They offer a lot of benefits on the right circumstances. 
+
 These patterns provide integration architectures for modern enterprise applications as they progress through the IT modernization journey.  It is possible that a modern enterprise may have to use all the above integration patterns to meet the application requirements.
