@@ -53,7 +53,7 @@ If you don't have dynamic provisioning setup, we recommend you read this [docume
 
 To **Install the Jenkins Chart and Provision a PVC dynamically**, use the following command:
 ```bash
-$helm install --namespace default --name jenkins --version 0.14.4 \
+$ helm install --namespace default --name jenkins --version 0.14.4 \
     --set Master.ImageTag=2.117 \
     --set Master.ServiceType=NodePort \
     --set Master.InstallPlugins.0=kubernetes:1.5.2 \
@@ -68,7 +68,7 @@ $helm install --namespace default --name jenkins --version 0.14.4 \
 
 To **Install the Jenkins Chart and Pass an Existing PVC**, use the following command:
 ```bash
-$helm install --namespace default --name jenkins --version 0.14.4 \
+$ helm install --namespace default --name jenkins --version 0.14.4 \
     --set Master.ImageTag=2.117 \
     --set Master.ServiceType=NodePort \
     --set Master.InstallPlugins.0=kubernetes:1.5.2 \
@@ -84,7 +84,7 @@ $helm install --namespace default --name jenkins --version 0.14.4 \
 
 To **Install the Jenkins Chart without a PVC**, use the following command:
 ```bash
-$helm install --namespace default --name jenkins --version 0.14.4 \
+$ helm install --namespace default --name jenkins --version 0.14.4 \
     --set Master.ImageTag=2.117 \
     --set Master.ServiceType=NodePort \
     --set Master.InstallPlugins.0=kubernetes:1.5.2 \
