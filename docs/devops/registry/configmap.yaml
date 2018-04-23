@@ -5,5 +5,5 @@ metadata:
   labels:
     tier: config
 data:
-  namespace: greencompute
-  registry: greencluster.icp:8500
+  namespace: default
+  registry: mycluster.icp:8500
