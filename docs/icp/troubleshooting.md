@@ -1,6 +1,9 @@
 # Troubleshooting in ICP
+This note regroups a set of things we have met during our work on kubernetes and ICP.
 
-## hostname not resolved
+Update 4/3/2018 for ICP 2.1.0.2.
+
+## Error: hostname not resolved
   ```
    fatal: [...] => Failed to connect to the host via ssh: ssh: Could not resolve hostname ...:
    Name or service not known
