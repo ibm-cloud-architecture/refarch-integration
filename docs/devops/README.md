@@ -7,7 +7,7 @@ For continuous integration and deployment we are using a `Build server` with [Je
 # Table of content
 * [Installation](#installation)
     + [Jenkins on IBM Cloud Private (ICP)](#jenkins-on-ibm-cloud-private-icp)
-        - [Helm](#helm)
+        - [Helm](#helm-chart)
         - [Add Public Helm Repository](#add-public-helm-repository)
         - [Create a Persistence Volume Claim](#create-a-persistence-volume-claim)
         - [Install Jenkins Helm Chart](#install-jenkins-helm-chart)
@@ -26,21 +26,21 @@ For continuous integration and deployment we are using a `Build server` with [Je
 * [Projects build](#projects-build)
 
 ## Installation
-There are multiple ways to install Jenkins server: using a dedicated VM server installing the binary or running as docker container, or deploy the jenkins helm release to IBM Cloud Private.
+There are multiple ways to install Jenkins server: using a dedicated VM server by installing the binary or running as docker container, or deploy the jenkins helm release to IBM Cloud Private.
 ### Jenkins on IBM Cloud Private (ICP)
 **NOTE:** [ICP v2.1.0.2](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0.2/kc_welcome_containers.html) was used at the time of writing this section. See also [this jenkins pipeline tutorial](https://github.com/ibm-cloud-architecture/refarch-cloudnative-devops-kubernetes).
 
 The Jenkins architecture while deployed to kubernetes cluster looks like the diagram below:
 ![](jenkins-architecture.png)
 
-The installation process will deploy a Jenkins master responsible to eecute build jobs. Each build jobs is in fact a `slave pod`, so another docker images that executes a jenkins file as defined in the pipeline definition. As applications built with this approach are docker containers and helm releases, there is a need to use a docker registry, could be public or private to ICP. To support dynamic pod creation, there is a [jenkins plugin for kubernetes](https://github.com/jenkinsci/kubernetes-plugin). This plugin helps to define specific elements in the Jenkins file to execute the build using docker containers.
-So the installation should install the jenkins master as a helm release, configure some parameters to access private docker repository, and add necessary jenkins plugins:
+The installation process deploys a **Jenkins master** responsible to execute build jobs. Each build jobs is in fact a `slave pod`, so another docker images that executes a jenkins file as defined in the pipeline definition. As application built with this approach are docker containers and helm releases, there is a need to use a docker registry, could be public or private to ICP. To support dynamic pod creation, there is a [jenkins plugin for kubernetes](https://github.com/jenkinsci/kubernetes-plugin) that needs to be installed. This plugin helps to define specific elements in the Jenkins file to execute the build using docker containers.
+The installation should install the jenkins master as a helm release, configure some parameters to access private docker repository, and add necessary jenkins plugins. We detail those steps:
 
-#### Helm
-In order to install the Jenkins Chart, you need to have the [`Helm`](https://github.com/kubernetes/helm) client configured in your CLI. To install and configure helm, follow the instructions listed [here](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.2/app_center/create_helm_cli.html).
+#### Helm Chart
+In order to install the Jenkins Chart, you need to have the [`Helm`](https://github.com/kubernetes/helm) client configured in your CLI. To install and configure helm, follow the IBM Cloud Private instructions listed [here](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.2/app_center/create_helm_cli.html).
 
 #### Add Public Helm Repository
-* Add the public kubernetes repositories, using the admin console > Manager > Repositories and use the URL: https://github.com/kubernetes/charts/tree/master/stable
+* Add the public kubernetes repositories, using the ICP admin console > Manage > Helm Repositories and use the URL: https://github.com/kubernetes/charts/tree/master/stable
 
 #### Create a Persistence Volume Claim
 You can skip this section if you already setup a default `storage class` for `dynamic provisioning`, as explained [here](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0.2/manage_cluster/cluster_storage.html).
@@ -131,7 +131,7 @@ $ cat initialAdminPassword
 ```
 
 #### Configure Docker Repository
-In order for the pipelines to know where to push newly built docker images, you need to tell it what docker registry to use. To do so, you need to create 2 files:
+In order for the pipelines to know where to push newly built docker images, you need to configure what docker registry to use. To do so, you need to create 2 files:
 * A `ConfigMap` that specifies the registry location.
     + In this case, we are going to use ICP's internal docker registry.
 * A `Secret` that has the registry login credentials.
@@ -172,12 +172,12 @@ doing a `ps -ef | grep jenkins` we can see jenkins server is up and running as a
 The wizard is also asking for a user, so we used *admin/admin01* and to install the standard plugins.
 
 #### For java you need jdk
-As some of the codes of the solution are Java based, we had the JDK (to get `javac` tool and other system jars):
+As some of the codes of the solution are Java based, we add the JDK (to get `javac` tool and other system jars):
 ```bash
 $ sudo apt-get install openjdk-8-jdk
 ```
 
-To automate interaction script like `ssh` and `scp`, we are using [expect](http://expect.sourceforge.net/) tool so password and other input can be injected.
+To automate interaction script like `ssh` and `scp`, we are using [expect](http://expect.sourceforge.net/) tool so password and other input can be injected to any command
 ```bash
 $ sudo apt-get install expect
 ```
@@ -209,10 +209,10 @@ Pipelines are made up of multiple steps that allow you to build, test and deploy
 The following schema presents how the pipeline works:
 ![cicd](cicd-process.png)
 1. Jenkins is listening to change / commit to the github public repositories
-2. Repositories are cloned and their respective Jenkinsfiles are executed to build war, docker images or helm charts
+2. Repositories are cloned and their respective Jenkinsfiles are executed to compile, unit test, build war, docker images and deploy to ICP using helm.
 
 ### Creating Pipeline
-Once the Jenkins server is started we need to create a pipeline. So using the **New Item** menu in the administration console: [Build server](http://localhost:8080) add *Web app Build*
+Once the Jenkins server is started we need to create a pipeline. So using the **New Item** menu in the administration console: [Build server](http://localhost:8080) add *Web app Pipeline*
 
 ![New Pipeline](jk-new-pipeline.png)
 

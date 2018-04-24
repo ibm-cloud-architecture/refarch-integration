@@ -1,7 +1,7 @@
 # Install a development environment with IBM Cloud Private 2.1
-For staging purpose, we are using a ICP EE deployment in a five virtual machine cluster. In this note we are presenting a single virtual machine configuration based on Ubuntu 64 bits v16.10 and how to install ICP 2.1 CE on it.
+For staging purpose, we are using a ICP EE deployment in a five virtual machine cluster. In this note we are presenting a single virtual machine configuration based on Ubuntu 64 bits v16.10 and how to install ICP 2.1.0.2 on it.
 
-Updated 11/30/2107
+Updated 04/23/2018
 
 The developer environment may look like the following diagram, for a developer on Mac and a VM ubuntu image (Windows will look similar)
 ![](dev-env.png)

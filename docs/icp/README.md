@@ -7,7 +7,7 @@ Updated 02/26/2018
 * [Prerequisites](#prerequisites)
 * [Community Edition installation (for development environment)](./dev-env-install.md)
 * [Enterprise Edition Installation](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Installing_ICp_on_prem.md)
-* [Hybrid integration deployment configurations](#configurations) We are proposing different configurations for the deployment of each components of the solution: Webapp, API gateway, message flow, SOAP service, data base.
+* [Hybrid integration deployment configurations](#configurations) We are proposing different configurations for the hybrid solution deployment: Webapp, API gateway, message flow, SOAP services, data base.
 * [Troubleshooting](troubleshooting.md)
 
 ## Prerequisites

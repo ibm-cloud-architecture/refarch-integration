@@ -6,4 +6,4 @@ metadata:
     tier: config
 data:
   namespace: default
-  registry: mycluster.icp:8500
+  registry: green2-cluster.icp:8500

@@ -1,5 +1,5 @@
 # Build your own helm repository for ICP
-Github can be used to persisted the helm charts and then reference-able as source for the ICP catalog. We are presenting in this note how we did it.
+Github can be used to persist the helm charts and then reference it as source for the ICP catalog. We are presenting in this note how we did it.
 
 ## Cloud Native chart
 The webapp in [the 'case' portal](https://github.com/ibm-cloud-architecture/refarch-caseinc-app) is packaged as helm [charts](https://github.com/kubernetes/charts). The commands used were:
