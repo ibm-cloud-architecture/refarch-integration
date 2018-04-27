@@ -17,5 +17,15 @@ entries:
     name: ibm-case-brown-web
     tillerVersion: '>=2.4.0'
     urls:
-    - https://raw.githubusercontent.com/ibm-cloud-architecture/refarch-integration/charts/casewebportal-0.0.3.tgz
+    - https://raw.githubusercontent.com/ibm-cloud-architecture/refarch-integration/master/docs/charts/casewebportal-0.0.3.tgz
     version: 1.0.3
+  browncompute-inventory-dal:
+  - apiVersion: v1
+    created: 2018-04-27T18:56:18.780311317-04:00
+    description: A Helm chart to run Brown Compute Data Access Layer on Kubernetes
+    digest: 62b1db16784b670086a7f674fb491e51463fbeb5fae6256b22b61a8bb56a05a8
+    name: browncompute-inventory-dal
+    home: https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal
+    urls:
+    - https://raw.githubusercontent.com/ibm-cloud-architecture/refarch-integration/master/docs/charts/browncompute-inventory-dal-0.0.4.tgz
+    version: 0.0.4
