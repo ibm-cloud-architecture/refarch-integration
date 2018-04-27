@@ -1,7 +1,9 @@
 # Troubleshooting in ICP
 This note regroups a set of things we have met during our work on kubernetes and ICP.
 
-Update 4/3/2018 for ICP 2.1.0.2.
+Update 4/27/2018 for ICP 2.1.0.2.
+
+Kubernetes [troubleshooting docs](https://kubernetes.io/docs/getting-started-guides/ubuntu/troubleshooting/)
 
 ## Error: hostname not resolved
   ```
@@ -11,10 +13,14 @@ Update 4/3/2018 for ICP 2.1.0.2.
   * verify the hostname match the ip address in /etc/hosts
   * be sure to start the installation from the folder with the hosts file. It should be cluster or modify $(pwd) to $(pwd)/cluster
 
+## Helm version not able to connect to Tiller.
+Error: cannot connect to Tiller
+With version 2.1.0.2, TLS is enforced to communicate with the server. So to get the version the command is `heml version --tls`
+
 ## ssh connect failure
   ```
   fatal: [192.168.1.147] => Failed to connect to the host via ssh:
-  Permission denied (publickey,password).
+  Permission denied (publickey, password).
   ```
 This is a problem of accessing root user during the installation. Be sure to authorize root login, (ssh_config file), that the ssh_key is in the root user home/.ssh. See [above](#ubuntu-specifics)
 

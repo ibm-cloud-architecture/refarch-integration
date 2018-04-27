@@ -1,31 +1,12 @@
 apiVersion: v1
 entries:
-  casewebportal:
-  - apiVersion: v1
-    created: 2017-10-23T17:25:09.954656969-07:00
-    description: Webapp used as portal to demonstrate hybrid integration
-    digest: 2a8f11e4163c4c496280fc5441facf85648e0bcbee200345b7b8cae78d294ec2
-    name: casewebportal
-    home: https://github.com/ibm-cloud-architecture/refarch-caseinc-app
-    keywords:
-    - Hybrid
-    - IBM
-    - browncompute
-    maintainers:
-    - email: boyerje@us.ibm.com
-      name: Jerome Boyer
-    name: ibm-case-brown-web
-    tillerVersion: '>=2.4.0'
-    urls:
-    - https://raw.githubusercontent.com/ibm-cloud-architecture/refarch-integration/master/docs/charts/casewebportal-0.0.3.tgz
-    version: 1.0.3
   browncompute-inventory-dal:
   - apiVersion: v1
-    created: 2018-04-27T18:56:18.780311317-04:00
+    created: 2018-04-27T15:58:42.180159-07:00
     description: A Helm chart to run Brown Compute Data Access Layer on Kubernetes
     digest: 62b1db16784b670086a7f674fb491e51463fbeb5fae6256b22b61a8bb56a05a8
     name: browncompute-inventory-dal
-    home: https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal
     urls:
-    - https://raw.githubusercontent.com/ibm-cloud-architecture/refarch-integration/master/docs/charts/browncompute-inventory-dal-0.0.4.tgz
+    - browncompute-inventory-dal-0.0.4.tgz
     version: 0.0.4
+generated: 2018-04-27T15:58:42.176168-07:00
