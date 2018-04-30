@@ -1,13 +1,14 @@
 # IBM Cloud Private Deployment
 In this section we are presenting how *Hybrid integration solution implementation* is deployed to IBM Cloud Private. We address different configurations as business and operation requirements may differ per data center and even per business applications. Each configuration describe how some of the components of the solution may be deployed to ICP or kept on-premise servers.
 
-Updated 02/26/2018
+Updated 04/27/2018
 
 ## Table of Contents
 * [Prerequisites](#prerequisites)
-* [Community Edition installation (for development environment)](./dev-env-install.md)
+* [Community Edition installation (for your own development environment)](./dev-env-install.md)
 * [Enterprise Edition Installation](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Installing_ICp_on_prem.md)
-* [Hybrid integration deployment configurations](#configurations) We are proposing different configurations for the hybrid solution deployment: Webapp, API gateway, message flow, SOAP services, data base.
+* [Deploy the 'browncompute' solution](#deployment-steps)
+* [Hybrid integration deployment configurations:](#configurations) We are proposing different configurations for the hybrid solution deployment: Webapp, API gateway, message flow, SOAP services, data base.
 * [Troubleshooting](troubleshooting.md)
 
 ## Prerequisites
@@ -29,6 +30,87 @@ we have provided a shell script to do those installation. Execute `./install_cli
 
 We will use this namespace to push the *hybrid integration* components into ICP cluster.
 
+## Deployment steps
+Here are the common steps to deploy each component of the brown compute solution.
+* Create ICP Cluster if you do not have one
+* [Setup Helm](#setup-helm)
+* [Install Helm Chart](#install-helm-chart)
+  + [Option 1: Clone the Repo & Install the Chart](#option-1-clone-the-repo--install-the-chart)
+  + [Option 2: Install from Helm Chart Repository](#option-2-install-from-helm-chart-repository)
+  + [Option 3: Install from Helm Chart Repository using ICP Helm Charts Catalog](#option-3-install-from-helm-chart-repository-using-icp-helm-charts-catalog)
+* [Validate Helm Chart](#validate-helm-chart)
+* Add Helm Repo
+* Install Helm Chart
+* Validate Helm Chart Installation
+* Delete the Helm Chart
+* Setup a CICD Pipeline for each project
+
+### Setup helm
+IBM Cloud Private contains integration with Helm that allows you to install the application and all of its components in a few steps. This can be done as an administrator using the following steps:
+1. Click on the user icon on the top right corner and then click on `Configure client`.
+2. Copy the displayed `kubectl` configuration, paste it in your terminal, and press Enter on your keyboard.
+3. Initialize `helm` in your cluster. Use these [instructions](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.2/app_center/create_helm_cli.html) to install and initialize `helm`.
+
+### Install Helm Chart
+We created [Helm Charts](https://github.com/kubernetes/helm/blob/master/docs/charts.md) for each project. For example the  [`browncompute-inventory-dal`](chart/browncompute-inventory-dal) chart packages all of the kubernetes resources required to deploy the `browncompute-inventory-dal` app and expose it to a public endpoint.
+
+For more in-depth details of the inner-workings of Helm Charts, please refer to the [Helm Chart Documentation](https://github.com/kubernetes/helm/blob/master/docs/charts.md) to learn more about charts.
+
+You have 3 options to install the chart:
+1. Clone the Repo and Install the Chart.
+2. Install the chart from our [`Helm Chart Repository`](https://github.com/kubernetes/helm/blob/master/docs/chart_repository.md), which is served [here](docs/charts) directly from GitHub.
+3. Install the chart from our [`Helm Chart Repository`](https://github.com/kubernetes/helm/blob/master/docs/chart_repository.md) using ICP's Charts Catalog.
+
+### Option 1: Clone the Repo & Install the Chart
+To clone the repo & install the [`browncompute-inventory-dal`](chart/browncompute-inventory-dal) chart from source, run the following commands:
+```bash
+# Clone the repo
+$ git clone https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal.git
+
+# Change to repo directory
+$ cd refarch-integration-inventory-dal
+
+# Install the Chart
+$ helm install chart/browncompute-inventory-dal --name browncompute-dal --tls
+```
+
+### Option 2: Install from Helm Chart Repository
+For this project, we created a [`Helm Chart Repository`](https://github.com/kubernetes/helm/blob/master/docs/chart_repository.md) (located [here](docs/charts)) where we serve a packaged version of the [`browncompute-inventory-dal`](chart/browncompute-inventory-dal) so that you can conveniently install it in your ICP Cluster.
+
+To install the chart from the `Helm Chart Repository`, run the following commands:
+```bash
+# Add Local Reference to Helm Chart Repository
+$ helm repo add browncompute https://raw.githubusercontent.com/ibm-cloud-architecture/refarch-integration-inventory-dal/master/docs/charts
+
+# Install the Chart
+$ helm install browncompute/browncompute-inventory-dal --name browncompute-dal --tls
+```
+
+### Option 3: Install from Helm Chart Repository using ICP Helm Charts Catalog
+Coming Soon
+
+## Validate Helm Chart
+If you installed the chart successfuly, you should see a CLI output similar to the following:
+```
+NAME:   browncompute-dal
+LAST DEPLOYED: Tue Nov 14 22:23:39 2017
+NAMESPACE: browncompute
+STATUS: DEPLOYED
+
+RESOURCES:
+==> v1/Service
+NAME             CLUSTER-IP    EXTERNAL-IP  PORT(S)            AGE
+inventorydalsvc  10.101.0.176  <none>       9080/TCP,9443/TCP  1s
+
+==> v1beta1/Deployment
+NAME                               DESIRED  CURRENT  UP-TO-DATE  AVAILABLE  AGE
+browncompute-dal-browncompute-dal  2        2        2           0          1s
+
+==> v1beta1/Ingress
+NAME                               HOSTS           ADDRESS  PORTS  AGE
+browncompute-dal-browncompute-dal  dal.brown.case            80       1s
+
+```
 # Configurations
 As an hybrid solution each component of the solution may run on existing on-premise servers or within IBM Cloud Private cluster. The deployment decision will be driven by the business requirements and the availability of underlying IBM middleware product as docker image and helm chart.
 

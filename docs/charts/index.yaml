@@ -2,11 +2,20 @@ apiVersion: v1
 entries:
   browncompute-inventory-dal:
   - apiVersion: v1
-    created: 2018-04-27T15:58:42.180159-07:00
+    created: 2018-04-30T08:45:32.217321-07:00
     description: A Helm chart to run Brown Compute Data Access Layer on Kubernetes
     digest: 62b1db16784b670086a7f674fb491e51463fbeb5fae6256b22b61a8bb56a05a8
     name: browncompute-inventory-dal
     urls:
     - browncompute-inventory-dal-0.0.4.tgz
     version: 0.0.4
-generated: 2018-04-27T15:58:42.176168-07:00
+  green-customerms:
+  - apiVersion: v1
+    created: 2018-04-30T08:45:32.218276-07:00
+    description: Customer, account and purchase order micro - service for green compute
+    digest: 734b042770d70a30ea4fc82e95309b2e8eb78d2706458d8bee97db4d2b11404d
+    name: green-customerms
+    urls:
+    - green-customerms-0.0.6.tgz
+    version: 0.0.6
+generated: 2018-04-30T08:45:32.214351-07:00
