@@ -1,8 +1,8 @@
 # DevOps  
-With all the components involved in this solution we want to enable CI/CD to deploy artifacts to on-premise server and on IBM Cloud Private kubernetes cluster.
+With all the components involved in this solution we want to enable CI/CD to deploy artifacts to on-premise servers and to the BM Cloud Private kubernetes cluster.
 
 # Continuous integration with Jenkins
-For continuous integration and deployment we are using a `Build server` with [Jenkins](http://jenkins.io) server deployed on it. With Jenkins we can do continuous build, execute non regression tests, integration tests and deployment of each components to different target servers.
+For continuous integration and deployment we are using a IBM Cloud Private with [Jenkins](http://jenkins.io) release deployed on it. With Jenkins we can do continuous build, execute non regression tests, integration tests and deployment of each components to different target servers.
 
 # Table of content
 * [Installation](#installation)
@@ -201,20 +201,18 @@ $ sudo mpm i -g @angular/cli
 ```
 
 ## Pipeline
-Pipelines are made up of multiple steps that allow you to build, test and deploy applications. The following projects define pipeline in jenkinsfile.
-
-* ibm-cloud-architecture/refarch-integration-inventory-dal. This project includes a *jenkinsfile* which defines a build stage to call a shell to execute *gradlew* to compile and package the war file, built under the folder *build/libs*.
-* ibm-cloud-architecture/refarch-caseinc-app: The jenkins file performs npm install, npm run build, docker build, and helm package...
-
-The following schema presents how the pipeline works:
-![cicd](cicd-process.png)
-1. Jenkins is listening to change / commit to the github public repositories
-2. Repositories are cloned and their respective Jenkinsfiles are executed to compile, unit test, build war, docker images and deploy to ICP using helm.
+Pipelines are made up of multiple steps that allow you to build, test and deploy applications.
 
 ### Creating Pipeline
-Once the Jenkins server is started we need to create a pipeline. So using the **New Item** menu in the administration console: [Build server](http://localhost:8080) add *Web app Pipeline*
+Once the Jenkins server is started we need to create a pipeline. To setup a pipeline, open Jenkins in the browser (example of ICP URL: http://172.16.40.223:32277/) and follow the steps below:
 
-![New Pipeline](jk-new-pipeline.png)
+### 1. Create a Sample Job
+![Create a Sample Job](https://raw.githubusercontent.com/ibm-cloud-architecture/refarch-cloudnative-devops-kubernetes/master/static/imgs/1_create_job.png)
+
+### 2. Select Pipeline Type
+![Create a Sample Job](https://raw.githubusercontent.com/ibm-cloud-architecture/refarch-cloudnative-devops-kubernetes/master/static/imgs/2_select_pipeline_type.png)
+
+### 3. Setup the pipeline configuration
 
 Then select the *Pipeline* configuration. This should bring a page with multiple tabs. The following options were selected:
 * General:
@@ -228,15 +226,29 @@ Then select the *Pipeline* configuration. This should bring a page with multiple
         - http//github.com/ibm-cloud-architecture/refarch-caseinc-app. OR:
         - http//github.com/ibm-cloud-architecture/refarch-integration-inventory-dal/
 
-  Use the *Build Now* option to test the build. You should get the results like:  
+
+## Run the Pipeline
+To run the pipeline, open Jenkins in the browser and follow the steps below:
+
+### 1. Launch Pipeline Build
+![Create a Sample Job](https://raw.githubusercontent.com/ibm-cloud-architecture/refarch-cloudnative-devops-kubernetes/master/static/imgs/4_launch_build.png)
+
+### 2. Open Pipeline Console Output
+![Create a Sample Job](https://raw.githubusercontent.com/ibm-cloud-architecture/refarch-cloudnative-devops-kubernetes/master/static/imgs/5_open_console_output.png)
+
+### 3. Monitor Console Output
+![Create a Sample Job](https://raw.githubusercontent.com/ibm-cloud-architecture/refarch-cloudnative-devops-kubernetes/master/static/imgs/6_see_console_output.png)
+
+If the pipeline finishes successfully, then Congratulations! You have successfully setup a fully working CICD pipeline.
+
+You should get the results like:  
   ![results](cicd-results.png)
 
-The folder where code is extracted is /var/lib/jenkins/workspace/BrownBuild@scripts
-
 ## Projects build
-Each project has its build process that we try to homogenize.
+Each project has its build process that we try to homogenize with the same jenkinsfile approach.
 * [Web app build]()
-* [Data access layer]()
+* [Data access layer](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal/tree/master/docs/devops)
+* [Customer Microservice](https://github.com/ibm-cloud-architecture/refarch-integration-services/tree/master/docs/devops.md)
 * [Mediation flow on IIB]()
 * [API inventory product]()
 * [Integration tests]()

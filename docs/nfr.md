@@ -5,6 +5,7 @@ In this section we are covering some of the non functional Requirements
 * [Security](#security)
 * [Resiliency](#resiliency)
 * [DevOps](./devops/README.md)
+* [Service Management](./csmo/README.md)
 
 ## Security
 Multiple security concerns are addressed by the **hybrid integration compute** model. The first one is to support the deployment of private on-premise LDAP directory. The installation and configuration of the Open LDAP on the **Utility server** is described [here](https://github.com/ibm-cloud-architecture/refarch-integration-utilities#ldap-configuration).

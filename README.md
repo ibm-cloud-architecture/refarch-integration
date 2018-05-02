@@ -2,7 +2,7 @@
 
 IT environments are becoming hybrid in nature; most businesses use cloud computing as part of their overall IT environment. While businesses continue to operate enterprise applications, processes, and systems of record on premises, they are rapidly developing cloud-native applications on cloud. The [hybrid integration reference architecture](https://www.ibm.com/cloud/garage/content/architecture/integrationServicesDomain/) describes an approach to connect components which are split across cloud and on-premises environments, or across public and private clouds -- even across different cloud providers.
 
-Updated (03/16/2018)
+Updated (05/02/2018)
 
 ## Target audiences
 This solution implementation covers a lot of different and interesting subject. If you are...
@@ -11,11 +11,28 @@ This solution implementation covers a lot of different and interesting subject. 
 * a project manager, you may understand all the artifacts to develop in an hybrid integration solution, and we may help in the future to do project estimation.
 * a marketing person, you may want to google something else...
 
+
+## What you will learn
+One of the goal of this implementation is to reflect what is commonly found in IT landscape in 2017, and provides recommendations on how to manage hybrid architecture with the cloud programming model by addressing non-functional requirements as scalability, security, monitoring and resiliency.
+
+By studying the set of projects and articles linked to this top repository, you will learn:
+- how to develop a [SOAP app in Java](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal#code-explanation) using JPA, JAXWS deployed on WebSphere Liberty
+- how to develop [gateway message flow](https://github.com/ibm-cloud-architecture/refarch-integration-esb#inventory-flow) with IBM Integration Bus
+- how to define [API product](https://github.com/ibm-cloud-architecture/refarch-integration-api#implementation-details) with API Connect, and use secure communication with TLS for backend APIs
+- how to set up secure connection from IBM Cloud public to on-premise service using [IBM Secure Gateway]()
+- how to develop a Single Page Application with [Angular 5](https://github.com/ibm-cloud-architecture/refarch-caseinc-app#code-explanation) using a Test Drive Development approach with nodejs/expressjs back end
+- how to [secure the web app with passport](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/login.md)
+- how to access existing LDAP service for user authentication
+- how to perform [CI/CD in hybrid world](docs/devops/README.md)
+- how to monitor all those components using Application Performance Monitoring
+- how to deploy most of the components of the solution to IBM Cloud Private
+- How to call BPM process from Watson Conversation (orchestration), and how to integrate chat user interface connected to Watson Conversation into BPM coach.
+
 ## Table of Contents
-* [Introduction](#introduction)
+* [Hybrid Cloud Introduction](#introduction)
 * [What you will learn](#what-you-will-learn)
 * [Application Overview](#application-overview)   
-* [Build, deploy and run](./docs/build-run.md)
+* [Build, deploy and run](./docs/buildrun/README.md)
 * [Non-functional requirements](./docs/nfr.md)
 * [Compendium](./docs/compendium.md)
 * [Contribute to the solution](#contribute)
@@ -34,40 +51,24 @@ In the longer term the brown compute will support the multiple integration patte
 
 ![](docs/brown-scope.png)
 
-### What you will learn
-One of the goal of this implementation is to reflect what is commonly found in IT landscape in 2017, and provides recommendations on how to manage hybrid architecture with the cloud programming model by addressing non-functional requirements as scalability, security, monitoring and resiliency.
-
-By studying the set of projects and articles linked to this top repository, you will learn:
-- how to develop a [SOAP app in Java](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal#code-explanation) using JPA, JAXWS deployed on WebSphere Liberty
-- how to develop [gateway message flow](https://github.com/ibm-cloud-architecture/refarch-integration-esb#inventory-flow) with IBM Integration Bus
-- how to define [API product](https://github.com/ibm-cloud-architecture/refarch-integration-api#implementation-details) with API Connect, and use secure communication with TLS
-- how to set up secure connection from public cloud to on-premise service using Secure Gateway
-- how to develop a [Angular 4 app](https://github.com/ibm-cloud-architecture/refarch-caseinc-app#code-explanation) using a Test Drive Development approach with nodejs/expressjs back end
-- how to [secure the web app with passport](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/login.md)
-- how to access existing LDAP service for user authentication
-- how to perform CI/CD in hybrid world
-- how to monitor all those components using Application Performance Monitoring
-- how to deploy most of the components of the solution to IBM Cloud Private
-- how to adopt a test focus implementation
-- How to call BPM process from Watson Conversation (orchestration), and how to integrate chat user interface connected to Watson Conversation into BPM coach.
 
 ## Application Overview
 As an hybrid cloud solution implementation the set of projects of this solution cover different **functional** requirements:
 * A web based portal to integrate internal applications for internal users.
 * One of the function is to manage a simple computer product inventory, with  warehouse and suppliers.
-* Support a chat bot for IT support questions
-* Support customer management, buyer of the computer products and used for analytics
+* A second feature is to implement a IT support chat bot so internal user can ask IT support questions and get response quickly, reducing the cost of operation of the support team.
+* Support customer management, buyer of the telco products, used to support Analytics and machine learning
 * Product recommendations based on business rules
 
 ### System context
 As architect we need to develop a system context, so the following diagram illustrates the logical components involved in the current solution, with the numbered items for short explanation:  
 ![](docs/br-syst-ctx.png)
 
-(the links below send you to the corresponding git repository where you can get specific deeper dive and executable code and scripts)
+(the links below send you to the corresponding git repository where you can get more specific information and how tos.)
 1. [Web App "Case Portal"](https://github.com/ibm-cloud-architecture/refarch-caseinc-app) Portal web app (Angular 4) exposes a set of capabilities to internal users for inventory management, chatbots...
 1. Interaction APIs exposes API products for public WebApp consumptions. Those [APIs](https://github.com/ibm-cloud-architecture/refarch-integration-api) support specific resources needed by user interface app and the channels they serve.
-1. Back End For Front End to support business logic of the web app, and simple integration of RESTful services. This is currently the server part of the [web app](https://github.com/ibm-cloud-architecture/refarch-caseinc-app)). We want to separate the Angular 4 static pages so it can be deployed on HTTP server like NGinx, as of now the BFF ([Back-end For Front-end pattern](http://philcalcado.com/2015/09/18/the_back_end_for_front_end_pattern_bff.html)) is nodejs app serving the Angular single page application. BFF pattern is still prevalent for mobile applications and single-page web applications. In this pattern, APIs are created specifically for the front-end application and perfectly suited to its needs with rationalized data models, ideal granularity of operations, specialized security models, and more. We are migrating to be a separate component.
-1. System API to define backend service API product ([inventory APIs](https://github.com/ibm-cloud-architecture/refarch-integration-api/blob/master/docs/apic-to-soap.md)), used by multiple consumers.
+1. Back End For Front End to support business logic of the web app, and simple integration of RESTful services. This is currently the server part of the [web app](https://github.com/ibm-cloud-architecture/refarch-caseinc-app)). As of now this BFF ([Back-end For Front-end pattern](http://philcalcado.com/2015/09/18/the_back_end_for_front_end_pattern_bff.html)) is done with nodejs app serving the Angular single page application. BFF pattern is still prevalent for mobile applications and single-page web applications. In this pattern, APIs are created specifically for the front-end application and perfectly suited to its needs with rationalized data models, ideal granularity of operations, specialized security models, and more.
+1. System API to define backend service API products ([inventory APIs](https://github.com/ibm-cloud-architecture/refarch-integration-api/blob/master/docs/apic-to-soap.md)), and customer APIs,  used by multiple consumers.
 1. Mediation flow deployed on Integration Bus to connect to back end systems and SOA services, and do interfaces mapping and [mediation flows](https://github.com/ibm-cloud-architecture/refarch-integration-esb).
 1. [Data SOA, Java WS service](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal) to expose a data access layer on top of relational item, inventory, supplier database
 1. Db2 deployment of the [Inventory and Supplier](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-db2) database.
@@ -77,7 +78,7 @@ As architect we need to develop a system context, so the following diagram illus
 1. Decision engine to automate business rules execution and Management for [product recommendation in the context of user moving in different location](https://github.com/ibm-cloud-architecture/refarch-cognitive-prod-recommendations)
 1. [LDAP for user Management](https://github.com/ibm-cloud-architecture/refarch-integration-utilities#ldap-configuration) to centralize authentication use cases.
 
-We have other repositories to address...
+We have also other repositories to address...
 * [Testing](https://github.com/ibm-cloud-architecture/refarch-integration-tests) This repository includes a set of test cases to do component testing, functional testing and integration tests.
 
 ### User interface
@@ -86,6 +87,10 @@ To demonstrate the set of features of this solution , a front end application, r
 ![HomePage](docs/homepage.png)  
 
 This front end application is an extension of the "CASE.inc" retail store introduced in [cloud native solution or "Blue compute"](https://github.com/ibm-cloud-architecture/refarch-cloudnative) which manages old computers, extended with IT support chat bot and other goodies.
+
+## Further Readings
+We are presenting Hybrid Cloud Integration body of knowledge in [this article](./docs/compendium.md).
+We are compiling a ICP [compendium](./docs/icp/compendium.md) with kubernetes references.
 
 ## Contribute
 We welcome your contribution. There are multiple ways to contribute: report bugs and improvement suggestion, improve documentation and contribute code.
@@ -111,4 +116,4 @@ Here is a high level plan of future working
 * Separate BFF from angular app.
 * Run angular app on nginx
 * Explain a TDD approach to develop the Angular app
-* Add MQ messaging. 
+* Add MQ messaging.

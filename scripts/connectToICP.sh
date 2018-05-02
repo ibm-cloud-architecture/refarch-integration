@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -z "$1" ]; then
-  master="vh-icp-21-master.icp"
+  master="green2.cluster.icp"
 else
   master=$1
 fi
