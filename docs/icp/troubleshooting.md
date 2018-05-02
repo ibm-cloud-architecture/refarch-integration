@@ -70,6 +70,39 @@ See also the note about accessing ICP private repository [here](https://github.c
 ### x509 certificate not valid for a specific hostname
 Be sure the hostname you are using is in your /etc/hosts and you `docker login` to the good host.
 
+## Could not connect to a backend service. Try again later.   (E0004)
+While trying to get cluster configuration with command like `bx pr cluster-config green2-cluster`.
+
+The problem may come from a lack of disk space on / on the host OS of the active master node. To add space for the virtual machine with Ubuntu OS, you need to do the following:
+* Using the VM management tool like VMWare vsphere, add a new virtual disk
+* log as root user to host OS, and list the device with `ls /dev/sd*`. You may have a new sdc or sdb device. We assume sdc for now.
+* Stop docker and kubelet (it can take some time for docker to stop):   
+ ```bash
+systemctl stop docker
+systemctl stop kubelet
+```
+* See existing disks with `fdisk -l` and add a new disk with `fdisk /dev/sdc`. It should add a DOS partition and use the w option to write the changes.
+* Create different tables for the filesystem using `mkfs.ext4 /dev/sdc`
+* mount the newly created filesystem to a new folder:
+```
+mkdir /mnt/disk
+mount /dev/sdc /mnt/disk
+```
+* Move ICP install file to the new disk: `mv /opt/ibm/cfc/* /mnt/disk`
+* unmount but update the boot setting to get the disk back on reboot:
+ ```
+ umount /mnt/disk
+ vi /etc/fstab
+  /dev/sdc /opt/ibm/cfc ext4 default 1 3
+ ```
+ * restart docker and kubelet:
+ ```
+ systemctl stop docker
+ systemctl stop kubelet
+ ```
+
+See also [this note](https://kb.vmware.com/s/article/1003940)
+
 ## Pod not getting the image from docker private repository
 Looking at the Events report from the pod view you got a message like:
 ```

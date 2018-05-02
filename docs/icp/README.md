@@ -10,6 +10,7 @@ Updated 04/27/2018
 * [Deploy the 'browncompute' solution](#deployment-steps)
 * [Hybrid integration deployment configurations:](#configurations) We are proposing different configurations for the hybrid solution deployment: Webapp, API gateway, message flow, SOAP services, data base.
 * [Troubleshooting](troubleshooting.md)
+* [Compendium](compendium.md) Get an exhaustive view of the things you need to read.
 
 ## Prerequisites
 The following points should be considered before going into more detail of the ICP deployment:
