@@ -34,7 +34,8 @@ By studying the set of projects and articles linked to this top repository, you 
 * [Application Overview](#application-overview)   
 * [Build, deploy and run](./docs/buildrun/README.md)
 * [Non-functional requirements](./docs/nfr.md)
-* [Compendium](./docs/compendium.md)
+* [Hybrid Cloud Compendium](./docs/compendium.md)
+* [IBM Cloud Private knowledge sharing](./docs/icp/README.md)
 * [Contribute to the solution](#contribute)
 * [Project Status](#project-status)
 

@@ -1,7 +1,7 @@
 # IBM Cloud Private Deployment
 In this section we are presenting how *Hybrid integration solution implementation* is deployed to IBM Cloud Private. We address different configurations as business and operation requirements may differ per data center and even per business applications. Each configuration describe how some of the components of the solution may be deployed to ICP or kept on-premise servers.
 
-Updated 04/27/2018
+Updated 05/03/2018
 
 ## Table of Contents
 * [Prerequisites](#prerequisites)

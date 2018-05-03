@@ -1,9 +1,9 @@
 # Troubleshooting in ICP
 This note regroups a set of things we have met during our work on kubernetes and ICP.
 
-Update 4/27/2018 for ICP 2.1.0.2.
+Update 5/03/2018 for ICP 2.1.0.2.
 
-Kubernetes [troubleshooting docs](https://kubernetes.io/docs/getting-started-guides/ubuntu/troubleshooting/)
+* Kubernetes [troubleshooting docs](https://kubernetes.io/docs/getting-started-guides/ubuntu/troubleshooting/)
 
 ## Error: hostname not resolved
   ```
