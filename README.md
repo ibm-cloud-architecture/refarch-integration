@@ -12,7 +12,7 @@ This solution implementation covers a lot of different and interesting subject. 
 * a marketing person, you may want to google something else...
 
 
-## What you will learn
+# What you will learn
 One of the goal of this implementation is to reflect what is commonly found in IT landscape in 2017, and provides recommendations on how to manage hybrid architecture with the cloud programming model by addressing non-functional requirements as scalability, security, monitoring and resiliency.
 
 By studying the set of projects and articles linked to this top repository, you will learn:
@@ -28,12 +28,13 @@ By studying the set of projects and articles linked to this top repository, you 
 - how to deploy most of the components of the solution to IBM Cloud Private
 - How to call BPM process from Watson Conversation (orchestration), and how to integrate chat user interface connected to Watson Conversation into BPM coach.
 
-## Table of Contents
+# Table of Contents
 * [Hybrid Cloud Introduction](#introduction)
 * [What you will learn](#what-you-will-learn)
 * [Application Overview](#application-overview)   
 * [Build, deploy and run](./docs/buildrun/README.md)
 * [Non-functional requirements](./docs/nfr.md)
+* [CI/CD](./docs/devops/README.md)
 * [Hybrid Cloud Compendium](./docs/compendium.md)
 * [IBM Cloud Private knowledge sharing](./docs/icp/README.md)
 * [Contribute to the solution](#contribute)
@@ -53,7 +54,7 @@ In the longer term the brown compute will support the multiple integration patte
 ![](docs/brown-scope.png)
 
 
-## Application Overview
+# Application Overview
 As an hybrid cloud solution implementation the set of projects of this solution cover different **functional** requirements:
 * A web based portal to integrate internal applications for internal users.
 * One of the function is to manage a simple computer product inventory, with  warehouse and suppliers.
@@ -61,7 +62,7 @@ As an hybrid cloud solution implementation the set of projects of this solution 
 * Support customer management, buyer of the telco products, used to support Analytics and machine learning
 * Product recommendations based on business rules
 
-### System context
+## System context
 As architect we need to develop a system context, so the following diagram illustrates the logical components involved in the current solution, with the numbered items for short explanation:  
 ![](docs/br-syst-ctx.png)
 
@@ -82,18 +83,18 @@ As architect we need to develop a system context, so the following diagram illus
 We have also other repositories to address...
 * [Testing](https://github.com/ibm-cloud-architecture/refarch-integration-tests) This repository includes a set of test cases to do component testing, functional testing and integration tests.
 
-### User interface
+## User interface
 To demonstrate the set of features of this solution , a front end application, representing an internal portal is used to plug and play the different use cases. There is a login mechanism connected to a directory service (LDAP)
 
 ![HomePage](docs/homepage.png)  
 
 This front end application is an extension of the "CASE.inc" retail store introduced in [cloud native solution or "Blue compute"](https://github.com/ibm-cloud-architecture/refarch-cloudnative) which manages old computers, extended with IT support chat bot and other goodies.
 
-## Further Readings
+# Further Readings
 We are presenting Hybrid Cloud Integration body of knowledge in [this article](./docs/compendium.md).
 We are compiling a ICP [compendium](./docs/icp/compendium.md) with kubernetes references.
 
-## Contribute
+# Contribute
 We welcome your contribution. There are multiple ways to contribute: report bugs and improvement suggestion, improve documentation and contribute code.
 We really value contributions and to maximize the impact of code contributions we request that any contributions follow these guidelines
 * Please ensure you follow the coding standard and code formatting used throughout the existing code base
@@ -106,6 +107,7 @@ We really value contributions and to maximize the impact of code contributions w
 * Always pull the latest changes from upstream and rebase before creating pull request.
 
 If you want to contribute, start by using git fork on this repository and then clone your own repository to your local workstation for development purpose. Add the up-stream repository to keep synchronized with the master.
+
 ## Project Status
 [03/2018] This project is still under active development, so you might run into [issues](https://github.com/ibm-cloud-architecture/refarch-integration/issues). If you do, please don't be shy about letting us know, or better yet, contribute a fix or feature.
 Here is a high level plan of future working

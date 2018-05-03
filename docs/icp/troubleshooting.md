@@ -71,7 +71,7 @@ See also the note about accessing ICP private repository [here](https://github.c
 Be sure the hostname you are using is in your /etc/hosts and you `docker login` to the good host.
 
 ## Could not connect to a backend service. Try again later.   (E0004)
-While trying to get cluster configuration with command like `bx pr cluster-config green2-cluster`.
+While trying to get cluster configuration with command like `bx pr cluster-config green2-cluster` got this message.
 
 The problem may come from a lack of disk space on / on the host OS of the active master node. To add space for the virtual machine with Ubuntu OS, you need to do the following:
 * Using the VM management tool like VMWare vsphere, add a new virtual disk
@@ -97,8 +97,8 @@ mount /dev/sdc /mnt/disk
  ```
  * restart docker and kubelet:
  ```
- systemctl stop docker
- systemctl stop kubelet
+ systemctl start docker
+ systemctl start kubelet
  ```
 
 See also [this note](https://kb.vmware.com/s/article/1003940)

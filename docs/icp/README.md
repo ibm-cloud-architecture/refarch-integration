@@ -1,4 +1,4 @@
-# IBM Cloud Private Deployment
+# Hybrid Integration on IBM Cloud Private Deployment
 In this section we are presenting how *Hybrid integration solution implementation* is deployed to IBM Cloud Private. We address different configurations as business and operation requirements may differ per data center and even per business applications. Each configuration describe how some of the components of the solution may be deployed to ICP or kept on-premise servers.
 
 Updated 05/03/2018
@@ -9,6 +9,7 @@ Updated 05/03/2018
 * [Enterprise Edition Installation](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Installing_ICp_on_prem.md)
 * [Deploy the 'browncompute' solution](#deployment-steps)
 * [Hybrid integration deployment configurations:](#configurations) We are proposing different configurations for the hybrid solution deployment: Webapp, API gateway, message flow, SOAP services, data base.
+* [CLI command summary](icp-cli.md)
 * [Troubleshooting](troubleshooting.md)
 * [Compendium](compendium.md) Get an exhaustive view of the things you need to read.
 

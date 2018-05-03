@@ -5,5 +5,5 @@ metadata:
   labels:
     tier: config
 data:
-  namespace: default
+  namespace: browncompute
   registry: green2-cluster.icp:8500

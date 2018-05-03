@@ -53,7 +53,7 @@ If you don't have dynamic provisioning setup, we recommend you read this [docume
 
 To **Install the Jenkins Chart and Provision a PVC dynamically**, use the following command:
 ```bash
-$ helm install --namespace default --name jenkins --version 0.14.4 \
+$ helm install --namespace browncompute --name jenkins --version 0.14.4 \
     --set Master.ImageTag=2.117 \
     --set Master.ServiceType=NodePort \
     --set Master.InstallPlugins.0=kubernetes:1.5.2 \
@@ -68,7 +68,7 @@ $ helm install --namespace default --name jenkins --version 0.14.4 \
 
 To **Install the Jenkins Chart and Pass an Existing PVC**, use the following command:
 ```bash
-$ helm install --namespace default --name jenkins --version 0.14.4 \
+$ helm install --namespace browncompute --name jenkins --version 0.14.4 \
     --set Master.ImageTag=2.117 \
     --set Master.ServiceType=NodePort \
     --set Master.InstallPlugins.0=kubernetes:1.5.2 \
@@ -84,7 +84,7 @@ $ helm install --namespace default --name jenkins --version 0.14.4 \
 
 To **Install the Jenkins Chart without a PVC**, use the following command:
 ```bash
-$ helm install --namespace default --name jenkins --version 0.14.4 \
+$ helm install --namespace browncompute --name jenkins --version 0.14.4 \
     --set Master.ImageTag=2.117 \
     --set Master.ServiceType=NodePort \
     --set Master.InstallPlugins.0=kubernetes:1.5.2 \
@@ -107,8 +107,8 @@ The `helm install` command should have printed out instructions to get the Jenki
 NOTES:
 ...
 2. Get the Jenkins URL to visit by running these commands in the same shell:
-  export NODE_PORT=$(kubectl get --namespace default -o jsonpath="{.spec.ports[0].nodePort}" services jenkins)
-  export NODE_IP=$(kubectl get nodes --namespace default -o jsonpath="{.items[0].status.addresses[0].address}")
+  export NODE_PORT=$(kubectl get --namespace browncompute -o jsonpath="{.spec.ports[0].nodePort}" services jenkins)
+  export NODE_IP=$(kubectl get nodes --namespace browncompute -o jsonpath="{.items[0].status.addresses[0].address}")
   echo http://$NODE_IP:$NODE_PORT/login
 
 ```
@@ -120,7 +120,7 @@ The `helm install` command should have printed out instructions to get the Jenki
 ```bash
 NOTES:
 1. Get your 'admin' user password by running:
-  printf $(kubectl get secret --namespace default jenkins -o jsonpath="{.data.jenkins-admin-password}" | base64 --decode);echo
+  printf $(kubectl get secret --namespace browncompute jenkins -o jsonpath="{.data.jenkins-admin-password}" | base64 --decode);echo
 ```
 
 As an alternate solution, try to remote connect to the pods and then navigating to the `/var/jenkins_home/secrets` path to see the password persisted in a file named `initialAdminPassword`:
@@ -139,12 +139,12 @@ In order for the pipelines to know where to push newly built docker images, you 
 
 To create the docker registry configmap, feel free to enter the registry location in the `registry` field in the [registry/configmap.yaml](registry/configmap.yaml) file, then create the ConfigMap as follows:
 ```bash
-$ kubectl --namespace default create -f registry/configmap.yaml
+$ kubectl --namespace default browncompute -f registry/configmap.yaml
 ```
 
 For the docker registry secret, we need to base64-encode the registry's username and password. The [registry/secret.yaml](registry/secret.yaml) file contains base64-encoded credentials for username `admin` and password `admin`. Assuming your credentials are different, you need to replace those values with your base64-encoded credentials and save the file. You can use the online encoder at: https://www.base64encode.org/. To create the Secret, use the following command:
 ```bash
-$ kubectl --namespace default create -f registry/secret.yaml
+$ kubectl --namespace default browncompute -f registry/secret.yaml
 ```
 
 You now have a fully Configured Jenkins Server inside your ICP cluster!
@@ -204,7 +204,16 @@ $ sudo mpm i -g @angular/cli
 Pipelines are made up of multiple steps that allow you to build, test and deploy applications.
 
 ### Creating Pipeline
-Once the Jenkins server is started we need to create a pipeline. To setup a pipeline, open Jenkins in the browser (example of ICP URL: http://172.16.40.223:32277/) and follow the steps below:
+Once the Jenkins server is started we need to create a pipeline. To setup a pipeline, open Jenkins in the browser (example of ICP URL: http://172.16.40.223:32277/)
+
+Note: Recall that the Jenkins URL is defined in the NodePort of the Jenkins master deployment configuration:
+```
+$  kubectl get services -l component=jenkins-jenkins-master  -n browncompute
+NAME            TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)          AGE
+jenkins         NodePort    10.10.10.4    <none>        8080:32277/TCP   15d
+```
+
+and follow the steps below:
 
 ### 1. Create a Sample Job
 ![Create a Sample Job](https://raw.githubusercontent.com/ibm-cloud-architecture/refarch-cloudnative-devops-kubernetes/master/static/imgs/1_create_job.png)
@@ -247,8 +256,8 @@ You should get the results like:
 ## Projects build
 Each project has its build process that we try to homogenize with the same jenkinsfile approach.
 * [Web app build]()
-* [Data access layer](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal/tree/master/docs/devops)
-* [Customer Microservice](https://github.com/ibm-cloud-architecture/refarch-integration-services/tree/master/docs/devops.md)
+* [Inventory Data access layer CI/CD](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal/tree/master/docs/devops)
+* [Customer Microservice CI/CD](https://github.com/ibm-cloud-architecture/refarch-integration-services/tree/master/docs/devops.md)
 * [Mediation flow on IIB]()
 * [API inventory product]()
 * [Integration tests]()
