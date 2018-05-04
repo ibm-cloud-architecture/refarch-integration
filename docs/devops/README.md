@@ -182,7 +182,7 @@ To automate interaction script like `ssh` and `scp`, we are using [expect](http:
 $ sudo apt-get install expect
 ```
 
-#### install docker on the build server
+#### Install docker on the build server
 As some of the build steps are to run `docker build`, we need to install docker on build server and authorize jenkins to be a docker user:
 ```bash
 $ sudo  usermod -aG docker Jenkins
@@ -255,9 +255,9 @@ You should get the results like:
 
 ## Projects build
 Each project has its build process that we try to homogenize with the same jenkinsfile approach.
-* [Web app build]()
+* [Web app build](https://github.com/ibm-cloud-architecture/refarch-integration-caseinc-app/tree/master/docs/devops)
 * [Inventory Data access layer CI/CD](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal/tree/master/docs/devops)
-* [Customer Microservice CI/CD](https://github.com/ibm-cloud-architecture/refarch-integration-services/tree/master/docs/devops.md)
+* [Customer Microservice CI/CD](https://github.com/ibm-cloud-architecture/refarch-integration-services/tree/master/docs/devops)
 * [Mediation flow on IIB]()
 * [API inventory product]()
 * [Integration tests]()
