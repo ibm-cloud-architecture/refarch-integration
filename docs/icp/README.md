@@ -66,7 +66,7 @@ $ helm install chart/browncompute-inventory-dal --name browncompute-dal --tls
 ```
 
 ### Option 2: Install from Helm Chart Repository
-For this project, we created a [`Helm Chart Repository`](https://github.com/kubernetes/helm/blob/master/docs/chart_repository.md) (located [here](docs/charts)) where we serve a packaged version of the [`browncompute-inventory-dal`](chart/browncompute-inventory-dal) so that you can conveniently install it in your ICP Cluster.
+As an example for the Data Access Layer project, we created a [`Helm Chart Repository`](https://github.com/kubernetes/helm/blob/master/docs/chart_repository.md) (located [here](docs/charts)) where we serve a packaged version of the [`browncompute-inventory-dal`](chart/browncompute-inventory-dal) so that you can conveniently install it in your ICP Cluster.
 
 To install the chart from the `Helm Chart Repository`, run the following commands:
 ```bash
@@ -119,28 +119,30 @@ Our target deployment is illustrated in the figure below:
 The light blue area represents on-premise servers, while the green area represents the IBM Cloud Private, kubernetes cluster.
 
 * On the left side, the Portal cloud native webapp was first developed as Angular / nodejs app, using cloud foundry deployment model. The new approach was to externalize the configuration outside of cloud foundry and package the application as docker container. This approach helps to deploy the application on any environment in a control manner. For the web app deployment follow [the step by step tutorial](https://github.com/ibm-cloud-architecture/refarch-caseportal-app/blob/master/docs/icp/README.md).
+* [API Gateway on ICP](https://github.com/ibm-cloud-architecture/refarch-integration-api/tree/master/docs/icp)
+* [Inventory data access layer on ICP](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal/blob/master/docs/icp/README.md)
+* Decision for product recommendation with [Operational Decision Management on ICP](https://github.com/ibm-cloud-architecture/refarch-cognitive-prod-recommendations/blob/master/docs/icp/README.md)
 
+The second Datapower gateway is used to present 'System' APIs. (see this redbook ["A practical Guide for IBM Hybrid Integration Platform"](http://www.redbooks.ibm.com/redbooks/pdfs/sg248351.pdf) for detail about this clear APIs separation)
 
-## Configuration 2: Only Cloud native application on ICP
-This is the simplest deployment where only the cloud native web application ([the 'case' portal](https://github.com/ibm-cloud-architecture/refarch-caseinc-app)) is deployed. It still accesses the back end services via API Connect running on-premise. All other components run on-premise. The figure below illustrates this deployment:
-
-![WebApp](./bc-icp-cfg1.png)
-
+The `gateway flow`, deployed on IIB, is doing the REST to SOAP interface mapping: this configuration illustrates deep adoption of the ESB pattern leveraging existing high end deployments, scaling both horizontally and vertically. In this model the concept of operation for mediation and integration logic development and deployment are kept.
 
 If you want to review each on-premise component, their descriptions are below:
 * [API Connect - Inventory product](https://github.com/ibm-cloud-architecture/refarch-integration#inventory-management)
 * [Gateway flow in integration broker](https://github.com/ibm-cloud-architecture/refarch-integration-esb#inventory-flow)
-* [SOAP service for data access Layer](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal#code-explanation)
-* [Inventory database](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-db2#inventory-database)
+* [SOAP service for data access Layer running on premise](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal#deploy-to-local-ibm-websphere-liberty-profile)
+* [Inventory database on DB2 server](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-db2#inventory-database)
+
+## Configuration 2: Only Cloud native application on ICP
+This is the simplest deployment where only the cloud native web application ([the 'case' portal](https://github.com/ibm-cloud-architecture/refarch-caseportal-app)) is deployed. It still accesses the back end services via API Connect running on-premise. All other components run on-premise. The figure below illustrates this deployment:
+
+![WebApp](./bc-icp-cfg1.png)
+
 
 ## Configuration 3: API runtime on ICP
 The goal for this configuration is to deploy Data power gateway to IBM cloud private and deploy the interaction API products on it. The API product definition is split into interaction APIs and system APIs.
 
 ![](./bc-icp-cfg2.png)
-
-The second Datapower gateway is used to present 'System' APIs. (see this redbook ["A practical Guide for IBM Hybrid Integration Platform"](http://www.redbooks.ibm.com/redbooks/pdfs/sg248351.pdf) for detail about this clear APIs separation)
-
-The `gateway flow`, deployed on IIB, is doing the REST to SOAP interface mapping: this configuration illustrates deep adoption of the ESB pattern leveraging existing high end deployments, scaling both horizontally and vertically. In this model the concept of operation for mediation and integration logic development and deployment are kept.
 
 The steps are:
 1. Modify the webapp configuration to use a different URL for the gateway flow: The settings is done in the `values.yaml` in the chart folder of the [case portal app](https://github.com/ibm-cloud-architecture/refarch-caseinc-app)
@@ -148,55 +150,34 @@ The steps are:
 1. Deploy API Connect gateway from ICP Catalog using [this tutorial](https://github.com/ibm-cloud-architecture/refarch-integration-api/blob/master/docs/icp/README.md)
 1. Deploy the api product to the new gateway.
 
-## Cfg 3: Web App, Datapower Gateway and Liberty App on ICP
 
-For this configuration the web service application running on WebSphere Liberty profile is moved to ICP, while IIB stays on premise, as well as the data base servers. Basically the approach is to keep heavy investment as-is as they are most likely supporting other data base instances and message flows used by other applications. Still the light weight applications can move easily to ICP. The interaction APIs is on ICP while the System APIs are running closer to the integration bus. This is more an API ownership control than a technology constraint.
-
-![Brown on ICP](./bc-icp-cfg3.png)
-
-To support this configuration on top of config 2, the  *Inventory Data Access Layer* app running on Liberty is packaged as docker container and deployed using helm chart deployment configuration.
-
-The step by step instructions are in [the deploy DAL to ICP  tutorial](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal/blob/master/docs/icp/README.md).
-
-The LDAP, DB2 server servers are still running on Traditional IT servers.
-
-## Cfg 4: Integration Bus as micro flow running in ICP
+## Configuration 4: Integration Bus as micro flow running in ICP
 This configuration is using integration components on premise and the other more lightweight components on ICP, and add a micro-service for integration as introduced in [this article](https://developer.ibm.com/integration/blog/2017/04/16/12-factor-integration/) using a message flow deployed on IIB runninig in ICP.
 
 ![](./bc-icp-cfg4.png)
-
-We also have added Operation Decision Management product packaged as container and deployed on ICP following instructions: [ODM on Docker, Kubernetes, and IBM Cloud Private](https://developer.ibm.com/odm/2017/10/02/odm-docker-kubernetes-ibm-cloud-private/)
 
 This approach leverages existing investment and IIB concept of operation, and IBM Datapower for security and API gateway. This approach has an impact on the way to manage application inside IIB. Instead of deploying multiple applications inside one instance of IIB, we are packaging the app and IIB runtime into a unique container to deploy in pods and facilitate horizontal scaling. The vertical scaling delivered out of the box in IIB is not leveraged.
 
 1. Deploy webapp to ICP [follows this tutorial](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/run-icp.md)
 1. Deploy Java application running on Liberty [read this tutorial](https://github.com/ibm-cloud-architecture/refarch-integration-dal/blob/master/icp/README.md))
-1. Deploy IBM Integration Bus [read this tutorial](https://github.com/ibm-cloud-architecture/refarch-integration-esb/blob/master/IBMCloudprivate/README.md))
+1. Deploy IBM Integration Bus [read this tutorial](https://github.com/ibm-cloud-architecture/refarch-integration-esb/blob/master/IBMCloudprivate/README.md)
 1. Deploy API Connect gateway from ICP Catalog using [this tutorial](https://github.com/ibm-cloud-architecture/refarch-integration-api/blob/master/docs/icp/README.md)
 1. Deploy the api product to the new gateway.
 
 
-
 ## Use ICP Catalog
-A packaged application can be used as template for creating application. Using the ICP admin console you can get the list of repositories using the ** Admin > Repositories ** menu:
+All component of the solution we can deploy to ICP are packaged as helm chart, and centralized in the `docs/charts` folder of this repository.  Using the ICP admin console you can get the list of repositories using the ** Manage > Helm Repositories ** menu:
 
 ![](icp-repo.png)
 
-Once the helm chart is packaged, a zip file is created and the publishing steps look like the following:
+You can add a new repository, and with the `Sync repositories` button the Helm catalog is modified with the new images.
+![](helm-in-app-center.png)
 
-* copy the tfgz file to an HTTP server. (172.16.0.5 is a HTTP server running in our data center). Be sure to have write access to it.
-```
-$ scp casewebportal-0.0.1.tgz admin@172.16.0.5/storage/local-charts
-```
-* Then you need to update your private catalog index.yaml file.  The index file describes how your applications is listed in the ICP Application Center:
+When you add new application / package you need to update your private catalog index.yaml file.  The index.yaml file describes how your applications is listed in the ICP Application Center:
 ```
 $ curl get -k https://9.19.34.107:8443/helm-repo/charts/index.yaml
-$ helm repo index --merge index.yaml --url http://9.19.34.117:/storage/CASE/refarch-privatecloud ./
-$ scp index.yaml admin@9.19.34.107:8443/helm-repo/charts
+$ helm repo index --merge index.yaml
 ```
-
-Once the repository are synchronized your helm chart should be in the catalog:
-![](helm-in-app-center.png)
 
 
 ## kube-dns

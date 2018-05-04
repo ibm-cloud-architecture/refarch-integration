@@ -21,3 +21,26 @@ kubectl get pods -l component=jenkins-jenkins-master  -n browncompute
 ## Summary of CLI commands
 * [ICP CLI](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.2/manage_cluster/cli_commands.html)
 * [kubectl playground](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands)
+
+
+```
+$ kubectl get pods
+
+$ kubectl describe pods
+
+$ export POD_NAME=$(kubectl get pods -o go-template='{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}’)
+
+$ kubectl exec $POD_NAME env  --namespace browncompute
+
+$ kubectl logs $POD_NAME
+
+# run an alpine shell connected to the container
+$ kubectl exec -ti $POD_NAME /bin/ash
+> ls
+
+$ kubectl get services
+
+$ export NODE_PORT=$(kubectl get services/casewdsbroker -o go-template='{{(index .spec.ports 0).nodePort}}')
+
+$ kubectl describe deployment
+```
