@@ -20,8 +20,8 @@ By studying the set of projects and articles linked to this top repository, you 
 - how to develop [gateway message flow](https://github.com/ibm-cloud-architecture/refarch-integration-esb#inventory-flow) with IBM Integration Bus
 - how to define [API product](https://github.com/ibm-cloud-architecture/refarch-integration-api#implementation-details) with API Connect, and use secure communication with TLS for backend APIs
 - how to set up secure connection from IBM Cloud public to on-premise service using [IBM Secure Gateway]()
-- how to develop a Single Page Application with [Angular 5](https://github.com/ibm-cloud-architecture/refarch-caseinc-app#code-explanation) using a Test Drive Development approach with nodejs/expressjs back end
-- how to [secure the web app with passport](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/login.md)
+- how to develop a Single Page Application with [Angular 5](https://github.com/ibm-cloud-architecture/refarch-caseportal-app#code-explanation) using a Test Drive Development approach with nodejs/expressjs back end
+- how to [secure the web app with passport](https://github.com/ibm-cloud-architecture/refarch-caseportal-app/blob/master/docs/login.md)
 - how to access existing LDAP service for user authentication
 - how to perform [CI/CD in hybrid world](docs/devops/README.md)
 - how to monitor all those components using Application Performance Monitoring
@@ -67,9 +67,9 @@ As architect we need to develop a system context, so the following diagram illus
 ![](docs/br-syst-ctx.png)
 
 (the links below send you to the corresponding git repository where you can get more specific information and how tos.)
-1. [Web App "Case Portal"](https://github.com/ibm-cloud-architecture/refarch-caseinc-app) Portal web app (Angular 4) exposes a set of capabilities to internal users for inventory management, chatbots...
+1. [Web App "Case Portal"](https://github.com/ibm-cloud-architecture/refarch-caseportal-app) Portal web app (Angular 4) exposes a set of capabilities to internal users for inventory management, chatbots...
 1. Interaction APIs exposes API products for public WebApp consumptions. Those [APIs](https://github.com/ibm-cloud-architecture/refarch-integration-api) support specific resources needed by user interface app and the channels they serve.
-1. Back End For Front End to support business logic of the web app, and simple integration of RESTful services. This is currently the server part of the [web app](https://github.com/ibm-cloud-architecture/refarch-caseinc-app)). As of now this BFF ([Back-end For Front-end pattern](http://philcalcado.com/2015/09/18/the_back_end_for_front_end_pattern_bff.html)) is done with nodejs app serving the Angular single page application. BFF pattern is still prevalent for mobile applications and single-page web applications. In this pattern, APIs are created specifically for the front-end application and perfectly suited to its needs with rationalized data models, ideal granularity of operations, specialized security models, and more.
+1. Back End For Front End to support business logic of the web app, and simple integration of RESTful services. This is currently the server part of the [web app](https://github.com/ibm-cloud-architecture/refarch-caseportal-app)). As of now this BFF ([Back-end For Front-end pattern](http://philcalcado.com/2015/09/18/the_back_end_for_front_end_pattern_bff.html)) is done with nodejs app serving the Angular single page application. BFF pattern is still prevalent for mobile applications and single-page web applications. In this pattern, APIs are created specifically for the front-end application and perfectly suited to its needs with rationalized data models, ideal granularity of operations, specialized security models, and more.
 1. System API to define backend service API products ([inventory APIs](https://github.com/ibm-cloud-architecture/refarch-integration-api/blob/master/docs/apic-to-soap.md)), and customer APIs,  used by multiple consumers.
 1. Mediation flow deployed on Integration Bus to connect to back end systems and SOA services, and do interfaces mapping and [mediation flows](https://github.com/ibm-cloud-architecture/refarch-integration-esb).
 1. [Data SOA, Java WS service](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal) to expose a data access layer on top of relational item, inventory, supplier database
@@ -109,7 +109,7 @@ We really value contributions and to maximize the impact of code contributions w
 If you want to contribute, start by using git fork on this repository and then clone your own repository to your local workstation for development purpose. Add the up-stream repository to keep synchronized with the master.
 
 ## Project Status
-[03/2018] This project is still under active development, so you might run into [issues](https://github.com/ibm-cloud-architecture/refarch-integration/issues). If you do, please don't be shy about letting us know, or better yet, contribute a fix or feature.
+[05/2018] This project is still under active development, so you might run into [issues](https://github.com/ibm-cloud-architecture/refarch-integration/issues). If you do, please don't be shy about letting us know, or better yet, contribute a fix or feature.
 Here is a high level plan of future working
 * Use IIB message flow packaged with IIB as mediation flow micro service
 * CI/CD end to end

@@ -140,17 +140,12 @@ see [Docker volume notes](https://docs.docker.com/engine/admin/volumes/volumes/)
 Verify kubectl runs locally. We will get the cluster information to remote connect to it once ICP is installed.
 
 ## Install helm
-You can install helm from the helm web site or using Helm packaged with ICP:
-```
- docker run -t --entrypoint=/bin/cp -v /usr/local/bin:/data ibmcom/helm:v2.5.0  /helm /data/
-```
-Command very similar to the one to install kubectl. *--endpoint=* specifies the command to execute when the container starts. Same as *CMD*
+IBM Cloud Private contains integration with Helm that allows you to install the application and all of its components in a few steps.
 
-Init the client side for helm
-```
-helm init --client-only
-```
-
+ This can be done as an administrator using the following steps:
+1. Click on the user icon on the top right corner and then click on `Configure client`.
+2. Copy the displayed `kubectl` configuration, paste it in your terminal, and press Enter on your keyboard.
+3. Initialize `helm` in your cluster. Use these [instructions](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.2/app_center/create_helm_cli.html) to install and initialize `helm`.
 
 ## Install IBM Cloud Private CE on the ubuntu machine
 Verify the public docker hub images available: go to [docker hub explorer](https://hub.docker.com/explore/) and search for **ibmcom/icp-inception**

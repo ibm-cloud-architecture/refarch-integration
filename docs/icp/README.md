@@ -1,5 +1,5 @@
 # Hybrid Integration on IBM Cloud Private Deployment
-In this section we are presenting how *Hybrid integration solution implementation* is deployed to IBM Cloud Private. We address different configurations as business and operation requirements may differ per data center and even per business applications. Each configuration describe how some of the components of the solution may be deployed to ICP or kept on-premise servers.
+In this section we are presenting how *Hybrid integration solution implementation* is deployed to IBM Cloud Private. We address different configurations as business and operation requirements may differ per data center and even per business applications. Each configuration describes how some of the components of the solution may be deployed to ICP or kept on-premise servers.
 
 Updated 05/03/2018
 
@@ -21,37 +21,26 @@ The following points should be considered before going into more detail of the I
 * Understand the different [ICP environment and sizing](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Sizing.md)
 * Access to an operational IBM Cloud Private cluster [see installation note](./dev-env-install.md) for the different approaches you could use.
 
-A developer needs to have on his development environment the following components:
+As a developer, you need to have the following components:
 * [Docker](dev-env-install.md#install-docker)
 * [Kubectl](dev-env-install.md#install-kubectl)
 * [Helm](dev-env-install.md#install-helm)
-we have provided a shell script to do those installation. Execute `./install_cli.sh` ( or `./install_cli.bat` for Windows)
-* Add a **browncompute** namespace using ICP admin console, under **Admin > Namespaces** menu.
+we have provided shell script to do those installation. Execute `../scripts/install_cli.sh` ( or `./scripts/install_cli.bat` for Windows)
+* Add Helm Repository
+* Add a **browncompute** namespace using ICP admin console, under **Manage > Namespaces** menu.
 
 ![](icp-brown-ns.png)
 
-We will use this namespace to push the *hybrid integration* components into ICP cluster.
+We will use this namespace to deploy the *hybrid integration* components into ICP cluster.
 
 ## Deployment steps
-Here are the common steps to deploy each component of the brown compute solution.
-* Create ICP Cluster if you do not have one
-* [Setup Helm](#setup-helm)
+Here are the common steps to perform  when deploying a component of the hybrid integration solution.
 * [Install Helm Chart](#install-helm-chart)
   + [Option 1: Clone the Repo & Install the Chart](#option-1-clone-the-repo--install-the-chart)
   + [Option 2: Install from Helm Chart Repository](#option-2-install-from-helm-chart-repository)
   + [Option 3: Install from Helm Chart Repository using ICP Helm Charts Catalog](#option-3-install-from-helm-chart-repository-using-icp-helm-charts-catalog)
 * [Validate Helm Chart](#validate-helm-chart)
-* Add Helm Repo
-* Install Helm Chart
-* Validate Helm Chart Installation
-* Delete the Helm Chart
 * Setup a CICD Pipeline for each project
-
-### Setup helm
-IBM Cloud Private contains integration with Helm that allows you to install the application and all of its components in a few steps. This can be done as an administrator using the following steps:
-1. Click on the user icon on the top right corner and then click on `Configure client`.
-2. Copy the displayed `kubectl` configuration, paste it in your terminal, and press Enter on your keyboard.
-3. Initialize `helm` in your cluster. Use these [instructions](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.2/app_center/create_helm_cli.html) to install and initialize `helm`.
 
 ### Install Helm Chart
 We created [Helm Charts](https://github.com/kubernetes/helm/blob/master/docs/charts.md) for each project. For example the  [`browncompute-inventory-dal`](chart/browncompute-inventory-dal) chart packages all of the kubernetes resources required to deploy the `browncompute-inventory-dal` app and expose it to a public endpoint.
@@ -124,20 +113,19 @@ For each component of the 'hybrid integration' solution the following needs may 
    * install the chart to ICP cluster using *helm install or upgrade* command line interface
    * access the URL end point
 
-## Cfg 1: Cloud native application on ICP
+## Configuration 1: ICP deployment and SOA services on-premise
+Our target deployment is illustrated in the figure below:
+![](../buildrun/icp-deployment.png)  
+The light blue area represents on-premise servers, while the green area represents the IBM Cloud Private, kubernetes cluster.
+
+* On the left side, the Portal cloud native webapp was first developed as Angular / nodejs app, using cloud foundry deployment model. The new approach was to externalize the configuration outside of cloud foundry and package the application as docker container. This approach helps to deploy the application on any environment in a control manner. For the web app deployment follow [the step by step tutorial](https://github.com/ibm-cloud-architecture/refarch-caseportal-app/blob/master/docs/icp/README.md).
+
+
+## Configuration 2: Only Cloud native application on ICP
 This is the simplest deployment where only the cloud native web application ([the 'case' portal](https://github.com/ibm-cloud-architecture/refarch-caseinc-app)) is deployed. It still accesses the back end services via API Connect running on-premise. All other components run on-premise. The figure below illustrates this deployment:
 
 ![WebApp](./bc-icp-cfg1.png)
 
-The webapp was developed as Angular / nodejs app, using cloud foundry deployment model. The approach was to externalize the configuration outside of CF and package the application as docker container. This approach will be the less disruptive as developers can quickly innovate using cloud native development practices.
-
-To support this configuration you need to:  
-1. compile and package the web application as docker container
-1. define a helm chart for ICP using yaml files
-1. use `helm` and `kubectl` command line interfaces to install and control the chart deployment
-1. test with integration tests as defined in [this project](https://github.com/ibm-cloud-architecture/refarch-integration-tests)
-
-For the web app deployment follow [the step by step tutorial](https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/icp/README.md).
 
 If you want to review each on-premise component, their descriptions are below:
 * [API Connect - Inventory product](https://github.com/ibm-cloud-architecture/refarch-integration#inventory-management)
@@ -145,8 +133,8 @@ If you want to review each on-premise component, their descriptions are below:
 * [SOAP service for data access Layer](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal#code-explanation)
 * [Inventory database](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-db2#inventory-database)
 
-## Cfg 2: Web App, Datapower Gateway on ICP
-The goal for this configuration is to deploy Data power gateway to IBM cloud private and deploy the interaction APIs on it. The API product definition is split into interaction APIs and system APIs.
+## Configuration 3: API runtime on ICP
+The goal for this configuration is to deploy Data power gateway to IBM cloud private and deploy the interaction API products on it. The API product definition is split into interaction APIs and system APIs.
 
 ![](./bc-icp-cfg2.png)
 
@@ -187,11 +175,6 @@ This approach leverages existing investment and IIB concept of operation, and IB
 1. Deploy API Connect gateway from ICP Catalog using [this tutorial](https://github.com/ibm-cloud-architecture/refarch-integration-api/blob/master/docs/icp/README.md)
 1. Deploy the api product to the new gateway.
 
-
-## Cfg 5: All API Connect to ICP
-This configuration runs every components on ICP, leverage public cloud services, and on-premise directory services.
-
-![](./bc-icp-cfg5.png)
 
 
 ## Use ICP Catalog
