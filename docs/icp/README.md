@@ -45,11 +45,12 @@ The following points should be considered before going into more detail of the I
 * A high-level understanding of [Helm and Kubernetes package management](https://docs.helm.sh/architecture/).
 * A basic understanding of [IBM Cloud Private cluster architecture](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.2/getting_started/architecture.html).
 * Understand the different [ICP environment and sizing](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Sizing.md)
+* Understand [image management](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.2/manage_images/image_manager.html):
 * Access to an operational IBM Cloud Private cluster [see installation note](./dev-env-install.md) for the different approaches you could use.
 
 As a developer, you need to have the following components:
-* [Docker](dev-env-install.md#install-docker)
-* [Kubectl](dev-env-install.md#install-kubectl)
+* [Docker installed on user laptop](dev-env-install.md#install-docker)
+* [Kubectl installed on user laptop](dev-env-install.md#install-kubectl)
 * [Helm](dev-env-install.md#install-helm)
 we have provided shell script to do those installation. Execute `../scripts/install_cli.sh` ( or `./scripts/install_cli.bat` for Windows)
 * Add Helm Charts Repository
@@ -60,6 +61,9 @@ we have provided shell script to do those installation. Execute `../scripts/inst
 We will use this namespace to deploy the *hybrid integration* components into ICP cluster.
 
 ## Deployment steps
+Helm charts are defined one time and should stay reasonably stable over time. Docker image change at each build.
+Remember that docker images that are added to the image registry are owned by namespaces. All the users within a namespace are owners of the images. An owner can remove or update the images from the cluster management console. Super administrators have full access to all images in the cluster. Owners can also update the scope of an image
+
 Here are the common steps to perform  when deploying a component of the hybrid integration solution.
 * [Install Helm Chart](#install-helm-chart)
   + [Option 1: Clone the Repo & Install the Chart](#option-1-clone-the-repo--install-the-chart)
@@ -67,6 +71,23 @@ Here are the common steps to perform  when deploying a component of the hybrid i
   + [Option 3: Install from Helm Chart Repository using ICP Helm Charts Catalog](#option-3-install-from-helm-chart-repository-using-icp-helm-charts-catalog)
 * [Validate Helm Chart](#validate-helm-chart)
 * Setup a CICD Pipeline for each project
+
+### Update docker images
+You need to name the images with the owner, so the namespace used. Here are example of images scoped:
+```
+$ kubectl get images -n browncompute
+NAME                         AGE
+browncompute-inventory-dal   1d
+customerms                   10m
+```  
+and
+```
+kubectl get images -n default
+NAME      AGE
+nginx     29d
+```
+And the command to push one of the image:
+` docker push ext-demo.icp:8500/browncompute/customerms:latest `
 
 ### Install Helm Chart
 We created [Helm Charts](https://github.com/kubernetes/helm/blob/master/docs/charts.md) for each project. For example the  [`browncompute-inventory-dal`](chart/browncompute-inventory-dal) chart packages all of the kubernetes resources required to deploy the `browncompute-inventory-dal` app and expose it to a public endpoint.
