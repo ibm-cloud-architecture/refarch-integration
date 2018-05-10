@@ -1,10 +1,15 @@
 # ODM ICP and Ruleset Install
 
 In this tutorial we will cover how to install ODM from our ICP Catalog onto our server, and install a previously generated ruleset.
+## Target audiences
+* ODM administrators or Operation staffs willing to understand the ODM deployment on kubernetes.
+* Developers who want to get an environment up and running as quickly as possible.
+
 ## Requirements
 
- 1. ODM in our ICP Catalog
- 2. A zip file of our Rules
+ 1. Access to an ICP cluster with ICP version 2.1.0.2 or later.
+ 2. Access to ICP Catalog with admin role
+ 3. A zip file of our Rules which can be found in [this project](https://github.com/ibm-cloud-architecture/refarch-cognitive-prod-recommendations) in the folder odm/rulesets/ProductRecommendation/output/
 
 ## Installing ODM on ICP
 The first thing we will do is launch our ICP Dashboard
@@ -38,19 +43,19 @@ We will be changing 2 things in the H2 Database.
 
 No other changes are needed to be made for any other options. then click configure at the bottom
 
-After receiving your successful message let's navigate to our dropdown and find our instance. Click the three bars, and then select workloads, and finally helm releases.
+After receiving your successful message let's navigate to our dropdown and find our instance. Click the hamburger icon on left (three horizontal) bars, and then select workloads, and finally helm releases.  
 ![ODM Instance in ICP](ODM-Instance-in-ICP.png)
 
-Next find and select the ODM Instance in the catalog. In our case it is bc-odm
+Next find and select the ODM helm release. In our case it is `bc-odm`   
 ![ODM Instance in Catalog](ODM-Instance-in-Catalog.png)
 
-Now we can see the ODM Instance and info. We can view the password here and also can see the instance we need to navigate to.
+Now we can see the ODM helm release information: deployed namespace, service, deployment, pod... At the bottom we can view the userids and password to connect to each element of ODM. We can also see the instance we need to navigate to.
 
 ![ODM Instance Details](ODM-Instance-Details.png)
 
 ![ODM Instance Info](ODM-Instance-Info.png)
 
-Select the link listed inside the service to navigate to more details
+Select the link listed inside the `service` sub part to navigate to more details
 
 ![ODM Instance Port](ODM-Instance-Port.png)
 
@@ -59,7 +64,10 @@ Select the Node Port to navigate to the asset. This should take you to the ODM H
 ![ODM Home](ODM-Home.png)
 
 ## Installing the Ruleset
+The RuleApp was created and updated using Rule Designer, the developer tool. We want to expose the decision service in the Decision Center consoles so business users can browse the ruleset content, modify the business rules and tables and deploy the ruleset to the target runtime.
+With ICP ODM deployment all those components are available for you: decision center, decision server, administration console.
 
+### Adding the ruleset in decision center enterprise console
 From here we will select the Decision Center Enterprise Console to Add our Rules.
 
 Select Configure at the top right of the navigation bars
@@ -82,6 +90,7 @@ And select our ruleset to export
 
 Select OK and then download the jar archive that it responds with.
 
+### Deploying ruleApp to execution runtime
 Navigate back to our ODM Dashboard and select Decision Server Console
 ![ODM Home](ODM-Home.png)
 
