@@ -13,6 +13,8 @@ Update 5/03/2018 for ICP 2.1.0.2.
 
 
 # Installation specifics
+The installation of the ICP 2.1.0.x is [here](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.2/app_center/create_helm_cli.html)
+
 ## Error: hostname not resolved
   ```
    fatal: [...] => Failed to connect to the host via ssh: ssh: Could not resolve hostname ...:
@@ -94,6 +96,8 @@ During the Kubernetes upgrade step, the installer attempts to install Kubelet on
 
 
 # Access
+See [official faq on login](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.2/troubleshoot/cli_login.html)
+
 ## Unknown certificate authority
 ```
 $ docker login mycluster.icp:8500
@@ -163,11 +167,14 @@ mount /dev/sdc /mnt/disk
 
 See also [this note](https://kb.vmware.com/s/article/1003940)
 
+## 503 on a deployed app with ingress rule
+"503 Service Temporarily Unavailable"
+
 # Deployment
 
 ## Helm version not able to connect to Tiller.
 Error: cannot connect to Tiller
-With version 2.1.0.2, TLS is enforced to communicate with the server. So to get the version the command is `helm version --tls`
+With version 2.1.0.2, TLS is enforced to communicate with the server. So to get the version the command is `helm version --tls`. You need also to get the certificates for the cluster. The command ` bx pr cluster-config <custername>` will add those certificate into `~/.helm`.
 
 ## Pod not getting the image from docker private repository
 Looking at the Events report from the pod view you got a message like:
@@ -228,13 +235,13 @@ Try to do `kubectl cluster-info`: failed: error: you must be logged in to the se
 * Be sure to have use the settings from the 'configure client'.
 * Be sure the cluster name / IP address are mapped in /etc/hosts
 * Be sure to have a ca.crt into `~/.ssh` folder
-* Use the `bx pr login -a <clustername>/api -u admin` command
+* Use the `bx pr login -a <clustername>/api -u admin` command to login to the cluster
 
 
 ### Default backend - 404
 This error can occur if the ingress rules are not working well.
 
-1. Assess if ingress is well defined: virtual hostname, proxy adddress and status/age of running
+1. Assess if ingress is well defined: virtual hostname, proxy address and status/age of running
   ```
   kubectl get ing --namespace browncompute
 
@@ -269,14 +276,14 @@ No events.
   greencompute   greencustomerapp-green-customerapp                 greenapp.green.case   172.16.40.131   80        1h
   ```
 
-  Delete the conflicting namespace.
+  Delete the conflicting ingress.
   ```
   kubectl delete ing greencompute-green-customerapp-green-customerapp
 
   ingress "greencompute-green-customerapp-green-customerapp" deleted
   ```
 
-## ICP Cluster is inaccessible via admin console
+## ICP Cluster is not accessible via admin console
 After restart of the ICP master node, the ICP cluster is inaccessible remotely.
 
   1. Log into master node via SSH and check kube-system pods
@@ -304,4 +311,4 @@ After restart of the ICP master node, the ICP cluster is inaccessible remotely.
 # Investigation
 When something is going wrong you can do the following:
 * assess the node status with `kubectl get nodes`
-* assess the storage state with ''
+* assess the storage state with 'kubectl get pv'  and `kubectl get pvc`

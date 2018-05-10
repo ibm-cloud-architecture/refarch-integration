@@ -1,9 +1,10 @@
 # Hybrid Integration on IBM Cloud Private Deployment
 In this section we are presenting how *Hybrid integration solution implementation* is deployed to IBM Cloud Private. We address different configurations as business and operation requirements may differ per data center and even per business applications. Each configuration describes how some of the components of the solution may be deployed to ICP or kept on-premise servers.
 
-Updated 05/03/2018
+Updated May 09 2018
 
 ## Table of Contents
+* [Cloud technologies value propositions](#value-propositions). Summary of why container, kubernetes and ICP bring a lot to IT architecture.
 * [Prerequisites](#prerequisites)
 * [Community Edition installation (for your own development environment)](./dev-env-install.md)
 * [Enterprise Edition Installation](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Installing_ICp_on_prem.md)
@@ -13,11 +14,36 @@ Updated 05/03/2018
 * [Troubleshooting](troubleshooting.md)
 * [Compendium](compendium.md) Get an exhaustive view of the things you need to read.
 
+# Value propositions
+## Value proposition for container
+Just to recall the value of using container for the cognitive application are the following:
+* Docker ensures consistent environments from development to production. Docker containers are configured to maintain all configurations and dependencies internally.
+* Docker containers allows you to commit changes to your Docker images and version control them. It is very easy to rollback to a previous version of your Docker image. This whole process can be tested in a few minutes.
+* Docker is fast, allowing you to quickly make replications and achieve redundancy.
+* Isolation: Docker makes sure each container has its own resources that are isolated from other containers
+* Removing an app/ container is easy and won’t leave any temporary or configuration files on your host OS.
+* Docker ensures that applications that are running on containers are completely segregated and isolated from each other, granting you complete control over traffic flow and management
+
+## Value proposition for Kubernetes
+Kubernetes is an open source system for automating the deployment, scaling, and management of containerized apps.
+* high availability 24/7
+* Deploy new version multiple times a day
+* Standard use of container for apps and business services
+* Allocates  resources and tools when applications need them to work
+* Single-tenant Kubernetes clusters with compute, network and storage infrastructure isolation
+* Automatic scaling of apps
+* Use the cluster dashboard to quickly see and manage the health of your cluster, worker nodes, and container deployments.
+* Automatic re-creation of containers in case of failures
+
+## Value proposition for IBM Cloud Private
+The goal is to match the power of public cloud platform with the security and control of your firewall. Based on Kubernetes it offers the same benefits of kubernetes and adds more services and integration with on-premise data sources and services. Most of IBM leading middleware products can run on ICP. ICP helps developers and operations team to optimize legacy application with cloud-enabled middleware, open the data center to work with cloud services using hybrid integration, and create new cloud-native applications using devops tools and polyglot programming languages.
+
+
 ## Prerequisites
 The following points should be considered before going into more detail of the ICP deployment:
-* A conceptual understanding of how [Kubernetes](https://kubernetes.io/docs/concepts/) works.
+* A conceptual understanding of how [Kubernetes](https://kubernetes.io/docs/concepts/) works, see also personal summary [here]()
 * A high-level understanding of [Helm and Kubernetes package management](https://docs.helm.sh/architecture/).
-* A basic understanding of [IBM Cloud Private cluster architecture](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0/getting_started/architecture.html).
+* A basic understanding of [IBM Cloud Private cluster architecture](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.2/getting_started/architecture.html).
 * Understand the different [ICP environment and sizing](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Sizing.md)
 * Access to an operational IBM Cloud Private cluster [see installation note](./dev-env-install.md) for the different approaches you could use.
 
@@ -26,7 +52,7 @@ As a developer, you need to have the following components:
 * [Kubectl](dev-env-install.md#install-kubectl)
 * [Helm](dev-env-install.md#install-helm)
 we have provided shell script to do those installation. Execute `../scripts/install_cli.sh` ( or `./scripts/install_cli.bat` for Windows)
-* Add Helm Repository
+* Add Helm Charts Repository
 * Add a **browncompute** namespace using ICP admin console, under **Manage > Namespaces** menu.
 
 ![](icp-brown-ns.png)
