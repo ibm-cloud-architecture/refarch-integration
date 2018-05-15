@@ -67,45 +67,41 @@ Select the Node Port to navigate to the asset. This should take you to the ODM H
 The RuleApp was created and updated using Rule Designer, the developer tool. We want to expose the decision service in the Decision Center consoles so business users can browse the ruleset content, modify the business rules and tables and deploy the ruleset to the target runtime.
 With ICP ODM deployment all those components are available for you: decision center, decision server, administration console.
 
-### Adding the ruleset in decision center enterprise console
-From here we will select the Decision Center Enterprise Console to Add our Rules.
 
-Select Configure at the top right of the navigation bars
 
-![ODM Navigation Import](ODM-Navigation-Import.png)
+### Method 1 Deploying Rule App to RES via Rule Designer
 
-Select Import Projects to import our rule project. The Rule Project will look something like this but zipped
+1. Download the required files, these are the top two shown below. Ensure that the required .project and .ruleproject files are included ![filesToDownload.png](/Rule-Deployment/filesToDownload.png)
 
-![ODM Rule Package](ODM-Rule-Package.png)
+2. Add them both into your Rule Designer development environment, import the Customer Recommendation XOM, we will use that as our BOM. The Product Recommendation is our main ruleset. ![File Associations](/Rule-Deployment/fileassociations.png)
 
-Next you can select the ODM Project to explore as seen here. I changed the dropdown to explore the ruleset, however to export let's change it back to customer-recommendation-main
-![ODM Project Info](ODM-Project-Info.png)
+3. Ensure that we have the proper dependencies for our project
+![JOM](/Rule-Deployment/JXOM.png)
 
-Now Select project again to export the rule archive
+4. Create your link to the Rule Execution Server. ![Server Creation](/Rule-Deployment/server-creation.gif)
 
-![ODM Archive Export](ODM-Archive-Export.png)
+5. Create your new deployment and set configuration options if you haven't already. Click Proceed to Rule App Deployment to push your Deployment to the RES ![Deployment Configuration](/Rule-Deployment/deploymentConfiguration.gif)
 
-And select our ruleset to export
-![ODM Rule Extractor](ODM-Rule-Extractor.png)
+6. You should see a message output inside our Rule Designer after a few moments ![Successful Deployment](/Rule-Deployment/successfulDeployment.png)
 
-Select OK and then download the jar archive that it responds with.
+7. After the steps are completed successfully we want to navigate to our REST interface with the rule project, test with our sample request, and verify we receive a correct response ![Test Deployment](/Rule-Deployment/testDeployment.gif)
 
-### Deploying ruleApp to execution runtime
-Navigate back to our ODM Dashboard and select Decision Server Console
-![ODM Home](ODM-Home.png)
 
-Select the Add RuleApp option
+  Find our sample XML Here <https://github.com/ibm-cloud-architecture/refarch-cognitive-prod-recommendations/blob/master/odm/rulesets/ProductRecommendation/TestRequest.xml>
 
-![Decision Server Console](Decision-Server-Console.png)
 
-Fill out required information to create our new RuleApp
+### Method 2 Uploading Rule App to Decision Center Business Console and Deploying from there
 
-![New Rule App Info](New-Rule-App-Info.png)
+* If you have already imported your project into Rule Designer, export the decision service ![Export Decision Service](/Rule-Deployment/exportDecisionService.gif)
+* If you are using the rule service we have provided, download the required files, these are the top two shown below. Please be sure that when they are download they have the necessary .project and .ruleproject files ![filesToDownload.png](/Rule-Deployment/filesToDownload.png)
 
-After this is done we will be attaching the necessary archived ruleset from the previous steps. Select Add Ruleset in the below screen
 
-![ODM RuleApp View](ODM-RuleApp-View.png)
+1. Zip up a parent folder that includes the downloaded files ![Package Decision Service](/Rule-Deployment/packageDecisionService.gif)
 
-Please add the necessary information and attach the JAR that was previously downloaded
+2. Upload the packaged decision service to our Decision Center Business Console ![Upload Decision Service](/Rule-Deployment/uploadDecisionService.gif)
 
-![ODM Ruleset Attach](ODM-Ruleset-Attach.png)
+3. Ensure that the endpoint is set to our Rule Execution Server, and then deploy. ![Decision Service Deployment](/Rule-Deployment/decisionServiceDeployment.gif)
+
+4. You will see confirmation of a successful deployment and can then test inside our REST interface. ![Test Deployment](/Rule-Deployment/testDeployment.gif)
+
+  Find our sample XML Here <https://github.com/ibm-cloud-architecture/refarch-cognitive-prod-recommendations/blob/master/odm/rulesets/ProductRecommendation/TestRequest.xml>
