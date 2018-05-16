@@ -9,7 +9,7 @@ Updated May 09 2018
 * [Community Edition installation (for your own development environment)](./dev-env-install.md)
 * [Enterprise Edition Installation](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Installing_ICp_on_prem.md)
 * [Deploy the 'browncompute' solution](#deployment-steps)
-* [Hybrid integration deployment configurations:](#configurations) We are proposing different configurations for the hybrid solution deployment: Webapp, API gateway, message flow, SOAP services, data base.
+* [Hybrid integration deployment configurations](#configurations) We are proposing different configurations for the hybrid solution deployment: Webapp, API gateway, message flow, SOAP services, data base.
 * [CLI command summary](icp-cli.md)
 * [Troubleshooting](troubleshooting.md)
 * [Compendium](compendium.md) Get an exhaustive view of the things you need to read.
@@ -36,8 +36,7 @@ Kubernetes is an open source system for automating the deployment, scaling, and 
 * Automatic re-creation of containers in case of failures
 
 ## Value proposition for IBM Cloud Private
-The goal is to match the power of public cloud platform with the security and control of your firewall. Based on Kubernetes it offers the same benefits of kubernetes and adds more services and integration with on-premise data sources and services. Most of IBM leading middleware products can run on ICP. ICP helps developers and operations team to optimize legacy application with cloud-enabled middleware, open the data center to work with cloud services using hybrid integration, and create new cloud-native applications using devops tools and polyglot programming languages.
-
+The goal is to match the power of public cloud platform with the security and control of your firewall. Based on Kubernetes it offers the same benefits of kubernetes and adds more services and integration with on-premise data sources and services. Most of IBM leading middleware products can run on ICP. ICP helps developers and operations team to optimize legacy application with cloud-enabled middleware, open the data center to work with cloud services using hybrid integration, and create new cloud-native applications using devops tools and polyglot programming languages. [See the IBM ICP product page](https://www.ibm.com/cloud/private)
 
 ## Prerequisites
 The following points should be considered before going into more detail of the ICP deployment:

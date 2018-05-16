@@ -22,7 +22,7 @@ https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.2/manage_cluster/script
 ## Summary of CLI commands
 * Login to your cluster
 ```
-bx pr login -a https://<master_ip_address>:8443 --skip-ssl-validation
+bx pr login -a https://<master_ip_address>:8443 --skip-ssl-validation -a <accountname>
 ```
 * Assess cluster name and status
 ```
@@ -69,3 +69,15 @@ $ export NODE_PORT=$(kubectl get services/casewdsbroker -o go-template='{{(index
 
 $ kubectl describe deployment
 ```
+
+## helm CLI
+```
+# create a new helm chart:
+ helm create <chartname>
+
+# Install a charts on a connected ICP
+
+# delete an existing release
+helm del --purge browncompute-dal --tls
+```
+The `--purge` flag makes sure that the `browncompute-dal` release name is reusable for a fresh install if you decide to use the same release name again.

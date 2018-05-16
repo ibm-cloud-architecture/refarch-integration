@@ -168,7 +168,12 @@ mount /dev/sdc /mnt/disk
 See also [this note](https://kb.vmware.com/s/article/1003940)
 
 ## 503 on a deployed app with ingress rule
-"503 Service Temporarily Unavailable"
+The following message "503 Service Temporarily Unavailable" may appear when accessing a pod via virtual hostname defined in Ingress rules. Be sure to understand the ingress role
+
+To investigate do the following:
+* Display the helm release, and verify the Ingress is specified and the hosts is specified, the IP address matches the proxy IP address in the cluster. In the service verify the type is ClusterIP and the ports map the exposed port in the docker image.
+![](chart-view.png)
+* In the service verify 
 
 # Deployment
 
