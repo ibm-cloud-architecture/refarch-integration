@@ -173,7 +173,7 @@ The following message "503 Service Temporarily Unavailable" may appear when acce
 To investigate do the following:
 * Display the helm release, and verify the Ingress is specified and the hosts is specified, the IP address matches the proxy IP address in the cluster. In the service verify the type is ClusterIP and the ports map the exposed port in the docker image.
 ![](chart-view.png)
-* In the service verify 
+* In the ingress verify the service name, the app selector using Service > Ingress  
 
 # Deployment
 
