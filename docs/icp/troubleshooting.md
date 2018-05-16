@@ -7,8 +7,8 @@ Update 5/03/2018 for ICP 2.1.0.2.
 
 # Table of contents
 * [Installation specifics](#installation-specifics)
+* [Access during development](#access)
 * [Deployment](#deployment)
-* [Access](#access)
 * [Investigation](#investigation)
 
 
@@ -171,15 +171,26 @@ See also [this note](https://kb.vmware.com/s/article/1003940)
 The following message "503 Service Temporarily Unavailable" may appear when accessing a pod via virtual hostname defined in Ingress rules. Be sure to understand the ingress role
 
 To investigate do the following:
-* Display the helm release, and verify the Ingress is specified and the hosts is specified, the IP address matches the proxy IP address in the cluster. In the service verify the type is ClusterIP and the ports map the exposed port in the docker image.
+* Display the helm release, and verify the Ingress is specified and the hosts is specified, the IP address matches the proxy IP address in the cluster. In the service verify the type is ClusterIP and the ports map the exposed port in the docker image.  
 ![](chart-view.png)
-* In the ingress verify the service name, the app selector using Service > Ingress  
+* In the ingress verify the service name, the app selector are matching with the deployment parameters using Service > Ingress -> Edit:  
+![](edit-ingress.png)
 
-# Deployment
+## Helm connection Issue: tls: bad certificate
+For the  *Error: remote error: tls: bad certificate*:  you need to be logged into the cluster and get the cluster config. The commands are:
+```
+bx pr login -a https://ext-demo.icp:8443 -u admin --skip-ssl-validation
+bx pr cluster-config mycluster
+```
 
 ## Helm version not able to connect to Tiller.
 Error: cannot connect to Tiller
 With version 2.1.0.2, TLS is enforced to communicate with the server. So to get the version the command is `helm version --tls`. You need also to get the certificates for the cluster. The command ` bx pr cluster-config <custername>` will add those certificate into `~/.helm`.
+
+# Deployment
+
+## helm install command: User is not authorized to install release
+Be sure to enter the good namespace name in the install command.
 
 ## Pod not getting the image from docker private repository
 Looking at the Events report from the pod view you got a message like:
