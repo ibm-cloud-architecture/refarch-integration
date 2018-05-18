@@ -24,8 +24,8 @@ By studying the set of projects and articles linked to this top repository, you 
 - how to [secure the web app with passport](https://github.com/ibm-cloud-architecture/refarch-caseportal-app/blob/master/docs/login.md)
 - how to access existing LDAP service for user authentication
 - how to perform [CI/CD in hybrid world](docs/devops/README.md)
-- how to monitor all those components using Application Performance Monitoring
-- how to deploy most of the components of the solution to IBM Cloud Private
+- how to [monitor all those components](./docs/csmo/README.md) using Application Performance Monitoring
+- how to [deploy most of the components of the solution](./docs/icp/README.md) to IBM Cloud Private
 - How to call BPM process from Watson Conversation (orchestration), and how to integrate chat user interface connected to Watson Conversation into BPM coach.
 
 # Table of Contents
@@ -79,6 +79,7 @@ As architect we need to develop a system context, so the following diagram illus
 1. [Customer management for analytics](https://github.com/ibm-cloud-architecture/refarch-integration-services) micro services to support RESTful API.
 1. Decision engine to automate business rules execution and Management for [product recommendation in the context of user moving in different location](https://github.com/ibm-cloud-architecture/refarch-cognitive-prod-recommendations) with how to install [ODM helm chart on IBM Cloud Private](./docs/odm/README.md)
 1. [LDAP for user Management](https://github.com/ibm-cloud-architecture/refarch-integration-utilities#ldap-configuration) to centralize authentication use cases.
+1. [Event processing for application state management](./docs/messaging-usecase.md) to combine Decision Insight with MQ message and chat bot to manage inventory plus state.
 
 We have also other repositories to address...
 * [Testing](https://github.com/ibm-cloud-architecture/refarch-integration-tests) This repository includes a set of test cases to do component testing, functional testing and integration tests.
