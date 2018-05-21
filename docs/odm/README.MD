@@ -71,20 +71,20 @@ With ICP ODM deployment all those components are available for you: decision cen
 
 ### Method 1 Deploying Rule App to RES via Rule Designer
 
-1. Download the required files, these are the top two shown below. Ensure that the required .project and .ruleproject files are included ![filesToDownload.png](/Rule-Deployment/filesToDownload.png)
+1. Download the required files, these are the top two shown below. Ensure that the required .project and .ruleproject files are included ![filesToDownload.png](./Rule-Deployment/filesToDownload.png)
 
-2. Add them both into your Rule Designer development environment, import the Customer Recommendation XOM, we will use that as our BOM. The Product Recommendation is our main ruleset. ![File Associations](/Rule-Deployment/fileassociations.png)
+2. Add them both into your Rule Designer development environment, import the Customer Recommendation XOM, we will use that as our BOM. The Product Recommendation is our main ruleset. ![File Associations](./Rule-Deployment/fileassociations.png)
 
 3. Ensure that we have the proper dependencies for our project
-![JOM](/Rule-Deployment/JXOM.png)
+![JOM](./Rule-Deployment/JXOM.png)
 
-4. Create your link to the Rule Execution Server. ![Server Creation](/Rule-Deployment/server-creation.gif)
+4. Create your link to the Rule Execution Server. ![Server Creation](./Rule-Deployment/server-creation.gif)
 
-5. Create your new deployment and set configuration options if you haven't already. Click Proceed to Rule App Deployment to push your Deployment to the RES ![Deployment Configuration](/Rule-Deployment/deploymentConfiguration.gif)
+5. Create your new deployment and set configuration options if you haven't already. Click Proceed to Rule App Deployment to push your Deployment to the RES ![Deployment Configuration](./Rule-Deployment/deploymentConfiguration.gif)
 
-6. You should see a message output inside our Rule Designer after a few moments ![Successful Deployment](/Rule-Deployment/successfulDeployment.png)
+6. You should see a message output inside our Rule Designer after a few moments ![Successful Deployment](./Rule-Deployment/successfulDeployment.png)
 
-7. After the steps are completed successfully we want to navigate to our REST interface with the rule project, test with our sample request, and verify we receive a correct response ![Test Deployment](/Rule-Deployment/testDeployment.gif)
+7. After the steps are completed successfully we want to navigate to our REST interface with the rule project, test with our sample request, and verify we receive a correct response ![Test Deployment](./Rule-Deployment/testDeployment.gif)
 
 
   Find our sample XML Here <https://github.com/ibm-cloud-architecture/refarch-cognitive-prod-recommendations/blob/master/odm/rulesets/ProductRecommendation/TestRequest.xml>
@@ -92,16 +92,16 @@ With ICP ODM deployment all those components are available for you: decision cen
 
 ### Method 2 Uploading Rule App to Decision Center Business Console and Deploying from there
 
-* If you have already imported your project into Rule Designer, export the decision service ![Export Decision Service](/Rule-Deployment/exportDecisionService.gif)
-* If you are using the rule service we have provided, download the required files, these are the top two shown below. Please be sure that when they are download they have the necessary .project and .ruleproject files ![filesToDownload.png](/Rule-Deployment/filesToDownload.png)
+* If you have already imported your project into Rule Designer, export the decision service ![Export Decision Service](./Rule-Deployment/exportDecisionService.gif)
+* If you are using the rule service we have provided, download the required files, these are the top two shown below. Please be sure that when they are download they have the necessary .project and .ruleproject files ![filesToDownload.png](./Rule-Deployment/filesToDownload.png)
 
 
-1. Zip up a parent folder that includes the downloaded files ![Package Decision Service](/Rule-Deployment/packageDecisionService.gif)
+1. Zip up a parent folder that includes the downloaded files ![Package Decision Service](./Rule-Deployment/packageDecisionService.gif)
 
-2. Upload the packaged decision service to our Decision Center Business Console ![Upload Decision Service](/Rule-Deployment/uploadDecisionService.gif)
+2. Upload the packaged decision service to our Decision Center Business Console ![Upload Decision Service](./Rule-Deployment/uploadDecisionService.gif)
 
-3. Ensure that the endpoint is set to our Rule Execution Server, and then deploy. ![Decision Service Deployment](/Rule-Deployment/decisionServiceDeployment.gif)
+3. Ensure that the endpoint is set to our Rule Execution Server, and then deploy. ![Decision Service Deployment](./Rule-Deployment/decisionServiceDeployment.gif)
 
-4. You will see confirmation of a successful deployment and can then test inside our REST interface. ![Test Deployment](/Rule-Deployment/testDeployment.gif)
+4. You will see confirmation of a successful deployment and can then test inside our REST interface. ![Test Deployment](./Rule-Deployment/testDeployment.gif)
 
   Find our sample XML Here <https://github.com/ibm-cloud-architecture/refarch-cognitive-prod-recommendations/blob/master/odm/rulesets/ProductRecommendation/TestRequest.xml>
