@@ -38,10 +38,20 @@ bx pr login -a https://<master_ip_address>:8443 --skip-ssl-validation -a <accoun
 * [ICP CLI formal doc](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.2/manage_cluster/cli_commands.html)
 * [kubectl playground](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands)
 ```
+# Get cluster context
+kubectl config set-cluster gr33n-cluster --server=https://gr33n-cluster:8001  --insecure-skip-tls-verify=true
+kubectl config set-cluster gr33n-cluster --server=https://gr33n-cluster:8001 --insecure-skip-tls-verify=true
+kubectl config set-context gr33n-cluster --cluster=gr33n-cluster --user=admin --insecure-skip-tls-verify=true
+kubectl config set-credentials admin --client-certificate=gr33n-cluster/cert.pem  --client-key=gr33n-cluster/key.pem
+kubectl config use-context gr33n-cluster
+
 # get all deployments
 kubectl get deployments --all-namespaces
 # get specifics deployments
-k get deployment jenkins -n browncompute
+kubectl get deployment jenkins -n browncompute
+# Add a deployment from a yaml file
+kubectl create -f deployment.yaml
+
 # get pod details
 kubectl get pods -l component=jenkins-jenkins-master  -n browncompute
 ```
@@ -51,7 +61,7 @@ kubectl get pods -l component=jenkins-jenkins-master  -n browncompute
 ```
 $ kubectl get pods
 
-$ kubectl describe pods
+$ kubectl describe pod podid
 
 $ export POD_NAME=$(kubectl get pods -o go-template='{{range .items}}{{.metadata.name}}{{"\n"}}{{end}}’)
 
@@ -68,6 +78,9 @@ $ kubectl get services
 $ export NODE_PORT=$(kubectl get services/casewdsbroker -o go-template='{{(index .spec.ports 0).nodePort}}')
 
 $ kubectl describe deployment
+
+# Apply change to existing pod
+# kubectl apply -f filename.yml
 ```
 
 ## helm CLI
