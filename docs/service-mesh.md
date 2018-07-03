@@ -159,10 +159,20 @@ When deploying on kubernetes cluster, microservices use the DNS lookup to discov
 
 
 ## ISTIO
-[ISTIO](https://istio.io/) provides an easy way to create a network of deployed services with load balancing, service-to-service authentication, monitoring, etc...
-By deploying a special sidecar proxy throughout your environment, all network communication between microservice is intercepted and controlled by ISTIO control panel.
+[ISTIO](https://istio.io/) provides an easy way to create a network of deployed services with load balancing, service-to-service authentication, traffic flow management, monitoring, etc...
+By deploying a special sidecar proxy (called Envoy) throughout your environment, all network communication between microservices is intercepted and controlled by ISTIO control panel.
 
-To deploy ISTIO to IBM cloud private see [this note]().
+The control plane manages the overall network infrastructure and enforces the policy and traffic rules.
+
+To deploy ISTIO to IBM cloud private you can access the ICP catalog and search for istio. The default installation configuration does not install sidecar-injector, Prometheus, Grafana, service-graph, zipkin but istio-proxy, Ingress, Mixer, Pilot.
+
+![](istio-icp.png)
+
+To create a service mesh with Istio, you update the deployment of the pods to add the Istio Proxy (based on the Lyft Envoy Proxy) as a side car to each pod.
+
+### More reading
+[Advanced traffic management with ISTIO](https://developer.ibm.com/code/patterns/manage-microservices-traffic-using-istio/)
+[Istio workshop for IBM Cloud Container service](https://github.com/szihai/istio-workshop)
 
 ## Asynchronous loosely coupled solution using Events
 So if we change of paradigm and use a messaging approach or better an event approach of the data update requirements. Now we need to think about the activities that apply within each service and how they can interest other component. They are becoming facts that something happen and can be published as events for other to consume. The first level of refactoring may become:  
