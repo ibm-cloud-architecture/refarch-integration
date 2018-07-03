@@ -1,7 +1,7 @@
 # Hybrid Integration on IBM Cloud Private Deployment
 In this section we are presenting how *Hybrid integration solution implementation* is deployed to IBM Cloud Private. We address different configurations as business and operation requirements may differ per data center and even per business applications. Each configuration describes how some of the components of the solution may be deployed to ICP or kept on-premise servers.
 
-Updated May 09 2018
+Updated July 02 2018
 
 ## Table of Contents
 * [Cloud technologies value propositions](#value-propositions). Summary of why container, kubernetes and ICP bring a lot to IT architecture.
@@ -10,6 +10,7 @@ Updated May 09 2018
 * [Enterprise Edition Installation](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Installing_ICp_on_prem.md)
 * [Deploy the 'browncompute' solution](#deployment-steps)
 * [Hybrid integration deployment configurations](#configurations) We are proposing different configurations for the hybrid solution deployment: Webapp, API gateway, message flow, SOAP services, data base.
+* [Service mesh](./docs/service-mesh.md) with kubernetes
 * [CLI command summary](icp-cli.md)
 * [Troubleshooting](troubleshooting.md)
 * [Compendium](compendium.md) Get an exhaustive view of the things you need to read.

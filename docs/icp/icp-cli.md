@@ -80,7 +80,10 @@ $ export NODE_PORT=$(kubectl get services/casewdsbroker -o go-template='{{(index
 $ kubectl describe deployment
 
 # Apply change to existing pod
-# kubectl apply -f filename.yml
+$ kubectl apply -f filename.yml
+
+# Access to a pod using node port: example for cassandra pod.
+$ k port-forward cassandra-0 9042:9042
 ```
 
 ## helm CLI

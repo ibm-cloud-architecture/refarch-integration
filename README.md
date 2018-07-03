@@ -2,7 +2,7 @@
 
 IT environments are becoming hybrid in nature; most businesses use cloud computing as part of their overall IT environment. While businesses continue to operate enterprise applications, processes, and systems of record on premises, they are rapidly developing cloud-native applications on cloud. The [hybrid integration reference architecture](https://www.ibm.com/cloud/garage/content/architecture/integrationServicesDomain/) describes an approach to connect components which are split across cloud and on-premises environments, or across public and private clouds -- even across different cloud providers.
 
-Updated (05/02/2018)
+Updated July 02 2018
 
 ## Target audiences
 This solution implementation covers a lot of different and interesting subject. If you are...
@@ -27,6 +27,7 @@ By studying the set of projects and articles linked to this top repository, you 
 - how to [monitor all those components](./docs/csmo/README.md) using Application Performance Monitoring
 - how to [deploy most of the components of the solution](./docs/icp/README.md) to IBM Cloud Private
 - How to call BPM process from Watson Conversation (orchestration), and how to integrate chat user interface connected to Watson Conversation into BPM coach.
+- How to support [service mesh](./docs/service-mesh.md) with kubernetes
 
 # Table of Contents
 * [Hybrid Cloud Introduction](#introduction)
