@@ -1,6 +1,6 @@
 # Microservice mesh
-In this note we are grouping the studies around microservice to microservice communication with kubernetes deployment. We are addressing:
-* how ingress controller helps inside kubernetes
+In this note we are grouping the studies around microservice to microservice communication with Kubernetes deployment. We are addressing:
+* how ingress controller helps inside Kubernetes
 * how API gateway helps for API management and service integration
 * how to expose service in hybrid cloud
 * how to discover service
@@ -19,7 +19,17 @@ A microservice is in fact a component. micro refers to the granularity of the co
 
 ![](ms-apis.png)
 
-We encourage you to go to read [integration design and architecture series](https://developer.ibm.com/integration/blog).  
+We encourage you to go to read [integration design and architecture series](https://developer.ibm.com/integration/blog).
+
+Container orchestration like Kubernetes are mainly doing application scheduling, cluster management, resource provisioning, platform and workload monitoring and service discovery.
+
+When application solution are growing with tenth microservices, and hundred of replicas, multiple versions,... To address this scalability issue you need to get a least the following:
+* visibility on how traffic is flowing between microservice, how routing is done between microservice based on requests contained or the origination point or the end point
+* how to support resiliency by handling failure in a graceful manner
+* how to ensure security with identity assertion
+* how to enforce security policy
+These are requirement for service mesh.
+
 ## Context
 Traditional modern architecture involves having different components exposing reusable APIs, addressing different channels (mobile, single page application, traditional server pages or B2B apps), consuming APIs (mobile APIs, back end for front end, shared common apis like authentication, authorization,...) and backend services addressing reusable business services:
 
@@ -68,7 +78,7 @@ We are now looking at the following questions:
 The answers depend on the existing infrastructure and environment, and deployment needs.
 
 ## Service routing
-We have to dissociate intra-cluster communication versus inter clusters or cluster to external services. Without getting into too much detail of IP routing within kubernetes some important elements of the cluster are important to remember:
+We have to dissociate intra-cluster communication versus inter clusters or cluster to external services. Without getting into too much detail of IP routing within Kubernetes some important elements of the cluster are important to remember:
 * microservices are packaged as docker container and expose port. When deploy they run in a pod within a node (physical or virtual machine)
 * containers can talk to other containers only if they are on the same machine, or when they have exposed port.
 * Kubernetes is configured with a large flat subnet (e.g. 172.30.0.0/16) which is used for internal application traffic inside of the cluster. Each worker node in the Kubernetes cluster is assigned one or more non-overlapping slices of this network, coordinated by the Kubernetes master node.
@@ -109,7 +119,7 @@ spec:
 ```
 The backend for front end, the asset manager microservice and the asset consumer components are exposed in the same domain.
 The `serviceName` matches the service exposed for each components.
-The following diagram presents how an external application accesses deployed microservice within kubernetes pod.
+The following diagram presents how an external application accesses deployed microservice within Kubernetes pod.
 
 The following diagram shows how Ingress directs communication from the internet to a deployed microservice:
 
@@ -135,7 +145,7 @@ So the decisions on how to expose service are linked to:
 * do you need to support other protocol then HTTP
 * do you need to have multiple instance of the application
 
-When deploying a microservice to kubernetes it is recommended to use Ingress rule as presented above.. The following yaml file exposes the BFF service using ClusterIP:
+When deploying a microservice to Kubernetes it is recommended to use Ingress rule as presented above.. The following yaml file exposes the BFF service using ClusterIP:
 ```yaml
 apiVersion: v1
 kind: Service
@@ -155,7 +165,7 @@ spec:
 ```
 
 ## Service discovery
-When deploying on kubernetes cluster, microservices use the DNS lookup to discover deployed microservice.
+When deploying on Kubernetes cluster, microservices use the DNS lookup to discover deployed microservice.
 
 
 ## ISTIO
