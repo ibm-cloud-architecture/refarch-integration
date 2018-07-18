@@ -58,12 +58,12 @@ Each could be grouped by business domain like the user management, asset managem
 ![](ms-view.png)  
 
 All of these still does not address the fact that data are distributed and even more with microservices owning their data persistence. As developers and architects we still have to address the following data integrity problems:
-* two phase commit
+* two phases commit
 * compensating operation
 * eventual data consistency: some microservice updating data may share those updates with other microservices.
-* Data aggregation: adding new views on data, owned by a microservice, to support new aggregates. Example of used are machine learning, analytics, business visibility...
+* Data aggregation: adding new views on data, owned by a microservice, to support new aggregates. Examples are preparing data view for machine learning modeling, analytics, or business intelligence...
 
-From the previous microservice allocation we can see the needs to propagate data update between services. Adding or unsubscribing a user involves updating the asset the user own and the authentication runtime service
+From the previous microservice allocation we can see the needs to propagate data update between services. Adding or unsubscribing a user involves updating the asset the user own and the authentication runtime service:
 
 ![](data-consistency.png)  
 
@@ -174,15 +174,57 @@ By deploying a special sidecar proxy (called Envoy) throughout your environment,
 
 The control plane manages the overall network infrastructure and enforces the policy and traffic rules.
 
-To deploy ISTIO to IBM cloud private you can access the ICP catalog and search for istio. The default installation configuration does not install sidecar-injector, Prometheus, Grafana, service-graph, zipkin but istio-proxy, Ingress, Mixer, Pilot.
+To deploy ISTIO to IBM cloud private you can access the ICP catalog and search for istio. But as it is the version 0.7 we recommend to do your own installation using istio.io download page to get the last release.
+### ICP installation
+Here is a quick summary of the steps:
+```
+#1- Download istio latest versions
+#2- Modify your PATH to get access to istioctl CLI tool. Verify with
+$ istioctl version
+#3- Connect to your ICP cluster
+#4- Install istio without TLS security
+$ kubectl apply -f install/kubernetes/istio-demo.yaml
+#5- Verify the deployed services
+$ kubectl get svc -n istio-system
+```
+```
+NAME                       TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)                                                                       AGE
+grafana                    ClusterIP      10.0.0.170   <none>        3000/TCP                                                                      16m
+istio-citadel              ClusterIP      10.0.0.123   <none>        8060/TCP,9093/TCP                                                             16m
+istio-egressgateway        ClusterIP      10.0.0.16    <none>        80/TCP,443/TCP                                                                16m
+istio-galley               ClusterIP      10.0.0.52    <none>        443/TCP                                                                       16m
+istio-grafana              ClusterIP      10.0.0.71    <none>        3000/TCP                                                                      14d
+istio-ingress              LoadBalancer   10.0.0.91    <pending>     80:31196/TCP,443:30664/TCP                                                    14d
+istio-mixer                ClusterIP      10.0.0.6     <none>        9091/TCP,15004/TCP,9093/TCP,9094/TCP,9102/TCP,9125/UDP,42422/TCP              14d
+istio-pilot                ClusterIP      10.0.0.39    <none>        15003/TCP,15005/TCP,15007/TCP,15010/TCP,15011/TCP,8080/TCP,9093/TCP,443/TCP   14d
+istio-policy               ClusterIP      10.0.0.17    <none>        9091/TCP,15004/TCP,9093/TCP                                                   16m
+istio-security             ClusterIP      10.0.0.162   <none>        8060/TCP                                                                      14d
+istio-servicegraph         ClusterIP      10.0.0.65    <none>        8088/TCP                                                                      14d
+istio-sidecar-injector     ClusterIP      10.0.0.195   <none>        443/TCP                                                                       14d
+istio-statsd-prom-bridge   ClusterIP      10.0.0.37    <none>        9102/TCP,9125/UDP                                                             16m
+istio-telemetry            ClusterIP      10.0.0.27    <none>        9091/TCP,15004/TCP,9093/TCP,42422/TCP                                         16m
+istio-zipkin               ClusterIP      10.0.0.96    <none>        9411/TCP                                                                      14d
+prometheus                 ClusterIP      10.0.0.118   <none>        9090/TCP                                                                      14d
+servicegraph               ClusterIP      10.0.0.7     <none>        8088/TCP                                                                      16m
+tracing                    ClusterIP      10.0.0.66    <none>        80/TCP                                                                        16m
+zipkin                     ClusterIP      10.0.0.176   <none>        9411/TCP                                                                      16m
+```
+The default installation configuration does not install sidecar-injector, Prometheus, Grafana, service-graph, zipkin but istio-proxy, Ingress, Mixer, Pilot.
 
 ![](istio-icp.png)
 
-To create a service mesh with Istio, you update the deployment of the pods to add the Istio Proxy (based on the Lyft Envoy Proxy) as a side car to each pod.
+### Installing your solution
+Be sure your application is using HTTP 1.1 or 2.0.
+To create a service mesh with Istio, you update the deployment of the pods to add the Istio Proxy (based on the Lyft Envoy Proxy) as a side car to each pod. With the deployment of `istio-sidecar-injector` this is done automatically for any container deployed within a namespace where istio is enabled. Here is a command to do so:
+`kubectl label namespace greencompute istio-injection=enabled`
+
+We are summarizing the support to Istio for a specific solution in [this article]().
 
 ### More reading
+[Istio and Kubernetes Workshop](https://github.com/IBM/istio101/tree/master/workshop)
 [Advanced traffic management with ISTIO](https://developer.ibm.com/code/patterns/manage-microservices-traffic-using-istio/)
 [Istio workshop for IBM Cloud Container service](https://github.com/szihai/istio-workshop)
+[ Our Istio FAQ](istio/istio-faq.md)
 
 ## Asynchronous loosely coupled solution using Events
 So if we change of paradigm and use a messaging approach or better an event approach of the data update requirements. Now we need to think about the activities that apply within each service and how they can interest other component. They are becoming facts that something happen and can be published as events for other to consume. The first level of refactoring may become:  
