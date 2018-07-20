@@ -326,5 +326,12 @@ After restart of the ICP master node, the ICP cluster is inaccessible remotely.
 
 # Investigation
 When something is going wrong you can do the following:
-* assess the node status with `kubectl get nodes`
-* assess the storage state with 'kubectl get pv'  and `kubectl get pvc`
+* assess the node status with `kubectl get nodes -o wide`
+* assess the state of the pods and where they are deployed: `kubectl get pods -o wide`
+* look at what is deployed within a node: `kubectl describe <podname>`
+* assess the storage state with `kubectl get pv`  and `kubectl get pvc`
+* Access logs of a pod: 'kubectl logs <podname>'
+* Exec a shell in the running pod and then use traditional network tools to investigate: `kubectl exec -tin <namespace> <podname> sh` 
+* For a CrashLoopBackoffs error: CrashLoopBackoff encapsulates a large set of errors that are all hidden behind the same error condition. Some potential debugging steps
+  * `kubectl describe pod <podname>`
+  * ssh to the host
