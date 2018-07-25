@@ -1,7 +1,7 @@
 # Lift and shift an integration solution
 In this article we are detailing how to migrate part of the 'hybrid solution' to a pure IBM Cloud deployment. The following diagram illustrates the starting environment:
 
-![](Saas-start.png)
+![](SaaS-start.png)
 
 where the components are:
 * User interface is the current cloud native portal application done with Angular 6 and BFF with nodejs that we can deploy as a cloud foundry app, or as container on IBM Container service. (See [this project](https://github.com/ibm-cloud-architecture/refarch-caseportal-app) ).
