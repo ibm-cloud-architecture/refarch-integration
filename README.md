@@ -2,7 +2,7 @@
 
 IT environments are becoming hybrid in nature; most businesses use cloud computing as part of their overall IT environment. While businesses continue to operate enterprise applications, processes, and systems of record on premises, they are rapidly developing cloud-native applications on cloud. The [hybrid integration reference architecture](https://www.ibm.com/cloud/garage/content/architecture/integrationServicesDomain/) describes an approach to connect components which are split across cloud and on-premises environments, or across public and private clouds -- even across different cloud providers.
 
-Updated July 02 2018
+Updated July 25 2018
 
 ## Target audiences
 This solution implementation covers a lot of different and interesting subject. If you are...
@@ -34,6 +34,7 @@ By studying the set of projects and articles linked to this top repository, you 
 * [What you will learn](#what-you-will-learn)
 * [Application Overview](#application-overview)   
 * [Build, deploy and run](./docs/buildrun/README.md)
+* [Doing lift and shift to IBM Cloud](docs/toSaaS/readme.md)
 * [Non-functional requirements](./docs/nfr.md)
 * [CI/CD](./docs/devops/README.md)
 * [Hybrid Cloud Compendium](./docs/compendium.md)
