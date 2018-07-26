@@ -23,6 +23,18 @@ We are addressing this migration in [this note](https://github.com/ibm-cloud-arc
 ## tWAS App lift and shift
 We are using the same approach as detailed in [this tutorial](https://github.com/ibm-cloud-architecture/refarch-jee/tree/master/static/artifacts/WASaaS-tWAS-tutorial)
 
+The application to migrate is in [this repository](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal)
+
+### Tooling
+There are a set of tools available to assess application for migration:
+* WebSphere Application Server Migration Toolkit https://developer.ibm.com/wasdev/downloads/#asset/tools-WebSphere_Application_Server_Migration_Toolkit: The migration toolkit provides Eclipse-based tools for WebSphere migration scenarios including Cloud migration, WebSphere version to version migration including WAS Liberty, and migration from third-party application servers.
+* Videos and demos around toolingHow to use migration toolkit for Discovery, assessment& binary scan : https://www-01.ibm.com/support/docview.wss?uid=swg27008724&aid=11
+* Getting started with WebSphere in the Cloud : https://developer.ibm.com/wasdev/docs/getting-started-websphere-cloud/
+* Moving WebSphere Worklods to public Cloud : https://www.ibm.com/cloud/garage/tutorials/was_lift_shift/Learn how to use the public cloud as either the upgrade development and test environment for your WebSphere infrastructure or as your new permanent environment.
+* Migrating your WebSphere configurations to Cloud: https://ibm.ent.box.com/s/vja6fm8u3mktw9v26x1glvayvv5vlzrq
+* WebSphere Configuration migration tool for IBM Cloud : https://developer.ibm.com/wasdev/docs/websphere-config-migration-cloud/
+* Moving applications to the cloud :https://developer.ibm.com/wasdev/docs/migration/
+
 ## MQ based messaging solution
 The implementation of the messaging solution is done in [this repository](https://github.com/ibm-cloud-architecture/refarch-mq-messaging)
 
