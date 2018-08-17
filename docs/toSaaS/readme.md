@@ -40,3 +40,6 @@ There are a set of tools available to assess application for migration:
 
 ## MQ based messaging solution
 The implementation of the messaging solution is done in [this repository.](https://github.com/ibm-cloud-architecture/refarch-mq-messaging)
+
+From an architecture point of view when doing lift and shift of MQ solution you need to assess the followings:
+* 

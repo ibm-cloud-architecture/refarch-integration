@@ -30,41 +30,23 @@ You need to get your db2jcc jar file from DB2 server and copy it somewhere under
   ![](jdbc-provider-2.png)  
 
 ### User authentication
-
 Create JAAS – J2C authentication Data specifying DB2 username and password for Container Connection:
-
 1. Click on Security -> Global security -> Java Authentication and Authorization Service:
-
  ![](jaas-link.png)  
-
 1. Add a new entry for the DB2INST1 user:
-
  ![](jaas-db2user.png)  
-
 ### Data source
 The goal here is to create a data sources for the 'Items / inventory' database.
 
 1. Click on Resources -> JDBC -> Data sources, select the cell scope and new button.
-
-   ![](wasnd-ds-1.png)  
-
+   ![](wasnd-ds-1.png)   
 1. Enter name and JNDI name to be used. See the application descriptor for getting the JNDI name.
-
- ![](wasnd-ds-2.png)
-
+ ![](wasnd-ds-2.png)   
 1. Select the JNDC provider as defined in previous step:
-
-  ![](wasnd-ds-3.png)
-
+  ![](wasnd-ds-3.png)  
 1. Enter database specific properties like database name, IP address or dns name for the DB2 server and the port number it listens to connection:
-
-  ![](wasnd-ds-4.png)
-
+  ![](wasnd-ds-4.png)  
 1.  Select the 'db2alias' you created previously for the container-managed authentication alias:
-
-   ![](wasnd-ds-5.png)
-
+   ![](wasnd-ds-5.png)   
 1. Save the configuration and then `Test connection`. You should get a successful connection:
-
-   ![](wasnd-ds-test.png)
-   
+   ![](wasnd-ds-test.png)  
