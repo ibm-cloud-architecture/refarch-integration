@@ -92,6 +92,7 @@ $ k port-forward cassandra-0 9042:9042
  helm create <chartname>
 
 # Install a charts on a connected ICP
+helm install  browncompute-dal/ --name  browncompute-dal --namespace browncompute --tls
 
 # delete an existing release
 helm del --purge browncompute-dal --tls

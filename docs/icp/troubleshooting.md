@@ -187,6 +187,13 @@ bx pr cluster-config mycluster
 Error: cannot connect to Tiller
 With version 2.1.0.2, TLS is enforced to communicate with the server. So to get the version the command is `helm version --tls`. You need also to get the certificates for the cluster. The command ` bx pr cluster-config <custername>` will add those certificate into `~/.helm`.
 
+## Helm incompatible version
+The error message may look like: `Error: incompatible versions client[v2.9.1] server[v2.7.3+icp]`
+Use the command to upgrade: `helm init --upgrade`
+
+### For using SSL between Tiller and Helm
+See [this note from github helm account](https://github.com/helm/helm/blob/master/docs/tiller_ssl.md)
+
 # Deployment
 
 ## helm install command: User is not authorized to install release
@@ -251,7 +258,7 @@ Try to do `kubectl cluster-info`: failed: error: you must be logged in to the se
 * Be sure to have use the settings from the 'configure client'.
 * Be sure the cluster name / IP address are mapped in /etc/hosts
 * Be sure to have a ca.crt into `~/.ssh` folder
-* Use the `bx pr login -a <clustername>/api -u admin` command to login to the cluster
+* Use the `bx pr login -a https://<ipaddress>:8443 -u admin` command to login to the cluster
 
 
 ### Default backend - 404
@@ -331,7 +338,7 @@ When something is going wrong you can do the following:
 * look at what is deployed within a node: `kubectl describe <podname>`
 * assess the storage state with `kubectl get pv`  and `kubectl get pvc`
 * Access logs of a pod: 'kubectl logs <podname>'
-* Exec a shell in the running pod and then use traditional network tools to investigate: `kubectl exec -tin <namespace> <podname> sh` 
+* Exec a shell in the running pod and then use traditional network tools to investigate: `kubectl exec -tin <namespace> <podname> sh`
 * For a CrashLoopBackoffs error: CrashLoopBackoff encapsulates a large set of errors that are all hidden behind the same error condition. Some potential debugging steps
   * `kubectl describe pod <podname>`
   * ssh to the host
