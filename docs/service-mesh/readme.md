@@ -1,4 +1,7 @@
 # Microservice mesh
+*Update 08/22/2018*  
+*Author: Jerome Boyer - IBM*
+
 In this note we are grouping the studies around microservice to microservice communication with Kubernetes deployment. We are addressing:
 * how ingress controller helps inside Kubernetes
 * how API gateway helps for API management and service integration
@@ -8,6 +11,8 @@ In this note we are grouping the studies around microservice to microservice com
 All come back to the requirements, skill set and fit to purpose.
 
 ## Definitions
+Service meshes provide visibility, resiliency, traffic, and security control of distributed application services. They deliver policy-based networking for microservices in the contraints of virtual network and continuous topology updates. Externalizing, via declarations, the logic to support network potential issues, like resiliency, simplifies dramatically developers work.   
+
 Some misconception to clarify around microservice and APIs:
 * microservices are not fine grained web services
 * APIs are not equivalent to microservices
@@ -27,8 +32,14 @@ When application solution are growing with tenth microservices, and hundred of r
 * visibility on how traffic is flowing between microservice, how routing is done between microservice based on requests contained or the origination point or the end point
 * how to support resiliency by handling failure in a graceful manner
 * how to ensure security with identity assertion
-* how to enforce security policy
-These are requirement for service mesh.
+* how to enforce security policy   
+These are requirements for service mesh.
+
+Service mesh architecture defines a data and control planes:
+* Control plane: supports policy and configuration for services in the mesh, and provides aggregation for telemetry. It has API and CLI to centralize control to the services deployed. In Kubernetes control planes are deployed in a system namespace.
+* Data plane: handles the actual inspection, transiting, and routing of network traffic. It is responsible for health checking, load balancing, authentication, authorization, inbound (ingress) and outbound (egress) cluster network traffic.
+
+Applications / microservices are unaware of data plane.
 
 ## Context
 Traditional modern architecture involves having different components exposing reusable APIs, addressing different channels (mobile, single page application, traditional server pages or B2B apps), consuming APIs (mobile APIs, back end for front end, shared common apis like authentication, authorization,...) and backend services addressing reusable business services:
@@ -79,7 +90,7 @@ The answers depend on the existing infrastructure and environment, and deploymen
 
 ## Service routing
 We have to dissociate intra-cluster communication versus inter clusters or cluster to external services. Without getting into too much detail of IP routing within Kubernetes some important elements of the cluster are important to remember:
-* microservices are packaged as docker container and expose port. When deploy they run in a pod within a node (physical or virtual machine)
+* microservices are packaged as docker container and expose port. When deployed they run in a pod within a node (physical or virtual machine)
 * containers can talk to other containers only if they are on the same machine, or when they have exposed port.
 * Kubernetes is configured with a large flat subnet (e.g. 172.30.0.0/16) which is used for internal application traffic inside of the cluster. Each worker node in the Kubernetes cluster is assigned one or more non-overlapping slices of this network, coordinated by the Kubernetes master node.
 When a container is created in the cluster, it gets assigned to a worker node and is given an IP address from the slice of the subnet for the worker node.
@@ -90,8 +101,7 @@ When a container is created in the cluster, it gets assigned to a worker node an
 * Kube proxy watches the API Server on the Master Node for the addition and removal of Services endpoints. It configures the IPtable rules to capture the traffic for its ClusterIP and forwards it to one of the endpoints.
 * Worker nodes have internal DNS service and load balancer
 
-
-Within Kubernetes, Ingress is a service that balances network traffic workloads in your cluster by forwarding public or private requests to your apps. You use ingress when you need to support HTTP, HTTPS, TLS, load balancing, expose app outside of the cluster, custom routing rules...
+Within Kubernetes, Ingress is a service that balances network traffic workloads in your cluster by forwarding public or private requests to your apps. You use ingress when you need to support HTTP, HTTPS, TLS, load balancing, expose app outside of the cluster, and custom routing rules...
 
 One ingress resource is required by namespace. So if microservices are in the same namespace you can define a domain name for those services (e.g. assetmanagement.greencompute.ibmcase.com) and defined path for each service:
 ```yaml
@@ -117,7 +127,7 @@ spec:
               serviceName: asset-mgr-ms-svc
               servicePort: 8080
 ```
-The backend for front end, the asset manager microservice and the asset consumer components are exposed in the same domain.
+The backend for front end component, the asset manager microservice and the asset consumer components are exposed in the same domain.
 The `serviceName` matches the service exposed for each components.
 The following diagram presents how an external application accesses deployed microservice within Kubernetes pod.
 

@@ -1,7 +1,7 @@
 # Troubleshooting in ICP
 This note regroups a set of things we have met during our work on kubernetes and ICP.
 
-Update 5/03/2018 for ICP 2.1.0.2.
+Update 8/21/2018 for ICP 2.1.0.3.
 
 * The Kubernetes [official troubleshooting docs](https://kubernetes.io/docs/getting-started-guides/ubuntu/troubleshooting/)
 

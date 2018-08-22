@@ -27,7 +27,7 @@ By studying the set of projects and articles linked to this top repository, you 
 - how to [monitor all those components](./docs/csmo/README.md) using Application Performance Monitoring
 - how to [deploy most of the components of the solution](./docs/icp/README.md) to IBM Cloud Private
 - How to call BPM process from Watson Conversation (orchestration), and how to integrate chat user interface connected to Watson Conversation into BPM coach.
-- How to support [service mesh](./docs/service-mesh.md) with kubernetes
+- How to support [service mesh](./docs/service-mesh/readme.md) with kubernetes
 
 # Table of Contents
 * [Hybrid Cloud Introduction](#introduction)
