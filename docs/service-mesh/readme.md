@@ -95,8 +95,7 @@ We have to dissociate intra-cluster communication versus inter clusters or clust
 * Kubernetes is configured with a large flat subnet (e.g. 172.30.0.0/16) which is used for internal application traffic inside of the cluster. Each worker node in the Kubernetes cluster is assigned one or more non-overlapping slices of this network, coordinated by the Kubernetes master node.
 When a container is created in the cluster, it gets assigned to a worker node and is given an IP address from the slice of the subnet for the worker node.
 
-
-![](kube-pod-network.png)
+![](kube-pod-network.png)   
 * Kube-proxy intercepts and controls where to forward the traffic, either to another worker node running your destination pod, or outside of the cluster
 * Kube proxy watches the API Server on the Master Node for the addition and removal of Services endpoints. It configures the IPtable rules to capture the traffic for its ClusterIP and forwards it to one of the endpoints.
 * Worker nodes have internal DNS service and load balancer
@@ -144,7 +143,7 @@ The following diagram shows how Ingress directs communication from the internet 
 Using Ingress, the global load balancer can support parallel, cross region, clusters.
 
 ## Service exposition
-There is an architecture style focusing on APIs which proposes to have different SLA and semantic for external, internet facing API versus internal back end APIs only exposed within intranet. [This article](./hybrid-itg-platform.md)  presents using different API gateways to support this architecture.
+There is an architecture style focusing on APIs which proposes to have different SLA and semantic for external, internet facing API versus internal back end APIs only exposed within intranet. [This article](../hybrid-itg-platform.md)  presents using different API gateways to support this architecture.
 
 Backend data services are not exposed directly to internet. API Gateway provides a secure end point for external web app to access those business functions.
 
