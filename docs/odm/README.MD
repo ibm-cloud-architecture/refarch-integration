@@ -1,21 +1,25 @@
 # ODM ICP and Ruleset Install
 
-In this tutorial we will cover how to install ODM from our ICP Catalog onto our server, and install a previously generated ruleset.
+In this tutorial we will cover how to install ODM from an ICP Catalog onto our kubernetes cluster, and deploy the product recommendations ruleset in the decision runner server.
+
+Update: 08/24/2018
+Author: Zach Silverstein
+
 ## Target audiences
 * ODM administrators or Operation staffs willing to understand the ODM deployment on kubernetes.
 * Developers who want to get an environment up and running as quickly as possible.
 
 ## Requirements
 
- 1. Access to an ICP cluster with ICP version 2.1.0.2 or later.
+ 1. Access to an ICP cluster with ICP version 2.1.0.2 or later (tested on 2.1.0.3).
  2. Access to ICP Catalog with admin role
- 3. A zip file of our Rules which can be found in [this project](https://github.com/ibm-cloud-architecture/refarch-cognitive-prod-recommendations) in the folder odm/rulesets/ProductRecommendation/output/
+ 3. A zip file of our Rules which can be found in [the product recommendation  project](https://github.com/ibm-cloud-architecture/refarch-cognitive-prod-recommendations) in the folder odm/rulesets/ProductRecommendation/output/
 
 ## Installing ODM on ICP
-The first thing we will do is launch our ICP Dashboard
+The first thing we will do is launch our ICP Dashboard  
 ![ICP Home](ICPHome.png)
 
-Next we will be selecting the dropdown from the right and select our catalog option
+Next select the `catalog` link on the right of the top toolbar.  
 ![ICPHome-Catalog](ICPHome-Catalog.png)
 
 From there we will select our Helm Chart where we are installing ODM from, and run a search for ODM.
@@ -38,10 +42,10 @@ We do not need to change anything in the previous screen shot
 ![ODM Configuration Locale H2](ODM-Configuration-Locale-H2.png)
 
 We will be changing 2 things in the H2 Database.
- 1. Check the Use dynamic Provisioning for Persistent volume so that it is enabled
+ 1. You can let kubernetes try to provision a persistence volume automatically, therefore to do so check the Use dynamic Provisioning for Persistent volume so that it is enabled. If you prefer to control, create a PV with 5 G bytes storage, and a HostPath or NFS.
  2. Change the 2 to a 5 for the Storage Size for persistent volume
 
-No other changes are needed to be made for any other options. then click configure at the bottom
+No other changes are needed to be made for any other options. then click `install` at the bottom
 
 After receiving your successful message let's navigate to our dropdown and find our instance. Click the hamburger icon on left (three horizontal) bars, and then select workloads, and finally helm releases.  
 ![ODM Instance in ICP](ODM-Instance-in-ICP.png)
@@ -65,15 +69,13 @@ Select the Node Port to navigate to the asset. This should take you to the ODM H
 
 ## Installing the Ruleset
 The RuleApp was created and updated using Rule Designer, the developer tool. We want to expose the decision service in the Decision Center consoles so business users can browse the ruleset content, modify the business rules and tables and deploy the ruleset to the target runtime.
-With ICP ODM deployment all those components are available for you: decision center, decision server, administration console.
-
-
+With ICP ODM deployment all those components are available for you: decision center, decision server, rule execution server administration console.
 
 ### Method 1 Deploying Rule App to RES via Rule Designer
 
 1. Download the required files, these are the top two shown below. Ensure that the required .project and .ruleproject files are included ![filesToDownload.png](./Rule-Deployment/filesToDownload.png)
 
-2. Add them both into your Rule Designer development environment, import the Customer Recommendation XOM, we will use that as our BOM. The Product Recommendation is our main ruleset. ![File Associations](./Rule-Deployment/fileassociations.png)
+2. Add them both into your Rule Designer development environment, import the Customer Recommendation XOM, we will use that as our BOM. The Product Recommendation is our main ruleset. ![File Associations](./Rule-Deployment/fileAssociations.png)
 
 3. Ensure that we have the proper dependencies for our project
 ![JOM](./Rule-Deployment/JXOM.png)
