@@ -253,6 +253,62 @@ $ kubectl logs $POD_NAME --namespace browncompute
 $  kubectl get events --namespace browncompute  --sort-by='.metadata.creationTimestamp'
 ```
 
+## Accessing an app expose with Ingress: 503 Service Temporarily Unavailable
+This could be due to ingress rule configuration issue. We need to assess if the pod is up and running
+* Get the pod name: `k get pods --namespace greencompute`
+* Verify no issue in the container itself: `k logs bc-inventory-dal-browncompute-dal-6bfb4f85b8-tdzjt --namespace greencompute`
+
+if the service and ingress are well defined
+* Go to the service view or `kubectl get svc --namespace greencompute -o wide` verify the app-selector and service Type
+* Verify the service definition: `k describe svc bc-inventory-dal-browncompute-dal --namespace greencompute`
+* Get the ingress with `kubectl describe ingress bc-inventory-dal-browncompute-dal -n greencompute`
+ ```
+  Name:             bc-inventory-dal-browncompute-dal
+  Namespace:        greencompute
+  Address:          172.16.40.131
+  Default backend:  default-http-backend:80 (<none>)
+  Rules:
+    Host            Path  Backends
+    ----            ----  --------
+    dal.brown.case  
+                    /   bc-inventory-dal-browncompute-dal:http (<none>)
+  Annotations:
+  Events:  <none>
+ ```
+ this configuration looks good, but not... so what is happening?
+
+We need to look at the ingress-controller config:
+* Get the list of ingress controllers: `kubectl get pods -n kube-system`
+* Get the controller logs and verify if it receives the configuration when we deployed the service: `kubectl logs nginx-ingress-controller-gvcj5 -n kube-system`. Search for message with "Event ... Kind: Ingress..."
+
+* Get NGINX configuration: `kubectl exec -it -n kube-system nginx-ingress-controller-gvcj5  cat /etc/nginx/nginx.conf`
+ Here is an extract
+ ```
+ # start server dal.brown.case
+	server {
+		server_name dal.brown.case ;
+		listen 80;
+		listen [::]:80;
+		set $proxy_upstream_name "-";
+		location / {
+
+			log_by_lua_block {
+
+			}
+
+			port_in_redirect off;
+
+			set $proxy_upstream_name "";
+
+			set $namespace      "greencompute";
+			set $ingress_name   "bc-inventory-dal-browncompute-dal";
+			set $service_name   "bc-inventory-dal-browncompute-dal";
+ ...
+      # No endpoints available for the request
+    	return 503;
+ ```
+As we can see the $proxy_upstream_name is not set and the configuration is enforcing returning 503. The ingress rule has an issue... the port is not a port number but a name ("bc-inventory-dal-browncompute-dal:http")... So editing the rule and change to port 9080 makes it work: `kubectl edit ing -n greencompute  bc-inventory-dal-browncompute-dal`
+
 ## Error while getting cluster info
 Try to do `kubectl cluster-info`: failed: error: you must be logged in to the server (the server has asked for the client to provide credentials):
 * Be sure to have use the settings from the 'configure client'.
