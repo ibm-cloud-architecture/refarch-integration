@@ -28,13 +28,15 @@ By studying the set of projects and articles linked to this top repository, you 
 - how to [deploy most of the components of the solution](./docs/icp/README.md) to IBM Cloud Private
 - How to call BPM process from Watson Conversation (orchestration), and how to integrate chat user interface connected to Watson Conversation into BPM coach.
 - How to support [service mesh](./docs/service-mesh/readme.md) with kubernetes
+- What is the [journey](docs/journey.md) story to use cloud 
 
 # Table of Contents
 * [Hybrid Cloud Introduction](#introduction)
 * [What you will learn](#what-you-will-learn)
-* [Application Overview](#application-overview)   
-* [Build, deploy and run](./docs/buildrun/README.md)
+* [Solution Landscape](#application-overview)   
+* [DevOps: Build, deploy and run](./docs/buildrun/README.md)
 * [Doing MQ, DB2 and JEE on WAS lift and shift to IBM Cloud](docs/toSaaS/readme.md)
+* [Serverless - FaaS](docs/serverless/readme.md)
 * [Non-functional requirements](./docs/nfr.md)
 * [CI/CD](./docs/devops/README.md)
 * [Hybrid Cloud Compendium](./docs/compendium.md)
