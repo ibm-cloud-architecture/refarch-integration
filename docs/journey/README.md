@@ -24,7 +24,7 @@ The new landscape will be multi-cluster & multi-cloud.
 ![](new-app-landscape.png)
 
 
-IBM Cloud public offering offers a set of added value services to manage data, app development, devops, access, security, AI, blockchain... See the [catalog of services and capabilities here.](https://console.bluemix.net/)
+IBM Cloud public offering offers a set of added value services to manage data, app development, devops, access, security, AI, blockchain... See the [catalog of services and capabilities here.](https://console.bluemix.net/catalog)
 
 ## [Private Cloud reference architecture](https://www.ibm.com/cloud/garage/architectures/private-cloud)
 IBM Cloud Private brings cloud innovation within your datacenter. It is a Kubernetes platform with optimized scheduling, with most of the IBM Middleware products moving to it and it...:
@@ -37,17 +37,22 @@ IBM Cloud Private brings cloud innovation within your datacenter. It is a Kubern
 
 For product introduction see [ICP Product page here.](https://www.ibm.com/cloud-computing/products/ibm-cloud-private/)
 
+Accessing the [ICP catalog](https://169.47.77.137:8443/catalog)
+
+![](icp-catalog.png)
+
 ## Challenges to solve
 We can group the challenge to face into categories:
 * Application ARCHITECTURE and DEVELOPMENT practices:
- * Microservices
- * New Languages & Runtimes
- * APIs management and coherence
- * DevOps, continuous delivery & Skills
+  * Microservices
+  * lift and shift existing applications to cloud
+  * New Languages & Runtimes
+  * APIs management and coherence
+  * DevOps, continuous delivery & Skills  
 * Application PORTABILITY
- * Regulation and multi regions deployment
- * Cloud provider availability
- * Cost and quality of services
+  * Regulation and multi regions deployment
+  * Cloud provider availability
+  * Cost and quality of services  
 * INTEGRATION
   * APIs definition & Management
   * Integrating existing Applications and SOA services
@@ -73,8 +78,27 @@ We can group the challenge to face into categories:
   * Regulatory Compliance
 
 
-
 *Operation lead (Todd), responsible for infrastructure management, security and environment availability and maintenance has different concerns than developer (Jane) who is responsible to develop new application but also maintain existing application.*
+
+## Architecture and Development
+#### [Microservice reference architecture](https://www.ibm.com/cloud/garage/architectures/microservices/0_0)
+Microservices is an application architectural style in which an application is composed of many discrete, network-connected components
+
+#### Refactoring app to microservices
+Business wants to improve the application to increase client adoption and satisfaction. Monolitic applications are more difficult to change and moving to microservice architecture will bring velocity to the development team.
+
+A need to shift from IaaS (VM, network, storage, security) to container and CaaS (kubernetes) and PaaS (cloud foundry).
+
+* [The process to start from an existing JEE to split into microservices is documented in this repository](https://github.com/ibm-cloud-architecture/refarch-jee)  
+* [WebSphere on the Cloud: Application Modernization](https://www.ibm.com/blogs/bluemix/2017/08/websphere-on-the-cloud-application-modernization/)
+
+
+### Innovate quickly with cloud native development
+Leverage tutorials
+* [Tutorial: Deploy a cloud-native application in Kubernetes](https://www.ibm.com/cloud/garage/demo/try-private-cloud-install-an-app)
+
+* Use one the available boiler plate, starting code.
+[Nodejs, java, python, go, swift boiler plates](https://console.bluemix.net/developer/appservice/starter-kits)
 
 ### Taking existing WebSphere workloads to cloud deployment
 * 10-15% of app can be moved as-is to cloud.
@@ -109,21 +133,29 @@ The benefits to run MQ on cloud is that you keep your skill set but use cloud sp
 
 * Message Broker / IBM Integration Bus
 
-### Refactoring app to microservices
-Business wants to improve the application to increase client adoption and satisfaction. Monolitic applications are more difficult to change and moving to microservice architecture will bring velocity to the development team.
+## Portability
 
-A need to shift from IaaS (VM, network, storage, security) to container and CaaS (kubernetes) and PaaS (cloud foundry).
+## Integration
 
-[The process to start from an existing JEE to split into microservices is documented in this repository](https://github.com/ibm-cloud-architecture/refarch-jee)
-[WebSphere on the Cloud: Application Modernization](https://www.ibm.com/blogs/bluemix/2017/08/websphere-on-the-cloud-application-modernization/)
+## Data governance
 
+## Service management
+#### [Reference Architecture @ IBM Garage method](https://www.ibm.com/cloud/garage/architectures/serviceManagementArchitecture/referenceArchitecture)
 
-### Innovate quickly with cloud native development
-Leverage tutorials
-* [Tutorial: Deploy a cloud-native application in Kubernetes](https://www.ibm.com/cloud/garage/demo/try-private-cloud-install-an-app)
+#### [Hybrid cloud management](https://www.ibm.com/cloud/smartpapers/multicloud-management/)
+Hybrid, multicloud world is quickly becoming the new normal for enterprise.
 
-* Use one the available boiler plate, starting code.
-[Nodejs, java, python, go, swift boiler plates](https://console.bluemix.net/developer/appservice/starter-kits)
+#### [Monitoring in IBM Cloud Private](https://github.com/ibm-cloud-architecture/CSMO-ICP)
+A set of artifacts created by the IBM CSMO team to assist you with performance management of your ICP deployment.
+
+#### CSMO for cloud native application
+[Leveraging Grafana, prometheus](https://github.com/ibm-cloud-architecture/refarch-cloudnative-kubernetes-csmo)
+
+#### [A Sample Tools Implementation of Incident Management Solution](https://github.com/ibm-cloud-architecture/refarch-cloudnative-csmo/blob/master/doc/Incident_Management_Implementation.md)
+A set of tools to provide an end-to-end view of application.
+
+## Security
+
 
 ### Leverage public cloud services in a hybrid model
 
@@ -132,10 +164,8 @@ Leverage tutorials
 ## Public cloud for dev and test
 [Stock trader app to ICP and Public](https://www.youtube.com/watch?v=pM3oFNAH2dA&index=4&list=PLzpeuWUENMK37ZlLBc_pIlXlOWeGnYRA_)
 
-## Serverless
 
-## [Hybrid cloud management](https://www.ibm.com/cloud/smartpapers/multicloud-management/)
-Hybrid, multicloud world is quickly becoming the new normal for enterprise.
+
 
 ## Cloud Architecture Solution Engineering Assets
 [Asset lists](https://ibm-cloud-architecture.github.io/)
