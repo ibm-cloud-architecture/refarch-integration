@@ -21,7 +21,8 @@ Private cloud adds:
 
 This is the technology for innovation and transformation. AI, blockchain, multi-cloud, SaaS integration, single page app are drivers for cloud adoption. The new application landscape integrate existing data centers, private cloud within corporate firewall and SaaS, Public cloud provider, IoT, traditional B2B...
 The new landscape will be multi-cluster & multi-cloud.
-![](new-app-landscape.png)
+<img src=new-app-landscape.png width=600px/>
+
 
 
 IBM Cloud public offers a set of added value services to manage data, app development, devops, networking access, servers, security, AI, blockchain and more.... The [catalog of services and capabilities is always updated ](https://console.bluemix.net/catalog)
@@ -34,13 +35,13 @@ IBM Cloud Private brings cloud innovation within your datacenter. It is a Kubern
 * provides monitoring for container-based applications for logging, dashboards, and automation.
 * supports network and storage policy-based controls for application isolation and security, and automated application health checking and recovery from failures
 
-![](ICP-oneView.png)
+<img src=ICP-oneView.png width=600px/>
 
 For product introduction see [ICP Product page here.](https://www.ibm.com/cloud-computing/products/ibm-cloud-private/)
 
 With the [ICP catalog](https://169.47.77.137:8443/catalog) you can install a lot of IBM middleware products and some open sources and your own helm charts in few seconds.
 
-![](icp-catalog.png)
+<img src=icp-catalog.png width=600px/>
 
 ## Challenges to solve
 We recognize that not every organization is ready to move everything they have to a public cloud environment, and there are lots of reasons for that. BIM offers the richest range of deployment options – from Private to Public and Dedicated. Still, enterprises will face new challenges in broadening the adoption of Cloud to critical applications. We can group those challenges to into different categories and we will address in next sections what to read and study for each items:
@@ -55,7 +56,7 @@ We recognize that not every organization is ready to move everything they have t
   * Regulation and multi regions deployment
   * Cloud provider availability
   * Cost and quality of services  
-* INTEGRATION
+* [INTEGRATION](#integration)
   * APIs definition & Management
   * Integrating existing Applications and SOA services
   * Support transactions
@@ -90,12 +91,13 @@ Microservices is an application architectural style in which an application is c
 * Public cloud for dev and test
 [Stock trader app to ICP and Public](https://www.youtube.com/watch?v=pM3oFNAH2dA&index=4&list=PLzpeuWUENMK37ZlLBc_pIlXlOWeGnYRA_)
 
+<img src="https://github.com/ibm-cloud-architecture/refarch-cloudnative-kubernetes/blob/master/images/bluecompute_ce.png" width=600px/>
 
 #### Innovate quickly with cloud native development
-Leverage those tutorials and articles
+Leverage the following tutorials and articles
 * [Tutorial: Deploy a cloud-native application in Kubernetes](https://www.ibm.com/cloud/garage/demo/try-private-cloud-install-an-app)
 * [Microservices with Kubernetes](https://www.ibm.com/cloud/garage/architectures/microservices/microservices-kubernetes)
-* [A Angular 6 SPA with nodejs bff full app](https://github.com/ibm-cloud-architecture/refarch-caseportal-app)
+* [An Angular 6 SPA with nodejs bff full app](https://github.com/ibm-cloud-architecture/refarch-caseportal-app)
 * [Run the Springboot on a Kubernetes Cluster](https://github.com/ibm-cloud-architecture/refarch-cloudnative-spring)
 * [Making Microservices Resilient](https://github.com/ibm-cloud-architecture/refarch-cloudnative-resiliency/)
 * [Use Microclimate to run an End-to-End DevOps environment on IBM Cloud Private](https://github.com/ibm-cloud-architecture/refarch-cloudnative-bluecompute-microclimate)
@@ -172,7 +174,7 @@ The benefits to run MQ on cloud is that you keep your skill set but use cloud sp
 ## Portability
 
 ## Integration
-Leveraging existing investments and in-production services with new cloud native and mobile applications. Transforming SOAP and other interface to RESTful API. 
+Leveraging existing investments and in-production services with new cloud native and mobile applications. Transforming SOAP and other interface to RESTful API.
 
 #### [The reference architecture for hybrid cloud](https://www.ibm.com/cloud/garage/architectures/integrationServicesDomain) Enables cloud applications and services to have a tighter coupling with specific on-premises enterprise system components.
 #### [Hybrid integration solution implementation ](https://github.com/ibm-cloud-architecture/refarch-integration)
