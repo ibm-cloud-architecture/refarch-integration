@@ -1,5 +1,5 @@
 # Journey to the cloud
-This article regroups some demonstration / presentation and all the content related to the Cloud Adoption journey using existing materials develop by IBM Cloud Architecture and Solution engineering team.
+This article is to present how to adopt the cloud leveraging the existing materials develop by IBM Cloud Architecture and Solution engineering team.
 
 ## Why Cloud?
 The most important value points:
@@ -11,7 +11,7 @@ Private cloud adds:
 * apply own enterprise own security and governance policies
 * simplify integration to on-premise business functions
 
-[IBM Public Cloud](https://www.ibm.com/cloud/)
+[IBM Public Cloud](https://www.ibm.com/cloud/) value proposition:
 * Easy migration
 * Adopt cloud native development and operations
 * AI Ready
@@ -19,27 +19,62 @@ Private cloud adds:
 * Secure: continuous security scanning for apps and data
 * Easily integrate and manage all your data across vendors and clouds — on or off premises
 
-[See catalog of services, capabilities](https://console.bluemix.net/)
+This is the technology for innovation and transformation. AI, blockchain, multi-cloud, SaaS integration, single page app are drivers for cloud adoption. The new application landscape integrate existing data centers, private cloud within corporate firewall and SaaS, Public cloud provider, IoT, traditional B2B...
+The new landscape will be multi-cluster & multi-cloud.
+![](new-app-landscape.png)
+
+
+IBM Cloud public offering offers a set of added value services to manage data, app development, devops, access, security, AI, blockchain... See the [catalog of services and capabilities here.](https://console.bluemix.net/)
 
 ## [Private Cloud reference architecture](https://www.ibm.com/cloud/garage/architectures/private-cloud)
-Kubernetes platform with optimized scheduling, all IBM Middleware portfolio moving to it and ...:
-* cluster management, security capabilities, image repositories, routing services, and microservices mesh
-* authorize infrastructure automation with scripts (Terraform, [IBM Multi Cloud Manager](https://www.ibm.com/cloud/smartpapers/multicloud-management/))
-* A private cloud platform provides monitoring for container-based applications to provide logging, dashboards, and automation. It supports network and storage policy-based controls for application isolation and security, and automated application health checking and recovery from failures
-* All IBM middleware product moving to ICP
+IBM Cloud Private brings cloud innovation within your datacenter. It is a Kubernetes platform with optimized scheduling, with most of the IBM Middleware products moving to it and it...:
+* supports better cluster management, security capabilities, image repositories, routing services, and microservices mesh
+* authorizes infrastructure automation with scripts (Terraform, [IBM Multi Cloud Manager](https://www.ibm.com/cloud/smartpapers/multicloud-management/))
+* provides monitoring for container-based applications for logging, dashboards, and automation.
+* supports network and storage policy-based controls for application isolation and security, and automated application health checking and recovery from failures
 
 ![](ICP-oneView.png)
 
-[ICP Product page](https://www.ibm.com/cloud-computing/products/ibm-cloud-private/)
+For product introduction see [ICP Product page here.](https://www.ibm.com/cloud-computing/products/ibm-cloud-private/)
 
-## [Hybrid cloud management](https://www.ibm.com/cloud/smartpapers/multicloud-management/)
-Hybrid, multicloud world is quickly becoming the new normal for enterprise.
+## Challenges to solve
+We can group the challenge to face into categories:
+* Application ARCHITECTURE and DEVELOPMENT practices:
+ * Microservices
+ * New Languages & Runtimes
+ * APIs management and coherence
+ * DevOps, continuous delivery & Skills
+* Application PORTABILITY
+ * Regulation and multi regions deployment
+ * Cloud provider availability
+ * Cost and quality of services
+* INTEGRATION
+  * APIs definition & Management
+  * Integrating existing Applications and SOA services
+  * Support transactions
+  * Leverage and coexist with existing ESB
+  * Agility for new integration needs
+* DATA MOVEMENT & GOVERNANCE
+  * New Analytics & AI Services
+  * Data Privacy & Risk
+  * Data Gravity & Performance
+  * Network Cost
+  * Data Gravity & Lock-in
+* SERVICE MANAGEMENT
+  * Monitoring/SRE
+  * SLAs
+  * Problem Diagnosis
+  * HA/DR
+  * Scale & Dynamicity
+* SECURITY & COMPLIANCE
+  * Identity & Authorization
+  * Audit
+  * Shared Responsibility Models
+  * Regulatory Compliance
 
-## Cloud Architecture Solution Engineering Assets
-[Asset lists](https://ibm-cloud-architecture.github.io/)
 
-## Problems to solve
-Operation lead (Todd), responsible for infrastructure management, security and environment availability and maintenance has different concerns than developer (Jane) who is responsible to develop new application but also maintain existing application.
+
+*Operation lead (Todd), responsible for infrastructure management, security and environment availability and maintenance has different concerns than developer (Jane) who is responsible to develop new application but also maintain existing application.*
 
 ### Taking existing WebSphere workloads to cloud deployment
 * 10-15% of app can be moved as-is to cloud.
@@ -98,3 +133,9 @@ Leverage tutorials
 [Stock trader app to ICP and Public](https://www.youtube.com/watch?v=pM3oFNAH2dA&index=4&list=PLzpeuWUENMK37ZlLBc_pIlXlOWeGnYRA_)
 
 ## Serverless
+
+## [Hybrid cloud management](https://www.ibm.com/cloud/smartpapers/multicloud-management/)
+Hybrid, multicloud world is quickly becoming the new normal for enterprise.
+
+## Cloud Architecture Solution Engineering Assets
+[Asset lists](https://ibm-cloud-architecture.github.io/)
