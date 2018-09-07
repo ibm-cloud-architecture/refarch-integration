@@ -2,7 +2,7 @@
 
 IT environments are becoming hybrid in nature; most businesses use cloud computing as part of their overall IT environment. While businesses continue to operate enterprise applications, processes, and systems of record on premises, they are rapidly developing cloud-native applications on cloud. The [hybrid integration reference architecture](https://www.ibm.com/cloud/garage/content/architecture/integrationServicesDomain/) describes an approach to connect components which are split across cloud and on-premises environments, or across public and private clouds -- even across different cloud providers.
 
-Updated July 25 2018
+Updated September 10 2018
 
 ## Target audiences
 This solution implementation covers a lot of different and interesting subject. If you are...
@@ -28,7 +28,8 @@ By studying the set of projects and articles linked to this top repository, you 
 - how to [deploy most of the components of the solution](./docs/icp/README.md) to IBM Cloud Private
 - How to call BPM process from Watson Conversation (orchestration), and how to integrate chat user interface connected to Watson Conversation into BPM coach.
 - How to support [service mesh](./docs/service-mesh/readme.md) with kubernetes
-- What is the [journey](docs/journey.md) story to use cloud 
+- How to deploy kubeless and do [serverless](./docs/serverless/readme.md) with kubernetes
+- What is the [journey](docs/journey/README.md) story to adopt hybrid cloud
 
 # Table of Contents
 * [Hybrid Cloud Introduction](#introduction)
@@ -83,7 +84,10 @@ As architect we need to develop a system context, so the following diagram illus
 1. [Customer management for analytics](https://github.com/ibm-cloud-architecture/refarch-integration-services) micro services to support RESTful API.
 1. Decision engine to automate business rules execution and Management for [product recommendation in the context of user moving in different location](https://github.com/ibm-cloud-architecture/refarch-cognitive-prod-recommendations) with how to install [ODM helm chart on IBM Cloud Private](./docs/odm/README.MD)
 1. [LDAP for user Management](https://github.com/ibm-cloud-architecture/refarch-integration-utilities#ldap-configuration) to centralize authentication use cases.
-1. [Event processing for application state management](./docs/messaging-usecase.md) to combine Decision Insight with MQ message and chat bot to manage inventory plus state.
+1. [Inventory update from the warehouse using IBM MQ](https://github.com/ibm-cloud-architecture/refarch-mq-messaging), event producer and MDB deployed on WebSphere.
+
+
+We propose to extend the IT chatbot using [Event processing for application state management](./docs/messaging-usecase.md) to combine Decision Insight with MQ message and chat bot to manage inventory plus state.
 
 We have also other repositories to address...
 * [Testing](https://github.com/ibm-cloud-architecture/refarch-integration-tests) This repository includes a set of test cases to do component testing, functional testing and integration tests.

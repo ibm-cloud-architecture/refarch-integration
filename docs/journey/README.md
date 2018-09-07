@@ -1,8 +1,9 @@
 # Journey to the cloud
-This article regroups some demonstration / presentation scripts we can use to present the Cloud Adoption journey using existing material.
+This article regroups some demonstration / presentation and all the content related to the Cloud Adoption journey using existing materials develop by IBM Cloud Architecture and Solution engineering team.
 
-## Cloud Values
-* rapid deployment, scalability, ease of use, and elasticity
+## Why Cloud?
+The most important value points:
+* rapid deployment, scalability, ease of use, and elasticity to adapt to demand
 * predictable cost, optimized for workload demand
 * enable DevOps, increase developers productivity
 Private cloud adds:
