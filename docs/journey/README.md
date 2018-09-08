@@ -190,7 +190,8 @@ Leveraging existing investments and in-production services with new cloud native
 
 #### [The reference architecture for hybrid cloud](https://www.ibm.com/cloud/garage/architectures/integrationServicesDomain)
  Enables cloud applications and services to have a tighter coupling with specific on-premises enterprise system components.
-#### [Hybrid integration solution implementation ](https://github.com/ibm-cloud-architecture/refarch-integration) presents a deep dive implementation using API Connect, MQ, WAS application, Cloud native web application, DB2, ODM, BPM, and IIB...
+#### [Hybrid integration solution implementation ](https://github.com/ibm-cloud-architecture/refarch-integration)
+ presents a deep dive implementation using API Connect, MQ, WAS application, Cloud native web application, DB2, ODM, BPM, and IIB...
 #### [IBM Cloud private knowledge sharing](https://github.com/ibm-cloud-architecture/refarch-integration/tree/master/docs/icp)
 #### [How an IBM Integration Bus runtime can be deployed on premise or on IBM Cloud Private, running gateway flows to expose REST api from SOAP back end services](https://github.com/ibm-cloud-architecture/refarch-integration-esb)
 #### [Tutorial provides a guided walkthrough of the IBM MQ on Cloud service in IBM Cloud](https://www.ibm.com/cloud/garage/tutorials/ibm-mq-on-cloud/tutorial-mq-on-ibm-cloud)
@@ -203,8 +204,10 @@ The IBM AI Ladder also begins with data. You get higher business value when you 
 
 <img src="https://github.com/ibm-cloud-architecture/refarch-analytics/blob/master/docs/analytics-ra.png" width=800px/>
 
-#### [Data Analytics solution implementation](https://github.com/ibm-cloud-architecture/refarch-analytics) This project provides a reference implementation for building and running analytics application deployed on hybrid cloud environment. Two sub projects are under development to leverage [ICP for Data]()
- *[Customer analysis with cognitive and analytics in hybrid cloud](https://github.com/ibm-cloud-architecture/refarch-cognitive-analytics) The goal of this implementation is to deliver a reference implementation for data management and service integration to consume structured and unstructured data to assess customer attrition.
+#### [Data Analytics solution implementation](https://github.com/ibm-cloud-architecture/refarch-analytics)
+ This project provides a reference implementation for building and running analytics application deployed on hybrid cloud environment. Two sub projects are under development to leverage [ICP for Data](https://www.ibm.com/analytics/cloud-private-for-data)
+
+ * [Customer analysis with cognitive and analytics in hybrid cloud](https://github.com/ibm-cloud-architecture/refarch-cognitive-analytics) The goal of this implementation is to deliver a reference implementation for data management and service integration to consume structured and unstructured data to assess customer attrition.
  <img src="https://github.com/ibm-cloud-architecture/refarch-cognitive-analytics/blob/master/docs/syst-ctx-2.png" width=800px/>
 
  * [Manufacturing Asset Predictive Maintenance](https://github.com/ibm-cloud-architecture/refarch-asset-analytics) This set of projects presents an end to end solution to enable predictive maintenance capabilities on manufacturing assets
@@ -220,17 +223,25 @@ Hybrid, multicloud world is quickly becoming the new normal for enterprise.
 #### [Monitoring in IBM Cloud Private](https://github.com/ibm-cloud-architecture/CSMO-ICP)
 A set of artifacts created by the IBM CSMO team to assist you with performance management of your ICP deployment.
 
+<img src="https://github.com/ibm-cloud-architecture/CSMO-ICP/blob/master/images/toolchain-mon.png" width=800px/>
+
+
 #### CSMO for cloud native application
 [Leveraging Grafana, prometheus](https://github.com/ibm-cloud-architecture/refarch-cloudnative-kubernetes-csmo)
+ DevOps, specifically Cloud Service Management & Operations (CSMO), is important for Cloud Native Microservice style applications. This project is developed to demonstrate how to use tools and services available on IBM Cloud to implement CSMO for the BlueCompute reference application
 
 #### [A Sample Tools Implementation of Incident Management Solution](https://github.com/ibm-cloud-architecture/refarch-cloudnative-csmo/blob/master/doc/Incident_Management_Implementation.md)
-A set of tools to provide an end-to-end view of application.
+
+ A set of tools to provide an end-to-end view of application.
+
 #### HA/DR
 * [Making Microservices Resilient](https://github.com/ibm-cloud-architecture/refarch-cloudnative-resiliency/)
 * [Guidance on HA ICP Cluster Setup](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Resiliency/Configure_HA_ICP_cluster.md)
 <img src="https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Resiliency/images/icp_ha_glusterfs.png" width=800px/>
+
 #### [ICP Installation on Ubuntu](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Installing_ICp_on_prem_ubuntu.md)
+
 ## Security
 
 
-## Cloud Architecture Solution Engineering [Assets list](https://ibm-cloud-architecture.github.io/)
+#### Cloud Architecture Solution Engineering [Assets list](https://ibm-cloud-architecture.github.io/)
