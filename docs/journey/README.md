@@ -25,7 +25,6 @@ The new landscape will be multi-cluster & multi-cloud.
 <img src=new-app-landscape.png width=800px/>
 
 
-
 IBM Cloud public offers a set of added value services to manage data, app development, devops, networking access, servers, security, AI, blockchain and more.... The [IBM Cloud service catalog is continuously updated](https://console.bluemix.net/catalog)
 
 
@@ -242,6 +241,11 @@ A set of artifacts created by the IBM CSMO team to assist you with performance m
 #### [ICP Installation on Ubuntu](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Installing_ICp_on_prem_ubuntu.md)
 
 ## Security
+IBM Cloud Private supports Identity and Access Management, based on [OpenID Connect](https://openid.net/connect/) (OIDC). It permits access to private LDAP, the identity service authenticates users with the credentials in your enterprise directory.
+It provides Role Based Access Control: editor, reader, operator, administrator roles.
 
+You can use container security context to specify user and group used to run the container(s) within a pod and how to access filesystem.
+
+See kubernetes documentation [here](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)
 
 #### Cloud Architecture Solution Engineering [Assets list](https://ibm-cloud-architecture.github.io/)
