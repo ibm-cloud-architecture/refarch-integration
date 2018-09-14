@@ -224,7 +224,6 @@ A set of artifacts created by the IBM CSMO team to assist you with performance m
 
 <img src="https://github.com/ibm-cloud-architecture/CSMO-ICP/blob/master/images/toolchain-mon.png" width=800px/>
 
-
 #### CSMO for cloud native application
 [Leveraging Grafana, prometheus](https://github.com/ibm-cloud-architecture/refarch-cloudnative-kubernetes-csmo)
  DevOps, specifically Cloud Service Management & Operations (CSMO), is important for Cloud Native Microservice style applications. This project is developed to demonstrate how to use tools and services available on IBM Cloud to implement CSMO for the BlueCompute reference application
