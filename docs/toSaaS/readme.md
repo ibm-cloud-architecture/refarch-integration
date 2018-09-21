@@ -8,8 +8,8 @@ where the components are:
 * LDAP service for user authentication and role definition
 * [Inventory data access layer](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal) is a JEE app to expose SOAP interface implemented with JAXWS and JPA to support SOA service as data access layer to the inventory database. It is deployed to Traditional WebSphere Application Service (tWAS).
 * [An inventory DB2](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-db2) to persist items, suppliers and inventory data in DB2.
-* [Item event producer]((https://github.com/ibm-cloud-architecture/refarch-mq-messaging)) is a java application to simulate event created from warehouse about item added to an inventory in the given warehouse. This is an event sent as a message to a Queue defined in the MQ manager.
-* An event listener application implemented as a message driven bean deployed on tWAS. This application persists the date to the inventory database.
+* [Item event producer]((https://github.com/ibm-cloud-architecture/refarch-mq-messaging) is a java application to simulate event created from warehouse about item added to an inventory in the given warehouse. This is an event sent as a message to a Queue defined in the MQ manager.
+* An [event listener](https://github.com/ibm-cloud-architecture/refarch-mq-messaging) application implemented as a message driven bean deployed on tWAS. This application persists the date to the inventory database.
 
 and the target environment will be using the same components but move DB, WAS app and MQ to IBM Cloud.
 
@@ -21,7 +21,7 @@ The MQ layer is using one queue manager deploy on IBM cloud. The MDB listen to q
 We are addressing this migration in [this note.](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-db2/blob/master/docs/db2-cloud.md)
 
 ## Traditional WAS App lift and shift
-We are using the same approach as detailed in [this tutorial.](https://github.com/ibm-cloud-architecture/refarch-jee/tree/master/static/artifacts/WASaaS-tWAS-tutorial)
+We are using the same approach as detailed in [this tutorial.](https://github.com/ibm-cloud-architecture/refarch-jee/tree/master/static/artifacts/WASaaS-tWAS-tutorial) but we [adapt it](./twas/readme.md) for our purpose.
 
 The application to migrate is in [the data access layer service for the inventory data base as defined in this repository](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal).
 
@@ -42,4 +42,4 @@ There are a set of tools available to assess application for migration:
 The implementation of the messaging solution is done in [this repository.](https://github.com/ibm-cloud-architecture/refarch-mq-messaging)
 
 From an architecture point of view when doing lift and shift of MQ solution you need to assess the followings:
-* 
+*
