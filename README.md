@@ -12,7 +12,7 @@ This solution implementation covers a lot of different and interesting subject. 
 * a marketing person, you may want to google something else...
 
 
-# What you will learn
+## What you will learn
 One of the goal of this implementation is to reflect what is commonly found in IT landscape in 2017, and provides recommendations on how to manage hybrid architecture with the cloud programming model by addressing non-functional requirements as scalability, security, monitoring and resiliency.
 
 By studying the set of projects and articles linked to this top repository, you will learn:
@@ -20,7 +20,7 @@ By studying the set of projects and articles linked to this top repository, you 
 - how to develop [gateway message flow](https://github.com/ibm-cloud-architecture/refarch-integration-esb#inventory-flow) with IBM Integration Bus
 - how to define [API product](https://github.com/ibm-cloud-architecture/refarch-integration-api#implementation-details) with API Connect, and use secure communication with TLS for backend APIs
 - how to set up secure connection from IBM Cloud public to on-premise service using [IBM Secure Gateway]()
-- how to develop a Single Page Application with [Angular 5](https://github.com/ibm-cloud-architecture/refarch-caseportal-app#code-explanation) using a Test Drive Development approach with nodejs/expressjs back end
+- how to develop a Single Page Application with [Angular 6](https://github.com/ibm-cloud-architecture/refarch-caseportal-app#code-explanation) using a Test Driven Development approach with nodejs/expressjs back end
 - how to [secure the web app with passport](https://github.com/ibm-cloud-architecture/refarch-caseportal-app/blob/master/docs/login.md)
 - how to access existing LDAP service for user authentication
 - how to perform [CI/CD in hybrid world](docs/devops/README.md)
@@ -31,7 +31,7 @@ By studying the set of projects and articles linked to this top repository, you 
 - How to deploy kubeless and do [serverless](./docs/serverless/readme.md) with kubernetes
 - What is the [journey](docs/journey/README.md) story to adopt hybrid cloud
 
-# Table of Contents
+## Table of Contents
 * [Hybrid Cloud Introduction](#introduction)
 * [What you will learn](#what-you-will-learn)
 * [Solution Landscape](#application-overview)   
@@ -59,7 +59,7 @@ In the longer term the brown compute will support the multiple integration patte
 ![](docs/brown-scope.png)
 
 
-# Application Overview
+## Application Overview
 As an hybrid cloud solution implementation the set of projects of this solution cover different **functional** requirements:
 * A web based portal to integrate internal applications for internal users.
 * One of the function is to manage a simple computer product inventory, with  warehouse and suppliers.
@@ -67,7 +67,7 @@ As an hybrid cloud solution implementation the set of projects of this solution 
 * Support customer management, buyer of the telco products, used to support Analytics and machine learning
 * Product recommendations based on business rules
 
-## System context
+### System context
 As architect we need to develop a system context, so the following diagram illustrates the logical components involved in the current solution, with the numbered items for short explanation:  
 ![](docs/br-syst-ctx.png)
 
@@ -92,18 +92,18 @@ We propose to extend the IT chatbot using [Event processing for application stat
 We have also other repositories to address...
 * [Testing](https://github.com/ibm-cloud-architecture/refarch-integration-tests) This repository includes a set of test cases to do component testing, functional testing and integration tests.
 
-## User interface
+### User interface
 To demonstrate the set of features of this solution , a front end application, representing an internal portal is used to plug and play the different use cases. There is a login mechanism connected to a directory service (LDAP)
 
 ![HomePage](docs/homepage.png)  
 
 This front end application is an extension of the "CASE.inc" retail store introduced in [cloud native solution or "Blue compute"](https://github.com/ibm-cloud-architecture/refarch-cloudnative) which manages old computers, extended with IT support chat bot and other goodies.
 
-# Further Readings
+## Further Readings
 We are presenting Hybrid Cloud Integration body of knowledge in [this article](./docs/compendium.md).
 We are compiling a ICP [compendium](./docs/icp/compendium.md) with kubernetes references.
 
-# Contribute
+## Contribute
 We welcome your contribution. There are multiple ways to contribute: report bugs and improvement suggestion, improve documentation and contribute code.
 We really value contributions and to maximize the impact of code contributions we request that any contributions follow these guidelines
 * Please ensure you follow the coding standard and code formatting used throughout the existing code base
@@ -118,14 +118,15 @@ We really value contributions and to maximize the impact of code contributions w
 If you want to contribute, start by using git fork on this repository and then clone your own repository to your local workstation for development purpose. Add the up-stream repository to keep synchronized with the master.
 
 ## Project Status
-[05/2018] This project is still under active development, so you might run into [issues](https://github.com/ibm-cloud-architecture/refarch-integration/issues). If you do, please don't be shy about letting us know, or better yet, contribute a fix or feature.
+[09/2018] This project is still under active development, so you might run into [issues](https://github.com/ibm-cloud-architecture/refarch-integration/issues). If you do, please don't be shy about letting us know, or better yet, contribute a fix or feature.
 Here is a high level plan of future working
-* Use IIB message flow packaged with IIB as mediation flow micro service
 * CI/CD end to end
-* Add App connect as integration product for SaaS and automate tasks
-* Add ODM to compute product recommendation
 * consumer contract testing for Angular web app to service provider
-* Separate BFF from angular app.
-* Run angular app on nginx
 * Explain a TDD approach to develop the Angular app
-* Add MQ messaging.
+
+## Contributors
+* Lead development [Jerome Boyer](https://www.linkedin.com/in/jeromeboyer/) -
+* [Prasad Imandi](https://www.linkedin.com/in/prasadimandi)
+* [Zach Silverstein](https://www.linkedin.com/in/zsilverstein/)
+
+Please [contact me](mailto:boyerje@us.ibm.com) for any questions.
