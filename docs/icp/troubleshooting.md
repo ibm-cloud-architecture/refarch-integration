@@ -185,7 +185,7 @@ bx pr cluster-config mycluster
 
 ## Helm version not able to connect to Tiller.
 Error: cannot connect to Tiller
-With version 2.1.0.2, TLS is enforced to communicate with the server. So to get the version the command is `helm version --tls`. You need also to get the certificates for the cluster. The command ` bx pr cluster-config <custername>` will add those certificate into `~/.helm`.
+With version 2.1.0.2, TLS is enforced to communicate with the server. So to get the version the command is `helm version --tls`. You need also to get the certificates for the cluster. The command ` bx pr cluster-config <clustername>` will add those certificate into `~/.helm`.
 
 ## Helm incompatible version
 The error message may look like: `Error: incompatible versions client[v2.9.1] server[v2.7.3+icp]`

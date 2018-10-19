@@ -5,7 +5,7 @@ IT environments are becoming hybrid in nature; most businesses use cloud computi
 Updated September 10 2018
 
 ## Target audiences
-This solution implementation covers a lot of different and interesting subject. If you are...
+This solution implementation covers a lot of different and interesting subjects. If you are...
 * an architect, you will get a deeper understanding on how all the components work together, and how to address API economy, support cloud native polyglot applications and micro service while leveraging your existing investments in SOA and ESB pattern.
 * a developer, you will get a broader view of the solution end to end and get existing starting code, and practices you may want to reuse during your future implementation. We focus on hybrid cloud and private cloud so some interesting areas like CI/CD in hybrid are covered. Test Driven Development with consumer driven contract testing.
 * a project manager, you may understand all the artifacts to develop in an hybrid integration solution, and we may help in the future to do project estimation.
@@ -20,7 +20,7 @@ By studying the set of projects and articles linked to this top repository, you 
 - how to develop [gateway message flow](https://github.com/ibm-cloud-architecture/refarch-integration-esb#inventory-flow) with IBM Integration Bus
 - how to define [API product](https://github.com/ibm-cloud-architecture/refarch-integration-api#implementation-details) with API Connect, and use secure communication with TLS for backend APIs
 - how to set up secure connection from IBM Cloud public to on-premise service using [IBM Secure Gateway]()
-- how to develop a Single Page Application with [Angular 6](https://github.com/ibm-cloud-architecture/refarch-caseportal-app#code-explanation) using a Test Driven Development approach with nodejs/expressjs back end
+- how to develop a Single Page Application with [Angular 6](https://github.com/ibm-cloud-architecture/refarch-caseportal-app#code-explanation) using a [Test Driven Development](https://github.com/ibm-cloud-architecture/refarch-caseportal-app/blob/master/docs/tdd.md) approach with nodejs/expressjs back end
 - how to [secure the web app with passport](https://github.com/ibm-cloud-architecture/refarch-caseportal-app/blob/master/docs/login.md)
 - how to access existing LDAP service for user authentication
 - how to perform [CI/CD in hybrid world](docs/devops/README.md)

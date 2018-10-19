@@ -3,8 +3,10 @@
 ## Kubeless
 To install kubeless on ICP we first connect to the cluster and then use the command below:
 
-`$ kubectl create -f https://github.com/kubeless/kubeless/releases/download/v1.0.0-alpha.8/kubeless-v1.0.0-alpha.8.yaml -n kubeless
-`
+```
+$ kubectl create namespace kubeless
+$ kubectl create -f https://github.com/kubeless/kubeless/releases/download/v1.0.0-alpha.8/kubeless-v1.0.0-alpha.8.yaml -n kubeless
+```
 The image is using RBAC:
 
 The deployment creates one pod with 3 containers inside:
@@ -28,7 +30,7 @@ def hello(event, context):
 ```
 To deploy we can use the command:
 ```
-$ kubeless function deploy hellojb --runtime python3.6 --from-file hello.py --handler test.hello
+$ kubeless function deploy hellojb --runtime python3.6  --trigger-http --from-file functionHello.py --handler functionHello.hello
 INFO[0000] Deploying function...                        
 INFO[0001] Function hellojb submitted for deployment    
 INFO[0001] Check the deployment status executing 'kubeless function ls hellojb'
@@ -73,7 +75,7 @@ Containers:
       /kubeless from hellojb (rw)
       /var/run/secrets/kubernetes.io/serviceaccount from default-token-9nw2z (ro)
 ```
-and kubeless create service for function:
+and kubeless create service for each function:
 ```
 $ kubectl describe svc hellojb
 Name:              hellojb
@@ -90,12 +92,19 @@ Endpoints:         192.168.130.101:8080
 Session Affinity:  None
 Events:            <none>
 ```
+
+* Remove the function
+```
+kubeless delete
+```
 ### Calling the function
 The quickest way is to proxy the server and then call the local URL:
 ```
 $ kubectl proxy -p 8080 &
 $ kubeless function call hellojb --data 'Hello Bill!'
 ```
+
+A second way is to test using HTTP client.
 
 ## Developing a predictive scoring function
 In [this project](https://github.com/ibm-cloud-architecture/refarch-asset-analytics/tree/master/asset-predictive-scoring) we are addressing how to develop a scoring service using Python, sklearn and serveless to deploy the model as function.
