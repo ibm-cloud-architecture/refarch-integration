@@ -1,0 +1,7 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "generic/rhel7"
+  config.vm.synced_folder "../../", "/home/vagrant/brown",create:true,owner:"vagrant"
+  config.vm.provision "shell" do |s|
+     s.path = "./setup.sh"
+  end
+end

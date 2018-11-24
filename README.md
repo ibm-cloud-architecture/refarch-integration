@@ -37,7 +37,6 @@ By studying the set of projects and articles linked to this top repository, you 
 * [Solution Landscape](#application-overview)   
 * [DevOps: Build, deploy and run](./docs/buildrun/README.md)
 * [Doing MQ, DB2 and JEE on WAS lift and shift to IBM Cloud](docs/toSaaS/readme.md)
-* [Serverless - FaaS](docs/serverless/readme.md)
 * [Non-functional requirements](./docs/nfr.md)
 * [CI/CD](./docs/devops/README.md)
 * [Hybrid Cloud Compendium](./docs/compendium.md)
