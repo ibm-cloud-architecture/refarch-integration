@@ -2,36 +2,42 @@
 
 IT environments are becoming hybrid in nature; most businesses use cloud computing as part of their overall IT environment. While businesses continue to operate enterprise applications, processes, and systems of record on premises, they are rapidly developing cloud-native applications on cloud. The [hybrid integration reference architecture](https://www.ibm.com/cloud/garage/content/architecture/integrationServicesDomain/) describes an approach to connect components which are split across cloud and on-premises environments, or across public and private clouds -- even across different cloud providers.
 
-Updated September 10 2018
+Updated December - 02 - 2018
+
+This repository is also linked to the [Event Driven Architecture](https://github.com/ibm-cloud-architecture/refarch-eda) repository where integration between microservices is supported by using event backbone and pub/sub integration pattern.
 
 ## Target audiences
+
 This solution implementation covers a lot of different and interesting subjects. If you are...
-* an architect, you will get a deeper understanding on how all the components work together, and how to address API economy, support cloud native polyglot applications and micro service while leveraging your existing investments in SOA and ESB pattern.
+
+* an architect, you will get a deeper understanding of how all the components work together, and how to address API management, how to support cloud native polyglot applications and micro service while leveraging your existing investments in SOA and ESB pattern.
 * a developer, you will get a broader view of the solution end to end and get existing starting code, and practices you may want to reuse during your future implementation. We focus on hybrid cloud and private cloud so some interesting areas like CI/CD in hybrid are covered. Test Driven Development with consumer driven contract testing.
 * a project manager, you may understand all the artifacts to develop in an hybrid integration solution, and we may help in the future to do project estimation.
 * a marketing person, you may want to google something else...
 
-
 ## What you will learn
+
 One of the goal of this implementation is to reflect what is commonly found in IT landscape in 2017, and provides recommendations on how to manage hybrid architecture with the cloud programming model by addressing non-functional requirements as scalability, security, monitoring and resiliency.
 
 By studying the set of projects and articles linked to this top repository, you will learn:
-- how to develop a [SOAP app in Java](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal#code-explanation) using JPA, JAXWS deployed on WebSphere Liberty
-- how to develop [gateway message flow](https://github.com/ibm-cloud-architecture/refarch-integration-esb#inventory-flow) with IBM Integration Bus
-- how to define [API product](https://github.com/ibm-cloud-architecture/refarch-integration-api#implementation-details) with API Connect, and use secure communication with TLS for backend APIs
-- how to set up secure connection from IBM Cloud public to on-premise service using [IBM Secure Gateway]()
-- how to develop a Single Page Application with [Angular 6](https://github.com/ibm-cloud-architecture/refarch-caseportal-app#code-explanation) using a [Test Driven Development](https://github.com/ibm-cloud-architecture/refarch-caseportal-app/blob/master/docs/tdd.md) approach with nodejs/expressjs back end
-- how to [secure the web app with passport](https://github.com/ibm-cloud-architecture/refarch-caseportal-app/blob/master/docs/login.md)
-- how to access existing LDAP service for user authentication
-- how to perform [CI/CD in hybrid world](docs/devops/README.md)
-- how to [monitor all those components](./docs/csmo/README.md) using Application Performance Monitoring
-- how to [deploy most of the components of the solution](./docs/icp/README.md) to IBM Cloud Private
+
+- How to develop a [SOAP app in Java](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal#code-explanation) using JPA, JAXWS deployed on WebSphere Liberty
+- How to develop [gateway message flow](https://github.com/ibm-cloud-architecture/refarch-integration-esb#inventory-flow) with IBM Integration Bus
+- How to define [API product](https://github.com/ibm-cloud-architecture/refarch-integration-api#implementation-details) with API Connect, and use secure communication with TLS for backend APIs
+- How to set up secure connection from IBM Cloud public to on-premise service using [IBM Secure Gateway]()
+- How to develop a Single Page Application with [Angular 6](https://github.com/ibm-cloud-architecture/refarch-caseportal-app#code-explanation) using a [Test Driven Development](https://github.com/ibm-cloud-architecture/refarch-caseportal-app/blob/master/docs/tdd.md) approach with nodejs/expressjs back end
+- How to [secure the web app with passport](https://github.com/ibm-cloud-architecture/refarch-caseportal-app/blob/master/docs/login.md)
+- How to access existing LDAP service for user authentication
+- How to perform [CI/CD in hybrid world](docs/devops/README.md)
+- How to [monitor all those components](./docs/csmo/README.md) using Application Performance Monitoring
+- How to [deploy most of the components of the solution](./docs/icp/README.md) to IBM Cloud Private
 - How to call BPM process from Watson Conversation (orchestration), and how to integrate chat user interface connected to Watson Conversation into BPM coach.
 - How to support [service mesh](./docs/service-mesh/readme.md) with kubernetes
 - How to deploy kubeless and do [serverless](./docs/serverless/readme.md) with kubernetes
 - What is the [journey](docs/journey/README.md) story to adopt hybrid cloud
 
 ## Table of Contents
+
 * [Hybrid Cloud Introduction](#introduction)
 * [What you will learn](#what-you-will-learn)
 * [Solution Landscape](#application-overview)   
@@ -45,6 +51,7 @@ By studying the set of projects and articles linked to this top repository, you 
 * [Project Status](#project-status)
 
 ## Introduction
+
 In this architecture, existing applications are moved to the infrastructure as a service (IaaS) of cloud providers, new applications are built on the cloud as a platform as a service (PaaS), using pre-built cloud-based software as a service (SaaS) services.
 
 The following diagram presents the high level view of the components involved in the hybrid integration reference architecture. For an deeper explanation of this architecture read [this note](./docs/hybrid-ref-arch.md)

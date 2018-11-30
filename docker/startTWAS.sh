@@ -1,1 +1,1 @@
-docker run --name test -h test -v $(pwd)/PASSWORD:/tmp/PASSWORD -p 9043:9043 -p 9444:9443 -d ibmcom/websphere-traditional:8.5.5.14-profile
+docker run --name WAS855FP14 -h was855 -v $(pwd)/PASSWORD:/tmp/PASSWORD -p 9044:9043 -p 9444:9443 -d ibmcase/twas
