@@ -3,6 +3,6 @@ services:
   db2:
     image: "ibmcase/browndb2"
   twas:
-    image: "ibmcase/browntwas"
+    image: "ibmcase/twas"
   mq:
     image: "ibmcase/mq"
