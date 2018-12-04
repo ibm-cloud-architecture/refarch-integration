@@ -1,6 +1,6 @@
 # Lift and shift of an integration solution
 
-In this article we are detailing how to migrate part of an 'hybrid cloud reference architecute implementation solution' based on MQ, DB2 and traditional WAS (tWAS) to a pure IBM Cloud deployment. 
+In this article and solution implementation we are detailing how to migrate part of an 'hybrid cloud reference architecture implementation solution' based on MQ, DB2 and traditional WAS (tWAS) to a pure IBM Cloud deployment. 
 
 Updated (03/12/2018).
 
