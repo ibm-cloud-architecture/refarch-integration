@@ -1,0 +1,962 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.0.1">
+    
+    
+      
+        <title>Hybrid Integration Reference Architecture</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.982221ab.css">
+      
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.1f0bcf2b.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#journey-to-the-cloud" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href=".." title="Hybrid Integration Reference Architecture" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Hybrid Integration Reference Architecture
+            </span>
+            <span class="md-header-nav__topic">
+              Skill Journey
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/ibm-cloud-architecture/refarch-integration/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href=".." title="Hybrid Integration Reference Architecture" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Hybrid Integration Reference Architecture
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/ibm-cloud-architecture/refarch-integration/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Hybrid Cloud Integration introduction" class="md-nav__link">
+      Hybrid Cloud Integration introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../hybrid-ref-arch/" title="Hybrid Cloud Integration reference architecture" class="md-nav__link">
+      Hybrid Cloud Integration reference architecture
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../buildrun/" title="DevOps Build, deploy and run" class="md-nav__link">
+      DevOps Build, deploy and run
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Doing MQ, DB2 and JEE on WAS lift and shift to IBM Cloud
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Doing MQ, DB2 and JEE on WAS lift and shift to IBM Cloud
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../toSaaS/readme/" title="Context" class="md-nav__link">
+      Context
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../toSaaS/twas/readme/" title="Tarditional WAS app" class="md-nav__link">
+      Tarditional WAS app
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../nfr/" title="Non-functional requirements" class="md-nav__link">
+      Non-functional requirements
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../devops/" title="Apply CI/CD for integration solution" class="md-nav__link">
+      Apply CI/CD for integration solution
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../compendium/" title="Hybrid Cloud Compendium" class="md-nav__link">
+      Hybrid Cloud Compendium
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      IBM Cloud Private knowledge sharing
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        IBM Cloud Private knowledge sharing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp/" title="Main summary" class="md-nav__link">
+      Main summary
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp/icp-cli/" title="CLI summary" class="md-nav__link">
+      CLI summary
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp/icp-integration/" title="Integration on ICP" class="md-nav__link">
+      Integration on ICP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp/build-helm-rep/" title="Build your own helm repository" class="md-nav__link">
+      Build your own helm repository
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp/dev-env-install/" title="Install a dev cluster" class="md-nav__link">
+      Install a dev cluster
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp/faq/" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp/troubleshooting/" title="Troubleshouting" class="md-nav__link">
+      Troubleshouting
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../service-mesh/readme/" title="Service mesh" class="md-nav__link">
+      Service mesh
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../istio/readme/" title="Istio introduction" class="md-nav__link">
+      Istio introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../csmo/" title="CSMO" class="md-nav__link">
+      CSMO
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Security
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        Security
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../TLS/" title="TLS" class="md-nav__link">
+      TLS
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Skill Journey
+      </label>
+    
+    <a href="./" title="Skill Journey" class="md-nav__link md-nav__link--active">
+      Skill Journey
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-cloud" title="Why Cloud?" class="md-nav__link">
+    Why Cloud?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ibm-private-cloud-reference-architecture" title="IBM Private Cloud reference architecture" class="md-nav__link">
+    IBM Private Cloud reference architecture
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#challenges-to-solve" title="Challenges to solve" class="md-nav__link">
+    Challenges to solve
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-cloud" title="Why Cloud?" class="md-nav__link">
+    Why Cloud?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ibm-private-cloud-reference-architecture" title="IBM Private Cloud reference architecture" class="md-nav__link">
+    IBM Private Cloud reference architecture
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#challenges-to-solve" title="Challenges to solve" class="md-nav__link">
+    Challenges to solve
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/ibm-cloud-architecture/refarch-integration/edit/master/docs/journey/README.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="journey-to-the-cloud">Journey to the cloud</h1>
+<p>This article aims to present how to adopt the cloud leveraging the existing materials develop by IBM Cloud Architecture and Solution engineering team.</p>
+<h2 id="why-cloud">Why Cloud?</h2>
+<p>The most important value points:</p>
+<ul>
+<li>Rapid deployment, scalability, ease of use, and elasticity to adapt to demand</li>
+<li>Predictable cost, optimized for workload demand</li>
+<li>Enable DevOps, increase developers productivity  </li>
+</ul>
+<p>Private cloud adds:</p>
+<ul>
+<li>Knowledge of where data resides</li>
+<li>Apply own enterprise own security and governance policies</li>
+<li>Simplify integration to on-premise business functions</li>
+</ul>
+<p><a href="https://www.ibm.com/cloud/">IBM Public Cloud</a> value proposition:</p>
+<ul>
+<li>Easy migration</li>
+<li>Adopt cloud native development and operations</li>
+<li>AI Ready</li>
+<li>Hybrid integration</li>
+<li>Secure: continuous security scanning for apps and data</li>
+<li>Easily integrate and manage all your data across vendors and clouds — on or off premises</li>
+</ul>
+<p>Cloud is the technology for innovation and transformation. AI, blockchain, multi-cloud, SaaS integration, single page app are drivers for cloud adoption. The new application landscape integrate existing data centers, private cloud within corporate firewall and SaaS, Public cloud provider, IoT, traditional B2B...
+The new landscape will be multi-cluster &amp; multi-cloud.
+<img src=new-app-landscape.png width=800px/></p>
+<p>IBM Cloud public offers a set of added value services to manage data, app development, devops, networking access, servers, security, AI, blockchain and more.... The <a href="https://console.bluemix.net/catalog">IBM Cloud service catalog is continuously updated</a></p>
+<h2 id="ibm-private-cloud-reference-architecture"><a href="https://www.ibm.com/cloud/garage/architectures/private-cloud">IBM Private Cloud reference architecture</a></h2>
+<p>IBM Cloud Private brings cloud innovation within your datacenter. It is a Kubernetes platform with optimized scheduling, with most of the IBM Middleware products moving to it and it:</p>
+<ul>
+<li>supports better cluster management, security capabilities, image repositories, routing services, and microservices mesh</li>
+<li>authorizes infrastructure automation with scripts (Terraform, <a href="https://www.ibm.com/cloud/smartpapers/multicloud-management/">IBM Multi Cloud Manager</a>)</li>
+<li>provides monitoring for container-based applications for logging, dashboards, and automation.</li>
+<li>supports network and storage policy-based controls for application isolation and security, and automated application health checking and recovery from failures</li>
+</ul>
+<p><img src=ICP-oneView.png width=800px/></p>
+<p>For product introduction see <a href="https://www.ibm.com/cloud-computing/products/ibm-cloud-private/">ICP Product page here.</a></p>
+<p>With the <a href="https://169.47.77.137:8443/catalog">ICP catalog</a> you can install a lot of IBM middleware products and some open sources and your own helm charts in few seconds.</p>
+<p><img src=icp-catalog.png width=800px/></p>
+<h2 id="challenges-to-solve">Challenges to solve</h2>
+<p>We recognize that not every organization is ready to move everything they have to a public cloud environment, and there are lots of reasons for that. IBM offers the richest range of deployment options – from Private to Public and Dedicated. Still, enterprises will face new challenges in broadening the adoption of Cloud to critical applications. We can group those challenges into different categories and we will address in next sections the best practices and other product informations we have developed for you:</p>
+<ul>
+<li>Application <a href="#architecture-and-development">ARCHITECTURE and DEVELOPMENT</a> practices:<ul>
+<li>What does it mean to adopt Microservice pattern</li>
+<li>Lift and shift existing applications to cloud</li>
+<li>Refactoring existing applications</li>
+<li>Adopt polyglot with new Languages &amp; runtimes</li>
+<li>Engage with APIs management and API standard</li>
+<li>DevOps, continuous delivery  </li>
+</ul>
+</li>
+<li>Application <a href="#portability">PORTABILITY</a><ul>
+<li>Regulation and multi regions deployment</li>
+<li>Cloud provider availability</li>
+<li>Cost and quality of services  </li>
+</ul>
+</li>
+<li><a href="#integration">INTEGRATION</a><ul>
+<li>APIs definition &amp; Management</li>
+<li>Integrating existing Applications and SOA services</li>
+<li>Support transactions</li>
+<li>Leverage and coexist with existing ESB</li>
+<li>Agility for new integration needs</li>
+</ul>
+</li>
+<li><a href="#data-governance">DATA MOVEMENT &amp; GOVERNANCE</a><ul>
+<li>New Analytics &amp; AI Services</li>
+<li>Data Privacy &amp; Risk</li>
+<li>Data Gravity &amp; Performance</li>
+<li>Network Cost</li>
+<li>Data Gravity &amp; Lock-in</li>
+</ul>
+</li>
+<li><a href="#service-management">SERVICE MANAGEMENT</a><ul>
+<li>Monitoring/SRE</li>
+<li>SLAs</li>
+<li>Problem Diagnosis</li>
+<li>HA/DR</li>
+<li>Scale</li>
+<li>Backup and restore</li>
+</ul>
+</li>
+<li><a href="#security">SECURITY</a> &amp; COMPLIANCE<ul>
+<li>Identity &amp; Authorization</li>
+<li>Audit</li>
+<li>Shared Responsibility Models</li>
+<li>Regulatory Compliance</li>
+</ul>
+</li>
+</ul>
+<p><em>Operation lead (Todd), responsible for infrastructure management, security and environment availability and maintenance has different concerns than developer (Jane) who is responsible to develop new application but also maintain existing application.</em></p>
+<h1 id="a-journey">A journey...</h1>
+<h2 id="architecture-and-development">Architecture and Development</h2>
+<h4 id="microservice-reference-architecture"><a href="https://www.ibm.com/cloud/garage/architectures/microservices/0_0">Microservice reference architecture</a></h4>
+<p>Microservices is an application architectural style in which an application is composed of many discrete, network-connected components</p>
+<ul>
+<li><a href="https://github.com/ibm-cloud-architecture/refarch-integration/blob/master/docs/hybrid-itg-platform.md">Microservices in the world of integration</a></li>
+<li>Public cloud for dev and test
+<a href="https://www.youtube.com/watch?v=pM3oFNAH2dA&amp;index=4&amp;list=PLzpeuWUENMK37ZlLBc_pIlXlOWeGnYRA_">Stock trader app to ICP and Public</a></li>
+<li><a href="https://github.com/ibm-cloud-architecture/refarch-cloudnative-kubernetes">Blue compute on kubernetes: a microservice reference implementation</a></li>
+</ul>
+<p><img alt="" src="bluecompute_ce.png" /></p>
+<h4 id="innovate-quickly-with-cloud-native-development">Innovate quickly with cloud native development</h4>
+<p>Leverage the following tutorials and articles</p>
+<ul>
+<li><a href="https://www.ibm.com/cloud/garage/demo/try-private-cloud-install-an-app">Tutorial: Deploy a cloud-native application in Kubernetes</a></li>
+<li><a href="https://www.ibm.com/cloud/garage/architectures/microservices/microservices-kubernetes">Microservices with Kubernetes</a></li>
+<li><a href="https://github.com/ibm-cloud-architecture/refarch-caseportal-app">An Angular 6 SPA with nodejs bff full app</a></li>
+<li><a href="https://github.com/ibm-cloud-architecture/refarch-cloudnative-spring">Run the Springboot on a Kubernetes Cluster</a></li>
+<li><a href="https://github.com/ibm-cloud-architecture/refarch-cloudnative-resiliency/">Making Microservices Resilient</a></li>
+<li><a href="https://github.com/ibm-cloud-architecture/refarch-cloudnative-bluecompute-microclimate">Use Microclimate to run an End-to-End DevOps environment on IBM Cloud Private</a></li>
+</ul>
+<h4 id="refactoring-app-to-microservices">Refactoring app to microservices</h4>
+<p>Business wants to improve the application to increase client adoption and satisfaction. Monolithic applications are more difficult to change and moving to microservice architecture will bring velocity to the development team.</p>
+<ul>
+<li><a href="https://www.ibm.com/cloud/garage/content/code/refactor-to-microservices">Refactoring application code to microservices</a>, this article addresses the why and how to refactor an existing Java application to microservice architecture. They also cover data model refactoring</li>
+<li><a href="https://github.com/ibm-cloud-architecture/refarch-jee">The process to start from an existing JEE to split into microservices is documented in this repository</a>. 10-15% of existing WebSphere workloads can be moved as-is to cloud.</li>
+<li><a href="https://www.ibm.com/blogs/bluemix/2017/08/websphere-on-the-cloud-application-modernization/">WebSphere on the Cloud: Application Modernization</a></li>
+</ul>
+<h4 id="polyglot-applications">Polyglot applications</h4>
+<p>Use one the available <a href="https://console.bluemix.net/developer/appservice/starter-kits">boiler plates, starting</a> code from IBM Cloud like Nodejs, Java, Python, GoLang, Swift...
+and deploy them on ICP or IBM Container services.
+Below is a list of how to guides for Java and nodejs app but also decision and event streaming:</p>
+<ul>
+<li><a href="https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal">Develop a SOAP Jaxws app deployed in OpenLiberty and docker</a></li>
+<li><a href="https://github.com/ibm-cloud-architecture/refarch-caseportal-app/blob/master/docs/tdd.md">Apply a test driven development for Angular 6 app with nodejs-expressjs BFF service</a></li>
+<li><a href="https://github.com/ibm-cloud-architecture/refarch-analytics/blob/master/docs/kafka/readme.md">Event messaging with Apache Kafka in kubernetes</a></li>
+<li><a href="https://github.com/ibm-cloud-architecture/refarch-integration-services">Develop a REST API with JAXRS</a></li>
+<li><a href="https://github.com/ibm-cloud-architecture/refarch-integration-esb/tree/master/docs/tutorial">How to develop a REST API which integrates with a SOAP backend</a></li>
+<li><a href="https://github.com/ibm-cloud-architecture/refarch-cognitive-prod-recommendations">Implement decisions with  Operational Decision Management</a> and <a href="https://github.com/ibm-cloud-architecture/refarch-integration/blob/master/docs/odm/README.MD">deploy ODM on ICP</a></li>
+</ul>
+<h4 id="lift-and-shift">Lift and shift</h4>
+<p>A need to shift from IaaS (VM, network, storage, security) to container and CaaS (kubernetes) and PaaS (cloud foundry).</p>
+<ul>
+<li>Java based lift and shift
+ A Traditional JEE app running on WebSphere Application server can be lift and shift to WAS on IBM Cloud. The <a href="https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal">Inventory Data Access Layer</a> is a JaxWS application exposing a SOAP APIs. The figure below shows the deployed app in the IBM console <br />
+<img alt="" src="https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal/blob/master/docs/twas/wasnd-deploy-8.png" />.<br />
+ The application is accessing a DB2 via JDBC. <a href="https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal/blob/master/docs/twas/readme.md">Deployment explanation on tWAS</a>
+ We are presenting how to move an integration solution to IBM Cloud in this article: <a href="https://github.com/ibm-cloud-architecture/refarch-integration/tree/master/docs/toSaaS">Lift and shift of an integration solution</a>.</li>
+</ul>
+<p>With a deep dive Java EE migration path in <a href="https://github.com/ibm-cloud-architecture/refarch-jee/blob/master/phases/phase1.md">this repository</a></p>
+<p>A <a href="http://whichwas.mybluemix.net/">migration strategy tool</a> to support your migration scoping, with the <a href="https://roi-calculator.mybluemix.net/">WebSphere Application Server V9 Total Cost of Ownership Calculator</a>.</p>
+<p>The Transformation Advisor application <a href="https://ibm-dte.mybluemix.net/ibm-websphere-application-server-cloud-enabled">deployable on ICP</a> helps to quickly evaluate your on-premise applications for rapid deployment on WebSphere Application Server and Liberty on Public and/or Private Cloud environments.</p>
+<p><a href="https://developer.ibm.com/wasdev/downloads/#asset/tools-Migration_Toolkit_for_Application_Binaries">The Migration Toolkit for Application Binaries</a> provides a command line tool that quickly evaluates application binaries for rapid deployment on newer versions of WebSphere Application Server traditional or Liberty.</p>
+<p>Finally the <a href="https://developer.ibm.com/wasdev/downloads/#asset/tools-WebSphere_Application_Server_Migration_Toolkit">source migration toolkit</a> is an Eclipse-based Migration Toolkit provides a rich set of tools that help you migrate applications from third-party application servers, between versions of WebSphere Application Server, to Liberty, and to cloud platforms.</p>
+<ul>
+<li>
+<p>MQ lift and shift<br />
+We are presenting some <a href="https://github.com/ibm-cloud-architecture/refarch-mq-messaging">simple implementation</a> using MQ on premise with Message Driven Bean deployed on WAS and a lift and shift path to <a href="https://www.ibm.com/cloud/mq">MQ on IBM Cloud</a> in <a href="">this note</a>
+The benefits to run MQ on cloud is that you keep your skill set but use cloud speed to:</p>
+</li>
+<li>
+<p>Create queue manager in minute.</p>
+</li>
+<li>Get product upgrade and patch done by IBM.</li>
+<li>Pay as you use.</li>
+<li>
+<p>Integrate with MQ manager on premise.  </p>
+</li>
+<li>
+<p>DB2 lift and shift
+<a href="https://github.com/ibm-cloud-architecture/refarch-integration-inventory-db2/blob/master/docs/db2-cloud.md">We are presenting different approaches </a> to migrate DB2 database to DB2 on cloud.</p>
+</li>
+<li>
+<p>Message Broker / IBM Integration Bus  </p>
+</li>
+<li>
+<p><a href="https://github.com/ibm-cloud-architecture/refarch-integration-esb">How an IBM Integration Bus runtime can be deployed on premise or on IBM Cloud Private, running gateway flows to expose REST api from SOAP back end services</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ibm-cloud-architecture/refarch-integration-esb/tree/master/docs/deploy">Deploying IIB Application using Docker locally</a></p>
+</li>
+<li>
+<p><a href="https://github.com/ibm-cloud-architecture/refarch-integration-esb/tree/master/docs/helm">Build IBM Integration Bus Helm Chart suitable for IBM Cloud Private</a> and <a href="https://github.com/ibm-cloud-architecture/refarch-integration-esb/tree/master/docs/icp">deploy it to ICP</a></p>
+</li>
+</ul>
+<h4 id="api-management">API management</h4>
+<ul>
+<li><a href="https://github.com/ibm-cloud-architecture/refarch-integration-api">How we define an API product with IBM API Connect to integrate an existing SOA service</a></li>
+<li><a href="https://github.com/ibm-cloud-architecture/refarch-integration-api/tree/master/docs/icp/README.md">Deploy API Connect 2018.* on ICP</a></li>
+</ul>
+<h4 id="devops">Devops</h4>
+<ul>
+<li><a href="https://github.com/ibm-cloud-architecture/refarch-cloudnative-devops-kubernetes">DevOps for Cloud Native Reference Application</a></li>
+<li><a href="https://github.com/ibm-cloud-architecture/refarch-integration/blob/master/docs/devops/README.md">Hybrid integration solution CI/CD</a></li>
+<li><a href="https://www.ibm.com/cloud/garage/tutorials/cloud-private-jenkins-pipeline">Tutorial to install and configure a Jenkins server that uses a persistent storage volume on IBM Cloud Private</a></li>
+<li><a href="https://www.ibm.com/cloud/garage/content/course/cloud-private-jenkins-devops/0">Use Jenkins in a Kubernetes cluster to continuously integrate and deliver on IBM Cloud Private</a></li>
+<li><a href="https://www.ibm.com/cloud/garage/videos/efficient-api-deployment-with-devops-governance">Devops for API deployment</a></li>
+</ul>
+<h2 id="portability">Portability</h2>
+<h4 id="private-cloud-reference-architecture"><a href="https://www.ibm.com/cloud/garage/architectures/private-cloud">Private cloud reference architecture</a></h4>
+<h4 id="backup-and-restore-on-ibm-cloud-private"><a href="https://github.com/ibm-cloud-architecture/icp-backup">Backup and restore on IBM cloud Private</a></h4>
+<p>A guidance to backup and recovery procedures to best meet your resilience requirements, in the context of kubernetes cluster using ETCD.</p>
+<h4 id="using-terraform-to-deploy-icp-on-different-cloud-providers"><a href="https://github.com/ibm-cloud-architecture/terraform-module-icp-deploy">Using Terraform to deploy ICP on different Cloud providers</a></h4>
+<h4 id="federating-icp-on-premise-clusters"><a href="https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Resiliency/Federating_ICP_clusters.md">Federating ICP  on-premise clusters</a></h4>
+<p><img alt="" src="icp_federation.png" /></p>
+<h2 id="integration">Integration</h2>
+<p>Leveraging existing investments and in-production services with new cloud native and mobile applications. Transforming SOAP and other interface to RESTful API.</p>
+<p><img alt="" src="../brown-scope.png" /></p>
+<h4 id="the-reference-architecture-for-hybrid-cloud"><a href="https://www.ibm.com/cloud/garage/architectures/integrationServicesDomain">The reference architecture for hybrid cloud</a></h4>
+<p>Enables cloud applications and services to have a tighter coupling with specific on-premises enterprise system components.</p>
+<h4 id="hybrid-integration-solution-implementation"><a href="https://ibm-cloud-architecture.github.io/refarch-integration">Hybrid integration solution implementation </a></h4>
+<p>presents a deep dive implementation using API Connect, MQ, WAS application, Cloud native web application, DB2, ODM, BPM, and IIB...</p>
+<h4 id="ibm-cloud-private-knowledge-sharing"><a href="https://ibm-cloud-architecture.github.io/refarch-integration/#icp">IBM Cloud private knowledge sharing</a></h4>
+<h4 id="how-an-ibm-integration-bus-runtime-can-be-deployed-on-premise-or-on-ibm-cloud-private-running-gateway-flows-to-expose-rest-api-from-soap-back-end-services"><a href="https://github.com/ibm-cloud-architecture/refarch-integration-esb">How an IBM Integration Bus runtime can be deployed on premise or on IBM Cloud Private, running gateway flows to expose REST api from SOAP back end services</a></h4>
+<h4 id="tutorial-provides-a-guided-walkthrough-of-the-ibm-mq-on-cloud-service-in-ibm-cloud"><a href="https://www.ibm.com/cloud/garage/tutorials/ibm-mq-on-cloud/tutorial-mq-on-ibm-cloud">Tutorial provides a guided walkthrough of the IBM MQ on Cloud service in IBM Cloud</a></h4>
+<h2 id="data-governance">Data governance</h2>
+<p>The IBM AI Ladder also begins with data. You get higher business value when you perform business-assisted functions such as analytics, machine learning, or artificial intelligence on top of the data...</p>
+<p><img src="https://github.com/ibm-cloud-architecture/refarch-analytics/blob/master/docs/data-mv-meth.png" width=800px/></p>
+<h4 id="data-analytics-reference-architecture"><a href="https://www.ibm.com/cloud/garage/architectures/dataAnalyticsArchitecture">Data Analytics reference architecture</a></h4>
+<p><img src="https://github.com/ibm-cloud-architecture/refarch-analytics/blob/master/docs/analytics-ra.png" width=800px/></p>
+<h4 id="data-analytics-solution-implementation"><a href="https://github.com/ibm-cloud-architecture/refarch-analytics">Data Analytics solution implementation</a></h4>
+<p>This project provides a reference implementation for building and running analytics application deployed on hybrid cloud environment. Two sub projects are under development to leverage <a href="https://www.ibm.com/analytics/cloud-private-for-data">ICP for Data</a></p>
+<ul>
+<li><a href="https://github.com/ibm-cloud-architecture/refarch-cognitive-analytics">Customer analysis with cognitive and analytics in hybrid cloud</a> The goal of this implementation is to deliver a reference implementation for data management and service integration to consume structured and unstructured data to assess customer attrition.</li>
+</ul>
+<p><img src="https://github.com/ibm-cloud-architecture/refarch-cognitive-analytics/blob/master/docs/syst-ctx-2.png" width=800px/></p>
+<ul>
+<li><a href="https://github.com/ibm-cloud-architecture/refarch-asset-analytics">Manufacturing Asset Predictive Maintenance</a> This set of projects presents an end to end solution to enable predictive maintenance capabilities on manufacturing assets</li>
+</ul>
+<h4 id="deploying-cassandra-on-kubernetes"><a href="https://github.com/ibm-cloud-architecture/refarch-asset-analytics/blob/master/docs/cassandra/readme.md">Deploying Cassandra on kubernetes</a></h4>
+<h2 id="service-management">Service management</h2>
+<h4 id="reference-architecture-ibm-garage-method"><a href="https://www.ibm.com/cloud/garage/architectures/serviceManagementArchitecture/referenceArchitecture">Reference Architecture @ IBM Garage method</a></h4>
+<h4 id="hybrid-cloud-management"><a href="https://www.ibm.com/cloud/smartpapers/multicloud-management/">Hybrid cloud management</a></h4>
+<p>Hybrid, multicloud world is quickly becoming the new normal for enterprise.</p>
+<h4 id="monitoring-in-ibm-cloud-private"><a href="https://github.com/ibm-cloud-architecture/CSMO-ICP">Monitoring in IBM Cloud Private</a></h4>
+<p>A set of artifacts created by the IBM CSMO team to assist you with performance management of your ICP deployment.</p>
+<p><img src="https://github.com/ibm-cloud-architecture/CSMO-ICP/blob/master/images/toolchain-mon.png" width=800px/></p>
+<h4 id="csmo-for-cloud-native-application">CSMO for cloud native application</h4>
+<p><a href="https://github.com/ibm-cloud-architecture/refarch-cloudnative-kubernetes-csmo">Leveraging Grafana, prometheus</a>
+ DevOps, specifically Cloud Service Management &amp; Operations (CSMO), is important for Cloud Native Microservice style applications. This project is developed to demonstrate how to use tools and services available on IBM Cloud to implement CSMO for the BlueCompute reference application</p>
+<h4 id="a-sample-tools-implementation-of-incident-management-solution"><a href="https://github.com/ibm-cloud-architecture/refarch-cloudnative-csmo/blob/master/doc/Incident_Management_Implementation.md">A Sample Tools Implementation of Incident Management Solution</a></h4>
+<p>A set of tools to provide an end-to-end view of application.</p>
+<h4 id="hadr">HA/DR</h4>
+<ul>
+<li><a href="https://github.com/ibm-cloud-architecture/refarch-cloudnative-resiliency/">Making Microservices Resilient</a></li>
+<li><a href="https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Resiliency/Configure_HA_ICP_cluster.md">Guidance on HA ICP Cluster Setup</a></li>
+</ul>
+<p><img src="https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Resiliency/images/icp_ha_glusterfs.png" width=800px/></p>
+<h4 id="icp-installation-on-ubuntu"><a href="https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Installing_ICp_on_prem_ubuntu.md">ICP Installation on Ubuntu</a></h4>
+<h2 id="security">Security</h2>
+<p>IBM Cloud Private supports Identity and Access Management, based on <a href="https://openid.net/connect/">OpenID Connect</a> (OIDC). It permits access to private LDAP, the identity service authenticates users with the credentials in your enterprise directory.
+It provides Role Based Access Control: editor, reader, operator, administrator roles.</p>
+<p>You can use container security context to specify user and group used to run the container(s) within a pod and how to access filesystem.</p>
+<p>IBM Cloud <a href="https://console.bluemix.net/docs/containers/cs_secure.html#security">Security for IBM Cloud Kubernetes Service</a></p>
+<p>IBP Cloud Private <a href="https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0.3/user_management/admin.html">user management</a></p>
+<p>See kubernetes documentation about pod security context <a href="https://kubernetes.io/docs/tasks/configure-pod-container/security-context/">here</a></p>
+<h4 id="cloud-architecture-solution-engineering-assets-list">Cloud Architecture Solution Engineering <a href="https://ibm-cloud-architecture.github.io/">Assets list</a></h4>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../TLS/" title="TLS" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                TLS
+              </span>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.b806dc00.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,897 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.0.1">
+    
+    
+      
+        <title>Install a dev cluster - Hybrid Integration Reference Architecture</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.982221ab.css">
+      
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.1f0bcf2b.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#install-a-development-environment-with-ibm-cloud-private-21" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="Hybrid Integration Reference Architecture" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Hybrid Integration Reference Architecture
+            </span>
+            <span class="md-header-nav__topic">
+              Install a dev cluster
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/ibm-cloud-architecture/refarch-integration/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="Hybrid Integration Reference Architecture" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Hybrid Integration Reference Architecture
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/ibm-cloud-architecture/refarch-integration/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Hybrid Cloud Integration introduction" class="md-nav__link">
+      Hybrid Cloud Integration introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../hybrid-ref-arch/" title="Hybrid Cloud Integration reference architecture" class="md-nav__link">
+      Hybrid Cloud Integration reference architecture
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../buildrun/" title="DevOps Build, deploy and run" class="md-nav__link">
+      DevOps Build, deploy and run
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Doing MQ, DB2 and JEE on WAS lift and shift to IBM Cloud
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Doing MQ, DB2 and JEE on WAS lift and shift to IBM Cloud
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../toSaaS/readme/" title="Context" class="md-nav__link">
+      Context
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../toSaaS/twas/readme/" title="Tarditional WAS app" class="md-nav__link">
+      Tarditional WAS app
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../nfr/" title="Non-functional requirements" class="md-nav__link">
+      Non-functional requirements
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../devops/" title="Apply CI/CD for integration solution" class="md-nav__link">
+      Apply CI/CD for integration solution
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../compendium/" title="Hybrid Cloud Compendium" class="md-nav__link">
+      Hybrid Cloud Compendium
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" checked>
+    
+    <label class="md-nav__link" for="nav-8">
+      IBM Cloud Private knowledge sharing
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        IBM Cloud Private knowledge sharing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../" title="Main summary" class="md-nav__link">
+      Main summary
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp-cli/" title="CLI summary" class="md-nav__link">
+      CLI summary
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp-integration/" title="Integration on ICP" class="md-nav__link">
+      Integration on ICP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../build-helm-rep/" title="Build your own helm repository" class="md-nav__link">
+      Build your own helm repository
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" title="Install a dev cluster" class="md-nav__link md-nav__link--active">
+      Install a dev cluster
+    </a>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../faq/" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../troubleshooting/" title="Troubleshouting" class="md-nav__link">
+      Troubleshouting
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../service-mesh/readme/" title="Service mesh" class="md-nav__link">
+      Service mesh
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../istio/readme/" title="Istio introduction" class="md-nav__link">
+      Istio introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../csmo/" title="CSMO" class="md-nav__link">
+      CSMO
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Security
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        Security
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../TLS/" title="TLS" class="md-nav__link">
+      TLS
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../journey/" title="Skill Journey" class="md-nav__link">
+      Skill Journey
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/ibm-cloud-architecture/refarch-integration/edit/master/docs/icp/dev-env-install.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="install-a-development-environment-with-ibm-cloud-private-21">Install a development environment with IBM Cloud Private 2.1</h1>
+<p>For staging purpose, we are using a ICP EE deployment in a five virtual machine cluster. In this note we are presenting a single virtual machine configuration based on Ubuntu 64 bits v16.10 and how to install ICP 2.1.0.2 on it.</p>
+<p>Updated 04/23/2018</p>
+<p>The developer environment may look like the following diagram, for a developer on Mac and a VM ubuntu image (Windows will look similar)
+<img alt="" src="../dev-env.png" /></p>
+<p>There is a nice alternate solution to get an ICP single VM up and running in fe minutes by using a Vagrant file: Clone <a href="https://github.com/IBM/deploy-ibm-cloud-private">this github</a> and do a <code>vagrant up</code>, 15 minutes later you have your environment with one proxy-master node and 3 worker nodes. Excellent!</p>
+<p>If you need to access the dockerhub IBM public image, use <a href="https://hub.docker.com/explore/">docker hub explorer</a>  and search for <strong>ibmcom</strong></p>
+<h1 id="preparing-your-guest-machine">Preparing your guest machine</h1>
+<h2 id="install-ubuntu">Install ubuntu</h2>
+<p>Follow your VM player instruction to create a virtual machine and access an ubuntu 16.10 .iso file</p>
+<ul>
+<li>The expected minimum resource are: CPUs: 2 Memory: 16GB Disk: 100GB (Thin Provisioned)</li>
+<li>
+<p>Install ubuntu following the step by step wizard, create a user with admin privilege.
+The ICP installation need root access and ssh connection to the different host nodes that are part of the topology. In the case of one VM you still need to do some security settings and make the system be passwordless with security key.</p>
+</li>
+<li>
+<p>Login as the newly create user</p>
+</li>
+<li>Change root user password
+<div class="codehilite"><pre><span></span>$ sudo su -
+$ passwd
+</pre></div></li>
+<li>
+<p>Update the ubuntu OS with last package references
+<div class="codehilite"><pre><span></span>apt-get update
+</pre></div></p>
+</li>
+<li>
+<p>Install Linux image extra packages
+<div class="codehilite"><pre><span></span>apt-get install -y linux-image-extra-$(uname -r) linux-image-extra-virtual
+</pre></div></p>
+</li>
+<li>Install python
+  <div class="codehilite"><pre><span></span>$  apt-get install -y python-setuptools
+$ easy_install pip
+$ pip install docker-py
+</pre></div></li>
+<li>
+<p>Disable firewall if enabled
+  <div class="codehilite"><pre><span></span>$ ufw status
+$ sudo ufw disable
+</pre></div></p>
+</li>
+<li>
+<p>Boot and log as root user</p>
+</li>
+<li>
+<p>Install NTP to keep time sync
+<div class="codehilite"><pre><span></span>apt-get install -y ntp
+sytemctl restart ntp
+# test it
+ntpq -p
+</pre></div></p>
+</li>
+</ul>
+<h2 id="configure-ssh-for-remote-access">Configure ssh for remote access</h2>
+<p>Install <a href="https://www.openssh.com/">openssh</a>, and authorize remote access
+<div class="codehilite"><pre><span></span>sudo apt-get install openssh-server
+systemctl restart ssh
+</pre></div></p>
+<ul>
+<li>Create ssh keys for your user and authorize ssh
+<div class="codehilite"><pre><span></span># create rsa keys with no passphrase
+$ ssh-keygen -b 4096 -t rsa -P &#39;&#39;
+</pre></div>
+be sure the following parameters are enabled
+<div class="codehilite"><pre><span></span>$ vi  /etc/ssh/sshd_config
+PermitRootLogin yes
+PubkeyAuthentication yes
+PasswordAuthentication yes
+</pre></div>
+Then restart ssh daemon:
+<div class="codehilite"><pre><span></span>$ systemctl restart ssh
+</pre></div>
+Copy the public key to the root user .ssh folder
+<div class="codehilite"><pre><span></span>$ ssh-copy-id -i .ssh/id_rsa root@ubuntu
+</pre></div>
+Then you should be able to ssh root user to the guest machine.</li>
+</ul>
+<h2 id="install-docker">Install docker</h2>
+<p>The developer's machine and VM need both to have docker or at least the VM needs it. To access the cluster environment you need <em>kubectl</em>* command line interface and hosts configuration to match the configuration defined during the ICP install.</p>
+<p>If you do not have docker install on your development machine, we will not describe it again ;-). See <a href="https://docs.docker.com/engine/installation/">docker download</a>.</p>
+<ul>
+<li>
+<p>Install docker on the ubuntu machine</p>
+</li>
+<li>
+<p>Install docker repository
+  <div class="codehilite"><pre><span></span> $ apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+</pre></div></p>
+</li>
+<li>
+<p>Get the GPG key
+   <div class="codehilite"><pre><span></span>$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg <span class="p">|</span> apt-key add - apt-key fingerprint 0EBFCD88
+</pre></div></p>
+</li>
+<li>
+<p>Setup docker stable repository
+  <div class="codehilite"><pre><span></span>$ add-apt-repository <span class="s2">&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu </span><span class="k">$(</span>lsb<span class="se">\_</span>release -cs<span class="k">)</span><span class="s2"> stable”</span>
+$<span class="s2"> apt-get update</span>
+$<span class="s2"> apt-get install -y docker-ce</span>
+</pre></div></p>
+</li>
+<li>
+<p>Validate it runs
+ <div class="codehilite"><pre><span></span>  docker run hello-world
+</pre></div></p>
+</li>
+<li>Add user to docker group
+  <code># Verify docker group is defined
+   $ cat /etc/group
+   # add user
+   $ usermod -G docker -a usermod
+   # re-login the user to get the group assignment at the session level</code></li>
+</ul>
+<p>When using a build server, you also need docker to be able to build the different docker images of our solution. The figure below illustrates what need to be done:
+<img alt="" src="../devops-icp.png" /></p>
+<p>A Jenkins server implements different pipeline to pull the different project from github, executes each jenkins file to build the different elements: compiled code, docker image, helm charts, and then push images and helm charts to ICP.</p>
+<h2 id="install-kubectl">Install Kubectl</h2>
+<p>You need to have kubectl on your development computer and on any build server.
+* Install kubectl from IBM image.
+<div class="codehilite"><pre><span></span>docker run -e LICENSE=accept --net=host -v /usr/local/bin:/data
+ibmcom/kubernetes:v1.7.3 cp /kubectl /data
+</pre></div>
+the --net=host means to use the host network stack and not the one coming from the container.  -v is for mounting volume: the local /usr/local/bin is mounted to the /data in the container, so the command to cp /kubectl directory inside the container, to /data inside the container will in fact modify the host /usr/local/bin with kubectl CLI. (complex for a simple tar -xvf... but this is our new life...)</p>
+<p>see <a href="https://docs.docker.com/engine/admin/volumes/volumes/">Docker volume notes</a></p>
+<p>Verify kubectl runs locally. We will get the cluster information to remote connect to it once ICP is installed.</p>
+<h2 id="install-helm">Install helm</h2>
+<p>IBM Cloud Private contains integration with Helm that allows you to install the application and all of its components in a few steps.</p>
+<p>This can be done as an administrator using the following steps:
+1. Click on the user icon on the top right corner and then click on <code>Configure client</code>.
+2. Copy the displayed <code>kubectl</code> configuration, paste it in your terminal, and press Enter on your keyboard.
+3. Initialize <code>helm</code> in your cluster. Use these <a href="https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.2/app_center/create_helm_cli.html">instructions</a> to install and initialize <code>helm</code>.</p>
+<h2 id="install-ibm-cloud-private-ce-on-the-ubuntu-machine">Install IBM Cloud Private CE on the ubuntu machine</h2>
+<p>Verify the public docker hub images available: go to <a href="https://hub.docker.com/explore/">docker hub explorer</a> and search for <strong>ibmcom/icp-inception</strong></p>
+<ul>
+<li>Get the ICP  installer docker image using the following command
+ ```
+ $ sudo su -
+ $ docker pull ibmcom/icp-inception:2.1.0<blockquote>
+<p>Digest: sha256:f6513...
+Status: Downloaded newer image for ibmcom/icp-inception:2.1.0
+ $
+ $ mkdir /opt/ibm-cloud-private-ce-2.1.0
+ $ cd /opt/ibm-cloud-private-ce-2.1.0
+ <div class="codehilite"><pre><span></span>The following command extracts configuration file under the *cluster* folder by mounting local folder to /data inside the container:
+</pre></div>
+ $ docker run -e LICENSE=accept \
+  -v "$(pwd)":/data ibmcom/icp-inception:2.1.0 cp -r cluster /data
+ ```</p>
+</blockquote>
+</li>
+<li>In the <strong>cluster</strong> folder there are multiple files to modify: config.yaml, hosts, and ssh-keys</li>
+<li>hosts: As we run in a single VM, the master, proxy and worker node will have the same IP address. So get your VM's IP address using the command:
+  <div class="codehilite"><pre><span></span>$ ip address
+</pre></div></li>
+<li>Modify the hosts file
+  <div class="codehilite"><pre><span></span><span class="k">[master]</span>
+ <span class="na">172.16.251.133</span>
+ <span class="k">[worker]</span>
+ <span class="na">172.16.251.133</span>
+ <span class="k">[proxy]</span>
+ <span class="na">172.16.251.133</span>
+</pre></div></li>
+<li>Modify the <strong>config.yaml</strong> file using administrator privilege (so sudo) by specifying a domain name and cluster name.  Also set the loopback dns flag so the server will run in single VM without error.
+  <div class="codehilite"><pre><span></span><span class="n">loopback_dns</span><span class="o">:</span> <span class="kc">true</span>
+<span class="n">cluster_name</span><span class="o">:</span> <span class="n">mycluster</span>
+<span class="n">cluster_domain</span><span class="o">:</span> <span class="n">mycluster</span><span class="o">.</span><span class="na">domain</span>
+</pre></div></li>
+<li>Copy security keys you have created when configuring your linux environment to the ssh_key file
+  <div class="codehilite"><pre><span></span>$ cp ~/.ssh/id_rsa ./ssh_key
+</pre></div></li>
+<li>Deploy the environment now
+  <div class="codehilite"><pre><span></span># from the cluster folder
+$ sudo docker run -e LICENSE=accept --net=host --rm -t -v &quot;$(pwd)&quot;:/installer/cluster ibmcom/icp-inception:2.1.0 install
+</pre></div></li>
+<li>Verify access to ICP console using http://ipaddress:8443 admin/admin
+  You should see the dashboard as in figure below:</li>
+</ul>
+<h1 id="image-repositories">Image Repositories</h1>
+<p>To deploy application you need to package as docker image and push them within a docker repository, and then define kubernetes deployment configuration using Helm charts and install those charts to a helm Tiller server.</p>
+<h2 id="docker-repository">Docker repository</h2>
+<p>You have two choices: using the private image repository deployed in ICP or create one private docker image repository somewhere and declare it inside ICP.</p>
+<h2 id="access-to-icp-private-docker-repository">Access to ICP private docker repository</h2>
+<p>You need the public ssh keys of the master-node:
+* connect to the VM where the master node runs, get the ip address, and the ca.crt with commands like below:
+<div class="codehilite"><pre><span></span># on client machine
+$ cd /etc/docker
+# create a directory that matches the name of the cluster as defined in the config.yaml of ICP. 8500 is the port number.
+$ mkdir certs.d/myclyster.icp:8500
+$ cd certs.d/myclyster.icp:8500
+$ scp root@masternodevmipaddress:/etc/docker/certs.d/mycluster.icp:8500/ca.crts .
+</pre></div></p>
+<p>So you copied the public key. An administrator could have sent it to you too.</p>
+<ul>
+<li>Add an entry for mycluster.icp in your /etc/hosts
+<div class="codehilite"><pre><span></span>172.16.5.xxx master.cfc
+</pre></div></li>
+</ul>
+<p>On your computer you need to restart <em>systemd</em> and <em>docker</em>
+<div class="codehilite"><pre><span></span>systemctl daemon-reload
+service ssh restart
+service docker restart
+</pre></div></p>
+<ul>
+<li>Normally you should be able to login to remote docker with a userid known to the master node VM: admin is the default user.
+<div class="codehilite"><pre><span></span>docker login mycluster.icp:8500
+User: admin
+Password:
+</pre></div></li>
+</ul>
+<h2 id="define-a-remote-helm-repository">Define a remote helm repository</h2>
+<p>ICP supports referencing remote helm charts repository, but it also includes internal repository as illustrated in following figure:
+   <img alt="" src="../icp-repo.png" /></p>
+<p>The hybrid integration set of projects has each component creating its own helm packaging (tgz files) and persisted into the current project <em>charts</em> folder. An <strong>index.yaml</strong> file defines the components part of this repository.</p>
+<h2 id="connect-kubectl-to-remote-cluster-master">Connect kubectl to remote cluster-master</h2>
+<ul>
+<li>Access the ICP kubernetes cluster information from the ICP Console.
+From the Client configuration menu under your userid on the top right of the main console panel to access the configuration. Then copy and paste in a script or in a terminal to execute those commands:</li>
+</ul>
+<p><div class="codehilite"><pre><span></span>kubectl cluster-info
+</pre></div>
+returns the cluster information within ICP.
+<div class="codehilite"><pre><span></span>Kubernetes master is running at https://192.168.27.100:8001
+catalog-ui is running at https://192.168.27.100:8001/api/v1/proxy/namespaces/kube-system/services/catalog-ui
+Heapster is running at https://192.168.27.100:8001/api/v1/proxy/namespaces/kube-system/services/heapster
+image-manager is running at https://192.168.27.100:8001/api/v1/proxy/namespaces/kube-system/services/image-manager
+KubeDNS is running at https://192.168.27.100:8001/api/v1/proxy/namespaces/kube-system/services/kube-dns
+platform-ui is running at https://192.168.27.100:8001/api/v1/proxy/namespaces/kube-system/services/platform-ui
+
+To further debug and diagnose cluster problems, use &#39;kubectl cluster-info dump&#39;.
+</pre></div></p>
+<h2 id="verify-helm-is-connected-to-tiller-server-running-on-icp">Verify Helm is connected to Tiller server running on ICP</h2>
+<p>If you get the kubectl connected to ICP cluster (as presented in previous figure), then the following command should give you the version of the <strong>Tiller</strong> server running in ICP.
+<div class="codehilite"><pre><span></span>$ helm version
+</pre></div>
+If you have configured kubeclt to connect to the ICP master server, the following command should give you the version of the <strong>Tiller</strong> server running in ICP.
+<div class="codehilite"><pre><span></span>Client: &amp;version.Version{SemVer:&quot;v2.5.0&quot;, GitCommit:&quot;012cb0ac1a1b2f888144ef5a67b8dab6c2d45be6&quot;, GitTreeState:&quot;clean&quot;}
+Server: &amp;version.Version{SemVer:&quot;v2.5.0&quot;, GitCommit:&quot;012cb0ac1a1b2f888144ef5a67b8dab6c2d45be6&quot;, GitTreeState:&quot;clean&quot;}
+</pre></div></p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../build-helm-rep/" title="Build your own helm repository" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Build your own helm repository
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../faq/" title="FAQ" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                FAQ
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.b806dc00.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+    
+  </body>
+</html>

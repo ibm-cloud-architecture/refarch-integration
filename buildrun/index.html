@@ -1,0 +1,900 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.0.1">
+    
+    
+      
+        <title>Hybrid Integration Reference Architecture</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.982221ab.css">
+      
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.1f0bcf2b.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#build-deploy-and-run" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href=".." title="Hybrid Integration Reference Architecture" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Hybrid Integration Reference Architecture
+            </span>
+            <span class="md-header-nav__topic">
+              DevOps Build, deploy and run
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/ibm-cloud-architecture/refarch-integration/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href=".." title="Hybrid Integration Reference Architecture" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Hybrid Integration Reference Architecture
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/ibm-cloud-architecture/refarch-integration/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Hybrid Cloud Integration introduction" class="md-nav__link">
+      Hybrid Cloud Integration introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../hybrid-ref-arch/" title="Hybrid Cloud Integration reference architecture" class="md-nav__link">
+      Hybrid Cloud Integration reference architecture
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        DevOps Build, deploy and run
+      </label>
+    
+    <a href="./" title="DevOps Build, deploy and run" class="md-nav__link md-nav__link--active">
+      DevOps Build, deploy and run
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" title="Prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-application-source-code" title="Get application source code" class="md-nav__link">
+    Get application source code
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#working-on-your-own" title="Working on your own" class="md-nav__link">
+    Working on your own
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#continuous-integration-and-deployment" title="Continuous integration and deployment" class="md-nav__link">
+    Continuous integration and deployment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specifics-deployment" title="Specifics deployment" class="md-nav__link">
+    Specifics deployment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-1-physical-deployment" title="Configuration 1 Physical Deployment" class="md-nav__link">
+    Configuration 1 Physical Deployment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-on-premise-servers" title="Run on premise servers" class="md-nav__link">
+    Run on premise servers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-on-ibm-cloud-private" title="Run on IBM Cloud Private" class="md-nav__link">
+    Run on IBM Cloud Private
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-on-ibm-cloud-container-service" title="Run on IBM Cloud Container Service" class="md-nav__link">
+    Run on IBM Cloud Container Service
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-on-ibm-cloud-cloud-foundry" title="Run on IBM Cloud Cloud Foundry" class="md-nav__link">
+    Run on IBM Cloud Cloud Foundry
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Doing MQ, DB2 and JEE on WAS lift and shift to IBM Cloud
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Doing MQ, DB2 and JEE on WAS lift and shift to IBM Cloud
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../toSaaS/readme/" title="Context" class="md-nav__link">
+      Context
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../toSaaS/twas/readme/" title="Tarditional WAS app" class="md-nav__link">
+      Tarditional WAS app
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../nfr/" title="Non-functional requirements" class="md-nav__link">
+      Non-functional requirements
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../devops/" title="Apply CI/CD for integration solution" class="md-nav__link">
+      Apply CI/CD for integration solution
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../compendium/" title="Hybrid Cloud Compendium" class="md-nav__link">
+      Hybrid Cloud Compendium
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      IBM Cloud Private knowledge sharing
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        IBM Cloud Private knowledge sharing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp/" title="Main summary" class="md-nav__link">
+      Main summary
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp/icp-cli/" title="CLI summary" class="md-nav__link">
+      CLI summary
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp/icp-integration/" title="Integration on ICP" class="md-nav__link">
+      Integration on ICP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp/build-helm-rep/" title="Build your own helm repository" class="md-nav__link">
+      Build your own helm repository
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp/dev-env-install/" title="Install a dev cluster" class="md-nav__link">
+      Install a dev cluster
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp/faq/" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp/troubleshooting/" title="Troubleshouting" class="md-nav__link">
+      Troubleshouting
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../service-mesh/readme/" title="Service mesh" class="md-nav__link">
+      Service mesh
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../istio/readme/" title="Istio introduction" class="md-nav__link">
+      Istio introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../csmo/" title="CSMO" class="md-nav__link">
+      CSMO
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Security
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        Security
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../TLS/" title="TLS" class="md-nav__link">
+      TLS
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../journey/" title="Skill Journey" class="md-nav__link">
+      Skill Journey
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" title="Prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-application-source-code" title="Get application source code" class="md-nav__link">
+    Get application source code
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#working-on-your-own" title="Working on your own" class="md-nav__link">
+    Working on your own
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#continuous-integration-and-deployment" title="Continuous integration and deployment" class="md-nav__link">
+    Continuous integration and deployment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specifics-deployment" title="Specifics deployment" class="md-nav__link">
+    Specifics deployment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-1-physical-deployment" title="Configuration 1 Physical Deployment" class="md-nav__link">
+    Configuration 1 Physical Deployment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-on-premise-servers" title="Run on premise servers" class="md-nav__link">
+    Run on premise servers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-on-ibm-cloud-private" title="Run on IBM Cloud Private" class="md-nav__link">
+    Run on IBM Cloud Private
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-on-ibm-cloud-container-service" title="Run on IBM Cloud Container Service" class="md-nav__link">
+    Run on IBM Cloud Container Service
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-on-ibm-cloud-cloud-foundry" title="Run on IBM Cloud Cloud Foundry" class="md-nav__link">
+    Run on IBM Cloud Cloud Foundry
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/ibm-cloud-architecture/refarch-integration/edit/master/docs/buildrun/README.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="build-deploy-and-run">Build, Deploy and Run</h1>
+<p>To address the hybrid cloud integration pattern, we are proposing two deployment configurations combining public cloud, private cloud and on-premise traditional servers:</p>
+<ol>
+<li><strong>Configuration 1</strong>: the Portal Web Application, BFF micro service and API Management run on public cloud and the other legacy components on-premise servers:</li>
+</ol>
+<p><img alt="" src="public-cloud-deployment.png" /></p>
+<p>On left side is the cloud public deployment, on the right side, the bear metal or VM servers. The Web Application is deployed using container and IBM Cloud container service. (See <a href="run-bmx-cs/">this note</a> for explanations). Using docker image helps us to move workload to Kubernetes cluster running on-premise as presented in the second configuration. The communication between the two environments is done using IBM <a href="https://github.com/ibm-cloud-architecture/refarch-integration-utilities/blob/master/docs/ConfigureSecureGateway.md">Secure Gateway service</a> or can be done using private VPN.
+1. <strong>Configuration 2</strong>:  covers the deployment of most of the solution components on to IBM Cloud Private, the IBM extension to Kubernetes. The BFF micro service is calling IBM cloud cognitive services running on IBM Cloud and on-premise backend services:</p>
+<p><img alt="" src="icp-deployment.png" /></p>
+<p>The light blue area represents on-premise servers, while the green area represents the IBM Cloud Private, kubernetes cluster. See detail in <a href="../icp/">Deployment to IBM Cloud Private article</a></p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>You need your own <a href="http://github.com">github.com</a> account</li>
+<li>You need a git client code. For example for <a href="https://git-scm.com/download/win">Windows</a> and for <a href="https://git-scm.com/download/mac">Mac</a></li>
+<li>Install <a href="https://www.npmjs.com/get-npm">npm</a> and <a href="https://nodejs.org">nodejs</a>. Normally getting <code>nodejs</code> last stable version will bring <code>npm</code> too.</li>
+<li>You need to have some knowledge on using virtual machine images and product like VMWare vSphere.</li>
+<li>As we are migrating most of the workload to IBM Cloud Private, we delivered, for each component, dockerfiles and helm charts to deploy on Kubernetes.</li>
+</ul>
+<h2 id="get-application-source-code">Get application source code</h2>
+<p>Clone this base repository using git client:</p>
+<div class="codehilite"><pre><span></span>git clone https://github.com/ibm-cloud-architecture/refarch-integration.git
+</pre></div>
+
+<p>Then under the refarch-integration/scripts folder use the command <code>clonePeers.sh</code> to clone the peer repositories of the 'hybrid integration' solution.</p>
+<h3 id="working-on-your-own">Working on your own</h3>
+<p>The script <code>fork-repos.sh</code> should help you to fork all the repositories of this solution within your github account.</p>
+<h2 id="continuous-integration-and-deployment">Continuous integration and deployment</h2>
+<p>We are detailing how to install a 'jenkins' server on ICP and delivering jenkins file and scripts for each project to do CI/CD. See <a href="../devops/">this note</a> for installation detail.</p>
+<h2 id="specifics-deployment">Specifics deployment</h2>
+<p>Each project covers in detail how to build and run their own components.
+<em> For the Case Inc Portal app <a href="https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/icp/README.md">see the deployment note.</a>
+</em> For <a href="https://github.com/ibm-cloud-architecture/refarch-integration-api">API Connect</a>, installed on-premise, is used as API gateway to the different API run times.
+<em> The <a href="https://github.com/ibm-cloud-architecture/refarch-integration-esb#deployment">IBM Integration Bus deployment</a>, is used to do interfaces mapping between the SOAP data access layer, implemented in Java, and the RESTful API exposed to the public applications, and other mediation or orchestration flow. 
+</em> The <strong>Data Access Layer</strong> is a JAXWS application running on WebSphere Liberty server and exposing a set of SOAP services. The server is <em>BrownLibertyAppServer</em>. See <a href="https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal/#build-and-deploy">this repository</a> for detail.
+<em> The inventory <strong>database</strong> is running on DB2 and is not directly accessed from API connect, but applying SOA principles, it is accessed via a Data Access Layer app. The server is </em>BrownDB2*.</p>
+<p>To run the backend solution, we will deliver VM images for you to install on your servers... stay tuned, from now we are describing how each server is configured in each of the specific github repository. We are using VmWare vSphere product to manage all the virtual machines. The figure below presents the <em>Brown</em> Resource Pool with the current servers: <br />
+<img alt="vsphere" src="vsphere.png" /></p>
+<h2 id="configuration-1-physical-deployment">Configuration 1 Physical Deployment</h2>
+<p>The Configuration 1 Physical deployment includes six servers, and each installation description is done in each git hub repository so you can replicate the configuration if you want to. It should take you one hour per server.
+<em> DB2 server read <a href="https://github.com/ibm-cloud-architecture/refarch-integration-inventory-db2#db2-server-installation">this note</a>
+</em> Liberty App server read <a href="https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal/blob/master/docs/liberty-server.md">this article</a>
+<em> IBM Integration Bus see <a href="https://github.com/ibm-cloud-architecture/refarch-integration-esb#virtual-machine-deployment">this article</a>.
+</em> API Connect see <a href="https://github.com/ibm-cloud-architecture/refarch-integration-api#server-configuration">Server config</a>
+<em> Open LDAP Server running on the utility server <a href="https://github.com/ibm-cloud-architecture/refarch-integration-utilities#ldap-configuration">LDAP Configuration</a>
+</em> <a href="https://github.com/ibm-cloud-architecture/refarch-integration-utilities#server-configuration">Utility Server</a> runs IBM Secure Gateway and <a href="https://github.com/ibm-cloud-architecture/refarch-integration-utilities/blob/master/docs/cicd.md#installation">Jenkins server</a>  </p>
+<p>As an alternate and easier approach we are delivering a Vagrant file to combine Liberty, DB2 servers in one image: the explanation on how to use it <a href="../vm/">is here</a></p>
+<h2 id="run-on-premise-servers">Run on premise servers</h2>
+<p>There are multiple steps to make the solution working. Be sure to start each sever in the following order:
+<em> Start DB2 server
+</em> Start App server
+<em> Start IIB
+</em> Start API Connect servers: Gateway, Management and Portal
+<em> Start Utility server
+</em> Start 'case inc' portal APP</p>
+<p>The <a href="https://github.com/ibm-cloud-architecture/refarch-integration-tests">testing project</a> implements a set of test cases to validate each of the component of this n-tier architecture. It is possible to validate each component work independently.</p>
+<p>The demonstration script instructions are <a href="https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/demoflow.md">here</a></p>
+<p>For demonstration purpose not all back end servers are set in high availability.</p>
+<h2 id="run-on-ibm-cloud-private">Run on IBM Cloud Private</h2>
+<p>Most of the components of this solution can run on IBM Cloud Private we are detailing it <a href="../icp/">here</a></p>
+<h2 id="run-on-ibm-cloud-container-service">Run on IBM Cloud Container Service</h2>
+<p>See this detail note <a href="run-bmx-cs/">here</a> to deploy and run the Web App as container inside the <a href="https://console.bluemix.net/docs/containers/container_index.html">IBM Cloud Container Service</a>.</p>
+<h2 id="run-on-ibm-cloud-cloud-foundry">Run on IBM Cloud Cloud Foundry</h2>
+<p>See this detail note <a href="run-bmx-cf/">here</a> to deploy the Web App as cloud foundry app on IBM Cloud</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../hybrid-ref-arch/" title="Hybrid Cloud Integration reference architecture" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Hybrid Cloud Integration reference architecture
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../toSaaS/readme/" title="Context" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Context
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.b806dc00.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+    
+  </body>
+</html>

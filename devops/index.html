@@ -1,0 +1,867 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.0.1">
+    
+    
+      
+        <title>Hybrid Integration Reference Architecture</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.982221ab.css">
+      
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.1f0bcf2b.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#devops" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href=".." title="Hybrid Integration Reference Architecture" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Hybrid Integration Reference Architecture
+            </span>
+            <span class="md-header-nav__topic">
+              Apply CI/CD for integration solution
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/ibm-cloud-architecture/refarch-integration/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href=".." title="Hybrid Integration Reference Architecture" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Hybrid Integration Reference Architecture
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/ibm-cloud-architecture/refarch-integration/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Hybrid Cloud Integration introduction" class="md-nav__link">
+      Hybrid Cloud Integration introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../hybrid-ref-arch/" title="Hybrid Cloud Integration reference architecture" class="md-nav__link">
+      Hybrid Cloud Integration reference architecture
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../buildrun/" title="DevOps Build, deploy and run" class="md-nav__link">
+      DevOps Build, deploy and run
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Doing MQ, DB2 and JEE on WAS lift and shift to IBM Cloud
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Doing MQ, DB2 and JEE on WAS lift and shift to IBM Cloud
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../toSaaS/readme/" title="Context" class="md-nav__link">
+      Context
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../toSaaS/twas/readme/" title="Tarditional WAS app" class="md-nav__link">
+      Tarditional WAS app
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../nfr/" title="Non-functional requirements" class="md-nav__link">
+      Non-functional requirements
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" title="Apply CI/CD for integration solution" class="md-nav__link md-nav__link--active">
+      Apply CI/CD for integration solution
+    </a>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../compendium/" title="Hybrid Cloud Compendium" class="md-nav__link">
+      Hybrid Cloud Compendium
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      IBM Cloud Private knowledge sharing
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        IBM Cloud Private knowledge sharing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp/" title="Main summary" class="md-nav__link">
+      Main summary
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp/icp-cli/" title="CLI summary" class="md-nav__link">
+      CLI summary
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp/icp-integration/" title="Integration on ICP" class="md-nav__link">
+      Integration on ICP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp/build-helm-rep/" title="Build your own helm repository" class="md-nav__link">
+      Build your own helm repository
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp/dev-env-install/" title="Install a dev cluster" class="md-nav__link">
+      Install a dev cluster
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp/faq/" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp/troubleshooting/" title="Troubleshouting" class="md-nav__link">
+      Troubleshouting
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../service-mesh/readme/" title="Service mesh" class="md-nav__link">
+      Service mesh
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../istio/readme/" title="Istio introduction" class="md-nav__link">
+      Istio introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../csmo/" title="CSMO" class="md-nav__link">
+      CSMO
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Security
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        Security
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../TLS/" title="TLS" class="md-nav__link">
+      TLS
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../journey/" title="Skill Journey" class="md-nav__link">
+      Skill Journey
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/ibm-cloud-architecture/refarch-integration/edit/master/docs/devops/README.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="devops">DevOps</h1>
+<p>With all the components involved in this solution we want to enable CI/CD to deploy artifacts to on-premise servers and to the BM Cloud Private kubernetes cluster.</p>
+<h1 id="continuous-integration-with-jenkins">Continuous integration with Jenkins</h1>
+<p>For continuous integration and deployment we are using a IBM Cloud Private with <a href="http://jenkins.io">Jenkins</a> release deployed on it. With Jenkins we can do continuous build, execute non regression tests, integration tests and deployment of each components to different target servers.</p>
+<h1 id="table-of-content">Table of content</h1>
+<ul>
+<li><a href="#installation">Installation</a><ul>
+<li><a href="#jenkins-on-ibm-cloud-private-icp">Jenkins on IBM Cloud Private (ICP)</a><ul>
+<li><a href="#helm-chart">Helm</a></li>
+<li><a href="#add-public-helm-repository">Add Public Helm Repository</a></li>
+<li><a href="#create-a-persistence-volume-claim">Create a Persistence Volume Claim</a></li>
+<li><a href="#install-jenkins-helm-chart">Install Jenkins Helm Chart</a></li>
+<li><a href="#accessing-jenkins">Accessing Jenkins</a></li>
+<li><a href="#retrieve-the-jenkins-admin-password">Retrieve the Jenkins Admin Password</a></li>
+<li><a href="#configure-docker-repository">Configure Docker Repository</a></li>
+<li><a href="#optional-create-service-account">Optional: Create Service Account</a></li>
+<li><a href="#optional-updating-jenkins-plugins">Optional: Updating Jenkins Plugins</a></li>
+</ul>
+</li>
+<li><a href="#jenkins-on-premise-server">Jenkins on-premise server</a><ul>
+<li><a href="#get-the-jenkins-binary-and-install">Get the jenkins binary and install</a></li>
+<li><a href="#for-java-you-need-jdk">For java you need jdk</a></li>
+<li><a href="#install-docker-on-the-build-server">install docker on the build server</a></li>
+<li><a href="#add-dependencies-for-node--angular">Add dependencies for node / angular...</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#pipeline">Pipeline</a></li>
+<li><a href="#creating-pipeline">Creating Pipeline</a></li>
+<li><a href="#projects-build">Projects build</a></li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>There are multiple ways to install Jenkins server: using a dedicated VM server by installing the binary or running as docker container, or deploy the jenkins helm release to IBM Cloud Private.</p>
+<h3 id="jenkins-on-ibm-cloud-private-icp">Jenkins on IBM Cloud Private (ICP)</h3>
+<p><strong>NOTE:</strong> <a href="https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0.2/kc_welcome_containers.html">ICP v2.1.0.2</a> was used at the time of writing this section. See also <a href="https://github.com/ibm-cloud-architecture/refarch-cloudnative-devops-kubernetes">this jenkins pipeline tutorial</a>.</p>
+<p>The Jenkins architecture while deployed to kubernetes cluster looks like the diagram below:
+<img alt="" src="jenkins-architecture.png" /></p>
+<p>The installation process deploys a <strong>Jenkins master</strong> responsible to execute build jobs. Each build jobs is in fact a <code>slave pod</code>, so another docker images that executes a jenkins file as defined in the pipeline definition. As application built with this approach are docker containers and helm releases, there is a need to use a docker registry, could be public or private to ICP. To support dynamic pod creation, there is a <a href="https://github.com/jenkinsci/kubernetes-plugin">jenkins plugin for kubernetes</a> that needs to be installed. This plugin helps to define specific elements in the Jenkins file to execute the build using docker containers.
+The installation should install the jenkins master as a helm release, configure some parameters to access private docker repository, and add necessary jenkins plugins. We detail those steps:</p>
+<h4 id="helm-chart">Helm Chart</h4>
+<p>In order to install the Jenkins Chart, you need to have the <a href="https://github.com/kubernetes/helm"><code>Helm</code></a> client configured in your CLI. To install and configure helm, follow the IBM Cloud Private instructions listed <a href="https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.2/app_center/create_helm_cli.html">here</a>.</p>
+<h4 id="add-public-helm-repository">Add Public Helm Repository</h4>
+<ul>
+<li>Add the public kubernetes repositories, using the ICP admin console &gt; Manage &gt; Helm Repositories and use the URL: https://github.com/kubernetes/charts/tree/master/stable</li>
+</ul>
+<h4 id="create-a-persistence-volume-claim">Create a Persistence Volume Claim</h4>
+<p>You can skip this section if you already setup a default <code>storage class</code> for <code>dynamic provisioning</code>, as explained <a href="https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0.2/manage_cluster/cluster_storage.html">here</a>.</p>
+<p>If you don't have dynamic provisioning setup, we recommend you read this <a href="https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0.2/manage_cluster/create_app_volume.html">document</a>, which goes into detail on how to create a <code>Persistent Volume Claim (PVC)</code>, which we can pass on to the <code>helm install</code> command for Jenkins installation. For this example, the PVC has the following requirements:
+<em> Needs to be at least 8GB
+</em> It should be called <code>jenkins-home</code></p>
+<h4 id="install-jenkins-helm-chart">Install Jenkins Helm Chart</h4>
+<p>To <strong>Install the Jenkins Chart and Provision a PVC dynamically</strong>, use the following command:
+<div class="codehilite"><pre><span></span>$ helm install --namespace browncompute --name jenkins --version <span class="m">0</span>.14.4 <span class="se">\</span>
+    --set Master.ImageTag<span class="o">=</span><span class="m">2</span>.117 <span class="se">\</span>
+    --set Master.ServiceType<span class="o">=</span>NodePort <span class="se">\</span>
+    --set Master.InstallPlugins.0<span class="o">=</span>kubernetes:1.5.2 <span class="se">\</span>
+    --set Master.InstallPlugins.1<span class="o">=</span>workflow-aggregator:2.5 <span class="se">\</span>
+    --set Master.InstallPlugins.2<span class="o">=</span>workflow-job:2.19 <span class="se">\</span>
+    --set Master.InstallPlugins.3<span class="o">=</span>credentials-binding:1.16 <span class="se">\</span>
+    --set Master.InstallPlugins.4<span class="o">=</span>git:3.8.0 <span class="se">\</span>
+    --set Agent.ImageTag<span class="o">=</span><span class="m">3</span>.19-1 <span class="se">\</span>
+    --set rbac.install<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+    stable/jenkins --tls<span class="p">;</span>
+</pre></div></p>
+<p>To <strong>Install the Jenkins Chart and Pass an Existing PVC</strong>, use the following command:
+<div class="codehilite"><pre><span></span>$ helm install --namespace browncompute --name jenkins --version <span class="m">0</span>.14.4 <span class="se">\</span>
+    --set Master.ImageTag<span class="o">=</span><span class="m">2</span>.117 <span class="se">\</span>
+    --set Master.ServiceType<span class="o">=</span>NodePort <span class="se">\</span>
+    --set Master.InstallPlugins.0<span class="o">=</span>kubernetes:1.5.2 <span class="se">\</span>
+    --set Master.InstallPlugins.1<span class="o">=</span>workflow-aggregator:2.5 <span class="se">\</span>
+    --set Master.InstallPlugins.2<span class="o">=</span>workflow-job:2.19 <span class="se">\</span>
+    --set Master.InstallPlugins.3<span class="o">=</span>credentials-binding:1.16 <span class="se">\</span>
+    --set Master.InstallPlugins.4<span class="o">=</span>git:3.8.0 <span class="se">\</span>
+    --set Persistence.ExistingClaim<span class="o">=</span>jenkins-home <span class="se">\</span>
+    --set Agent.ImageTag<span class="o">=</span><span class="m">3</span>.19-1 <span class="se">\</span>
+    --set rbac.install<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+    stable/jenkins --tls<span class="p">;</span>
+</pre></div></p>
+<p>To <strong>Install the Jenkins Chart without a PVC</strong>, use the following command:
+<div class="codehilite"><pre><span></span>$ helm install --namespace browncompute --name jenkins --version <span class="m">0</span>.14.4 <span class="se">\</span>
+    --set Master.ImageTag<span class="o">=</span><span class="m">2</span>.117 <span class="se">\</span>
+    --set Master.ServiceType<span class="o">=</span>NodePort <span class="se">\</span>
+    --set Master.InstallPlugins.0<span class="o">=</span>kubernetes:1.5.2 <span class="se">\</span>
+    --set Master.InstallPlugins.1<span class="o">=</span>workflow-aggregator:2.5 <span class="se">\</span>
+    --set Master.InstallPlugins.2<span class="o">=</span>workflow-job:2.19 <span class="se">\</span>
+    --set Master.InstallPlugins.3<span class="o">=</span>credentials-binding:1.16 <span class="se">\</span>
+    --set Master.InstallPlugins.4<span class="o">=</span>git:3.8.0 <span class="se">\</span>
+    --set Persistence.Enabled<span class="o">=</span><span class="nb">false</span> <span class="se">\</span>
+    --set Agent.ImageTag<span class="o">=</span><span class="m">3</span>.19-1 <span class="se">\</span>
+    --set rbac.install<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+    stable/jenkins --tls<span class="p">;</span>
+</pre></div></p>
+<p>Once the pod is started, the service exposes a NodePort as you can see in the figure below:
+<img alt="" src="jenkins-svc.png" /></p>
+<h4 id="accessing-jenkins">Accessing Jenkins</h4>
+<p>The <code>helm install</code> command should have printed out instructions to get the Jenkins URL similar to this:
+<div class="codehilite"><pre><span></span>NOTES:
+...
+2. Get the Jenkins URL to visit by running these commands in the same shell:
+  export NODE_PORT=$(kubectl get --namespace browncompute -o jsonpath=&quot;{.spec.ports[0].nodePort}&quot; services jenkins)
+  export NODE_IP=$(kubectl get nodes --namespace browncompute -o jsonpath=&quot;{.items[0].status.addresses[0].address}&quot;)
+  echo http://$NODE_IP:$NODE_PORT/login
+</pre></div></p>
+<p>Now open a new browser window and enter the URL from above to access Jenkins UI.</p>
+<h4 id="retrieve-the-jenkins-admin-password">Retrieve the Jenkins Admin Password</h4>
+<p>The <code>helm install</code> command should have printed out instructions to get the Jenkins Admin Password similar to this::
+<div class="codehilite"><pre><span></span>NOTES:
+<span class="m">1</span>. Get your <span class="s1">&#39;admin&#39;</span> user password by running:
+  <span class="nb">printf</span> <span class="k">$(</span>kubectl get secret --namespace browncompute jenkins -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.data.jenkins-admin-password}&quot;</span> <span class="p">|</span> base64 --decode<span class="k">)</span><span class="p">;</span><span class="nb">echo</span>
+</pre></div></p>
+<p>As an alternate solution, try to remote connect to the pods and then navigating to the <code>/var/jenkins_home/secrets</code> path to see the password persisted in a file named <code>initialAdminPassword</code>:
+<div class="codehilite"><pre><span></span>$ kubectl <span class="nb">exec</span> -it jenkins-jenkins-7995cd796f-btdjz /bin/bash
+$ <span class="nb">cd</span> /var/jenkins_home/secrets
+$ cat initialAdminPassword
+</pre></div></p>
+<h4 id="configure-docker-repository">Configure Docker Repository</h4>
+<p>In order for the pipelines to know where to push newly built docker images, you need to configure what docker registry to use. To do so, you need to create 2 files:
+<em> A <code>ConfigMap</code> that specifies the registry location.
+    + In this case, we are going to use ICP's internal docker registry.
+</em> A <code>Secret</code> that has the registry login credentials.
+    + In this case, the credentials are the ones used to log into ICP's console.</p>
+<p>To create the docker registry configmap, feel free to enter the registry location in the <code>registry</code> field in the <a href="registry/configmap.yaml">registry/configmap.yaml</a> file, then create the ConfigMap as follows:
+<div class="codehilite"><pre><span></span>$ kubectl --namespace default browncompute -f registry/configmap.yaml
+</pre></div></p>
+<p>For the docker registry secret, we need to base64-encode the registry's username and password. The <a href="registry/secret.yaml">registry/secret.yaml</a> file contains base64-encoded credentials for username <code>admin</code> and password <code>admin</code>. Assuming your credentials are different, you need to replace those values with your base64-encoded credentials and save the file. You can use the online encoder at: https://www.base64encode.org/. To create the Secret, use the following command:
+<div class="codehilite"><pre><span></span>$ kubectl --namespace default browncompute -f registry/secret.yaml
+</pre></div></p>
+<p>You now have a fully Configured Jenkins Server inside your ICP cluster!</p>
+<h4 id="optional-create-service-account">Optional: Create Service Account</h4>
+<p>If using a non-default namespace, or if Jenkins is unable to create slave pods, you may need to tell Jenkins to use the service account in the namespace in order to create new pods. To do so, follow these instructions:
+<em> Create a Jenkins credential of type Kubernetes service account with service account name provided in the helm status output.
+</em> Under configure Jenkins -- Update the credentials config in the cloud section to use the service account credential you created in the step above.</p>
+<h4 id="optional-updating-jenkins-plugins">Optional: Updating Jenkins Plugins</h4>
+<p>Though we specified the versions of the Jenkins plugin needed to run pipelines in the <code>helm install</code> command, if new plugin updates come out Jenkins may ask you to upgrade the plugins in order to keep pipelines running. To do so, go to the <code>Plugin Manager</code> in <code>http://JENKINS_IP:PORT/pluginManager/</code> menu and update the plugins.</p>
+<h3 id="jenkins-on-premise-server">Jenkins on-premise server</h3>
+<p>The installation is following a non-docker install approach as described <a href="https://jenkins.io/doc/book/getting-started/installing">here</a>, specially the following steps should be done:</p>
+<h4 id="get-the-jenkins-binary-and-install">Get the jenkins binary and install</h4>
+<div class="codehilite"><pre><span></span>$ wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key <span class="p">|</span> sudo apt-key add -
+$ sudo sh -c <span class="s1">&#39;echo deb http://pkg.jenkins.io/debian-stable binary/ &gt; /etc/apt/sources.list.d/jenkins.list&#39;</span>
+$ sudo apt-get update
+$ sudo apt-get install jenkins
+</pre></div>
+
+<p>doing a <code>ps -ef | grep jenkins</code> we can see jenkins server is up and running as a java program. Pointing a web browser to http://localhost:8080 goes to the administration wizard to complete the configuration. You need to get the created password using: <code>sudo cat /var/lib/jenkins/secrets/initialAdminPassword</code>.
+The wizard is also asking for a user, so we used <em>admin/admin01</em> and to install the standard plugins.</p>
+<h4 id="for-java-you-need-jdk">For java you need jdk</h4>
+<p>As some of the codes of the solution are Java based, we add the JDK (to get <code>javac</code> tool and other system jars):
+<div class="codehilite"><pre><span></span>$ sudo apt-get install openjdk-8-jdk
+</pre></div></p>
+<p>To automate interaction script like <code>ssh</code> and <code>scp</code>, we are using <a href="http://expect.sourceforge.net/">expect</a> tool so password and other input can be injected to any command
+<div class="codehilite"><pre><span></span>$ sudo apt-get install expect
+</pre></div></p>
+<h4 id="install-docker-on-the-build-server">Install docker on the build server</h4>
+<p>As some of the build steps are to run <code>docker build</code>, we need to install docker on build server and authorize jenkins to be a docker user:
+<div class="codehilite"><pre><span></span>$ sudo  usermod -aG docker Jenkins
+<span class="c1"># if jenkins is running restart the server using the web browser to</span>
+<span class="o">(</span>jenkins_url<span class="o">)</span>/restart
+</pre></div></p>
+<h4 id="add-dependencies-for-node-angular">Add dependencies for node / angular...</h4>
+<p>Finally you need to be sure that any dependencies for each project are met. Like for the nodes and angularjs, be sure to have the compatible angular/cli, npm, nodejs (version 6). The following set of commands were used:</p>
+<div class="codehilite"><pre><span></span>$ npm cache clean -f
+<span class="c1"># install nodejs 6</span>
+$ curl -sL https://deb.nodesource.com/sertup_6.x <span class="p">|</span> sudo -E bash -
+$ sudo apt-get install -y nodejs
+$ sudo mpm i -g @angular/cli
+</pre></div>
+
+<h2 id="pipeline">Pipeline</h2>
+<p>Pipelines are made up of multiple steps that allow you to build, test and deploy applications.</p>
+<h3 id="creating-pipeline">Creating Pipeline</h3>
+<p>Once the Jenkins server is started we need to create a pipeline. To setup a pipeline, open Jenkins in the browser (example of ICP URL: http://172.16.40.223:32277/)</p>
+<p>Note: Recall that the Jenkins URL is defined in the NodePort of the Jenkins master deployment configuration:
+<div class="codehilite"><pre><span></span>$  kubectl get services -l <span class="nv">component</span><span class="o">=</span>jenkins-jenkins-master  -n browncompute
+NAME            TYPE        CLUSTER-IP    EXTERNAL-IP   PORT<span class="o">(</span>S<span class="o">)</span>          AGE
+jenkins         NodePort    <span class="m">10</span>.10.10.4    &lt;none&gt;        <span class="m">8080</span>:32277/TCP   15d
+</pre></div></p>
+<p>and follow the steps below:</p>
+<h3 id="1-create-a-sample-job">1. Create a Sample Job</h3>
+<p><img alt="Create a Sample Job" src="https://raw.githubusercontent.com/ibm-cloud-architecture/refarch-cloudnative-devops-kubernetes/master/static/imgs/1_create_job.png" /></p>
+<h3 id="2-select-pipeline-type">2. Select Pipeline Type</h3>
+<p><img alt="Create a Sample Job" src="https://raw.githubusercontent.com/ibm-cloud-architecture/refarch-cloudnative-devops-kubernetes/master/static/imgs/2_select_pipeline_type.png" /></p>
+<h3 id="3-setup-the-pipeline-configuration">3. Setup the pipeline configuration</h3>
+<p>Then select the <em>Pipeline</em> configuration. This should bring a page with multiple tabs. The following options were selected:
+<em> General:
+    + Discard old builds after 2 days and 2 maximum builds
+    + Do not allow concurrent builds as there are some dependencies between projects
+</em> Build Triggers
+    + Select 'GitHub hook Trigger..'
+<em> Pipeline
+    + Pipeline script from SCM: </em>as each project has a Jenkinsfile*
+    + SCM is git and then specify the project to build.
+        - http//github.com/ibm-cloud-architecture/refarch-caseinc-app. OR:
+        - http//github.com/ibm-cloud-architecture/refarch-integration-inventory-dal/</p>
+<h2 id="run-the-pipeline">Run the Pipeline</h2>
+<p>To run the pipeline, open Jenkins in the browser and follow the steps below:</p>
+<h3 id="1-launch-pipeline-build">1. Launch Pipeline Build</h3>
+<p><img alt="Create a Sample Job" src="https://raw.githubusercontent.com/ibm-cloud-architecture/refarch-cloudnative-devops-kubernetes/master/static/imgs/4_launch_build.png" /></p>
+<h3 id="2-open-pipeline-console-output">2. Open Pipeline Console Output</h3>
+<p><img alt="Create a Sample Job" src="https://raw.githubusercontent.com/ibm-cloud-architecture/refarch-cloudnative-devops-kubernetes/master/static/imgs/5_open_console_output.png" /></p>
+<h3 id="3-monitor-console-output">3. Monitor Console Output</h3>
+<p><img alt="Create a Sample Job" src="https://raw.githubusercontent.com/ibm-cloud-architecture/refarch-cloudnative-devops-kubernetes/master/static/imgs/6_see_console_output.png" /></p>
+<p>If the pipeline finishes successfully, then Congratulations! You have successfully setup a fully working CICD pipeline.</p>
+<p>You should get the results like:<br />
+<img alt="results" src="cicd-results.png" /></p>
+<h2 id="projects-build">Projects build</h2>
+<p>Each project has its build process that we try to homogenize with the same jenkinsfile approach.
+<em> <a href="https://github.com/ibm-cloud-architecture/refarch-integration-caseinc-app/tree/master/docs/devops">Web app build</a>
+</em> <a href="https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal/tree/master/docs/devops">Inventory Data access layer CI/CD</a>
+<em> <a href="https://github.com/ibm-cloud-architecture/refarch-integration-services/tree/master/docs/devops">Customer Microservice CI/CD</a>
+</em> <a href="">Mediation flow on IIB</a>
+<em> <a href="">API inventory product</a>
+</em> <a href="">Integration tests</a></p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../nfr/" title="Non-functional requirements" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Non-functional requirements
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../compendium/" title="Hybrid Cloud Compendium" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Hybrid Cloud Compendium
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.b806dc00.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+    
+  </body>
+</html>

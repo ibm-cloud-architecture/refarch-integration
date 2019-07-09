@@ -1,0 +1,961 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.0.1">
+    
+    
+      
+        <title>Integration on ICP - Hybrid Integration Reference Architecture</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.982221ab.css">
+      
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.1f0bcf2b.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#hybrid-integration-on-ibm-cloud-private-deployment" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="Hybrid Integration Reference Architecture" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Hybrid Integration Reference Architecture
+            </span>
+            <span class="md-header-nav__topic">
+              Integration on ICP
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/ibm-cloud-architecture/refarch-integration/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="Hybrid Integration Reference Architecture" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Hybrid Integration Reference Architecture
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/ibm-cloud-architecture/refarch-integration/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Hybrid Cloud Integration introduction" class="md-nav__link">
+      Hybrid Cloud Integration introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../hybrid-ref-arch/" title="Hybrid Cloud Integration reference architecture" class="md-nav__link">
+      Hybrid Cloud Integration reference architecture
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../buildrun/" title="DevOps Build, deploy and run" class="md-nav__link">
+      DevOps Build, deploy and run
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Doing MQ, DB2 and JEE on WAS lift and shift to IBM Cloud
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Doing MQ, DB2 and JEE on WAS lift and shift to IBM Cloud
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../toSaaS/readme/" title="Context" class="md-nav__link">
+      Context
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../toSaaS/twas/readme/" title="Tarditional WAS app" class="md-nav__link">
+      Tarditional WAS app
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../nfr/" title="Non-functional requirements" class="md-nav__link">
+      Non-functional requirements
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../devops/" title="Apply CI/CD for integration solution" class="md-nav__link">
+      Apply CI/CD for integration solution
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../compendium/" title="Hybrid Cloud Compendium" class="md-nav__link">
+      Hybrid Cloud Compendium
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" checked>
+    
+    <label class="md-nav__link" for="nav-8">
+      IBM Cloud Private knowledge sharing
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        IBM Cloud Private knowledge sharing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../" title="Main summary" class="md-nav__link">
+      Main summary
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp-cli/" title="CLI summary" class="md-nav__link">
+      CLI summary
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Integration on ICP
+      </label>
+    
+    <a href="./" title="Integration on ICP" class="md-nav__link md-nav__link--active">
+      Integration on ICP
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" title="Prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-steps" title="Deployment steps" class="md-nav__link">
+    Deployment steps
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-docker-images" title="Update docker images" class="md-nav__link">
+    Update docker images
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-helm-chart" title="Install Helm Chart" class="md-nav__link">
+    Install Helm Chart
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-1-clone-the-repo-install-the-chart" title="Option 1: Clone the Repo &amp; Install the Chart" class="md-nav__link">
+    Option 1: Clone the Repo &amp; Install the Chart
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-2-install-from-helm-chart-repository" title="Option 2: Install from Helm Chart Repository" class="md-nav__link">
+    Option 2: Install from Helm Chart Repository
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-3-install-from-helm-chart-repository-using-icp-helm-charts-catalog" title="Option 3: Install from Helm Chart Repository using ICP Helm Charts Catalog" class="md-nav__link">
+    Option 3: Install from Helm Chart Repository using ICP Helm Charts Catalog
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validate-helm-chart" title="Validate Helm Chart" class="md-nav__link">
+    Validate Helm Chart
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../build-helm-rep/" title="Build your own helm repository" class="md-nav__link">
+      Build your own helm repository
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dev-env-install/" title="Install a dev cluster" class="md-nav__link">
+      Install a dev cluster
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../faq/" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../troubleshooting/" title="Troubleshouting" class="md-nav__link">
+      Troubleshouting
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../service-mesh/readme/" title="Service mesh" class="md-nav__link">
+      Service mesh
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../istio/readme/" title="Istio introduction" class="md-nav__link">
+      Istio introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../csmo/" title="CSMO" class="md-nav__link">
+      CSMO
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Security
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        Security
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../TLS/" title="TLS" class="md-nav__link">
+      TLS
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../journey/" title="Skill Journey" class="md-nav__link">
+      Skill Journey
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" title="Prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deployment-steps" title="Deployment steps" class="md-nav__link">
+    Deployment steps
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#update-docker-images" title="Update docker images" class="md-nav__link">
+    Update docker images
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-helm-chart" title="Install Helm Chart" class="md-nav__link">
+    Install Helm Chart
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-1-clone-the-repo-install-the-chart" title="Option 1: Clone the Repo &amp; Install the Chart" class="md-nav__link">
+    Option 1: Clone the Repo &amp; Install the Chart
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-2-install-from-helm-chart-repository" title="Option 2: Install from Helm Chart Repository" class="md-nav__link">
+    Option 2: Install from Helm Chart Repository
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-3-install-from-helm-chart-repository-using-icp-helm-charts-catalog" title="Option 3: Install from Helm Chart Repository using ICP Helm Charts Catalog" class="md-nav__link">
+    Option 3: Install from Helm Chart Repository using ICP Helm Charts Catalog
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validate-helm-chart" title="Validate Helm Chart" class="md-nav__link">
+    Validate Helm Chart
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/ibm-cloud-architecture/refarch-integration/edit/master/docs/icp/icp-integration.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="hybrid-integration-on-ibm-cloud-private-deployment">Hybrid Integration on IBM Cloud Private Deployment</h1>
+<p>In this section we are presenting how <em>Hybrid integration solution implementation</em> is deployed to IBM Cloud Private. We address different configurations as business and operation requirements may differ per data center and even per business applications. Each configuration describes how some of the components of the solution may be deployed to ICP or kept on-premise servers.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>The following points should be considered before going into more detail of the ICP deployment:
+<em> A conceptual understanding of how <a href="https://kubernetes.io/docs/concepts/">Kubernetes</a> works, see also personal summary <a href="">here</a>
+</em> A high-level understanding of <a href="https://docs.helm.sh/architecture/">Helm and Kubernetes package management</a>.
+<em> A basic understanding of <a href="https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.2/getting_started/architecture.html">IBM Cloud Private cluster architecture</a>.
+</em> Understand the different <a href="https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Sizing.md">ICP environment and sizing</a>
+<em> Understand <a href="https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.2/manage_images/image_manager.html">image management</a>:
+</em> Access to an operational IBM Cloud Private cluster <a href="../dev-env-install/">see installation note</a> for the different approaches you could use.</p>
+<p>As a developer, you need to have the following components:
+<em> <a href="../dev-env-install/#install-docker">Docker installed on user laptop</a>
+</em> <a href="../dev-env-install/#install-kubectl">Kubectl installed on user laptop</a>
+<em> <a href="../dev-env-install/#install-helm">Helm</a>
+we have provided shell script to do those installation. Execute <code>../scripts/install_cli.sh</code> ( or <code>./scripts/install_cli.bat</code> for Windows)
+</em> Add Helm Charts Repository
+* Add a <strong>browncompute</strong> namespace using ICP admin console, under <strong>Manage &gt; Namespaces</strong> menu.</p>
+<p><img alt="" src="../icp-brown-ns.png" /></p>
+<p>We will use this namespace to deploy the <em>hybrid integration</em> components into ICP cluster. As an alternate you can use the command: <code>kubectl create namespace browncompute</code>.</p>
+<h2 id="deployment-steps">Deployment steps</h2>
+<p>Helm charts are defined one time and should stay reasonably stable over time. Docker image change at each build.
+Remember that docker images that are added to the image registry are owned by namespaces. All the users within a namespace are owners of the images. An owner can remove or update the images from the cluster management console. Super administrators have full access to all images in the cluster. Owners can also update the scope of an image</p>
+<p>Here are the common steps to perform  when deploying a component of the hybrid integration solution.
+<em> <a href="#install-helm-chart">Install Helm Chart</a>
+  + <a href="#option-1-clone-the-repo--install-the-chart">Option 1: Clone the Repo &amp; Install the Chart</a>
+  + <a href="#option-2-install-from-helm-chart-repository">Option 2: Install from Helm Chart Repository</a>
+  + <a href="#option-3-install-from-helm-chart-repository-using-icp-helm-charts-catalog">Option 3: Install from Helm Chart Repository using ICP Helm Charts Catalog</a>
+</em> <a href="#validate-helm-chart">Validate Helm Chart</a>
+* Setup a CICD Pipeline for each project</p>
+<h3 id="update-docker-images">Update docker images</h3>
+<p>You need to name the images with the owner, so the namespace used. Here are example of images scoped:
+<div class="codehilite"><pre><span></span>$ kubectl get images -n browncompute
+NAME                         AGE
+browncompute-inventory-dal   1d
+customerms                   10m
+</pre></div>
+and
+<div class="codehilite"><pre><span></span>kubectl get images -n default
+NAME      AGE
+nginx     29d
+</pre></div>
+And the command to push one of the image:
+<code>docker push ext-demo.icp:8500/browncompute/customerms:latest</code></p>
+<h3 id="install-helm-chart">Install Helm Chart</h3>
+<p>We created <a href="https://github.com/kubernetes/helm/blob/master/docs/charts.md">Helm Charts</a> for each project. For example the  <a href="chart/browncompute-inventory-dal"><code>browncompute-inventory-dal</code></a> chart packages all of the kubernetes resources required to deploy the <code>browncompute-inventory-dal</code> app and expose it to a public endpoint.</p>
+<p>For more in-depth details of the inner-workings of Helm Charts, please refer to the <a href="https://github.com/kubernetes/helm/blob/master/docs/charts.md">Helm Chart Documentation</a> to learn more about charts.</p>
+<p>You have 3 options to install the chart:
+1. Clone the Repo and Install the Chart.
+2. Install the chart from our <a href="https://github.com/kubernetes/helm/blob/master/docs/chart_repository.md"><code>Helm Chart Repository</code></a>, which is served <a href="docs/charts">here</a> directly from GitHub.
+3. Install the chart from our <a href="https://github.com/kubernetes/helm/blob/master/docs/chart_repository.md"><code>Helm Chart Repository</code></a> using ICP's Charts Catalog.</p>
+<h3 id="option-1-clone-the-repo-install-the-chart">Option 1: Clone the Repo &amp; Install the Chart</h3>
+<p>To clone the repo &amp; install the <a href="chart/browncompute-inventory-dal"><code>browncompute-inventory-dal</code></a> chart from source, run the following commands:
+<div class="codehilite"><pre><span></span><span class="c1"># Clone the repo</span>
+$ git clone https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal.git
+
+<span class="c1"># Change to repo directory</span>
+$ <span class="nb">cd</span> refarch-integration-inventory-dal
+
+<span class="c1"># Install the Chart</span>
+$ helm install chart/browncompute-inventory-dal --name browncompute-dal --tls
+</pre></div></p>
+<h3 id="option-2-install-from-helm-chart-repository">Option 2: Install from Helm Chart Repository</h3>
+<p>As an example for the Data Access Layer project, we created a <a href="https://github.com/kubernetes/helm/blob/master/docs/chart_repository.md"><code>Helm Chart Repository</code></a> (located <a href="docs/charts">here</a>) where we serve a packaged version of the <a href="chart/browncompute-inventory-dal"><code>browncompute-inventory-dal</code></a> so that you can conveniently install it in your ICP Cluster.</p>
+<p>To install the chart from the <code>Helm Chart Repository</code>, run the following commands:
+<div class="codehilite"><pre><span></span><span class="c1"># Add Local Reference to Helm Chart Repository</span>
+$ helm repo add browncompute https://raw.githubusercontent.com/ibm-cloud-architecture/refarch-integration-inventory-dal/master/docs/charts
+
+<span class="c1"># Install the Chart</span>
+$ helm install browncompute/browncompute-inventory-dal --name browncompute-dal --tls
+</pre></div></p>
+<h3 id="option-3-install-from-helm-chart-repository-using-icp-helm-charts-catalog">Option 3: Install from Helm Chart Repository using ICP Helm Charts Catalog</h3>
+<p>Coming Soon</p>
+<h2 id="validate-helm-chart">Validate Helm Chart</h2>
+<p>If you installed the chart successfuly, you should see a CLI output similar to the following:
+<div class="codehilite"><pre><span></span><span class="n">NAME</span><span class="o">:</span>   <span class="n">browncompute</span><span class="o">-</span><span class="n">dal</span>
+<span class="n">LAST</span> <span class="n">DEPLOYED</span><span class="o">:</span> <span class="n">Tue</span> <span class="n">Nov</span> <span class="mi">14</span> <span class="mi">22</span><span class="o">:</span><span class="mi">23</span><span class="o">:</span><span class="mi">39</span> <span class="mi">2017</span>
+<span class="n">NAMESPACE</span><span class="o">:</span> <span class="n">browncompute</span>
+<span class="n">STATUS</span><span class="o">:</span> <span class="n">DEPLOYED</span>
+
+<span class="n">RESOURCES</span><span class="o">:</span>
+<span class="o">==&gt;</span> <span class="n">v1</span><span class="o">/</span><span class="n">Service</span>
+<span class="n">NAME</span>             <span class="n">CLUSTER</span><span class="o">-</span><span class="n">IP</span>    <span class="n">EXTERNAL</span><span class="o">-</span><span class="n">IP</span>  <span class="n">PORT</span><span class="o">(</span><span class="n">S</span><span class="o">)</span>            <span class="n">AGE</span>
+<span class="n">inventorydalsvc</span>  <span class="mf">10.101</span><span class="o">.</span><span class="mf">0.176</span>  <span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span>       <span class="mi">9080</span><span class="sr">/TCP,9443/</span><span class="n">TCP</span>  <span class="mi">1</span><span class="n">s</span>
+
+<span class="o">==&gt;</span> <span class="n">v1beta1</span><span class="o">/</span><span class="n">Deployment</span>
+<span class="n">NAME</span>                               <span class="n">DESIRED</span>  <span class="n">CURRENT</span>  <span class="n">UP</span><span class="o">-</span><span class="n">TO</span><span class="o">-</span><span class="n">DATE</span>  <span class="n">AVAILABLE</span>  <span class="n">AGE</span>
+<span class="n">browncompute</span><span class="o">-</span><span class="n">dal</span><span class="o">-</span><span class="n">browncompute</span><span class="o">-</span><span class="n">dal</span>  <span class="mi">2</span>        <span class="mi">2</span>        <span class="mi">2</span>           <span class="mi">0</span>          <span class="mi">1</span><span class="n">s</span>
+
+<span class="o">==&gt;</span> <span class="n">v1beta1</span><span class="o">/</span><span class="n">Ingress</span>
+<span class="n">NAME</span>                               <span class="n">HOSTS</span>           <span class="n">ADDRESS</span>  <span class="n">PORTS</span>  <span class="n">AGE</span>
+<span class="n">browncompute</span><span class="o">-</span><span class="n">dal</span><span class="o">-</span><span class="n">browncompute</span><span class="o">-</span><span class="n">dal</span>  <span class="n">dal</span><span class="o">.</span><span class="na">brown</span><span class="o">.</span><span class="na">case</span>            <span class="mi">80</span>       <span class="mi">1</span><span class="n">s</span>
+</pre></div></p>
+<h1 id="configurations">Configurations</h1>
+<p>As an hybrid solution each component of the solution may run on existing on-premise servers or within IBM Cloud Private cluster. The deployment decision will be driven by the business requirements and the availability of underlying IBM middleware product as docker image and helm chart.</p>
+<p>For each component of the 'hybrid integration' solution the following needs may be done:</p>
+<ul>
+<li>build the docker image</li>
+<li>tag the image with information about the target repository server, namespace, tag and version</li>
+<li>push the image to the remote docker repository (most likely the one inside ICP master node)</li>
+<li>build the helm package from the chart definition</li>
+<li>install the chart to ICP cluster using <em>helm install or upgrade</em> command line interface</li>
+<li>access the URL end point</li>
+</ul>
+<h2 id="configuration-1-icp-deployment-and-soa-services-on-premise">Configuration 1: ICP deployment and SOA services on-premise</h2>
+<p>Our target deployment is illustrated in the figure below:
+<img alt="" src="../../buildrun/icp-deployment.png" /><br />
+The light blue area represents on-premise servers, while the green area represents the IBM Cloud Private, kubernetes cluster.</p>
+<ul>
+<li>On the left side, the Portal cloud native webapp was first developed as Angular / nodejs app, using cloud foundry deployment model. The new approach was to externalize the configuration outside of cloud foundry and package the application as docker container. This approach helps to deploy the application on any environment in a control manner. For the web app deployment follow <a href="https://github.com/ibm-cloud-architecture/refarch-caseportal-app/blob/master/docs/icp/README.md">the step by step tutorial</a>.</li>
+<li><a href="https://github.com/ibm-cloud-architecture/refarch-integration-api/tree/master/docs/icp">API Gateway on ICP</a></li>
+<li><a href="https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal/blob/master/docs/icp/README.md">Inventory data access layer on ICP</a></li>
+<li>Decision for product recommendation with <a href="https://github.com/ibm-cloud-architecture/refarch-cognitive-prod-recommendations/blob/master/docs/icp/README.md">Operational Decision Management on ICP</a></li>
+</ul>
+<p>The second Datapower gateway is used to present 'System' APIs. (see this redbook <a href="http://www.redbooks.ibm.com/redbooks/pdfs/sg248351.pdf">"A practical Guide for IBM Hybrid Integration Platform"</a> for detail about this clear APIs separation)</p>
+<p>The <code>gateway flow</code>, deployed on IIB, is doing the REST to SOAP interface mapping: this configuration illustrates deep adoption of the ESB pattern leveraging existing high end deployments, scaling both horizontally and vertically. In this model the concept of operation for mediation and integration logic development and deployment are kept.</p>
+<p>If you want to review each on-premise component, their descriptions are below:
+<em> <a href="https://github.com/ibm-cloud-architecture/refarch-integration#inventory-management">API Connect - Inventory product</a>
+</em> <a href="https://github.com/ibm-cloud-architecture/refarch-integration-esb#inventory-flow">Gateway flow in integration broker</a>
+<em> <a href="https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal#deploy-to-local-ibm-websphere-liberty-profile">SOAP service for data access Layer running on premise</a>
+</em> <a href="https://github.com/ibm-cloud-architecture/refarch-integration-inventory-db2#inventory-database">Inventory database on DB2 server</a></p>
+<h2 id="configuration-2-only-cloud-native-application-on-icp">Configuration 2: Only Cloud native application on ICP</h2>
+<p>This is the simplest deployment where only the cloud native web application (<a href="https://github.com/ibm-cloud-architecture/refarch-caseportal-app">the 'case' portal</a>) is deployed. It still accesses the back end services via API Connect running on-premise. All other components run on-premise. The figure below illustrates this deployment:</p>
+<p><img alt="WebApp" src="../bc-icp-cfg1.png" /></p>
+<h2 id="configuration-3-api-runtime-on-icp">Configuration 3: API runtime on ICP</h2>
+<p>The goal for this configuration is to deploy Data power gateway to IBM cloud private and deploy the interaction API products on it. The API product definition is split into interaction APIs and system APIs.</p>
+<p><img alt="" src="../bc-icp-cfg2.png" /></p>
+<p>The steps are:
+1. Modify the webapp configuration to use a different URL for the gateway flow: The settings is done in the <code>values.yaml</code> in the chart folder of the <a href="https://github.com/ibm-cloud-architecture/refarch-caseinc-app">case portal app</a>
+1. Deploy webapp to ICP <a href="https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/icp/README.md">following the tutorial as seen in configuration 1</a>
+1. Deploy API Connect gateway from ICP Catalog using <a href="https://github.com/ibm-cloud-architecture/refarch-integration-api/blob/master/docs/icp/README.md">this tutorial</a>
+1. Deploy the api product to the new gateway.</p>
+<h2 id="configuration-4-integration-bus-as-micro-flow-running-in-icp">Configuration 4: Integration Bus as micro flow running in ICP</h2>
+<p>This configuration is using integration components on premise and the other more lightweight components on ICP, and add a micro-service for integration as introduced in <a href="https://developer.ibm.com/integration/blog/2017/04/16/12-factor-integration/">this article</a> using a message flow deployed on IIB runninig in ICP.</p>
+<p><img alt="" src="../bc-icp-cfg4.png" /></p>
+<p>This approach leverages existing investment and IIB concept of operation, and IBM Datapower for security and API gateway. This approach has an impact on the way to manage application inside IIB. Instead of deploying multiple applications inside one instance of IIB, we are packaging the app and IIB runtime into a unique container to deploy in pods and facilitate horizontal scaling. The vertical scaling delivered out of the box in IIB is not leveraged.</p>
+<ol>
+<li>Deploy webapp to ICP <a href="https://github.com/ibm-cloud-architecture/refarch-caseinc-app/blob/master/docs/run-icp.md">follows this tutorial</a></li>
+<li>Deploy Java application running on Liberty <a href="https://github.com/ibm-cloud-architecture/refarch-integration-dal/blob/master/icp/README.md">read this tutorial</a>)</li>
+<li>Deploy IBM Integration Bus <a href="https://github.com/ibm-cloud-architecture/refarch-integration-esb/blob/master/IBMCloudprivate/README.md">read this tutorial</a></li>
+<li>Deploy API Connect gateway from ICP Catalog using <a href="https://github.com/ibm-cloud-architecture/refarch-integration-api/blob/master/docs/icp/README.md">this tutorial</a></li>
+<li>Deploy the api product to the new gateway.</li>
+</ol>
+<h2 id="use-icp-catalog">Use ICP Catalog</h2>
+<p>All component of the solution we can deploy to ICP are packaged as helm chart, and centralized in the <code>docs/charts</code> folder of this repository.  Using the ICP admin console you can get the list of repositories using the <strong> Manage &gt; Helm Repositories </strong> menu:</p>
+<p><img alt="" src="../icp-repo.png" /></p>
+<p>You can add a new repository, and with the <code>Sync repositories</code> button the Helm catalog is modified with the new images.</p>
+<p>When you add new application / package you need to update your private catalog index.yaml file.  The index.yaml file describes how your applications is listed in the ICP Application Center:</p>
+<div class="codehilite"><pre><span></span>$ curl get -k https://9.19.34.107:8443/helm-repo/charts/index.yaml
+$ helm repo index --merge index.yaml
+</pre></div>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../icp-cli/" title="CLI summary" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                CLI summary
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../build-helm-rep/" title="Build your own helm repository" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Build your own helm repository
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.b806dc00.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+    
+  </body>
+</html>

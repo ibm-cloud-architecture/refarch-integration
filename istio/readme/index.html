@@ -1,0 +1,1097 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.0.1">
+    
+    
+      
+        <title>Istio introduction - Hybrid Integration Reference Architecture</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.982221ab.css">
+      
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.1f0bcf2b.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#use-istio-for-service-mesh" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="Hybrid Integration Reference Architecture" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Hybrid Integration Reference Architecture
+            </span>
+            <span class="md-header-nav__topic">
+              Istio introduction
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/ibm-cloud-architecture/refarch-integration/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="Hybrid Integration Reference Architecture" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Hybrid Integration Reference Architecture
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/ibm-cloud-architecture/refarch-integration/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Hybrid Cloud Integration introduction" class="md-nav__link">
+      Hybrid Cloud Integration introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../hybrid-ref-arch/" title="Hybrid Cloud Integration reference architecture" class="md-nav__link">
+      Hybrid Cloud Integration reference architecture
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../buildrun/" title="DevOps Build, deploy and run" class="md-nav__link">
+      DevOps Build, deploy and run
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Doing MQ, DB2 and JEE on WAS lift and shift to IBM Cloud
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Doing MQ, DB2 and JEE on WAS lift and shift to IBM Cloud
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../toSaaS/readme/" title="Context" class="md-nav__link">
+      Context
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../toSaaS/twas/readme/" title="Tarditional WAS app" class="md-nav__link">
+      Tarditional WAS app
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../nfr/" title="Non-functional requirements" class="md-nav__link">
+      Non-functional requirements
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../devops/" title="Apply CI/CD for integration solution" class="md-nav__link">
+      Apply CI/CD for integration solution
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../compendium/" title="Hybrid Cloud Compendium" class="md-nav__link">
+      Hybrid Cloud Compendium
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      IBM Cloud Private knowledge sharing
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        IBM Cloud Private knowledge sharing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../icp/" title="Main summary" class="md-nav__link">
+      Main summary
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../icp/icp-cli/" title="CLI summary" class="md-nav__link">
+      CLI summary
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../icp/icp-integration/" title="Integration on ICP" class="md-nav__link">
+      Integration on ICP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../icp/build-helm-rep/" title="Build your own helm repository" class="md-nav__link">
+      Build your own helm repository
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../icp/dev-env-install/" title="Install a dev cluster" class="md-nav__link">
+      Install a dev cluster
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../icp/faq/" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../icp/troubleshooting/" title="Troubleshouting" class="md-nav__link">
+      Troubleshouting
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../service-mesh/readme/" title="Service mesh" class="md-nav__link">
+      Service mesh
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Istio introduction
+      </label>
+    
+    <a href="./" title="Istio introduction" class="md-nav__link md-nav__link--active">
+      Istio introduction
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" title="Summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faq" title="FAQ" class="md-nav__link">
+    FAQ
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#communication" title="Communication" class="md-nav__link">
+    Communication
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#circuit-breaker-need-clarification-on-this-does-it-depend-on-k8s-liveliness-check" title="Circuit Breaker – Need clarification on this. Does it depend on K8’s liveliness check?" class="md-nav__link">
+    Circuit Breaker – Need clarification on this. Does it depend on K8’s liveliness check?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security" title="Security" class="md-nav__link">
+    Security
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service-registry-do-we-have-to-deploy-a-service-registry-like-eureka-or-istio-will-use-k8s-service-information" title="Service Registry – Do we have to deploy a service registry (like Eureka) or Istio will use K8s service information?" class="md-nav__link">
+    Service Registry – Do we have to deploy a service registry (like Eureka) or Istio will use K8s service information?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-do-we-have-to-run-all-services-with-k8-service-account-to-use-istio" title="Security - Do we have to run all services with K8 service account to use Istio?" class="md-nav__link">
+    Security - Do we have to run all services with K8 service account to use Istio?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-auth-policy-how-does-application-generated-oauth-token-in-http-request-work-with-istio-need-some-examples-on-authclaims-and-impact-of-istio-http-filters" title="Security: Auth policy - How does application-generated OAuth token (in HTTP request) work with Istio? Need some examples on “auth.claims” and impact of Istio HTTP filters" class="md-nav__link">
+    Security: Auth policy - How does application-generated OAuth token (in HTTP request) work with Istio? Need some examples on “auth.claims” and impact of Istio HTTP filters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-auth-policy-how-do-you-use-roles-permissions" title="Security: Auth policy - How do you use Role’s permissions?" class="md-nav__link">
+    Security: Auth policy - How do you use Role’s permissions?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-auth-policy-how-to-use-application-defined-rbac-within-istio-does-it-work-only-with-k8s-rbac" title="Security: Auth policy - How to use application defined RBAC within Istio? Does it work only with K8S RBAC?" class="md-nav__link">
+    Security: Auth policy - How to use application defined RBAC within Istio? Does it work only with K8S RBAC?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-mutual-tls-is-there-a-way-to-use-customer-provided-certificate-authority" title="Security: Mutual TLS - Is there a way to use Customer provided Certificate Authority?" class="md-nav__link">
+    Security: Mutual TLS - Is there a way to use Customer provided Certificate Authority?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-mutual-tls-is-there-a-process-to-approvesign-csrs-from-doc-it-seems-like-they-are-automatically-approvedsigned" title="Security: Mutual TLS - Is there a process to approve/sign CSRs? From doc it seems like they are automatically approved/signed." class="md-nav__link">
+    Security: Mutual TLS - Is there a process to approve/sign CSRs? From doc it seems like they are automatically approved/signed.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-the-network-policy-how-the-rules-can-be-configured-in-istio-along-with-calico-good-example" title="Security: the network policy (how the rules) can be configured in Istio along with calico (good example)" class="md-nav__link">
+    Security: the network policy (how the rules) can be configured in Istio along with calico (good example)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oauth-token" title="Oauth token" class="md-nav__link">
+    Oauth token
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-entry-point" title="What Entry point" class="md-nav__link">
+    What Entry point
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#support-to-websocket" title="Support to websocket" class="md-nav__link">
+    Support to websocket
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stomp-support" title="Stomp support" class="md-nav__link">
+    Stomp support
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-registry" title="Service Registry" class="md-nav__link">
+    Service Registry
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rate-limiting" title="Rate limiting" class="md-nav__link">
+    Rate limiting
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../csmo/" title="CSMO" class="md-nav__link">
+      CSMO
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Security
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        Security
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../TLS/" title="TLS" class="md-nav__link">
+      TLS
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../journey/" title="Skill Journey" class="md-nav__link">
+      Skill Journey
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" title="Summary" class="md-nav__link">
+    Summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faq" title="FAQ" class="md-nav__link">
+    FAQ
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#communication" title="Communication" class="md-nav__link">
+    Communication
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#circuit-breaker-need-clarification-on-this-does-it-depend-on-k8s-liveliness-check" title="Circuit Breaker – Need clarification on this. Does it depend on K8’s liveliness check?" class="md-nav__link">
+    Circuit Breaker – Need clarification on this. Does it depend on K8’s liveliness check?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security" title="Security" class="md-nav__link">
+    Security
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service-registry-do-we-have-to-deploy-a-service-registry-like-eureka-or-istio-will-use-k8s-service-information" title="Service Registry – Do we have to deploy a service registry (like Eureka) or Istio will use K8s service information?" class="md-nav__link">
+    Service Registry – Do we have to deploy a service registry (like Eureka) or Istio will use K8s service information?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-do-we-have-to-run-all-services-with-k8-service-account-to-use-istio" title="Security - Do we have to run all services with K8 service account to use Istio?" class="md-nav__link">
+    Security - Do we have to run all services with K8 service account to use Istio?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-auth-policy-how-does-application-generated-oauth-token-in-http-request-work-with-istio-need-some-examples-on-authclaims-and-impact-of-istio-http-filters" title="Security: Auth policy - How does application-generated OAuth token (in HTTP request) work with Istio? Need some examples on “auth.claims” and impact of Istio HTTP filters" class="md-nav__link">
+    Security: Auth policy - How does application-generated OAuth token (in HTTP request) work with Istio? Need some examples on “auth.claims” and impact of Istio HTTP filters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-auth-policy-how-do-you-use-roles-permissions" title="Security: Auth policy - How do you use Role’s permissions?" class="md-nav__link">
+    Security: Auth policy - How do you use Role’s permissions?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-auth-policy-how-to-use-application-defined-rbac-within-istio-does-it-work-only-with-k8s-rbac" title="Security: Auth policy - How to use application defined RBAC within Istio? Does it work only with K8S RBAC?" class="md-nav__link">
+    Security: Auth policy - How to use application defined RBAC within Istio? Does it work only with K8S RBAC?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-mutual-tls-is-there-a-way-to-use-customer-provided-certificate-authority" title="Security: Mutual TLS - Is there a way to use Customer provided Certificate Authority?" class="md-nav__link">
+    Security: Mutual TLS - Is there a way to use Customer provided Certificate Authority?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-mutual-tls-is-there-a-process-to-approvesign-csrs-from-doc-it-seems-like-they-are-automatically-approvedsigned" title="Security: Mutual TLS - Is there a process to approve/sign CSRs? From doc it seems like they are automatically approved/signed." class="md-nav__link">
+    Security: Mutual TLS - Is there a process to approve/sign CSRs? From doc it seems like they are automatically approved/signed.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-the-network-policy-how-the-rules-can-be-configured-in-istio-along-with-calico-good-example" title="Security: the network policy (how the rules) can be configured in Istio along with calico (good example)" class="md-nav__link">
+    Security: the network policy (how the rules) can be configured in Istio along with calico (good example)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oauth-token" title="Oauth token" class="md-nav__link">
+    Oauth token
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-entry-point" title="What Entry point" class="md-nav__link">
+    What Entry point
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#support-to-websocket" title="Support to websocket" class="md-nav__link">
+    Support to websocket
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stomp-support" title="Stomp support" class="md-nav__link">
+    Stomp support
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-registry" title="Service Registry" class="md-nav__link">
+    Service Registry
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rate-limiting" title="Rate limiting" class="md-nav__link">
+    Rate limiting
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/ibm-cloud-architecture/refarch-integration/edit/master/docs/istio/readme.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="use-istio-for-service-mesh">Use ISTIO for service mesh</h1>
+<p>In this article we are covering a quick summary of istio as deployed inside ICP and how to leverage it for supporting different operational use cases for the Asset predictive maintenance solution.</p>
+<h2 id="summary">Summary</h2>
+<p>The concepts are presented in the istio <a href="https://istio.io/docs/concepts/what-is-istio/overview/">main page</a>.
+From the istio architecture the <strong>control plane</strong> includes <strong>Pilot, Mixer and Citadel</strong>, and is responsible for managing and configuring proxies to route traffic, and configuring Mixers to enforce policies and collect telemetry. The following is an example of pod assignment within ICP. Egress gateway and servicegraph run on a proxy, while the other components run in the worker nodes.</p>
+<p><img alt="" src="../istio-icp-deploy.png" /></p>
+<p><em>The command used to get this assignment are:</em>
+<div class="codehilite"><pre><span></span>$ kubectl get nodes
+$ kubectl describe node &lt;ipaddress&gt;
+</pre></div>
+To get the pods: <code>kubectl get pods -n istio-system</code>.</p>
+<p>The component roles:  </p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Envoy</strong></td>
+<td>Proxy to mediate  all inbound and outbound traffic for all services in the service mesh. It is deployed as a sidecar container inside the same pod as a service.</td>
+</tr>
+<tr>
+<td><strong>Mixer</strong></td>
+<td>Enforces access control and usage policies across the service mesh and collecting telemetry data from the Envoy proxy.</td>
+</tr>
+<tr>
+<td><strong>Pilot</strong></td>
+<td>Supports service discovery, traffic management, resiliency.</td>
+</tr>
+<tr>
+<td><strong>Citadel</strong></td>
+<td>Used for service-to-service and end-user authentication. Enforce security policy based on service identity.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="faq">FAQ</h2>
+<h3 id="communication">Communication</h3>
+<h4 id="circuit-breaker-need-clarification-on-this-does-it-depend-on-k8s-liveliness-check">Circuit Breaker – Need clarification on this. Does it depend on K8’s liveliness check?</h4>
+<p>Circuit breaking is specific to the Istio sidecar and does not depend on K8s health checks. More information https://istio.io/docs/tasks/traffic-management/circuit-breaking/</p>
+<h3 id="security">Security</h3>
+<h4 id="service-registry-do-we-have-to-deploy-a-service-registry-like-eureka-or-istio-will-use-k8s-service-information">Service Registry – Do we have to deploy a service registry (like Eureka) or Istio will use K8s service information?</h4>
+<p>Documentation says Istio assumes presence of service registry.
+Istio will automatically use the service information from K8s, there is no need to deploy another.</p>
+<h4 id="security-do-we-have-to-run-all-services-with-k8-service-account-to-use-istio">Security - Do we have to run all services with K8 service account to use Istio?</h4>
+<p>Workloads in K8s always run under a service account. If you don’t explicitly specify one, the default service account within the namespace will be used.</p>
+<h4 id="security-auth-policy-how-does-application-generated-oauth-token-in-http-request-work-with-istio-need-some-examples-on-authclaims-and-impact-of-istio-http-filters">Security: Auth policy - How does application-generated OAuth token (in HTTP request) work with Istio? Need some examples on “auth.claims” and impact of Istio HTTP filters</h4>
+<p>The OAuth token is parsed by Istio and its claims (including both standard claims, such as issuer, expiration, etc. and application specific claims) are sent to the Mixer. Mixer policies can refer to the claims in making policy decisions. There is some discussion in https://preliminary.istio.io/docs/concepts/security/ (e.g., can map claims to role in RBAC) but we don't have a concrete example. Note that you can still define policies that match on attributes and since request.auth.claims are strings, they can be processed by the Mixer language.</p>
+<h4 id="security-auth-policy-how-do-you-use-roles-permissions">Security: Auth policy - How do you use Role’s permissions?</h4>
+<p>A role's permissions are evaluated by a mixer policy. Request attributes, such as user, path and method are evaluated against RBAC rules to allow/deny access. More information in https://preliminary.istio.io/docs/concepts/security/#role-based-access-control-rbac</p>
+<h4 id="security-auth-policy-how-to-use-application-defined-rbac-within-istio-does-it-work-only-with-k8s-rbac">Security: Auth policy - How to use application defined RBAC within Istio? Does it work only with K8S RBAC?</h4>
+<p>Istio's RBAC model follows that of Kubernetes, but is implemented independently. RBAC is documented along with example policies in https://istio.io/docs/concepts/security/rbac/
+RBAC policies for the BookInfo sample can be found in https://istio.io/docs/tasks/security/role-based-access-control/</p>
+<p>The RBAC is very close to the one for k8s, RBAC defined in k8s are to control the k8s API. ISTIO control RBAC controls microservice, so the rules are not on the same objects.</p>
+<h4 id="security-mutual-tls-is-there-a-way-to-use-customer-provided-certificate-authority">Security: Mutual TLS - Is there a way to use Customer provided Certificate Authority?</h4>
+<p>Istio supports setting external CA as the root of trust. See https://istio.io/docs/tasks/security/plugin-ca-cert</p>
+<h4 id="security-mutual-tls-is-there-a-process-to-approvesign-csrs-from-doc-it-seems-like-they-are-automatically-approvedsigned">Security: Mutual TLS - Is there a process to approve/sign CSRs? From doc it seems like they are automatically approved/signed.</h4>
+<p>Question Clarification [Rakesh]: Regarding CSR, it was specific to mTLS as specified under that bulleted item. Is there a CSR process for “something else” as well?
+Citadel watches k8s service accounts creation and deletion and generates certificates (and keys) for that service account. Since Citadel is the CA, there is no formal CSR process involved. Currently it is automatic.
+Could you please provide more information regarding what controls, if any, do you think are needed for CSR approval?</p>
+<h4 id="security-the-network-policy-how-the-rules-can-be-configured-in-istio-along-with-calico-good-example">Security: the network policy (how the rules) can be configured in Istio along with calico (good example)</h4>
+<p>We believe Istio and Calico are complementary. Calico can be used to set policies that are applied preDNAT on the nodes which is useful for setting standard firewall rules on all of the nodes. Istio policies apply to the communication between the services (both internal and external to the mesh). Kubernetes Network Policies (implemented via Calico) control communication between pods. These policies are applied regardless if the pods belong to the Istio mesh or not. Note, K8s network policies are basic source and destination rules whereas istio has more advanced support for evaluating policies between services within the mesh.</p>
+<p>API ingress controller configuration (that can work on ICP)</p>
+<p>The most straightforward approach for ingress is to use the Istio ingress gateway (not a K8s ingress controller) exposed as a load balancer service. Is there a specific issue of concern regarding ICP deployment?</p>
+<p>Telemetry (e.g latency tracing) strategy/configuration, rate limit rules/configuration, canary strategy, mixer</p>
+<p>Distributed tracing helps identify and debug issues when they arise. Requires minimal change in code - copying trace headers from incoming to outgoing requests. Traffic metrics are automatically generated and collected for display (preconfigured dashboards available).
+Rate limiting requires the mixer and you typically want to set the limit to have clients fail fast (e.g., ~80% of actual peak rate).
+Could you please clarify what guidance is being sought in relation to canary strategy?</p>
+<h4 id="oauth-token">Oauth token</h4>
+<p>istio expects oauth to come, it does not create ones.
+istio validates token and return 401 is not valid or present
+token needs to be signed but not encrypted
+istio extracts attributes at the proxy, and claims and send them to the mixer.</p>
+<p>at the mixer you can implement your rules. Use regular expression. 1.0 version there are some examples.</p>
+<p>https://istio-releases.github.io/v0.1/docs/concepts/network-and-auth/auth.html</p>
+<h3 id="what-entry-point">What Entry point</h3>
+<p>ISTIO gateway is the entry point. We have an ingress gateway as an alternative to k8s ingress controller.
+expose a unique IP to a load balancer</p>
+<h4 id="support-to-websocket">Support to websocket</h4>
+<p>Was not supported before 0.8. And it is supported now.</p>
+<h4 id="stomp-support">Stomp support</h4>
+<p>ISTIO will not block Stomp</p>
+<p>Each service account has an unique identity, certificate is at the identity</p>
+<p>External CA for certificate management. component in istio is called 'citadel' watch for the creation of k8s for a service account, and then bind it to a certificate by creating a secret. The proxy is injected with the certification.
+when an envoy sends to another envoy they exchange certificate via mutual MTLS. The route of trust is kept inside the cluster.
+if you need to externalize the CA, you need to add 'citadel' to istio.io/.
+https://istio.io/docs/tasks/security/plugin-ca-cert/</p>
+<h3 id="service-registry">Service Registry</h3>
+<p>Component responsible for data plan connectivity is Pilot. It hooks up to the k8s registry. And it will get all the services deployed to k8s.</p>
+<p>Communication between microservice, there is no need to get ingress gateway, each pod has its own envoy sidecar. This sidecar automatically connects to pilot, to get the envoy for the target microservice.
+Service A needs to reference the service name. Be sure to use HTTP so envoy can decode the traffic. With encrypted traffic is not able to uncript.</p>
+<p>ingress gateway is for communication at the border of the cluster.</p>
+<h3 id="rate-limiting">Rate limiting</h3>
+<p>Cassandra is using TCP, so for istio is TCP end point, it can be limited by the rate in byte at the network level.<br />
+Mixer is where you can specify rate limiting policy and are applied globally.</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../service-mesh/readme/" title="Service mesh" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Service mesh
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../csmo/" title="CSMO" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                CSMO
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.b806dc00.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+    
+  </body>
+</html>

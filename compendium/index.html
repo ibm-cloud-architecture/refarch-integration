@@ -1,0 +1,899 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.0.1">
+    
+    
+      
+        <title>Hybrid Cloud Compendium - Hybrid Integration Reference Architecture</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.982221ab.css">
+      
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.1f0bcf2b.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#compendium" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href=".." title="Hybrid Integration Reference Architecture" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Hybrid Integration Reference Architecture
+            </span>
+            <span class="md-header-nav__topic">
+              Hybrid Cloud Compendium
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/ibm-cloud-architecture/refarch-integration/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href=".." title="Hybrid Integration Reference Architecture" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Hybrid Integration Reference Architecture
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/ibm-cloud-architecture/refarch-integration/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Hybrid Cloud Integration introduction" class="md-nav__link">
+      Hybrid Cloud Integration introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../hybrid-ref-arch/" title="Hybrid Cloud Integration reference architecture" class="md-nav__link">
+      Hybrid Cloud Integration reference architecture
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../buildrun/" title="DevOps Build, deploy and run" class="md-nav__link">
+      DevOps Build, deploy and run
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Doing MQ, DB2 and JEE on WAS lift and shift to IBM Cloud
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Doing MQ, DB2 and JEE on WAS lift and shift to IBM Cloud
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../toSaaS/readme/" title="Context" class="md-nav__link">
+      Context
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../toSaaS/twas/readme/" title="Tarditional WAS app" class="md-nav__link">
+      Tarditional WAS app
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../nfr/" title="Non-functional requirements" class="md-nav__link">
+      Non-functional requirements
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../devops/" title="Apply CI/CD for integration solution" class="md-nav__link">
+      Apply CI/CD for integration solution
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Hybrid Cloud Compendium
+      </label>
+    
+    <a href="./" title="Hybrid Cloud Compendium" class="md-nav__link md-nav__link--active">
+      Hybrid Cloud Compendium
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-discussion-on-hybrid-integration" title="Architecture discussion on hybrid integration:" class="md-nav__link">
+    Architecture discussion on hybrid integration:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#product-related-knowledge-based" title="Product related knowledge based:" class="md-nav__link">
+    Product related knowledge based:
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#integration" title="Integration" class="md-nav__link">
+    Integration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-connect" title="API Connect" class="md-nav__link">
+    API Connect
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ibm-integration-bus" title="IBM Integration Bus" class="md-nav__link">
+    IBM Integration Bus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes-compendium" title="Kubernetes Compendium" class="md-nav__link">
+    Kubernetes Compendium
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ibm-cloud-private-compendium" title="IBM Cloud Private Compendium" class="md-nav__link">
+    IBM Cloud Private Compendium
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ibm-operational-decision-management" title="IBM Operational Decision management" class="md-nav__link">
+    IBM Operational Decision management
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secure-gateway" title="Secure Gateway" class="md-nav__link">
+    Secure Gateway
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#open-source-used" title="Open source used" class="md-nav__link">
+    Open source used
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      IBM Cloud Private knowledge sharing
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        IBM Cloud Private knowledge sharing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp/" title="Main summary" class="md-nav__link">
+      Main summary
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp/icp-cli/" title="CLI summary" class="md-nav__link">
+      CLI summary
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp/icp-integration/" title="Integration on ICP" class="md-nav__link">
+      Integration on ICP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp/build-helm-rep/" title="Build your own helm repository" class="md-nav__link">
+      Build your own helm repository
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp/dev-env-install/" title="Install a dev cluster" class="md-nav__link">
+      Install a dev cluster
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp/faq/" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp/troubleshooting/" title="Troubleshouting" class="md-nav__link">
+      Troubleshouting
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../service-mesh/readme/" title="Service mesh" class="md-nav__link">
+      Service mesh
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../istio/readme/" title="Istio introduction" class="md-nav__link">
+      Istio introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../csmo/" title="CSMO" class="md-nav__link">
+      CSMO
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Security
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        Security
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../TLS/" title="TLS" class="md-nav__link">
+      TLS
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../journey/" title="Skill Journey" class="md-nav__link">
+      Skill Journey
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-discussion-on-hybrid-integration" title="Architecture discussion on hybrid integration:" class="md-nav__link">
+    Architecture discussion on hybrid integration:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#product-related-knowledge-based" title="Product related knowledge based:" class="md-nav__link">
+    Product related knowledge based:
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#integration" title="Integration" class="md-nav__link">
+    Integration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api-connect" title="API Connect" class="md-nav__link">
+    API Connect
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ibm-integration-bus" title="IBM Integration Bus" class="md-nav__link">
+    IBM Integration Bus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes-compendium" title="Kubernetes Compendium" class="md-nav__link">
+    Kubernetes Compendium
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ibm-cloud-private-compendium" title="IBM Cloud Private Compendium" class="md-nav__link">
+    IBM Cloud Private Compendium
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ibm-operational-decision-management" title="IBM Operational Decision management" class="md-nav__link">
+    IBM Operational Decision management
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#secure-gateway" title="Secure Gateway" class="md-nav__link">
+    Secure Gateway
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#open-source-used" title="Open source used" class="md-nav__link">
+    Open source used
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/ibm-cloud-architecture/refarch-integration/edit/master/docs/compendium.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="compendium">Compendium</h1>
+<p>Here is a list of important public content to improve your skill on the products and concepts used in this solution.</p>
+<h2 id="architecture-discussion-on-hybrid-integration">Architecture discussion on hybrid integration:</h2>
+<ul>
+<li>How to ensure your integration landscape keeps pace with digital transformation article: <a href="https://www.ibm.com/developerworks/library/mw-1606-clark-trs/index.html">The evolving hybrid integration reference architecture</a></li>
+<li>How the 12 factors to measure component for cloud native app and micro service apply to hybrid integration: <a href="https://developer.ibm.com/integration/blog/2017/04/16/12-factor-integration/">The 12 factors integration</a></li>
+<li><a href="https://www.ibm.com/developerworks/library/mw-1708-bornert/index.html">Achieving lightweight integration with IBM Integration Bus</a></li>
+<li><a href="http://www.redbooks.ibm.com/redbooks/pdfs/sg248351.pdf">Redbook: "A practical Guide for IBM Hybrid Integration Platform"</a></li>
+</ul>
+<h2 id="product-related-knowledge-based">Product related knowledge based:</h2>
+<h3 id="integration">Integration</h3>
+<ul>
+<li><a href="https://www.ibm.com/developerworks/cloud/library/cl-lightweight-integration-1/index.html">The fate of ESB- Integration pattern</a></li>
+<li><a href="https://www.ibm.com/developerworks/cloud/library/cl-lightweight-integration-2/index.html">Moving to lightweight integration</a></li>
+</ul>
+<h3 id="api-connect">API Connect</h3>
+<ul>
+<li><a href="https://www.ibm.com/support/knowledgecenter/en/SSMNED_5.0.0/mapfiles/getting_started.html">API Connect knowledge center</a></li>
+</ul>
+<h3 id="ibm-integration-bus">IBM Integration Bus</h3>
+<ul>
+<li><a href="https://www.ibm.com/support/knowledgecenter/en/SSMKHH_10.0.0/com.ibm.etools.mft.doc/bi12000_.htm">IIB developing integration solution - knowledge center</a></li>
+<li><a href="https://developer.ibm.com/integration/docs/ibm-integration-bus/tutorials/">Tutorials on IIB</a></li>
+<li><a href="https://github.com/ot4i/iib-docker">View the IBM Integration Bus Dockerfile repository on Github</a></li>
+<li><a href="https://developer.ibm.com/integration/blog/2017/04/04/ibm-integration-bus-docker-tips-tricks/">Learn more about IBM Integration Bus Docker Tips and Tricks</a></li>
+<li><a href="https://developer.ibm.com/integration/blog/2017/08/21/first-look-using-ibm-integration-bus-kubernetes/">Learn more about IBM Integration Bus and Kubernetes</a></li>
+<li><a href="https://developer.ibm.com/integration/blog/2016/11/18/run-ibm-integration-bus-in-bluemix-in-3-easy-steps/">Learn more about running IBM Integration Bus in the Bluemix Container Service</a></li>
+<li><a href="https://www.ibm.com/support/knowledgecenter/en/SSMKHH_10.0.0/com.ibm.etools.msgbroker.helphome.doc/help_home_msgbroker.htm">Learn more about IBM Integration Bus</a></li>
+<li><a href="https://www.ibm.com/support/knowledgecenter/en/SSMKHH_10.0.0/com.ibm.etools.mft.doc/bz91300_.htm">Learn more about IBM Integration Bus and Docker</a></li>
+<li><a href="https://developer.ibm.com/integration/blog/2017/03/31/lightweight-integration-iib/">Lightweight integration: Using microservices principles in integration</a></li>
+</ul>
+<h3 id="kubernetes-compendium">Kubernetes Compendium</h3>
+<ul>
+<li><a href="https://kubernetes.io">Official site</a></li>
+<li><a href="https://kubernetes.io/docs/concepts/">Kubernetes concepts</a></li>
+<li><a href="https://docs.helm.sh/architecture/">Helm and Kubernetes package management</a></li>
+<li><a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/scale-intro/">Very good tutorial from kubernetes web site</a></li>
+<li><a href="https://cloudcontent.mybluemix.net/devops/method/tutorials/kubernetes">Garage method tutorial on Kubernetes</a></li>
+</ul>
+<h3 id="ibm-cloud-private-compendium">IBM Cloud Private Compendium</h3>
+<ul>
+<li><a href="https://www.ibm.com/developerworks/community/wikis/home?lang=en#!/wiki/W1559b1be149d_43b0_881e_9783f38faaff">IBM technical community</a></li>
+<li><a href="https://www.ibm.com/developerworks/community/blogs/fe25b4ef-ea6a-4d86-a629-6f87ccf4649e?lang=en">ICP blog</a></li>
+<li><a href="https://github.com/ibm-cloud-architecture/refarch-cognitive/blob/master/docs/ICP/README.txt">Our install ICP 2.1 Community edition on ubuntu VM</a></li>
+<li><a href="https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Installing_ICp_on_prem.md">ICP Enterprise deployment tutorial</a></li>
+<li><a href="https://github.com/ibm-cloud-architecture/refarch-integration/blob/master/docs/icp/build-helm-rep.md">Build your own helm repository</a></li>
+</ul>
+<h3 id="ibm-operational-decision-management">IBM Operational Decision management</h3>
+<ul>
+<li><a href="https://github.com/ODMDev/odm-docker-kubernetes">Kubernetes helm charts for ODM</a></li>
+<li><a href="https://developer.ibm.com/odm/2017/10/02/odm-docker-kubernetes-ibm-cloud-private/">ODM on Docker, Kubernetes, and IBM Cloud Private</a></li>
+</ul>
+<h3 id="secure-gateway">Secure Gateway</h3>
+<ul>
+<li><a href="https://console.bluemix.net/docs/services/SecureGateway/secure_gateway.html">IBM Secure Gateway - IBM Cloud documentation</a></li>
+</ul>
+<h3 id="open-source-used">Open source used</h3>
+<ul>
+<li><a href="https://angular.io/tutorial">Angular 4 tutorial from the angular site</a> this tutorial is updated with new release and covers the most important features used in our angular app.</li>
+<li><a href="https://docs.helm.sh/using_helm/#quickstart-guide">Helm getting started</a></li>
+<li><a href="https://kubernetes.io/docs/tutorials/">Kubernetes tutorials</a>: you need to study basic, 101, 201 at least.</li>
+</ul>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../devops/" title="Apply CI/CD for integration solution" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Apply CI/CD for integration solution
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../icp/" title="Main summary" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Main summary
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.b806dc00.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+    
+  </body>
+</html>

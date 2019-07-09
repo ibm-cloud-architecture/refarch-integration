@@ -1,0 +1,1052 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.0.1">
+    
+    
+      
+        <title>Service mesh - Hybrid Integration Reference Architecture</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.982221ab.css">
+      
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.1f0bcf2b.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#microservice-mesh" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="Hybrid Integration Reference Architecture" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Hybrid Integration Reference Architecture
+            </span>
+            <span class="md-header-nav__topic">
+              Service mesh
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/ibm-cloud-architecture/refarch-integration/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="Hybrid Integration Reference Architecture" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Hybrid Integration Reference Architecture
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/ibm-cloud-architecture/refarch-integration/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Hybrid Cloud Integration introduction" class="md-nav__link">
+      Hybrid Cloud Integration introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../hybrid-ref-arch/" title="Hybrid Cloud Integration reference architecture" class="md-nav__link">
+      Hybrid Cloud Integration reference architecture
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../buildrun/" title="DevOps Build, deploy and run" class="md-nav__link">
+      DevOps Build, deploy and run
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Doing MQ, DB2 and JEE on WAS lift and shift to IBM Cloud
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Doing MQ, DB2 and JEE on WAS lift and shift to IBM Cloud
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../toSaaS/readme/" title="Context" class="md-nav__link">
+      Context
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../toSaaS/twas/readme/" title="Tarditional WAS app" class="md-nav__link">
+      Tarditional WAS app
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../nfr/" title="Non-functional requirements" class="md-nav__link">
+      Non-functional requirements
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../devops/" title="Apply CI/CD for integration solution" class="md-nav__link">
+      Apply CI/CD for integration solution
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../compendium/" title="Hybrid Cloud Compendium" class="md-nav__link">
+      Hybrid Cloud Compendium
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      IBM Cloud Private knowledge sharing
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        IBM Cloud Private knowledge sharing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../icp/" title="Main summary" class="md-nav__link">
+      Main summary
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../icp/icp-cli/" title="CLI summary" class="md-nav__link">
+      CLI summary
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../icp/icp-integration/" title="Integration on ICP" class="md-nav__link">
+      Integration on ICP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../icp/build-helm-rep/" title="Build your own helm repository" class="md-nav__link">
+      Build your own helm repository
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../icp/dev-env-install/" title="Install a dev cluster" class="md-nav__link">
+      Install a dev cluster
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../icp/faq/" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../icp/troubleshooting/" title="Troubleshouting" class="md-nav__link">
+      Troubleshouting
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Service mesh
+      </label>
+    
+    <a href="./" title="Service mesh" class="md-nav__link md-nav__link--active">
+      Service mesh
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#definitions" title="Definitions" class="md-nav__link">
+    Definitions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#context" title="Context" class="md-nav__link">
+    Context
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service-routing" title="Service routing" class="md-nav__link">
+    Service routing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service-exposition" title="Service exposition" class="md-nav__link">
+    Service exposition
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service-discovery" title="Service discovery" class="md-nav__link">
+    Service discovery
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#istio" title="ISTIO" class="md-nav__link">
+    ISTIO
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#icp-installation" title="ICP installation" class="md-nav__link">
+    ICP installation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-your-solution" title="Installing your solution" class="md-nav__link">
+    Installing your solution
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#more-reading" title="More reading" class="md-nav__link">
+    More reading
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asynchronous-loosely-coupled-solution-using-events" title="Asynchronous loosely coupled solution using events" class="md-nav__link">
+    Asynchronous loosely coupled solution using events
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../istio/readme/" title="Istio introduction" class="md-nav__link">
+      Istio introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../csmo/" title="CSMO" class="md-nav__link">
+      CSMO
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Security
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        Security
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../TLS/" title="TLS" class="md-nav__link">
+      TLS
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../journey/" title="Skill Journey" class="md-nav__link">
+      Skill Journey
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#definitions" title="Definitions" class="md-nav__link">
+    Definitions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#context" title="Context" class="md-nav__link">
+    Context
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service-routing" title="Service routing" class="md-nav__link">
+    Service routing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service-exposition" title="Service exposition" class="md-nav__link">
+    Service exposition
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#service-discovery" title="Service discovery" class="md-nav__link">
+    Service discovery
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#istio" title="ISTIO" class="md-nav__link">
+    ISTIO
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#icp-installation" title="ICP installation" class="md-nav__link">
+    ICP installation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-your-solution" title="Installing your solution" class="md-nav__link">
+    Installing your solution
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#more-reading" title="More reading" class="md-nav__link">
+    More reading
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asynchronous-loosely-coupled-solution-using-events" title="Asynchronous loosely coupled solution using events" class="md-nav__link">
+    Asynchronous loosely coupled solution using events
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/ibm-cloud-architecture/refarch-integration/edit/master/docs/service-mesh/readme.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="microservice-mesh">Microservice mesh</h1>
+<p><em>Update 08/22/2018</em>  </p>
+<p>In this note we are grouping the studies around microservice to microservice communication with Kubernetes deployment. We are addressing:</p>
+<ul>
+<li>how ingress controller helps inside Kubernetes</li>
+<li>how API gateway helps for API management and service integration</li>
+<li>how to expose service in hybrid cloud</li>
+<li>how to discover service</li>
+</ul>
+<p>All come back to the requirements, skill set and fit to purpose.</p>
+<h2 id="definitions">Definitions</h2>
+<p>Service meshes provide visibility, resiliency, traffic, and security control of distributed application services. They deliver policy-based networking for microservices in the contraints of virtual network and continuous topology updates. Externalizing, via declarations, the logic to support network potential issues, like resiliency, simplifies dramatically developers work.   </p>
+<p>Some misconception to clarify around microservice and APIs:</p>
+<ul>
+<li>microservices are not fine grained web services</li>
+<li>APIs are not equivalent to microservices</li>
+<li>microservices are not implementation of APIs</li>
+</ul>
+<p>API is an interface, a way to make a request to get or change data in an application. In modern use API refers to REST web APIs using HTTP protocol, with JSON format (sometime XML is still used). Interface decouples the caller from the implementation. The caller has no idea how it is implemented.</p>
+<p>A microservice is in fact a component. micro refers to the granularity of the component not of the exposed interface. The following diagram illustrates all those concepts.</p>
+<p><img alt="" src="../ms-apis.png" /></p>
+<p>We encourage you to go to read <a href="https://developer.ibm.com/integration/blog">integration design and architecture series</a>.</p>
+<p>Container orchestration like Kubernetes are mainly doing application scheduling, cluster management, resource provisioning, platform and workload monitoring and service discovery.</p>
+<p>When application solutions are growing in size and complexity, you need to addres the following items:</p>
+<ul>
+<li>visibility on how traffic is flowing between microservice, how routing is done between microservice based on requests contained or the origination point or the end point</li>
+<li>how to support resiliency by handling failure in a graceful manner</li>
+<li>how to ensure security with identity assertion</li>
+<li>how to enforce security policy   </li>
+</ul>
+<p>which defined the requirements for service mesh.</p>
+<p>Service mesh architecture defines a data and control planes:</p>
+<ul>
+<li>Control plane: supports policy and configuration for services in the mesh, and provides aggregation for telemetry. It has API and CLI to centralize control to the services deployed. In Kubernetes control planes are deployed in a system namespace.</li>
+<li>Data plane: handles the actual inspection, transiting, and routing of network traffic. It is responsible for health checking, load balancing, authentication, authorization, inbound (ingress) and outbound (egress) cluster network traffic.</li>
+</ul>
+<p>Applications / microservices are unaware of data plane.</p>
+<h2 id="context">Context</h2>
+<p>Traditional modern architecture involves having different components exposing reusable APIs, addressing different channels (mobile, single page application, traditional server pages or B2B apps), consuming APIs (mobile APIs, back end for front end, shared common apis like authentication, authorization,...) and backend services addressing reusable business services:</p>
+<p><img alt="" src="../current-arch-compo.png" /></p>
+<p>API management can be added via API gateway. This is a distributed application with cross related communication channels, where any changes to the service interface characteristics impact any of the components.</p>
+<p>Moving to microservices architecture style adds more communication challenges and devops complexity but provides a lot of business values such as:
+<em> rapid deployment of new business capabilities, co-evolving in parallel of other services.
+</em> focusing on business domain with clear ownership of the business function and feature roadmap
+<em> better operation procedure, automated, and with easy rollout and continuous delivery.
+</em> A/B testing to assess how new feature deployed improve business operations
+* Improve resiliency by deploying on multi language cluster</p>
+<p>As an example we can use the <a href="https://github.com/ibm-cloud-architecture/refarch-asset-analytics">following predictive maintenance asset solution</a> with the following capabilities to support:</p>
+<ul>
+<li>user authentication</li>
+<li>user management: add / delete new user</li>
+<li>user self registration, reset password</li>
+<li>user permission control</li>
+<li>user profile</li>
+<li>asset management</li>
+<li>risk assessment service</li>
+</ul>
+<p>Each could be grouped by business domain like the user management, asset management, and application access control. So domain separation can be a good microservice boundary. But if the number of user reach millions then we may need to optimize the runtime processing of reading user credential, and scale the service differently, leading to a service map like the diagram below, where runtime and management are separated services.</p>
+<p><img alt="" src="../ms-view.png" />  </p>
+<p>All of these still does not address the fact that data are distributed and even more with microservices owning their data persistence. As developers and architects we still have to address the following data integrity problems:</p>
+<ul>
+<li>two phases commit</li>
+<li>compensating operation</li>
+<li>eventual data consistency: some microservice updating data may share those updates with other microservices.</li>
+<li>Data aggregation: adding new views on data, owned by a microservice, to support new aggregates. Examples are preparing data view for machine learning modeling, analytics, or business intelligence...</li>
+</ul>
+<p>From the previous microservice allocation we can see the needs to propagate data update between services. Adding or unsubscribing a user involves updating the asset the user own and the authentication runtime service:</p>
+<p><img alt="" src="../data-consistency.png" />  </p>
+<p>Adding a new application changes the authorization runtime service.</p>
+<p>We are now looking at the following questions:</p>
+<ul>
+<li>how does webapp access APIs for their main service, of back end for front end service.</li>
+<li>how does deployed microservice access other service: discover and access?</li>
+<li>How data consistency can be ensured?</li>
+<li>is there a simpler way to manage cross microservice dependency?</li>
+</ul>
+<p>The answers depend on the existing infrastructure and environment, and deployment needs.</p>
+<h2 id="service-routing">Service routing</h2>
+<p>We have to dissociate intra-cluster communication versus inter clusters or cluster to external services. Without getting into too much detail of IP routing within Kubernetes some important elements of the cluster are important to remember:
+<em> microservices are packaged as docker container and expose port. When deployed they run in a pod within a node (physical or virtual machine)
+</em> containers can talk to other containers only if they are on the same machine, or when they have exposed port.
+* Kubernetes is configured with a large flat subnet (e.g. 172.30.0.0/16) which is used for internal application traffic inside of the cluster. Each worker node in the Kubernetes cluster is assigned one or more non-overlapping slices of this network, coordinated by the Kubernetes master node.
+When a container is created in the cluster, it gets assigned to a worker node and is given an IP address from the slice of the subnet for the worker node.</p>
+<p><img alt="" src="../kube-pod-network.png" />   </p>
+<ul>
+<li>Kube-proxy intercepts and controls where to forward the traffic, either to another worker node running your destination pod, or outside of the cluster</li>
+<li>Kube proxy watches the API Server on the Master Node for the addition and removal of Services endpoints. It configures the IPtable rules to capture the traffic for its ClusterIP and forwards it to one of the endpoints.</li>
+<li>Worker nodes have internal DNS service and load balancer</li>
+</ul>
+<p>Within Kubernetes, Ingress is a service that balances network traffic workloads in your cluster by forwarding public or private requests to your apps. You use ingress when you need to support HTTP, HTTPS, TLS, load balancing, expose app outside of the cluster, and custom routing rules...</p>
+<p>One ingress resource is required by namespace. So if microservices are in the same namespace you can define a domain name for those services (e.g. assetmanagement.greencompute.ibmcase.com) and defined path for each service:</p>
+<p><div class="codehilite"><pre><span></span><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">extensions/v1beta1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Ingress</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">assetmanagement</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">rules</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">assetmanagement.greencompute.ibmcase.com</span>
+      <span class="nt">http</span><span class="p">:</span>
+        <span class="nt">paths</span><span class="p">:</span>
+          <span class="p p-Indicator">-</span> <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/assetconsumer</span>
+            <span class="nt">backend</span><span class="p">:</span>
+              <span class="nt">serviceName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">asset-consumer-svc</span>
+              <span class="nt">servicePort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8080</span>
+          <span class="p p-Indicator">-</span> <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/assetdashboard</span>
+            <span class="nt">backend</span><span class="p">:</span>
+              <span class="nt">serviceName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">asset-dashboard-bff-svc</span>
+              <span class="nt">servicePort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8080</span>
+          <span class="p p-Indicator">-</span> <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/assetmgrms</span>
+            <span class="nt">backend</span><span class="p">:</span>
+              <span class="nt">serviceName</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">asset-mgr-ms-svc</span>
+              <span class="nt">servicePort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8080</span>
+</pre></div>
+The backend for front end component, the asset manager microservice and the asset consumer components are exposed in the same domain.
+The <code>serviceName</code> matches the service exposed for each components.
+The following diagram presents how an external application accesses deployed microservice within Kubernetes pod.</p>
+<p>The following diagram shows how Ingress directs communication from the internet to a deployed microservice:</p>
+<p><img alt="" src="../ingress-routing.png" /></p>
+<ol>
+<li>A user sends a request to your app by accessing your app's URL. Using DNS name abstracts the application from the underlying infrastructure. Inter clusters microservice to microservice should use the same approach</li>
+<li>A DNS system service resolves the hostname in the URL to the portable public IP address of the load balancer</li>
+<li>Based on the resolved IP address, the client sends the request to the load balancer service that exposes the Application Load Balancer (ALB)</li>
+<li>The ALB checks if a routing rule for the app path in the cluster exists. If a matching rule is found, the request is forwarded according to the rules that you defined in the Ingress resource to the pod where the app is deployed. If multiple app instances are deployed in the cluster, the ALB load balances the requests between the app pods. To also load balance incoming HTTPS connections, you can configure the ALB to you can use your own TLS certificate to decrypt the network traffic.</li>
+<li>Microservice to microservice can use this DNS name to communicate between service.</li>
+</ol>
+<p>Using Ingress, the global load balancer can support parallel, cross region, clusters.</p>
+<h2 id="service-exposition">Service exposition</h2>
+<p>There is an architecture style focusing on APIs which proposes to have different SLA and semantic for external, internet facing API versus internal back end APIs only exposed within intranet. <a href="../hybrid-itg-platform.md">This article</a>  presents using different API gateways to support this architecture.</p>
+<p>Backend data services are not exposed directly to internet. API Gateway provides a secure end point for external web app to access those business functions.</p>
+<p>So the decisions on how to expose service are linked to:</p>
+<ul>
+<li>do you need to do API management</li>
+<li>do you need to secure APIs</li>
+<li>do you need to expose to internet</li>
+<li>do you need to support other protocol then HTTP</li>
+<li>do you need to have multiple instance of the application</li>
+</ul>
+<p>When deploying a microservice to Kubernetes it is recommended to use Ingress rule as presented above.. The following yaml file exposes the BFF service using ClusterIP:</p>
+<div class="codehilite"><pre><span></span><span class="nt">apiVersion</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Service</span>
+<span class="nt">metadata</span><span class="p">:</span>
+  <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">asset-consumer-svc</span>
+  <span class="nt">labels</span><span class="p">:</span>
+    <span class="nt">chart</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">asset-consumer</span>
+<span class="nt">spec</span><span class="p">:</span>
+  <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ClusterIP</span>
+  <span class="nt">ports</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">port</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8080</span>
+    <span class="nt">targetPort</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">8080</span>
+    <span class="nt">protocol</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">TCP</span>
+    <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">asset-consumer-svc</span>
+  <span class="nt">selector</span><span class="p">:</span>
+    <span class="nt">app</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">asset-consumer</span>
+</pre></div>
+
+<h2 id="service-discovery">Service discovery</h2>
+<p>When deploying on Kubernetes cluster, microservices use the DNS lookup to discover deployed microservice.</p>
+<h2 id="istio">ISTIO</h2>
+<p><a href="https://istio.io/">ISTIO</a> provides an easy way to create a network of deployed services with load balancing, service-to-service authentication, traffic flow management, monitoring, etc...
+By deploying a special sidecar proxy (called Envoy) throughout your environment, all network communication between microservices is intercepted and controlled by ISTIO control panel.</p>
+<p>The control plane manages the overall network infrastructure and enforces the policy and traffic rules.</p>
+<p>To deploy ISTIO to IBM cloud private you can access the ICP catalog and search for istio. But as it is the version 0.7 we recommend to do your own installation using istio.io download page to get the last release.</p>
+<h3 id="icp-installation">ICP installation</h3>
+<p>Here is a quick summary of the steps:
+<div class="codehilite"><pre><span></span>#1- Download istio latest versions
+#2- Modify your PATH to get access to istioctl CLI tool. Verify with
+$ istioctl version
+#3- Connect to your ICP cluster
+#4- Install istio without TLS security
+$ kubectl apply -f install/kubernetes/istio-demo.yaml
+#5- Verify the deployed services
+$ kubectl get svc -n istio-system
+</pre></div>
+<div class="codehilite"><pre><span></span>NAME                       TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)                                                                       AGE
+grafana                    ClusterIP      10.0.0.170   &lt;none&gt;        3000/TCP                                                                      16m
+istio-citadel              ClusterIP      10.0.0.123   &lt;none&gt;        8060/TCP,9093/TCP                                                             16m
+istio-egressgateway        ClusterIP      10.0.0.16    &lt;none&gt;        80/TCP,443/TCP                                                                16m
+istio-galley               ClusterIP      10.0.0.52    &lt;none&gt;        443/TCP                                                                       16m
+istio-grafana              ClusterIP      10.0.0.71    &lt;none&gt;        3000/TCP                                                                      14d
+istio-ingress              LoadBalancer   10.0.0.91    &lt;pending&gt;     80:31196/TCP,443:30664/TCP                                                    14d
+istio-mixer                ClusterIP      10.0.0.6     &lt;none&gt;        9091/TCP,15004/TCP,9093/TCP,9094/TCP,9102/TCP,9125/UDP,42422/TCP              14d
+istio-pilot                ClusterIP      10.0.0.39    &lt;none&gt;        15003/TCP,15005/TCP,15007/TCP,15010/TCP,15011/TCP,8080/TCP,9093/TCP,443/TCP   14d
+istio-policy               ClusterIP      10.0.0.17    &lt;none&gt;        9091/TCP,15004/TCP,9093/TCP                                                   16m
+istio-security             ClusterIP      10.0.0.162   &lt;none&gt;        8060/TCP                                                                      14d
+istio-servicegraph         ClusterIP      10.0.0.65    &lt;none&gt;        8088/TCP                                                                      14d
+istio-sidecar-injector     ClusterIP      10.0.0.195   &lt;none&gt;        443/TCP                                                                       14d
+istio-statsd-prom-bridge   ClusterIP      10.0.0.37    &lt;none&gt;        9102/TCP,9125/UDP                                                             16m
+istio-telemetry            ClusterIP      10.0.0.27    &lt;none&gt;        9091/TCP,15004/TCP,9093/TCP,42422/TCP                                         16m
+istio-zipkin               ClusterIP      10.0.0.96    &lt;none&gt;        9411/TCP                                                                      14d
+prometheus                 ClusterIP      10.0.0.118   &lt;none&gt;        9090/TCP                                                                      14d
+servicegraph               ClusterIP      10.0.0.7     &lt;none&gt;        8088/TCP                                                                      16m
+tracing                    ClusterIP      10.0.0.66    &lt;none&gt;        80/TCP                                                                        16m
+zipkin                     ClusterIP      10.0.0.176   &lt;none&gt;        9411/TCP                                                                      16m
+</pre></div>
+The default installation configuration does not install sidecar-injector, Prometheus, Grafana, service-graph, zipkin but istio-proxy, Ingress, Mixer, Pilot.</p>
+<p><img alt="" src="../istio-icp.png" /></p>
+<h3 id="installing-your-solution">Installing your solution</h3>
+<p>Be sure your application is using HTTP 1.1 or 2.0.
+To create a service mesh with Istio, you update the deployment of the pods to add the Istio Proxy (based on the Lyft Envoy Proxy) as a side car to each pod. With the deployment of <code>istio-sidecar-injector</code> this is done automatically for any container deployed within a namespace where istio is enabled. Here is a command to do so:
+<code>kubectl label namespace greencompute istio-injection=enabled</code></p>
+<p>We are summarizing the support to Istio for a specific solution in <a href="">this article</a>.</p>
+<h3 id="more-reading">More reading</h3>
+<p><a href="https://github.com/IBM/istio101/tree/master/workshop">Istio and Kubernetes Workshop</a>
+<a href="https://developer.ibm.com/code/patterns/manage-microservices-traffic-using-istio/">Advanced traffic management with ISTIO</a>
+<a href="https://github.com/szihai/istio-workshop">Istio workshop for IBM Cloud Container service</a>
+<a href="../istio/readme#faq"> Our Istio FAQ</a></p>
+<h2 id="asynchronous-loosely-coupled-solution-using-events">Asynchronous loosely coupled solution using events</h2>
+<p>If we change of paradigm and use a messaging approach or better an event approach of the data update requirements, we will implement a loosly coupled solution with a pub/sub communication protocol. We need to think about the activities that apply within each service and how they can be of interest to other components. Internal microservice tasks are becoming facts about something happened and those facts may be published as events for others to consume. The first level of refactoring may become:  </p>
+<p><img alt="" src="../pub-events.png" /></p>
+<p>An event is a fact that happens in the past and carry all the data needed, and it becomes a source of record. It becoming consistent if it is played in a messaging backbone via topics.</p>
+<p><img alt="" src="../message-topics.png" />  </p>
+<p>But the persistence of data can be externalized to consumer and then simplify the architecture:</p>
+<p><img alt="" src="../message-topics2.png" /></p>
+<p>Then we can use the history of the persisted events to add features not address before, and outside of the direct scope of a microservice. For example to compute the number of users added last month, just a query on the users topic will get the answer: no or very limited coding needed.</p>
+<p>We recommend to go deeper in event driven architecture <a href="https://ibm-cloud-architecture.github.io/refarch-eda/">with this site</a></p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../../icp/troubleshooting/" title="Troubleshouting" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Troubleshouting
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../istio/readme/" title="Istio introduction" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Istio introduction
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.b806dc00.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+    
+  </body>
+</html>

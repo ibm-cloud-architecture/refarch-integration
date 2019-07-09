@@ -1,0 +1,23 @@
+apiVersion: v1
+entries:
+  browncompute-inventory-dal:
+  - apiVersion: v1
+    created: 2018-04-30T11:24:57.039712-07:00
+    description: A Helm chart to run Brown Compute Inventory Data Access Layer on
+      Kubernetes
+    digest: ddf996e1a19d5dbd2dff1baad813eec89543f6c8122b79fc129465c9fa9377c0
+    home: https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal
+    name: browncompute-inventory-dal
+    urls:
+    - browncompute-inventory-dal-0.0.5.tgz
+    version: 0.0.5
+  green-customerms:
+  - apiVersion: v1
+    created: 2018-04-30T11:24:57.039998-07:00
+    description: Customer, account and purchase order micro - service for green compute
+    digest: 734b042770d70a30ea4fc82e95309b2e8eb78d2706458d8bee97db4d2b11404d
+    name: green-customerms
+    urls:
+    - green-customerms-0.0.6.tgz
+    version: 0.0.6
+generated: 2018-04-30T11:24:57.0384-07:00

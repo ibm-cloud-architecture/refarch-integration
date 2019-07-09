@@ -1,0 +1,1017 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.0.1">
+    
+    
+      
+        <title>Troubleshouting - Hybrid Integration Reference Architecture</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.982221ab.css">
+      
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.1f0bcf2b.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#troubleshouting-in-icp" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../.." title="Hybrid Integration Reference Architecture" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Hybrid Integration Reference Architecture
+            </span>
+            <span class="md-header-nav__topic">
+              Troubleshouting
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/ibm-cloud-architecture/refarch-integration/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../.." title="Hybrid Integration Reference Architecture" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Hybrid Integration Reference Architecture
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/ibm-cloud-architecture/refarch-integration/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Hybrid Cloud Integration introduction" class="md-nav__link">
+      Hybrid Cloud Integration introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../hybrid-ref-arch/" title="Hybrid Cloud Integration reference architecture" class="md-nav__link">
+      Hybrid Cloud Integration reference architecture
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../buildrun/" title="DevOps Build, deploy and run" class="md-nav__link">
+      DevOps Build, deploy and run
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Doing MQ, DB2 and JEE on WAS lift and shift to IBM Cloud
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Doing MQ, DB2 and JEE on WAS lift and shift to IBM Cloud
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../toSaaS/readme/" title="Context" class="md-nav__link">
+      Context
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../toSaaS/twas/readme/" title="Tarditional WAS app" class="md-nav__link">
+      Tarditional WAS app
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../nfr/" title="Non-functional requirements" class="md-nav__link">
+      Non-functional requirements
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../devops/" title="Apply CI/CD for integration solution" class="md-nav__link">
+      Apply CI/CD for integration solution
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../compendium/" title="Hybrid Cloud Compendium" class="md-nav__link">
+      Hybrid Cloud Compendium
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" checked>
+    
+    <label class="md-nav__link" for="nav-8">
+      IBM Cloud Private knowledge sharing
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        IBM Cloud Private knowledge sharing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../" title="Main summary" class="md-nav__link">
+      Main summary
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp-cli/" title="CLI summary" class="md-nav__link">
+      CLI summary
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../icp-integration/" title="Integration on ICP" class="md-nav__link">
+      Integration on ICP
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../build-helm-rep/" title="Build your own helm repository" class="md-nav__link">
+      Build your own helm repository
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dev-env-install/" title="Install a dev cluster" class="md-nav__link">
+      Install a dev cluster
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../faq/" title="FAQ" class="md-nav__link">
+      FAQ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" title="Troubleshouting" class="md-nav__link md-nav__link--active">
+      Troubleshouting
+    </a>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../service-mesh/readme/" title="Service mesh" class="md-nav__link">
+      Service mesh
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../istio/readme/" title="Istio introduction" class="md-nav__link">
+      Istio introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../csmo/" title="CSMO" class="md-nav__link">
+      CSMO
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-12" type="checkbox" id="nav-12">
+    
+    <label class="md-nav__link" for="nav-12">
+      Security
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-12">
+        Security
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../TLS/" title="TLS" class="md-nav__link">
+      TLS
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../journey/" title="Skill Journey" class="md-nav__link">
+      Skill Journey
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/ibm-cloud-architecture/refarch-integration/edit/master/docs/icp/troubleshooting.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="troubleshouting-in-icp">Troubleshouting in ICP</h1>
+<p>This note regroups a set of things we have met during our work on kubernetes and ICP.</p>
+<ul>
+<li>The Kubernetes <a href="https://kubernetes.io/docs/getting-started-guides/ubuntu/troubleshooting/">official troubleshooting docs</a></li>
+</ul>
+<h1 id="table-of-contents">Table of contents</h1>
+<ul>
+<li><a href="#installation-specifics">Installation specifics</a></li>
+<li><a href="#access">Access during development</a></li>
+<li><a href="#deployment">Deployment</a></li>
+<li><a href="#investigation">Investigation</a></li>
+</ul>
+<h1 id="installation-specifics">Installation specifics</h1>
+<p>The installation of the ICP 2.1.0.x is <a href="https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.2/app_center/create_helm_cli.html">here</a></p>
+<h2 id="error-hostname-not-resolved">Error: hostname not resolved</h2>
+<p><div class="codehilite"><pre><span></span> fatal: [...] =&gt; Failed to connect to the host via ssh: ssh: Could not resolve hostname ...:
+ Name or service not known
+</pre></div>
+  * verify the hostname match the ip address in /etc/hosts
+  * be sure to start the installation from the folder with the hosts file. It should be cluster or modify $(pwd) to $(pwd)/cluster</p>
+<h2 id="ssh-connect-failure">ssh connect failure</h2>
+<p><div class="codehilite"><pre><span></span>fatal: [192.168.1.147] =&gt; Failed to connect to the host via ssh:
+Permission denied (publickey, password).
+</pre></div>
+This is a problem of accessing root user during the installation. Be sure to authorize root login, (ssh_config file), that the ssh_key is in the root user home/.ssh. See <a href="#ubuntu-specifics">above</a></p>
+<p>While login from a developer's laptop.
+<div class="codehilite"><pre><span></span>$ docker login cluster.icp:8500
+&gt;
+Error response from daemon: Get https://cluster.icp:8500/v2/: net/http:
+request canceled <span class="k">while</span> waiting <span class="k">for</span> connection <span class="o">(</span>Client.Timeout exceeded <span class="k">while</span> awaiting headers<span class="o">)</span>
+</pre></div>
+Be sure the cluster.icp hostname is mapped to the host's IP address in the local /etc/hosts</p>
+<h2 id="issues-during-upgrade-to-2101">Issues during upgrade to 2.1.0.1</h2>
+<p>The following issues are errors that may occur during the upgrade to ICP 2.1.0.1.</p>
+<h3 id="etcd-fails-to-start-during-upgrade">Etcd Fails to Start During Upgrade</h3>
+<p>While running the Kubernetes upgrade on the master node, Etcd fails to start. This is due to swap being enabled on the OS. Resolution is to disable swap.</p>
+<h4 id="error-message">Error Message</h4>
+<div class="codehilite"><pre><span></span>TASK [upgrade-master : Waiting for Etcd to start] ******************************
+fatal: [172.16.40.130]: FAILED! =&gt; {&quot;changed&quot;: false, &quot;elapsed&quot;: 600, &quot;failed&quot;: true, &quot;msg&quot;: &quot;The Etcd component failed to start. For more details, see https://ibm.biz/etcd-fails.&quot;}
+</pre></div>
+
+<h4 id="problem-determination-resolution">Problem Determination &amp; Resolution</h4>
+<ol>
+<li>Check Kubelet Logs to determine why node has not started.
+  <div class="codehilite"><pre><span></span>$ journalctl -u kubelet <span class="p">&amp;</span>&gt; kl.log
+</pre></div></li>
+<li>Open kl.log and check the error.
+  <div class="codehilite"><pre><span></span>Jan 18 11:42:32 green-icp-proxy hyperkube[31106]: Error: failed to run Kubelet: Running with swap on is not supported, please disable swap! or set --fail-swap-on flag to false. /proc/swaps contained: [Filename
+</pre></div></li>
+<li>Disable swap.
+  <div class="codehilite"><pre><span></span>$ swapoff -a
+$ sudo sed -i <span class="s1">&#39;/ swap / s/^\(.*\)$/#\1/g&#39;</span> /etc/fstab
+</pre></div></li>
+</ol>
+<h3 id="kubelet-install-fails-on-nodes">Kubelet Install Fails on Nodes</h3>
+<p>During the Kubernetes upgrade step, the installer attempts to install Kubelet on each of the nodes. The installation fails because the ibmcom/kubernetes:v1.8.3-ee image is not on the nodes. Resolution is to put the image on the nodes manually.</p>
+<h4 id="error-message_1">Error Message</h4>
+<div class="codehilite"><pre><span></span>TASK [upgrade-kubelet : Ensuring kubelet install dir exists] ****************************************************************************************************************************************
+ok: [172.16.40.135]
+FAILED - RETRYING: Copying hyperkube onto operating system (3 retries left).
+FAILED - RETRYING: Copying hyperkube onto operating system (2 retries left).
+FAILED - RETRYING: Copying hyperkube onto operating system (1 retries left).
+
+TASK [upgrade-kubelet : Copying hyperkube onto operating system] ************************************************************************************************************************************
+fatal: [172.16.40.135]: FAILED! =&gt; {&quot;attempts&quot;: 3, &quot;changed&quot;: true, &quot;cmd&quot;: &quot;docker run --rm -v /opt/kubernetes/:/data ibmcom/kubernetes:v1.8.3-ee sh -c &#39;cp -f /hyperkube /data/&#39;&quot;, &quot;delta&quot;: &quot;0:00:00.574937&quot;, &quot;end&quot;: &quot;2018-01-18 10:03:52.881064&quot;, &quot;failed&quot;: true, &quot;rc&quot;: 125, &quot;start&quot;: &quot;2018-01-18 10:03:52.306127&quot;, &quot;stderr&quot;: &quot;Unable to find image &#39;ibmcom/kubernetes:v1.8.3-ee&#39; locally\ndocker: Error response from daemon: manifest for ibmcom/kubernetes:v1.8.3-ee not found.\nSee &#39;docker run --help&#39;.&quot;, &quot;stderr_lines&quot;: [&quot;Unable to find image &#39;ibmcom/kubernetes:v1.8.3-ee&#39; locally&quot;, &quot;docker: Error response from daemon: manifest for ibmcom/kubernetes:v1.8.3-ee not found.&quot;, &quot;See &#39;docker run --help&#39;.&quot;], &quot;stdout&quot;: &quot;&quot;, &quot;stdout_lines&quot;: []}
+</pre></div>
+
+<h4 id="problem-determination-resolution_1">Problem Determination &amp; Resolution</h4>
+<ol>
+<li>
+<p>Log onto node and checked the local images. Notice that the ibmcom/kubernetes:v1.8.3-ee image is absent.
+  <div class="codehilite"><pre><span></span>$ docker image ls
+</pre></div></p>
+</li>
+<li>
+<p>Copy ibm-cloud-private-x86_64-2.1.0.1.tar.gz package to the node.</p>
+</li>
+<li>
+<p>Extract the images and load into Docker
+  <div class="codehilite"><pre><span></span>$ tar xf ibm-cloud-private-x86_64-2.1.0.1.tar.gz -O <span class="p">|</span> sudo docker load
+</pre></div></p>
+</li>
+</ol>
+<h1 id="access">Access</h1>
+<p>See <a href="https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.2/troubleshoot/cli_login.html">official faq on login</a></p>
+<h2 id="unknown-certificate-authority">Unknown certificate authority</h2>
+<div class="codehilite"><pre><span></span>$ docker login mycluster.icp:8500
+Error response from daemon: Get https://mycluster.icp:8500/v2/: x509: certificate signed by unknown authority
+</pre></div>
+
+<p>Go to your docker engine configuration and add the remote registry as an insecure one. On MAC you select the docker &gt; preferences &gt; Daemons&gt; Advanced menu and then add the remote master name
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;debug&quot;</span> <span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&quot;experimental&quot;</span> <span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&quot;insecure-registries&quot;</span> <span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;jbcluster.icp:8500&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;mycluster.icp:8500&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;cpscluster.icp:8500&quot;</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div></p>
+<p>You can also verify the certificates are in the logged user <strong>~/.docker</strong> folder. This folder should have a <strong>certs.d</strong> folder and one folder per remote server, you need to access. So the mycluster.icp:8500/ca.crt file needs to be copied there too.</p>
+<h2 id="not-able-to-login-to-docker-repository-running-on-master-node">Not able to login to docker repository running on master node</h2>
+<p>Different type of messages:</p>
+<h3 id="unknown-authority">Unknown authority</h3>
+<p>`Error response from daemon: Get https://greencluster.icp:8500/v2/: x509: certificate signed by unknown authority.
+You need to configure your local docker to accept to connect to insecure registries by adding an entry about the target host.
+On MACOS the Preferences&gt; Daemon &gt; Advanced   </p>
+<p><img alt="" src="../docker-pref-insecure-reg.png" /></p>
+<p>See also the note about accessing ICP private repository <a href="https://github.com/ibm-cloud-architecture/refarch-cognitive/tree/master/docs/ICP#access-to-icp-private-docker-repository">here</a> and how to copy SSL certificate to your local host.</p>
+<h3 id="x509-certificate-not-valid-for-a-specific-hostname">x509 certificate not valid for a specific hostname</h3>
+<p>Be sure the hostname you are using is in your /etc/hosts and you <code>docker login</code> to the good host.</p>
+<h2 id="could-not-connect-to-a-backend-service-try-again-later-e0004">Could not connect to a backend service. Try again later.   (E0004)</h2>
+<p>While trying to get cluster configuration with command like <code>bx pr cluster-config green2-cluster</code> got this message.</p>
+<p>The problem may come from a lack of disk space on / on the host OS of the active master node. To add space for the virtual machine with Ubuntu OS, you need to do the following:
+<em> Using the VM management tool like VMWare vsphere, add a new virtual disk
+</em> log as root user to host OS, and list the device with <code>ls /dev/sd*</code>. You may have a new sdc or sdb device. We assume sdc for now.
+* Stop docker and kubelet (it can take some time for docker to stop): <br />
+ ```bash
+systemctl stop docker
+systemctl stop kubelet
+<div class="codehilite"><pre><span></span>* See existing disks with `fdisk -l` and add a new disk with `fdisk /dev/sdc`. It should add a DOS partition and use the w option to write the changes.
+* Create different tables for the filesystem using `mkfs.ext4 /dev/sdc`
+* mount the newly created filesystem to a new folder:
+</pre></div>
+mkdir /mnt/disk
+mount /dev/sdc /mnt/disk
+<div class="codehilite"><pre><span></span><span class="o">*</span> <span class="n">Move</span> <span class="n">ICP</span> <span class="n">install</span> <span class="n">file</span> <span class="n">to</span> <span class="n">the</span> <span class="n">new</span> <span class="nl">disk</span><span class="p">:</span> <span class="err">`</span><span class="n">mv</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">ibm</span><span class="o">/</span><span class="n">cfc</span><span class="cm">/* /mnt/disk`</span>
+<span class="cm">* unmount but update the boot setting to get the disk back on reboot:</span>
+<span class="cm"> ```</span>
+<span class="cm"> umount /mnt/disk</span>
+<span class="cm"> vi /etc/fstab</span>
+<span class="cm">  /dev/sdc /opt/ibm/cfc ext4 default 1 3</span>
+<span class="cm"> ```</span>
+<span class="cm"> * restart docker and kubelet:</span>
+<span class="cm"> ```</span>
+<span class="cm"> systemctl start docker</span>
+<span class="cm"> systemctl start kubelet</span>
+<span class="cm"> ```</span>
+
+<span class="cm">See also [this note](https://kb.vmware.com/s/article/1003940)</span>
+
+<span class="cm">## 503 on a deployed app with ingress rule</span>
+
+<span class="cm">The following message &quot;503 Service Temporarily Unavailable&quot; may appear when accessing a pod via virtual hostname defined in Ingress rules. Be sure to understand the ingress role</span>
+
+<span class="cm">To investigate do the following:</span>
+<span class="cm">* Display the helm release, and verify the Ingress is specified and the hosts is specified, the IP address matches the proxy IP address in the cluster. In the service verify the type is ClusterIP and the ports map the exposed port in the docker image.  </span>
+<span class="cm">![](chart-view.png)</span>
+<span class="cm">* In the ingress verify the service name, the app selector are matching with the deployment parameters using Service &gt; Ingress -&gt; Edit:  </span>
+<span class="cm">![](edit-ingress.png)</span>
+
+<span class="cm">## Helm connection Issue: tls: bad certificate</span>
+
+<span class="cm">For the  *Error: remote error: tls: bad certificate*:  you need to be logged into the cluster and get the cluster config. The commands are:</span>
+</pre></div>
+bx pr login -a https://ext-demo.icp:8443 -u admin --skip-ssl-validation
+bx pr cluster-config mycluster
+<div class="codehilite"><pre><span></span>## Helm version not able to connect to Tiller.
+
+Error: cannot connect to Tiller
+With version 2.1.0.2, TLS is enforced to communicate with the server. So to get the version the command is `helm version --tls`. You need also to get the certificates for the cluster. The command ` bx pr cluster-config &lt;clustername&gt;` will add those certificate into `~/.helm`.
+
+## Helm incompatible version
+
+The error message may look like: `Error: incompatible versions client[v2.9.1] server[v2.7.3+icp]`
+Use the command to upgrade: `helm init --upgrade`
+
+### For using SSL between Tiller and Helm
+
+See [this note from github helm account](https://github.com/helm/helm/blob/master/docs/tiller_ssl.md)
+
+# Deployment
+
+## helm install command: User is not authorized to install release
+
+Be sure to enter the good namespace name in the install command.
+
+## Pod not getting the image from docker private repository
+
+Looking at the Events report from the pod view you got a message like:
+</pre></div>
+Failed to pull image “greencluster.icp:8500/greencompute/customerms:v0.0.7”: rpc error: code = Unknown desc = Error response from daemon: Get https://greencluster.icp:8500/v2/greencompute/customerms/manifests/v0.0.7: unauthorized: authentication required
+<div class="codehilite"><pre><span></span>The new version of k8s enforces the use of secret to access the docker private repository. So you need to add a secret, named for example regsecret, for the docker registry object.
+</pre></div>
+$ kubectl create secret docker-registry regsecret --docker-server=172.16.40.130 --docker-username=admin --docker-password=&lt;&gt; --docker-email=<email> --namespace=greencompute
+$ kubectl get secret regsecret --output=yaml --namespace=greencompute
+<div class="codehilite"><pre><span></span><span class="x">Then modify the deployment.yaml to reference this secret so the pod can access the repo during deployment:</span>
+
+<span class="x">```  spec:</span>
+<span class="x">    containers:</span>
+<span class="x">      - name: </span><span class="cp">{{</span> <span class="nv">.Chart.Name</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">        image: &quot;</span><span class="cp">{{</span> <span class="nv">.Values.image.repository</span> <span class="cp">}}</span><span class="x">:</span><span class="cp">{{</span> <span class="nv">.Values.image.tag</span> <span class="cp">}}</span><span class="x">&quot;</span>
+<span class="x">        ....</span>
+<span class="x">    imagePullSecrets:</span>
+<span class="x">      - name: regsecret</span>
+</pre></div></p>
+<h2 id="verify-deployment">Verify deployment</h2>
+<p>When you deploy a helm chart you can assess how the deployment went using the ICP admin console or the kubectl CLI.</p>
+<p>For the user interface, go to the <strong> Workloads &gt; Deployments </strong> menu to access the list of current deployments. Select the deployment and then the pod list.
+In the pod view select the events to assess how the pod deployment performed</p>
+<p><img alt="" src="../icp-pod-events.png" /></p>
+<p>and the log file in <em>Logs</em> menu</p>
+<p><img alt="" src="../icp-pod-logs.png" /></p>
+<p>Using kublectl to get the status of a deployment
+<div class="codehilite"><pre><span></span>$ kubectl get deployments --namespace browncompute
+&gt; NAME                          DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
+casewebportal-casewebportal   <span class="m">1</span>         <span class="m">1</span>         <span class="m">1</span>            <span class="m">1</span>           2d
+</pre></div>
+or a specific detail view:
+<div class="codehilite"><pre><span></span>kubectl describe deployment browncompute-dal-browncompute-dal
+</pre></div></p>
+<p>Get the logs and events
+<div class="codehilite"><pre><span></span>$  <span class="nb">export</span> <span class="nv">POD_NAME</span><span class="o">=</span><span class="k">$(</span>kubectl get pods --namespace browncompute -l <span class="s2">&quot;app=casewebportal-casewebportal&quot;</span> -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.items[0].metadata.name}&quot;</span><span class="k">)</span>
+
+$ kubectl logs <span class="nv">$POD_NAME</span> --namespace browncompute
+
+$  kubectl get events --namespace browncompute  --sort-by<span class="o">=</span><span class="s1">&#39;.metadata.creationTimestamp&#39;</span>
+</pre></div></p>
+<h2 id="accessing-an-app-expose-with-ingress-503-service-temporarily-unavailable">Accessing an app expose with Ingress: 503 Service Temporarily Unavailable</h2>
+<p>This could be due to ingress rule configuration issue. We need to assess if the pod is up and running
+<em> Get the pod name: <code>k get pods --namespace greencompute</code>
+</em> Verify no issue in the container itself: <code>k logs bc-inventory-dal-browncompute-dal-6bfb4f85b8-tdzjt --namespace greencompute</code></p>
+<p>if the service and ingress are well defined
+<em> Go to the service view or <code>kubectl get svc --namespace greencompute -o wide</code> verify the app-selector and service Type
+</em> Verify the service definition: <code>k describe svc bc-inventory-dal-browncompute-dal --namespace greencompute</code>
+* Get the ingress with <code>kubectl describe ingress bc-inventory-dal-browncompute-dal -n greencompute</code>
+ <div class="codehilite"><pre><span></span> <span class="n">Name</span><span class="p">:</span>             <span class="n">bc</span><span class="o">-</span><span class="n">inventory</span><span class="o">-</span><span class="n">dal</span><span class="o">-</span><span class="n">browncompute</span><span class="o">-</span><span class="n">dal</span>
+ <span class="n">Namespace</span><span class="p">:</span>        <span class="n">greencompute</span>
+ <span class="n">Address</span><span class="p">:</span>          <span class="mf">172.16</span><span class="p">.</span><span class="mf">40.131</span>
+ <span class="k">Default</span> <span class="n">backend</span><span class="p">:</span>  <span class="k">default</span><span class="o">-</span><span class="n">http</span><span class="o">-</span><span class="n">backend</span><span class="p">:</span><span class="mi">80</span> <span class="p">(</span><span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span><span class="p">)</span>
+ <span class="n">Rules</span><span class="p">:</span>
+   <span class="n">Host</span>            <span class="n">Path</span>  <span class="n">Backends</span>
+   <span class="o">----</span>            <span class="o">----</span>  <span class="o">--------</span>
+   <span class="n">dal</span><span class="p">.</span><span class="n">brown</span><span class="p">.</span><span class="n">case</span>  
+                   <span class="o">/</span>   <span class="n">bc</span><span class="o">-</span><span class="n">inventory</span><span class="o">-</span><span class="n">dal</span><span class="o">-</span><span class="n">browncompute</span><span class="o">-</span><span class="n">dal</span><span class="p">:</span><span class="n">http</span> <span class="p">(</span><span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span><span class="p">)</span>
+ <span class="n">Annotations</span><span class="p">:</span>
+ <span class="n">Events</span><span class="p">:</span>  <span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span>
+</pre></div>
+ this configuration looks good, but not... so what is happening?</p>
+<p>We need to look at the ingress-controller config:
+<em> Get the list of ingress controllers: <code>kubectl get pods -n kube-system</code>
+</em> Get the controller logs and verify if it receives the configuration when we deployed the service: <code>kubectl logs nginx-ingress-controller-gvcj5 -n kube-system</code>. Search for message with "Event ... Kind: Ingress..."</p>
+<ul>
+<li>Get NGINX configuration: <code>kubectl exec -it -n kube-system nginx-ingress-controller-gvcj5  cat /etc/nginx/nginx.conf</code>
+ Here is an extract
+ <div class="codehilite"><pre><span></span># start server dal.brown.case
+   server {
+       server_name dal.brown.case ;
+       listen 80;
+       listen [::]:80;
+       set $proxy_upstream_name &quot;-&quot;;
+       location / {
+
+           log_by_lua_block {
+
+           }
+
+           port_in_redirect off;
+
+           set $proxy_upstream_name &quot;&quot;;
+
+           set $namespace      &quot;greencompute&quot;;
+           set $ingress_name   &quot;bc-inventory-dal-browncompute-dal&quot;;
+           set $service_name   &quot;bc-inventory-dal-browncompute-dal&quot;;
+...
+     # No endpoints available for the request
+       return 503;
+</pre></div>
+As we can see the $proxy_upstream_name is not set and the configuration is enforcing returning 503. The ingress rule has an issue... the port is not a port number but a name ("bc-inventory-dal-browncompute-dal:http")... So editing the rule and change to port 9080 makes it work: <code>kubectl edit ing -n greencompute  bc-inventory-dal-browncompute-dal</code></li>
+</ul>
+<h2 id="error-while-getting-cluster-info">Error while getting cluster info</h2>
+<p>Try to do <code>kubectl cluster-info</code>: failed: error: you must be logged in to the server (the server has asked for the client to provide credentials):
+<em> Be sure to have use the settings from the 'configure client'.
+</em> Be sure the cluster name / IP address are mapped in /etc/hosts
+<em> Be sure to have a ca.crt into <code>~/.ssh</code> folder
+</em> Use the <code>bx pr login -a https://&lt;ipaddress&gt;:8443 -u admin</code> command to login to the cluster</p>
+<h3 id="default-backend-404">Default backend - 404</h3>
+<p>This error can occur if the ingress rules are not working well.</p>
+<ol>
+<li>Assess if ingress is well defined: virtual hostname, proxy address and status/age of running</li>
+</ol>
+<p>```
+  kubectl get ing --namespace browncompute</p>
+<blockquote>
+<p>NAME                                HOSTS               ADDRESS        PORTS     AGE
+browncompute-dal-browncompute-dal   dal.brown.case      172.16.40.31   80        59m
+casewebportal-casewebportal         portal.brown.case   172.16.40.31   80        10d
+  ```</p>
+</blockquote>
+<ol>
+<li>
+<p>Get the detail of ingress rules, and its mapping to the expected service, the path and host mapping.<br />
+  <div class="codehilite"><pre><span></span><span class="n">kubectl</span> <span class="n">describe</span> <span class="n">ingress</span> <span class="n">browncompute</span><span class="o">-</span><span class="n">dal</span><span class="o">-</span><span class="n">browncompute</span><span class="o">-</span><span class="n">dal</span>  <span class="o">--</span><span class="k">namespace</span> <span class="nn">browncompute</span>
+
+<span class="n">Name</span><span class="p">:</span>         <span class="n">browncompute</span><span class="o">-</span><span class="n">dal</span><span class="o">-</span><span class="n">browncompute</span><span class="o">-</span><span class="n">dal</span>
+<span class="n">Namespace</span><span class="p">:</span>        <span class="n">browncompute</span>
+<span class="n">Address</span><span class="p">:</span>      <span class="mf">172.16</span><span class="p">.</span><span class="mf">40.31</span>
+<span class="k">Default</span> <span class="n">backend</span><span class="p">:</span>  <span class="k">default</span><span class="o">-</span><span class="n">http</span><span class="o">-</span><span class="n">backend</span><span class="p">:</span><span class="mi">80</span> <span class="p">(</span><span class="mf">10.100</span><span class="p">.</span><span class="mf">221.196</span><span class="p">:</span><span class="mi">8080</span><span class="p">)</span>
+<span class="n">Rules</span><span class="p">:</span>
+ <span class="n">Host</span>         <span class="n">Path</span>    <span class="n">Backends</span>
+  <span class="o">----</span>            <span class="o">----</span>    <span class="o">--------</span>
+  <span class="n">dal</span><span class="p">.</span><span class="n">brown</span><span class="p">.</span><span class="n">case</span>
+              <span class="o">/</span>   <span class="n">inventorydalsvc</span><span class="p">:</span><span class="mi">9080</span> <span class="p">(</span><span class="o">&lt;</span><span class="n">none</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="n">Annotations</span><span class="p">:</span>
+<span class="n">No</span> <span class="n">events</span><span class="p">.</span>
+</pre></div></p>
+</li>
+<li>
+<p>If ingress rules are correct for your release, check to see if there are other releases sharing the same host rule. This can happen if the release was deleted without the ingress rule being removed.</p>
+</li>
+</ol>
+<div class="codehilite"><pre><span></span>kubectl get ing --all-namespaces=true
+
+NAMESPACE      NAME                                               HOSTS                 ADDRESS         PORTS     AGE
+greencompute   greencompute-green-customerapp-green-customerapp   greenapp.green.case   172.16.40.131   80        1h
+greencompute   greencustomerapp-green-customerapp                 greenapp.green.case   172.16.40.131   80        1h
+</pre></div>
+
+<p>Delete the conflicting ingress.
+  <div class="codehilite"><pre><span></span>kubectl delete ing greencompute-green-customerapp-green-customerapp
+
+ingress &quot;greencompute-green-customerapp-green-customerapp&quot; deleted
+</pre></div></p>
+<h2 id="icp-cluster-is-not-accessible-via-admin-console">ICP Cluster is not accessible via admin console</h2>
+<p>After restart of the ICP master node, the ICP cluster is inaccessible remotely.</p>
+<ol>
+<li>
+<p>Log into master node via SSH and check kube-system pods
+  <div class="codehilite"><pre><span></span>$ kubectl -s <span class="m">127</span>.0.0.1:8888 -n kube-system get pods
+</pre></div></p>
+</li>
+<li>
+<p>Check if any pods are in a bad state such as CrashLoopBackOff
+  <div class="codehilite"><pre><span></span>...
+k8s-master-172.16.40.130                                  2/3       CrashLoopBackOff   393        40s
+...
+</pre></div></p>
+</li>
+<li>
+<p>Check the containers for that pod
+  <div class="codehilite"><pre><span></span>$ kubectl –s <span class="m">127</span>.0.0.1:8888 –n kube-system describe pods k8s-master-172.16.40.130
+</pre></div></p>
+</li>
+<li>
+<p>To view the logs for a specific container, use the following command. For example, the controller-manager in the k8s-master-172.16.40.130 pod:
+  <div class="codehilite"><pre><span></span>$ kubectl –s <span class="m">127</span>.0.0.1:8888 –n kube-system logs k8s-master-172.16.40.130 –p controller-manager
+</pre></div></p>
+</li>
+</ol>
+<h1 id="investigation">Investigation</h1>
+<p>When something is going wrong you can do the following:
+<em> assess the node status with <code>kubectl get nodes -o wide</code>
+</em> assess the state of the pods and where they are deployed: <code>kubectl get pods -o wide</code>
+<em> look at what is deployed within a node: <code>kubectl describe &lt;podname&gt;</code>
+</em> assess the storage state with <code>kubectl get pv</code>  and <code>kubectl get pvc</code>
+<em> Access logs of a pod: 'kubectl logs <podname>'
+</em> Exec a shell in the running pod and then use traditional network tools to investigate: <code>kubectl exec -tin &lt;namespace&gt; &lt;podname&gt; sh</code>
+* For a CrashLoopBackoffs error: CrashLoopBackoff encapsulates a large set of errors that are all hidden behind the same error condition. Some potential debugging steps
+  * <code>kubectl describe pod &lt;podname&gt;</code>
+  * ssh to the host</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../faq/" title="FAQ" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                FAQ
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../service-mesh/readme/" title="Service mesh" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Service mesh
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.b806dc00.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+    
+  </body>
+</html>
