@@ -1,9 +1,10 @@
 # Hybrid Integration on IBM Cloud Private Deployment
+
 In this section we are presenting how *Hybrid integration solution implementation* is deployed to IBM Cloud Private. We address different configurations as business and operation requirements may differ per data center and even per business applications. Each configuration describes how some of the components of the solution may be deployed to ICP or kept on-premise servers.
 
-Updated July 20 2018
 
 ## Prerequisites
+
 The following points should be considered before going into more detail of the ICP deployment:
 * A conceptual understanding of how [Kubernetes](https://kubernetes.io/docs/concepts/) works, see also personal summary [here]()
 * A high-level understanding of [Helm and Kubernetes package management](https://docs.helm.sh/architecture/).
@@ -25,6 +26,7 @@ we have provided shell script to do those installation. Execute `../scripts/inst
 We will use this namespace to deploy the *hybrid integration* components into ICP cluster. As an alternate you can use the command: `kubectl create namespace browncompute`.
 
 ## Deployment steps
+
 Helm charts are defined one time and should stay reasonably stable over time. Docker image change at each build.
 Remember that docker images that are added to the image registry are owned by namespaces. All the users within a namespace are owners of the images. An owner can remove or update the images from the cluster management console. Super administrators have full access to all images in the cluster. Owners can also update the scope of an image
 
@@ -37,6 +39,7 @@ Here are the common steps to perform  when deploying a component of the hybrid i
 * Setup a CICD Pipeline for each project
 
 ### Update docker images
+
 You need to name the images with the owner, so the namespace used. Here are example of images scoped:
 ```
 $ kubectl get images -n browncompute
@@ -54,6 +57,7 @@ And the command to push one of the image:
 ` docker push ext-demo.icp:8500/browncompute/customerms:latest `
 
 ### Install Helm Chart
+
 We created [Helm Charts](https://github.com/kubernetes/helm/blob/master/docs/charts.md) for each project. For example the  [`browncompute-inventory-dal`](chart/browncompute-inventory-dal) chart packages all of the kubernetes resources required to deploy the `browncompute-inventory-dal` app and expose it to a public endpoint.
 
 For more in-depth details of the inner-workings of Helm Charts, please refer to the [Helm Chart Documentation](https://github.com/kubernetes/helm/blob/master/docs/charts.md) to learn more about charts.
@@ -64,6 +68,7 @@ You have 3 options to install the chart:
 3. Install the chart from our [`Helm Chart Repository`](https://github.com/kubernetes/helm/blob/master/docs/chart_repository.md) using ICP's Charts Catalog.
 
 ### Option 1: Clone the Repo & Install the Chart
+
 To clone the repo & install the [`browncompute-inventory-dal`](chart/browncompute-inventory-dal) chart from source, run the following commands:
 ```bash
 # Clone the repo
@@ -77,6 +82,7 @@ $ helm install chart/browncompute-inventory-dal --name browncompute-dal --tls
 ```
 
 ### Option 2: Install from Helm Chart Repository
+
 As an example for the Data Access Layer project, we created a [`Helm Chart Repository`](https://github.com/kubernetes/helm/blob/master/docs/chart_repository.md) (located [here](docs/charts)) where we serve a packaged version of the [`browncompute-inventory-dal`](chart/browncompute-inventory-dal) so that you can conveniently install it in your ICP Cluster.
 
 To install the chart from the `Helm Chart Repository`, run the following commands:
@@ -89,9 +95,11 @@ $ helm install browncompute/browncompute-inventory-dal --name browncompute-dal -
 ```
 
 ### Option 3: Install from Helm Chart Repository using ICP Helm Charts Catalog
+
 Coming Soon
 
 ## Validate Helm Chart
+
 If you installed the chart successfuly, you should see a CLI output similar to the following:
 ```
 NAME:   browncompute-dal
@@ -114,9 +122,11 @@ browncompute-dal-browncompute-dal  dal.brown.case            80       1s
 
 ```
 # Configurations
+
 As an hybrid solution each component of the solution may run on existing on-premise servers or within IBM Cloud Private cluster. The deployment decision will be driven by the business requirements and the availability of underlying IBM middleware product as docker image and helm chart.
 
 For each component of the 'hybrid integration' solution the following needs may be done:
+
    * build the docker image
    * tag the image with information about the target repository server, namespace, tag and version
    * push the image to the remote docker repository (most likely the one inside ICP master node)
@@ -125,6 +135,7 @@ For each component of the 'hybrid integration' solution the following needs may 
    * access the URL end point
 
 ## Configuration 1: ICP deployment and SOA services on-premise
+
 Our target deployment is illustrated in the figure below:
 ![](../buildrun/icp-deployment.png)  
 The light blue area represents on-premise servers, while the green area represents the IBM Cloud Private, kubernetes cluster.
@@ -145,12 +156,14 @@ If you want to review each on-premise component, their descriptions are below:
 * [Inventory database on DB2 server](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-db2#inventory-database)
 
 ## Configuration 2: Only Cloud native application on ICP
+
 This is the simplest deployment where only the cloud native web application ([the 'case' portal](https://github.com/ibm-cloud-architecture/refarch-caseportal-app)) is deployed. It still accesses the back end services via API Connect running on-premise. All other components run on-premise. The figure below illustrates this deployment:
 
 ![WebApp](./bc-icp-cfg1.png)
 
 
 ## Configuration 3: API runtime on ICP
+
 The goal for this configuration is to deploy Data power gateway to IBM cloud private and deploy the interaction API products on it. The API product definition is split into interaction APIs and system APIs.
 
 ![](./bc-icp-cfg2.png)
@@ -163,6 +176,7 @@ The steps are:
 
 
 ## Configuration 4: Integration Bus as micro flow running in ICP
+
 This configuration is using integration components on premise and the other more lightweight components on ICP, and add a micro-service for integration as introduced in [this article](https://developer.ibm.com/integration/blog/2017/04/16/12-factor-integration/) using a message flow deployed on IIB runninig in ICP.
 
 ![](./bc-icp-cfg4.png)
@@ -178,14 +192,16 @@ This approach leverages existing investment and IIB concept of operation, and IB
 
 
 ## Use ICP Catalog
+
 All component of the solution we can deploy to ICP are packaged as helm chart, and centralized in the `docs/charts` folder of this repository.  Using the ICP admin console you can get the list of repositories using the ** Manage > Helm Repositories ** menu:
 
 ![](icp-repo.png)
 
 You can add a new repository, and with the `Sync repositories` button the Helm catalog is modified with the new images.
-![](helm-in-app-center.png)
+
 
 When you add new application / package you need to update your private catalog index.yaml file.  The index.yaml file describes how your applications is listed in the ICP Application Center:
+
 ```
 $ curl get -k https://9.19.34.107:8443/helm-repo/charts/index.yaml
 $ helm repo index --merge index.yaml

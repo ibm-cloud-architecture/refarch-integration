@@ -1,7 +1,6 @@
-# Troubleshooting in ICP
-This note regroups a set of things we have met during our work on kubernetes and ICP.
+# Troubleshouting in ICP
 
-Update 3/26/2019 for ICP 2.1..
+This note regroups a set of things we have met during our work on kubernetes and ICP.
 
 * The Kubernetes [official troubleshooting docs](https://kubernetes.io/docs/getting-started-guides/ubuntu/troubleshooting/)
 
@@ -71,6 +70,7 @@ While running the Kubernetes upgrade on the master node, Etcd fails to start. Th
 During the Kubernetes upgrade step, the installer attempts to install Kubelet on each of the nodes. The installation fails because the ibmcom/kubernetes:v1.8.3-ee image is not on the nodes. Resolution is to put the image on the nodes manually.
 
 #### Error Message
+
   ```
   TASK [upgrade-kubelet : Ensuring kubelet install dir exists] ****************************************************************************************************************************************
   ok: [172.16.40.135]
@@ -82,6 +82,7 @@ During the Kubernetes upgrade step, the installer attempts to install Kubelet on
   fatal: [172.16.40.135]: FAILED! => {"attempts": 3, "changed": true, "cmd": "docker run --rm -v /opt/kubernetes/:/data ibmcom/kubernetes:v1.8.3-ee sh -c 'cp -f /hyperkube /data/'", "delta": "0:00:00.574937", "end": "2018-01-18 10:03:52.881064", "failed": true, "rc": 125, "start": "2018-01-18 10:03:52.306127", "stderr": "Unable to find image 'ibmcom/kubernetes:v1.8.3-ee' locally\ndocker: Error response from daemon: manifest for ibmcom/kubernetes:v1.8.3-ee not found.\nSee 'docker run --help'.", "stderr_lines": ["Unable to find image 'ibmcom/kubernetes:v1.8.3-ee' locally", "docker: Error response from daemon: manifest for ibmcom/kubernetes:v1.8.3-ee not found.", "See 'docker run --help'."], "stdout": "", "stdout_lines": []}
   ```
 #### Problem Determination & Resolution
+
   1. Log onto node and checked the local images. Notice that the ibmcom/kubernetes:v1.8.3-ee image is absent.
   ```
   $ docker image ls
@@ -96,9 +97,11 @@ During the Kubernetes upgrade step, the installer attempts to install Kubelet on
 
 
 # Access
+
 See [official faq on login](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.2/troubleshoot/cli_login.html)
 
 ## Unknown certificate authority
+
 ```
 $ docker login mycluster.icp:8500
 Error response from daemon: Get https://mycluster.icp:8500/v2/: x509: certificate signed by unknown authority
@@ -120,8 +123,11 @@ Go to your docker engine configuration and add the remote registry as an insecur
 You can also verify the certificates are in the logged user **~/.docker** folder. This folder should have a **certs.d** folder and one folder per remote server, you need to access. So the mycluster.icp:8500/ca.crt file needs to be copied there too.
 
 ## Not able to login to docker repository running on master node
+
 Different type of messages:
+
 ### Unknown authority
+
 `Error response from daemon: Get https://greencluster.icp:8500/v2/: x509: certificate signed by unknown authority.
 You need to configure your local docker to accept to connect to insecure registries by adding an entry about the target host.
 On MACOS the Preferences> Daemon > Advanced   
@@ -132,9 +138,11 @@ On MACOS the Preferences> Daemon > Advanced
 See also the note about accessing ICP private repository [here](https://github.com/ibm-cloud-architecture/refarch-cognitive/tree/master/docs/ICP#access-to-icp-private-docker-repository) and how to copy SSL certificate to your local host.
 
 ### x509 certificate not valid for a specific hostname
+
 Be sure the hostname you are using is in your /etc/hosts and you `docker login` to the good host.
 
 ## Could not connect to a backend service. Try again later.   (E0004)
+
 While trying to get cluster configuration with command like `bx pr cluster-config green2-cluster` got this message.
 
 The problem may come from a lack of disk space on / on the host OS of the active master node. To add space for the virtual machine with Ubuntu OS, you need to do the following:
@@ -168,6 +176,7 @@ mount /dev/sdc /mnt/disk
 See also [this note](https://kb.vmware.com/s/article/1003940)
 
 ## 503 on a deployed app with ingress rule
+
 The following message "503 Service Temporarily Unavailable" may appear when accessing a pod via virtual hostname defined in Ingress rules. Be sure to understand the ingress role
 
 To investigate do the following:
@@ -177,6 +186,7 @@ To investigate do the following:
 ![](edit-ingress.png)
 
 ## Helm connection Issue: tls: bad certificate
+
 For the  *Error: remote error: tls: bad certificate*:  you need to be logged into the cluster and get the cluster config. The commands are:
 ```
 bx pr login -a https://ext-demo.icp:8443 -u admin --skip-ssl-validation
@@ -184,33 +194,41 @@ bx pr cluster-config mycluster
 ```
 
 ## Helm version not able to connect to Tiller.
+
 Error: cannot connect to Tiller
 With version 2.1.0.2, TLS is enforced to communicate with the server. So to get the version the command is `helm version --tls`. You need also to get the certificates for the cluster. The command ` bx pr cluster-config <clustername>` will add those certificate into `~/.helm`.
 
 ## Helm incompatible version
+
 The error message may look like: `Error: incompatible versions client[v2.9.1] server[v2.7.3+icp]`
 Use the command to upgrade: `helm init --upgrade`
 
 ### For using SSL between Tiller and Helm
+
 See [this note from github helm account](https://github.com/helm/helm/blob/master/docs/tiller_ssl.md)
 
 # Deployment
 
 ## helm install command: User is not authorized to install release
+
 Be sure to enter the good namespace name in the install command.
 
 ## Pod not getting the image from docker private repository
+
 Looking at the Events report from the pod view you got a message like:
 ```
 Failed to pull image “greencluster.icp:8500/greencompute/customerms:v0.0.7”: rpc error: code = Unknown desc = Error response from daemon: Get https://greencluster.icp:8500/v2/greencompute/customerms/manifests/v0.0.7: unauthorized: authentication required
 ```
 
 The new version of k8s enforces the use of secret to access the docker private repository. So you need to add a secret, named for example regsecret, for the docker registry object.
+
 ```
 $ kubectl create secret docker-registry regsecret --docker-server=172.16.40.130 --docker-username=admin --docker-password=<> --docker-email=<email> --namespace=greencompute
 $ kubectl get secret regsecret --output=yaml --namespace=greencompute
 ```
+
 Then modify the deployment.yaml to reference this secret so the pod can access the repo during deployment:
+
 ```  spec:
     containers:
       - name: {{ .Chart.Name }}
@@ -221,6 +239,7 @@ Then modify the deployment.yaml to reference this secret so the pod can access t
 ```
 
 ## Verify deployment
+
 When you deploy a helm chart you can assess how the deployment went using the ICP admin console or the kubectl CLI.
 
 For the user interface, go to the ** Workloads > Deployments ** menu to access the list of current deployments. Select the deployment and then the pod list.
@@ -254,6 +273,7 @@ $  kubectl get events --namespace browncompute  --sort-by='.metadata.creationTim
 ```
 
 ## Accessing an app expose with Ingress: 503 Service Temporarily Unavailable
+
 This could be due to ingress rule configuration issue. We need to assess if the pod is up and running
 * Get the pod name: `k get pods --namespace greencompute`
 * Verify no issue in the container itself: `k logs bc-inventory-dal-browncompute-dal-6bfb4f85b8-tdzjt --namespace greencompute`
@@ -310,6 +330,7 @@ We need to look at the ingress-controller config:
 As we can see the $proxy_upstream_name is not set and the configuration is enforcing returning 503. The ingress rule has an issue... the port is not a port number but a name ("bc-inventory-dal-browncompute-dal:http")... So editing the rule and change to port 9080 makes it work: `kubectl edit ing -n greencompute  bc-inventory-dal-browncompute-dal`
 
 ## Error while getting cluster info
+
 Try to do `kubectl cluster-info`: failed: error: you must be logged in to the server (the server has asked for the client to provide credentials):
 * Be sure to have use the settings from the 'configure client'.
 * Be sure the cluster name / IP address are mapped in /etc/hosts
@@ -318,9 +339,11 @@ Try to do `kubectl cluster-info`: failed: error: you must be logged in to the se
 
 
 ### Default backend - 404
+
 This error can occur if the ingress rules are not working well.
 
 1. Assess if ingress is well defined: virtual hostname, proxy address and status/age of running
+
   ```
   kubectl get ing --namespace browncompute
 
@@ -330,23 +353,24 @@ casewebportal-casewebportal         portal.brown.case   172.16.40.31   80       
   ```
 
 1. Get the detail of ingress rules, and its mapping to the expected service, the path and host mapping.  
-```
+  ```
   kubectl describe ingress browncompute-dal-browncompute-dal  --namespace browncompute
 
   Name:			browncompute-dal-browncompute-dal
-Namespace:		browncompute
-Address:		172.16.40.31
-Default backend:	default-http-backend:80 (10.100.221.196:8080)
-Rules:
-  Host			Path	Backends
-  ----			----	--------
-  dal.brown.case
+  Namespace:		browncompute
+  Address:		172.16.40.31
+  Default backend:	default-http-backend:80 (10.100.221.196:8080)
+  Rules:
+   Host			Path	Backends
+    ----			----	--------
+    dal.brown.case
     			/ 	inventorydalsvc:9080 (<none>)
-Annotations:
-No events.
-```
+  Annotations:
+  No events.
+  ```
 
 1. If ingress rules are correct for your release, check to see if there are other releases sharing the same host rule. This can happen if the release was deleted without the ingress rule being removed.
+
   ```
   kubectl get ing --all-namespaces=true
 
@@ -387,7 +411,9 @@ After restart of the ICP master node, the ICP cluster is inaccessible remotely.
   $ kubectl –s 127.0.0.1:8888 –n kube-system logs k8s-master-172.16.40.130 –p controller-manager
   ```
 
+
 # Investigation
+
 When something is going wrong you can do the following:
 * assess the node status with `kubectl get nodes -o wide`
 * assess the state of the pods and where they are deployed: `kubectl get pods -o wide`

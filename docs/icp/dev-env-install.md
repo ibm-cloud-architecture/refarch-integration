@@ -1,4 +1,5 @@
 # Install a development environment with IBM Cloud Private 2.1
+
 For staging purpose, we are using a ICP EE deployment in a five virtual machine cluster. In this note we are presenting a single virtual machine configuration based on Ubuntu 64 bits v16.10 and how to install ICP 2.1.0.2 on it.
 
 Updated 04/23/2018
@@ -11,7 +12,9 @@ There is a nice alternate solution to get an ICP single VM up and running in fe 
 If you need to access the dockerhub IBM public image, use [docker hub explorer](https://hub.docker.com/explore/)  and search for **ibmcom**
 
 # Preparing your guest machine
+
 ## Install ubuntu
+
 Follow your VM player instruction to create a virtual machine and access an ubuntu 16.10 .iso file
 
 * The expected minimum resource are: CPUs: 2 Memory: 16GB Disk: 100GB (Thin Provisioned)
@@ -56,6 +59,7 @@ ntpq -p
 ```
 
 ## Configure ssh for remote access
+
 Install [openssh](https://www.openssh.com/), and authorize remote access
 ```
 sudo apt-get install openssh-server
@@ -86,6 +90,7 @@ Then you should be able to ssh root user to the guest machine.
 
 
 ## Install docker
+
 The developer's machine and VM need both to have docker or at least the VM needs it. To access the cluster environment you need *kubectl** command line interface and hosts configuration to match the configuration defined during the ICP install.
 
 If you do not have docker install on your development machine, we will not describe it again ;-). See [docker download](https://docs.docker.com/engine/installation/).
@@ -127,6 +132,7 @@ When using a build server, you also need docker to be able to build the differen
 A Jenkins server implements different pipeline to pull the different project from github, executes each jenkins file to build the different elements: compiled code, docker image, helm charts, and then push images and helm charts to ICP.
 
 ## Install Kubectl
+
 You need to have kubectl on your development computer and on any build server.
 * Install kubectl from IBM image.
 ```
@@ -140,6 +146,7 @@ see [Docker volume notes](https://docs.docker.com/engine/admin/volumes/volumes/)
 Verify kubectl runs locally. We will get the cluster information to remote connect to it once ICP is installed.
 
 ## Install helm
+
 IBM Cloud Private contains integration with Helm that allows you to install the application and all of its components in a few steps.
 
  This can be done as an administrator using the following steps:
@@ -148,6 +155,7 @@ IBM Cloud Private contains integration with Helm that allows you to install the 
 3. Initialize `helm` in your cluster. Use these [instructions](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.2/app_center/create_helm_cli.html) to install and initialize `helm`.
 
 ## Install IBM Cloud Private CE on the ubuntu machine
+
 Verify the public docker hub images available: go to [docker hub explorer](https://hub.docker.com/explore/) and search for **ibmcom/icp-inception**
 
 * Get the ICP  installer docker image using the following command
@@ -197,15 +205,17 @@ Status: Downloaded newer image for ibmcom/icp-inception:2.1.0
   * Verify access to ICP console using http://ipaddress:8443 admin/admin
   You should see the dashboard as in figure below:
 
-  ![](icp-dashboard.png)
 
 # Image Repositories
+
 To deploy application you need to package as docker image and push them within a docker repository, and then define kubernetes deployment configuration using Helm charts and install those charts to a helm Tiller server.
 
 ## Docker repository
+
 You have two choices: using the private image repository deployed in ICP or create one private docker image repository somewhere and declare it inside ICP.
 
 ## Access to ICP private docker repository
+
 You need the public ssh keys of the master-node:
 * connect to the VM where the master node runs, get the ip address, and the ca.crt with commands like below:
 ```
@@ -246,12 +256,10 @@ Password:
 
 
 ## Connect kubectl to remote cluster-master
+
 * Access the ICP kubernetes cluster information from the ICP Console.
-From the Client configuration menu under your userid on the top right of the main console panel to access the configuration:
+From the Client configuration menu under your userid on the top right of the main console panel to access the configuration. Then copy and paste in a script or in a terminal to execute those commands:
 
-![](icp-cfg-client.png)
-
-Copy and paste in a script or in a terminal to execute those commands. So now a command like:
 ```
 kubectl cluster-info
 ```  
@@ -269,6 +277,7 @@ To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 
 
 ## Verify Helm is connected to Tiller server running on ICP
+
 If you get the kubectl connected to ICP cluster (as presented in previous figure), then the following command should give you the version of the **Tiller** server running in ICP.
 ```
 $ helm version

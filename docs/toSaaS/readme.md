@@ -6,7 +6,7 @@ Updated (03/12/2018).
 
 The following diagram illustrates the starting environment:
 
-![](SaaS-start.png)
+![](Saas-start.png)
 
 where the components are:
 
@@ -51,7 +51,9 @@ For refresh our memory or for beginner we are providing how to configure the res
 
 
 #### Tooling
+
 There are a set of tools available to assess application for migration:
+
 * WebSphere Application Server Migration Toolkit https://developer.ibm.com/wasdev/downloads/#asset/tools-WebSphere_Application_Server_Migration_Toolkit: The migration toolkit provides Eclipse-based tools for WebSphere migration scenarios including Cloud migration, WebSphere version to version migration including WAS Liberty, and migration from third-party application servers.
 * Videos and demos around toolingHow to use migration toolkit for Discovery, assessment& binary scan : https://www-01.ibm.com/support/docview.wss?uid=swg27008724&aid=11
 * Getting started with WebSphere in the Cloud : https://developer.ibm.com/wasdev/docs/getting-started-websphere-cloud/

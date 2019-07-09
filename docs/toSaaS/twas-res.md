@@ -1,7 +1,9 @@
 # Configure resource in WebSphere Application Server
 
 ## DB2 access for tWAS deployed on-premise
+
 To access DB2 from a JEE application we need to define:
+
 * a DB provider which defines what jars to load for JDBC connection
 * a user id and password credential as J2C
 * a data source to reference the target database inside DB2.
@@ -9,7 +11,9 @@ To access DB2 from a JEE application we need to define:
 You need to be logged as an administrator user to the IBM Console.
 
 ### JDBC Provider
+
 You need to get your db2jcc jar file from DB2 server and copy it somewhere under the WAS install folder on the WAS server.
+
 1. Click on Resources -> JDBC -> JDBC Provider -> New
   ![](jdbc-provider-0.png)   
   You can select a scope at the Node or Cluster level depending of the deployment and high availability requirements.
@@ -22,12 +26,16 @@ You need to get your db2jcc jar file from DB2 server and copy it somewhere under
   ![](jdbc-provider-2.png)   
 
 ### User authentication
+
 Create JAAS – J2C authentication Data specifying DB2 username and password for Container Connection:
+
 1. Click on Security -> Global security -> Java Authentication and Authorization Service:
  ![](jaas-link.png)  
 1. Add a new entry for the DB2INST1 user:
  ![](jaas-db2user.png)  
+
 ### Data source
+
 The goal here is to create a data sources for the 'Items / inventory' database.
 
 1. Click on Resources -> JDBC -> Data sources, select the cell scope and new button.

@@ -1,0 +1,38 @@
+site_name: Hybrid Integration Reference Architecture
+repo_url: https://github.com/ibm-cloud-architecture/refarch-integration
+nav:
+  - Hybrid Cloud Integration introduction: index.md
+  - Hybrid Cloud Integration reference architecture: hybrid-ref-arch.md
+  - DevOps Build, deploy and run: buildrun/README.md
+  - Doing MQ, DB2 and JEE on WAS lift and shift to IBM Cloud: 
+    - Context: toSaaS/readme.md
+    - Tarditional WAS app: toSaaS/twas/readme.md
+
+  - Non-functional requirements: nfr.md
+  - Apply CI/CD for integration solution: devops/README.md
+  - Hybrid Cloud Compendium: compendium.md
+  - IBM Cloud Private knowledge sharing: 
+      - Main summary: icp/README.md
+      - CLI summary: icp/icp-cli.md
+      - Integration on ICP: icp/icp-integration.md
+      - Build your own helm repository: icp/build-helm-rep.md
+      - Install a dev cluster: icp/dev-env-install.md
+      - FAQ: icp/faq.md
+      - Troubleshouting: icp/troubleshooting.md
+  - Service mesh: service-mesh/readme.md
+  - Istio introduction: istio/readme.md
+  - CSMO: csmo/README.md
+  - Security:
+    - TLS: TLS.md
+  - Skill Journey: journey/README.md
+  
+
+theme: 
+  name: material
+extra_css: ["extra.css"]
+markdown_extensions:
+  - admonition
+  - codehilite
+  - footnotes
+  - pymdownx.smartsymbols
+  - pymdownx.superfences

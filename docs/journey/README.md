@@ -1,18 +1,23 @@
 # Journey to the cloud
+
 This article aims to present how to adopt the cloud leveraging the existing materials develop by IBM Cloud Architecture and Solution engineering team.
 
 ## Why Cloud?
+
 The most important value points:
+
 * Rapid deployment, scalability, ease of use, and elasticity to adapt to demand
 * Predictable cost, optimized for workload demand
 * Enable DevOps, increase developers productivity  
 
 Private cloud adds:
+
 * Knowledge of where data resides
 * Apply own enterprise own security and governance policies
 * Simplify integration to on-premise business functions
 
 [IBM Public Cloud](https://www.ibm.com/cloud/) value proposition:
+
 * Easy migration
 * Adopt cloud native development and operations
 * AI Ready
@@ -29,7 +34,9 @@ IBM Cloud public offers a set of added value services to manage data, app develo
 
 
 ## [IBM Private Cloud reference architecture](https://www.ibm.com/cloud/garage/architectures/private-cloud)
+
 IBM Cloud Private brings cloud innovation within your datacenter. It is a Kubernetes platform with optimized scheduling, with most of the IBM Middleware products moving to it and it:
+
 * supports better cluster management, security capabilities, image repositories, routing services, and microservices mesh
 * authorizes infrastructure automation with scripts (Terraform, [IBM Multi Cloud Manager](https://www.ibm.com/cloud/smartpapers/multicloud-management/))
 * provides monitoring for container-based applications for logging, dashboards, and automation.
@@ -44,59 +51,66 @@ With the [ICP catalog](https://169.47.77.137:8443/catalog) you can install a lot
 <img src=icp-catalog.png width=800px/>
 
 ## Challenges to solve
+
 We recognize that not every organization is ready to move everything they have to a public cloud environment, and there are lots of reasons for that. IBM offers the richest range of deployment options – from Private to Public and Dedicated. Still, enterprises will face new challenges in broadening the adoption of Cloud to critical applications. We can group those challenges into different categories and we will address in next sections the best practices and other product informations we have developed for you:
+
 * Application [ARCHITECTURE and DEVELOPMENT](#architecture-and-development) practices:
-  * What does it mean to adopt Microservice pattern
-  * Lift and shift existing applications to cloud
-  * Refactoring existing applications
-  * Adopt polyglot with new Languages & runtimes
-  * Engage with APIs management and API standard
-  * DevOps, continuous delivery  
+    * What does it mean to adopt Microservice pattern
+    * Lift and shift existing applications to cloud
+    * Refactoring existing applications
+    * Adopt polyglot with new Languages & runtimes
+    * Engage with APIs management and API standard
+    * DevOps, continuous delivery  
 * Application [PORTABILITY](#portability)
-  * Regulation and multi regions deployment
-  * Cloud provider availability
-  * Cost and quality of services  
+    * Regulation and multi regions deployment
+    * Cloud provider availability
+    * Cost and quality of services  
 * [INTEGRATION](#integration)
-  * APIs definition & Management
-  * Integrating existing Applications and SOA services
-  * Support transactions
-  * Leverage and coexist with existing ESB
-  * Agility for new integration needs
+    * APIs definition & Management
+    * Integrating existing Applications and SOA services
+    * Support transactions
+    * Leverage and coexist with existing ESB
+    * Agility for new integration needs
 * [DATA MOVEMENT & GOVERNANCE](#data-governance)
-  * New Analytics & AI Services
-  * Data Privacy & Risk
-  * Data Gravity & Performance
-  * Network Cost
-  * Data Gravity & Lock-in
+    * New Analytics & AI Services
+    * Data Privacy & Risk
+    * Data Gravity & Performance
+    * Network Cost
+    * Data Gravity & Lock-in
 * [SERVICE MANAGEMENT](#service-management)
-  * Monitoring/SRE
-  * SLAs
-  * Problem Diagnosis
-  * HA/DR
-  * Scale
-  * Backup and restore
+    * Monitoring/SRE
+    * SLAs
+    * Problem Diagnosis
+    * HA/DR
+    * Scale
+    * Backup and restore
 * [SECURITY](#security) & COMPLIANCE
-  * Identity & Authorization
-  * Audit
-  * Shared Responsibility Models
-  * Regulatory Compliance
+    * Identity & Authorization
+    * Audit
+    * Shared Responsibility Models
+    * Regulatory Compliance
 
 
 *Operation lead (Todd), responsible for infrastructure management, security and environment availability and maintenance has different concerns than developer (Jane) who is responsible to develop new application but also maintain existing application.*
 
 # A journey...
+
 ## Architecture and Development
+
 #### [Microservice reference architecture](https://www.ibm.com/cloud/garage/architectures/microservices/0_0)
 Microservices is an application architectural style in which an application is composed of many discrete, network-connected components
+
 * [Microservices in the world of integration](https://github.com/ibm-cloud-architecture/refarch-integration/blob/master/docs/hybrid-itg-platform.md)
 * Public cloud for dev and test
 [Stock trader app to ICP and Public](https://www.youtube.com/watch?v=pM3oFNAH2dA&index=4&list=PLzpeuWUENMK37ZlLBc_pIlXlOWeGnYRA_)
 * [Blue compute on kubernetes: a microservice reference implementation](https://github.com/ibm-cloud-architecture/refarch-cloudnative-kubernetes)
 
-<img src="https://github.com/ibm-cloud-architecture/refarch-cloudnative-kubernetes/blob/master/images/bluecompute_ce.png" width=800px/>
+![](bluecompute_ce.png)
 
 #### Innovate quickly with cloud native development
+
 Leverage the following tutorials and articles
+
 * [Tutorial: Deploy a cloud-native application in Kubernetes](https://www.ibm.com/cloud/garage/demo/try-private-cloud-install-an-app)
 * [Microservices with Kubernetes](https://www.ibm.com/cloud/garage/architectures/microservices/microservices-kubernetes)
 * [An Angular 6 SPA with nodejs bff full app](https://github.com/ibm-cloud-architecture/refarch-caseportal-app)
@@ -105,6 +119,7 @@ Leverage the following tutorials and articles
 * [Use Microclimate to run an End-to-End DevOps environment on IBM Cloud Private](https://github.com/ibm-cloud-architecture/refarch-cloudnative-bluecompute-microclimate)
 
 #### Refactoring app to microservices
+
 Business wants to improve the application to increase client adoption and satisfaction. Monolithic applications are more difficult to change and moving to microservice architecture will bring velocity to the development team.
 
 * [Refactoring application code to microservices](https://www.ibm.com/cloud/garage/content/code/refactor-to-microservices), this article addresses the why and how to refactor an existing Java application to microservice architecture. They also cover data model refactoring
@@ -113,9 +128,11 @@ Business wants to improve the application to increase client adoption and satisf
 
 
 #### Polyglot applications
+
 Use one the available [boiler plates, starting](https://console.bluemix.net/developer/appservice/starter-kits) code from IBM Cloud like Nodejs, Java, Python, GoLang, Swift...
 and deploy them on ICP or IBM Container services.
 Below is a list of how to guides for Java and nodejs app but also decision and event streaming:
+
 * [Develop a SOAP Jaxws app deployed in OpenLiberty and docker](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal)
 * [Apply a test driven development for Angular 6 app with nodejs-expressjs BFF service](https://github.com/ibm-cloud-architecture/refarch-caseportal-app/blob/master/docs/tdd.md)
 * [Event messaging with Apache Kafka in kubernetes](https://github.com/ibm-cloud-architecture/refarch-analytics/blob/master/docs/kafka/readme.md)
@@ -125,7 +142,9 @@ Below is a list of how to guides for Java and nodejs app but also decision and e
 
 
 #### Lift and shift
+
 A need to shift from IaaS (VM, network, storage, security) to container and CaaS (kubernetes) and PaaS (cloud foundry).
+
 * Java based lift and shift
  A Traditional JEE app running on WebSphere Application server can be lift and shift to WAS on IBM Cloud. The [Inventory Data Access Layer](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal) is a JaxWS application exposing a SOAP APIs. The figure below shows the deployed app in the IBM console   
  ![](https://github.com/ibm-cloud-architecture/refarch-integration-inventory-dal/blob/master/docs/twas/wasnd-deploy-8.png).  
@@ -145,8 +164,9 @@ A need to shift from IaaS (VM, network, storage, security) to container and CaaS
 * MQ lift and shift  
 We are presenting some [simple implementation](https://github.com/ibm-cloud-architecture/refarch-mq-messaging) using MQ on premise with Message Driven Bean deployed on WAS and a lift and shift path to [MQ on IBM Cloud](https://www.ibm.com/cloud/mq) in [this note]()
 The benefits to run MQ on cloud is that you keep your skill set but use cloud speed to:
-  * Create queue manager in minute
-  * Get product upgrade and patch done by IBM
+
+  * Create queue manager in minute.
+  * Get product upgrade and patch done by IBM.
   * Pay as you use.
   * Integrate with MQ manager on premise.  
 
@@ -163,11 +183,13 @@ The benefits to run MQ on cloud is that you keep your skill set but use cloud sp
 
 
 #### API management
+
 * [How we define an API product with IBM API Connect to integrate an existing SOA service](https://github.com/ibm-cloud-architecture/refarch-integration-api)
 * [Deploy API Connect 2018.* on ICP](https://github.com/ibm-cloud-architecture/refarch-integration-api/tree/master/docs/icp/README.md)
 
 
 #### Devops
+
 * [DevOps for Cloud Native Reference Application](https://github.com/ibm-cloud-architecture/refarch-cloudnative-devops-kubernetes)
 * [Hybrid integration solution CI/CD](https://github.com/ibm-cloud-architecture/refarch-integration/blob/master/docs/devops/README.md)
 * [Tutorial to install and configure a Jenkins server that uses a persistent storage volume on IBM Cloud Private](https://www.ibm.com/cloud/garage/tutorials/cloud-private-jenkins-pipeline)
@@ -175,28 +197,41 @@ The benefits to run MQ on cloud is that you keep your skill set but use cloud sp
 * [Devops for API deployment](https://www.ibm.com/cloud/garage/videos/efficient-api-deployment-with-devops-governance)
 
 ## Portability
+
 #### [Private cloud reference architecture](https://www.ibm.com/cloud/garage/architectures/private-cloud)
+
 #### [Backup and restore on IBM cloud Private](https://github.com/ibm-cloud-architecture/icp-backup)
+
 A guidance to backup and recovery procedures to best meet your resilience requirements, in the context of kubernetes cluster using ETCD.
 #### [Using Terraform to deploy ICP on different Cloud providers](https://github.com/ibm-cloud-architecture/terraform-module-icp-deploy)
+
 #### [Federating ICP  on-premise clusters](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Resiliency/Federating_ICP_clusters.md)
 
-<img src="https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Resiliency/images/icp_federation.png" width=800px/>
+![](icp_federation.png)
 
 ## Integration
+
 Leveraging existing investments and in-production services with new cloud native and mobile applications. Transforming SOAP and other interface to RESTful API.
-<img src="https://github.com/ibm-cloud-architecture/refarch-integration/blob/master/docs/brown-scope.png" width=800px/>
+
+![](../brown-scope.png)
 
 #### [The reference architecture for hybrid cloud](https://www.ibm.com/cloud/garage/architectures/integrationServicesDomain)
- Enables cloud applications and services to have a tighter coupling with specific on-premises enterprise system components.
-#### [Hybrid integration solution implementation ](https://github.com/ibm-cloud-architecture/refarch-integration)
+
+Enables cloud applications and services to have a tighter coupling with specific on-premises enterprise system components.
+
+#### [Hybrid integration solution implementation ](https://ibm-cloud-architecture.github.io/refarch-integration)
  presents a deep dive implementation using API Connect, MQ, WAS application, Cloud native web application, DB2, ODM, BPM, and IIB...
-#### [IBM Cloud private knowledge sharing](https://github.com/ibm-cloud-architecture/refarch-integration/tree/master/docs/icp)
+
+#### [IBM Cloud private knowledge sharing](https://ibm-cloud-architecture.github.io/refarch-integration/#icp)
+
 #### [How an IBM Integration Bus runtime can be deployed on premise or on IBM Cloud Private, running gateway flows to expose REST api from SOAP back end services](https://github.com/ibm-cloud-architecture/refarch-integration-esb)
+
 #### [Tutorial provides a guided walkthrough of the IBM MQ on Cloud service in IBM Cloud](https://www.ibm.com/cloud/garage/tutorials/ibm-mq-on-cloud/tutorial-mq-on-ibm-cloud)
 
 ## Data governance
+
 The IBM AI Ladder also begins with data. You get higher business value when you perform business-assisted functions such as analytics, machine learning, or artificial intelligence on top of the data...
+
 <img src="https://github.com/ibm-cloud-architecture/refarch-analytics/blob/master/docs/data-mv-meth.png" width=800px/>
 
 #### [Data Analytics reference architecture](https://www.ibm.com/cloud/garage/architectures/dataAnalyticsArchitecture)
@@ -204,9 +239,11 @@ The IBM AI Ladder also begins with data. You get higher business value when you 
 <img src="https://github.com/ibm-cloud-architecture/refarch-analytics/blob/master/docs/analytics-ra.png" width=800px/>
 
 #### [Data Analytics solution implementation](https://github.com/ibm-cloud-architecture/refarch-analytics)
- This project provides a reference implementation for building and running analytics application deployed on hybrid cloud environment. Two sub projects are under development to leverage [ICP for Data](https://www.ibm.com/analytics/cloud-private-for-data)
+
+This project provides a reference implementation for building and running analytics application deployed on hybrid cloud environment. Two sub projects are under development to leverage [ICP for Data](https://www.ibm.com/analytics/cloud-private-for-data)
 
  * [Customer analysis with cognitive and analytics in hybrid cloud](https://github.com/ibm-cloud-architecture/refarch-cognitive-analytics) The goal of this implementation is to deliver a reference implementation for data management and service integration to consume structured and unstructured data to assess customer attrition.
+
  <img src="https://github.com/ibm-cloud-architecture/refarch-cognitive-analytics/blob/master/docs/syst-ctx-2.png" width=800px/>
 
  * [Manufacturing Asset Predictive Maintenance](https://github.com/ibm-cloud-architecture/refarch-asset-analytics) This set of projects presents an end to end solution to enable predictive maintenance capabilities on manufacturing assets
@@ -214,17 +251,21 @@ The IBM AI Ladder also begins with data. You get higher business value when you 
 #### [Deploying Cassandra on kubernetes](https://github.com/ibm-cloud-architecture/refarch-asset-analytics/blob/master/docs/cassandra/readme.md)
 
 ## Service management
+
 #### [Reference Architecture @ IBM Garage method](https://www.ibm.com/cloud/garage/architectures/serviceManagementArchitecture/referenceArchitecture)
 
 #### [Hybrid cloud management](https://www.ibm.com/cloud/smartpapers/multicloud-management/)
+
 Hybrid, multicloud world is quickly becoming the new normal for enterprise.
 
 #### [Monitoring in IBM Cloud Private](https://github.com/ibm-cloud-architecture/CSMO-ICP)
+
 A set of artifacts created by the IBM CSMO team to assist you with performance management of your ICP deployment.
 
 <img src="https://github.com/ibm-cloud-architecture/CSMO-ICP/blob/master/images/toolchain-mon.png" width=800px/>
 
 #### CSMO for cloud native application
+
 [Leveraging Grafana, prometheus](https://github.com/ibm-cloud-architecture/refarch-cloudnative-kubernetes-csmo)
  DevOps, specifically Cloud Service Management & Operations (CSMO), is important for Cloud Native Microservice style applications. This project is developed to demonstrate how to use tools and services available on IBM Cloud to implement CSMO for the BlueCompute reference application
 
@@ -233,13 +274,16 @@ A set of artifacts created by the IBM CSMO team to assist you with performance m
  A set of tools to provide an end-to-end view of application.
 
 #### HA/DR
+
 * [Making Microservices Resilient](https://github.com/ibm-cloud-architecture/refarch-cloudnative-resiliency/)
 * [Guidance on HA ICP Cluster Setup](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Resiliency/Configure_HA_ICP_cluster.md)
+
 <img src="https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Resiliency/images/icp_ha_glusterfs.png" width=800px/>
 
 #### [ICP Installation on Ubuntu](https://github.com/ibm-cloud-architecture/refarch-privatecloud/blob/master/Installing_ICp_on_prem_ubuntu.md)
 
 ## Security
+
 IBM Cloud Private supports Identity and Access Management, based on [OpenID Connect](https://openid.net/connect/) (OIDC). It permits access to private LDAP, the identity service authenticates users with the credentials in your enterprise directory.
 It provides Role Based Access Control: editor, reader, operator, administrator roles.
 

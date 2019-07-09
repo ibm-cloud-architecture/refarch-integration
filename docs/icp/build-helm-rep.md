@@ -1,7 +1,9 @@
 # Build your own helm repository for ICP
+
 Github can be used to persist the helm charts and then reference it as source for the ICP catalog. We are presenting in this note how we did it.
 
 ## Cloud Native chart
+
 The webapp in [the 'case' portal](https://github.com/ibm-cloud-architecture/refarch-caseinc-app) is packaged as helm [charts](https://github.com/kubernetes/charts). The commands used were:
 ```
 $ helm init casewebportal
@@ -15,10 +17,12 @@ $ helm package casewebportal
 It should create a zip file with the content of the casewebportal folder. You will use the zip file if you want to get the package visible inside the Catalog. You can copy the .tgz file to a folder to be used as repository. In this solution we use the `charts` folder in this project.
 
 ## Build a chart repository
+
 A chart repository is an HTTP server that houses an index.yaml file and optionally some packaged charts. A chart repository consists of packaged charts and a special file called index.yaml which contains an index of all of the charts in the repository.
 So first you need a `index.yaml` file which declares the app you want to be visible in the ICP catalog and second reference the repository from your ICP install.
 
 ### index.yaml
+
 The structure may look like this. It can be created once you have copy all the charts to the same folder using the commands
 `helm index `
 ```yaml
@@ -46,7 +50,9 @@ entries:
 ```
 
 ### Reference the repository
-You can do that using the web interface of the ICP admin console: in the upper-left corner, click the menu and expand the **Admin** section. Click **Repositories** to specify a new Helm chart repository:  
+
+You can do that using the web interface of the ICP admin console: in the upper-left corner, click the menu and expand the **Admin** section. Click **Repositories** to specify a new Helm chart repository: 
+ 
 ![](icp-admin-repo.png)
 
 and add the repository using the url to the docs/charts folder
