@@ -748,19 +748,21 @@
 </ul>
 <h2 id="introduction">Introduction</h2>
 <p>In this architecture, existing applications are moved to the infrastructure as a service (IaaS) of cloud providers, new applications are built on the cloud as a platform as a service (PaaS), using pre-built cloud-based software as a service (SaaS) services.</p>
-<p>The following diagram presents the high level view of the components involved in the hybrid integration reference architecture. For an deeper explanation of this architecture read <a href="hybrid-ref-arch/">this note</a></p>
+<p>The following diagram presents the high level view of the components involved in the hybrid integration reference architecture. For a deeper explanation of this architecture read <a href="hybrid-ref-arch/">this note</a></p>
 <p><img alt="Hybrid integration" src="fig1.png" />.</p>
 <p>Each component may run on-premises, IaaS, PaaS or SaaS.</p>
 <p>This current project provides a reference implementation for building and running an <strong>hybrid integration</strong> solution, using cloud native web application <strong>securely</strong> connected to an enterprise data source and SOA services running on on-premise servers. We want to illustrate how to leverage existing SOA / Traditional IT landscape with products such as ESB, BPM, rule engine, Java based web service applications or even event driven publishers. Remember that the core purpose of SOA was to expose data and functions buried in systems of record over well-formed, simple-to-use, synchronous interfaces such as web services.
-In the longer term the brown compute will support the multiple integration patterns as presented in the figure below, and for more information please read <a href="hybrid-itg-platform.md">this note</a>:</p>
+In the longer term the brown compute will support the multiple integration patterns as presented in the figure below:</p>
 <p><img alt="" src="brown-scope.png" /></p>
 <h2 id="application-overview">Application Overview</h2>
-<p>As an hybrid cloud solution implementation the set of projects of this solution cover different <strong>functional</strong> requirements:
-<em> A web based portal to integrate internal applications for internal users.
-</em> One of the function is to manage a simple computer product inventory, with  warehouse and suppliers.
-<em> A second feature is to implement a IT support chat bot so internal user can ask IT support questions and get response quickly, reducing the cost of operation of the support team.
-</em> Support customer management, buyer of the telco products, used to support Analytics and machine learning
-* Product recommendations based on business rules</p>
+<p>As an hybrid cloud solution implementation the set of projects of this solution cover different <strong>functional</strong> requirements:</p>
+<ul>
+<li>A web based portal to integrate internal applications for internal users.</li>
+<li>One of the function is to manage a simple computer product inventory, with  warehouse and suppliers.</li>
+<li>A second feature is to implement a IT support chat bot so internal user can ask IT support questions and get response quickly, reducing the cost of operation of the support team.</li>
+<li>Support customer management, buyer of the telco products, used to support Analytics and machine learning</li>
+<li>Product recommendations based on business rules</li>
+</ul>
 <h3 id="system-context">System context</h3>
 <p>As architect we need to develop a system context, so the following diagram illustrates the logical components involved in the current solution, with the numbered items for short explanation:<br />
 <img alt="" src="br-syst-ctx.png" /></p>
