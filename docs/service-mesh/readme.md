@@ -1,7 +1,5 @@
 # Microservice mesh
 
-*Update 08/22/2018*  
-
 In this note we are grouping the studies around microservice to microservice communication with Kubernetes deployment. We are addressing:
 
 * how ingress controller helps inside Kubernetes
@@ -156,7 +154,8 @@ The following diagram shows how Ingress directs communication from the internet 
 Using Ingress, the global load balancer can support parallel, cross region, clusters.
 
 ## Service exposition
-There is an architecture style focusing on APIs which proposes to have different SLA and semantic for external, internet facing API versus internal back end APIs only exposed within intranet. [This article](../hybrid-itg-platform.md)  presents using different API gateways to support this architecture.
+
+There is an architecture style focusing on APIs which proposes to have different SLA and semantic for external, internet facing API versus internal back end APIs only exposed within intranet. [This article](../hybrid-ref-arch.md)  presents using different API gateways to support this architecture.
 
 Backend data services are not exposed directly to internet. API Gateway provides a secure end point for external web app to access those business functions.
 

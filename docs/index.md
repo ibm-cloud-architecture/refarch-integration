@@ -38,14 +38,14 @@ By studying the set of projects and articles linked to this top repository, you 
 
 In this architecture, existing applications are moved to the infrastructure as a service (IaaS) of cloud providers, new applications are built on the cloud as a platform as a service (PaaS), using pre-built cloud-based software as a service (SaaS) services.
 
-The following diagram presents the high level view of the components involved in the hybrid integration reference architecture. For an deeper explanation of this architecture read [this note](hybrid-ref-arch.md)
+The following diagram presents the high level view of the components involved in the hybrid integration reference architecture. For a deeper explanation of this architecture read [this note](hybrid-ref-arch.md)
 
 ![Hybrid integration](./fig1.png).
 
 Each component may run on-premises, IaaS, PaaS or SaaS.
 
 This current project provides a reference implementation for building and running an **hybrid integration** solution, using cloud native web application **securely** connected to an enterprise data source and SOA services running on on-premise servers. We want to illustrate how to leverage existing SOA / Traditional IT landscape with products such as ESB, BPM, rule engine, Java based web service applications or even event driven publishers. Remember that the core purpose of SOA was to expose data and functions buried in systems of record over well-formed, simple-to-use, synchronous interfaces such as web services.
-In the longer term the brown compute will support the multiple integration patterns as presented in the figure below, and for more information please read [this note](hybrid-itg-platform.md):
+In the longer term the brown compute will support the multiple integration patterns as presented in the figure below:
 
 ![](brown-scope.png)
 
@@ -53,6 +53,7 @@ In the longer term the brown compute will support the multiple integration patte
 ## Application Overview
 
 As an hybrid cloud solution implementation the set of projects of this solution cover different **functional** requirements:
+
 * A web based portal to integrate internal applications for internal users.
 * One of the function is to manage a simple computer product inventory, with  warehouse and suppliers.
 * A second feature is to implement a IT support chat bot so internal user can ask IT support questions and get response quickly, reducing the cost of operation of the support team.
